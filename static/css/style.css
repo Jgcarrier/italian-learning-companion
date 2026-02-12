@@ -59,6 +59,26 @@ body {
     font-size: 0.9rem;
 }
 
+.home-link {
+    margin-top: 15px;
+}
+
+.btn-home {
+    display: inline-block;
+    padding: 8px 20px;
+    background: var(--green);
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.btn-home:hover {
+    background: #007a38;
+    transform: translateY(-2px);
+}
+
 /* Menu Grid */
 .menu-grid {
     display: grid;

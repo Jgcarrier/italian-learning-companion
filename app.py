@@ -368,6 +368,50 @@ def irregular_passato():
     return redirect(url_for('practice_question'))
 
 
+@app.route('/regular-passato', methods=['GET', 'POST'])
+def regular_passato():
+    """Regular passato prossimo practice."""
+    if request.method == 'GET':
+        level = request.args.get('level') or request.form.get('level', 'A2')
+        return render_template('regular_passato_setup.html', level=level)
+
+    # POST: Start new practice
+    count = int(request.form.get('count', 10))
+    generator = get_generator()
+    questions = generator.generate_regular_passato_prossimo(count)
+
+    session['practice_type'] = 'regular_passato'
+    session['questions'] = questions
+    session['current_question'] = 0
+    session['correct_count'] = 0
+    session['answers'] = []
+    session['start_time'] = time.time()
+
+    return redirect(url_for('practice_question'))
+
+
+@app.route('/imperfect-tense', methods=['GET', 'POST'])
+def imperfect_tense():
+    """Imperfect tense (imperfetto) practice."""
+    if request.method == 'GET':
+        level = request.args.get('level') or request.form.get('level', 'A2')
+        return render_template('imperfect_tense_setup.html', level=level)
+
+    # POST: Start new practice
+    count = int(request.form.get('count', 10))
+    generator = get_generator()
+    questions = generator.generate_imperfect_tense(count)
+
+    session['practice_type'] = 'imperfect_tense'
+    session['questions'] = questions
+    session['current_question'] = 0
+    session['correct_count'] = 0
+    session['answers'] = []
+    session['start_time'] = time.time()
+
+    return redirect(url_for('practice_question'))
+
+
 @app.route('/auxiliary-choice', methods=['GET', 'POST'])
 def auxiliary_choice():
     """Avere vs Essere auxiliary choice practice."""

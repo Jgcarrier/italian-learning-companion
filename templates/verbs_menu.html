@@ -16,10 +16,17 @@
         <p>All tenses and persons</p>
     </a>
 
+    {% if level in ['A1', 'A2'] %}
+    <a href="{{ url_for('regular_passato') }}?level={{ level }}" class="menu-item">
+        <div class="menu-icon">📖</div>
+        <h3>Passato Prossimo</h3>
+        <p>Regular past tense</p>
+    </a>
+
     <a href="{{ url_for('irregular_passato') }}?level={{ level }}" class="menu-item">
         <div class="menu-icon">⏰</div>
         <h3>Irregular Passato</h3>
-        <p>Past participles</p>
+        <p>Irregular past participles</p>
     </a>
 
     <a href="{{ url_for('auxiliary_choice') }}?level={{ level }}" class="menu-item">
@@ -27,17 +34,30 @@
         <h3>Avere vs Essere</h3>
         <p>Choose auxiliary verb</p>
     </a>
+    {% endif %}
 
+    {% if level in ['A2', 'B1', 'B2', 'GCSE'] %}
+    <a href="{{ url_for('imperfect_tense') }}?level={{ level }}" class="menu-item">
+        <div class="menu-icon">🕰️</div>
+        <h3>Imperfetto</h3>
+        <p>Imperfect tense</p>
+    </a>
+    {% endif %}
+
+    {% if level in ['A2', 'B1', 'B2', 'GCSE'] %}
     <a href="{{ url_for('futuro_semplice') }}?level={{ level }}" class="menu-item">
         <div class="menu-icon">🔮</div>
         <h3>Futuro Semplice</h3>
         <p>Future tense practice</p>
     </a>
+    {% endif %}
 
+    {% if level in ['A2', 'B1', 'B2', 'GCSE'] %}
     <a href="{{ url_for('reflexive_verbs') }}?level={{ level }}" class="menu-item">
         <div class="menu-icon">🪞</div>
         <h3>Reflexive Verbs</h3>
         <p>Practice reflexives</p>
     </a>
+    {% endif %}
 </div>
 {% endblock %}

@@ -40,6 +40,7 @@
 
         <div class="button-group">
             <button type="submit" class="btn btn-primary btn-large">Submit Answer</button>
+            <a href="{{ url_for('home') }}" class="btn btn-secondary" onclick="return confirm('Are you sure you want to exit this practice session? Your progress will be lost.')">🚪 Exit Practice</a>
         </div>
     </form>
 </div>

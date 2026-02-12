@@ -10,22 +10,36 @@
 </div>
 
 <div class="menu-grid">
+    {% if level in ['A2', 'B1', 'B2', 'GCSE'] %}
     <a href="{{ url_for('articulated_prepositions') }}?level={{ level }}" class="menu-item">
         <div class="menu-icon">📍</div>
         <h3>Articulated Prepositions</h3>
         <p>del, alla, nel, etc.</p>
     </a>
+    {% endif %}
 
+    {% if level in ['A1', 'A2', 'B1', 'B2', 'GCSE'] %}
     <a href="{{ url_for('time_prepositions') }}?level={{ level }}" class="menu-item">
         <div class="menu-icon">⏱️</div>
         <h3>Time Prepositions</h3>
         <p>per, da, a, fa</p>
     </a>
+    {% endif %}
 
+    {% if level in ['A2', 'B1', 'B2', 'GCSE'] %}
     <a href="{{ url_for('negations') }}?level={{ level }}" class="menu-item">
         <div class="menu-icon">🚫</div>
         <h3>Negations</h3>
         <p>non...mai, non...più</p>
     </a>
+    {% endif %}
+
+    {% if level in ['A1'] %}
+    <div class="menu-item" style="opacity: 0.6; cursor: not-allowed; border-color: #ddd;">
+        <div class="menu-icon">ℹ️</div>
+        <h3>More Grammar Coming</h3>
+        <p>Try A2 level for more options!</p>
+    </div>
+    {% endif %}
 </div>
 {% endblock %}

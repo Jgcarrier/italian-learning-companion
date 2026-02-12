@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}Imperfect Tense Setup{% endblock %}
+
+{% block content %}
+<div class="text-center mb-30">
+    <h2>🕰️ Imperfetto (Imperfect Tense)</h2>
+    <p>Describe past habits and ongoing actions</p>
+</div>
+
+<form method="POST" action="{{ url_for('imperfect_tense') }}">
+    <input type="hidden" name="level" value="{{ level or 'A2' }}">
+    <div class="form-group">
+        <label for="count">Number of Questions:</label>
+        <input type="number" name="count" id="count" value="10" min="5" max="20">
+    </div>
+
+    <div class="button-group">
+        <button type="submit" class="btn btn-primary btn-large">Start Practice ({{ level or 'A2' }})</button>
+        <a href="{{ url_for('verbs_menu', level=level or 'A2') }}" class="btn btn-secondary">Back</a>
+    </div>
+</form>
+
+<div style="margin-top: 30px; padding: 20px; background: var(--light-gray); border-radius: 8px;">
+    <h3 style="font-size: 1.1rem; margin-bottom: 10px;">💡 What You'll Practice:</h3>
+    <p style="color: #666; margin-bottom: 15px;">The imperfect tense is used for:</p>
+    <ul style="margin-left: 20px; color: #666;">
+        <li>Habitual actions in the past: "Ogni giorno <em>mangiavo</em> la pasta" (Every day I used to eat pasta)</li>
+        <li>Ongoing actions: "<em>Mentre studiavo</em>, lui guardava la TV" (While I was studying, he was watching TV)</li>
+        <li>Descriptions in the past: "<em>Era</em> una bella giornata" (It was a beautiful day)</li>
+        <li>Age and time: "<em>Avevo</em> dieci anni" (I was ten years old)</li>
+    </ul>
+    <p style="color: #666; margin-top: 15px; font-style: italic;"><strong>Endings:</strong> -avo/-avo/-ava/-avamo/-avate/-avano (are), -evo/-evi/-eva/-evamo/-evate/-evano (ere/ire)</p>
+</div>
+{% endblock %}
