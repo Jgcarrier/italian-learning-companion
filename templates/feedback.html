@@ -21,7 +21,13 @@
     </h2>
 
     {% if is_correct %}
-        {% if user_answer.lower() != correct_answer.lower() %}
+        {% if question_type == 'sentence_translation' %}
+            <div class="answer-display">
+                <p><strong>Your answer:</strong> {{ user_answer }}</p>
+                <p><strong>Exact translation:</strong> {{ correct_answer }}</p>
+                <p style="color: #10B981; font-size: 0.9rem; margin-top: 10px;">✓ Your answer captures the meaning!</p>
+            </div>
+        {% elif user_answer.lower() != correct_answer.lower() %}
             <div class="answer-display">
                 <p><strong>Your answer:</strong> {{ user_answer }}</p>
                 <p><strong>Proper spelling:</strong> {{ correct_answer }}</p>
