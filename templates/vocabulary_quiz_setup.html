@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Vocabulary Quiz Setup{% endblock %}
+
+{% block content %}
+<div class="text-center mb-30">
+    <h2>📚 Vocabulary Quiz</h2>
+    <p>Test your Italian vocabulary knowledge</p>
+</div>
+
+<form method="POST" action="{{ url_for('vocabulary_quiz') }}">
+    <input type="hidden" name="level" value="{{ level or 'A2' }}">
+
+    <div class="form-group">
+        <label for="direction">Translation Direction:</label>
+        <select name="direction" id="direction">
+            <option value="it_to_en">Italian → English</option>
+            <option value="en_to_it">English → Italian</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="count">Number of Questions:</label>
+        <input type="number" name="count" id="count" value="10" min="5" max="50">
+    </div>
+
+    <div class="button-group">
+        <button type="submit" class="btn btn-primary btn-large">Start Quiz ({{ level or 'A2' }})</button>
+        <a href="{{ url_for('home') }}" class="btn btn-secondary">Back</a>
+    </div>
+</form>
+{% endblock %}

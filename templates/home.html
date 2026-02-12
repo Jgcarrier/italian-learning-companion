@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+
+{% block title %}Home - Italian Learning Companion{% endblock %}
+
+{% block content %}
+<div class="text-center mb-30">
+    <h2>Choose Your Practice</h2>
+    <p>Select a practice type to get started</p>
+</div>
+
+<div class="menu-grid">
+    <!-- Vocabulary Quiz - WORKING -->
+    <a href="{{ url_for('vocabulary_quiz') }}" class="menu-item">
+        <div class="menu-icon">📚</div>
+        <h3>Vocabulary Quiz</h3>
+        <p>Practice Italian words</p>
+    </a>
+
+    <!-- Verb Conjugation - WORKING -->
+    <a href="{{ url_for('verb_conjugation') }}" class="menu-item">
+        <div class="menu-icon">🗣️</div>
+        <h3>Verb Conjugation</h3>
+        <p>General verb practice</p>
+    </a>
+
+    <!-- Irregular Passato - WORKING -->
+    <a href="{{ url_for('irregular_passato') }}" class="menu-item">
+        <div class="menu-icon">⏰</div>
+        <h3>Irregular Passato</h3>
+        <p>Past participles</p>
+    </a>
+
+    <!-- All Practice Types - NOW WORKING -->
+    <a href="{{ url_for('auxiliary_choice') }}" class="menu-item">
+        <div class="menu-icon">🔄</div>
+        <h3>Avere vs Essere</h3>
+        <p>Choose auxiliary verb</p>
+    </a>
+
+    <a href="{{ url_for('futuro_semplice') }}" class="menu-item">
+        <div class="menu-icon">🔮</div>
+        <h3>Futuro Semplice</h3>
+        <p>Future tense practice</p>
+    </a>
+
+    <a href="{{ url_for('reflexive_verbs') }}" class="menu-item">
+        <div class="menu-icon">🪞</div>
+        <h3>Reflexive Verbs</h3>
+        <p>Practice reflexives</p>
+    </a>
+
+    <a href="{{ url_for('articulated_prepositions') }}" class="menu-item">
+        <div class="menu-icon">📍</div>
+        <h3>Articulated Prepositions</h3>
+        <p>del, alla, nel, etc.</p>
+    </a>
+
+    <a href="{{ url_for('time_prepositions') }}" class="menu-item">
+        <div class="menu-icon">⏱️</div>
+        <h3>Time Prepositions</h3>
+        <p>per, da, a, fa</p>
+    </a>
+
+    <a href="{{ url_for('negations') }}" class="menu-item">
+        <div class="menu-icon">🚫</div>
+        <h3>Negations</h3>
+        <p>non...mai, non...più</p>
+    </a>
+
+    <a href="{{ url_for('fill_in_blank') }}" class="menu-item">
+        <div class="menu-icon">✍️</div>
+        <h3>Fill in the Blank</h3>
+        <p>Complete sentences</p>
+    </a>
+
+    <a href="{{ url_for('multiple_choice') }}" class="menu-item">
+        <div class="menu-icon">🎯</div>
+        <h3>Multiple Choice</h3>
+        <p>Mixed grammar quiz</p>
+    </a>
+
+    <a href="{{ url_for('sentence_translator') }}" class="menu-item">
+        <div class="menu-icon">💬</div>
+        <h3>Sentence Translator</h3>
+        <p>Translate full sentences</p>
+    </a>
+
+    <!-- Stats and Topics - WORKING -->
+    <a href="{{ url_for('view_stats') }}" class="menu-item">
+        <div class="menu-icon">📊</div>
+        <h3>Progress Stats</h3>
+        <p>View your performance</p>
+    </a>
+
+    <a href="{{ url_for('view_topics') }}" class="menu-item">
+        <div class="menu-icon">📋</div>
+        <h3>Topic List</h3>
+        <p>Browse all topics</p>
+    </a>
+</div>
+{% endblock %}

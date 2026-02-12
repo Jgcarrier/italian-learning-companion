@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}Reflexive Verbs Setup{% endblock %}
+
+{% block content %}
+<div class="text-center mb-30">
+    <h2>🪞 Reflexive Verbs</h2>
+    <p>Practice reflexive verb conjugations</p>
+</div>
+
+<form method="POST">
+    <input type="hidden" name="level" value="{{ level or 'A2' }}" action="{{ url_for('reflexive_verbs') }}">
+    <div class="form-group">
+        <label for="count">Number of Questions:</label>
+        <input type="number" name="count" id="count" value="10" min="5" max="30">
+    </div>
+
+    <div class="button-group">
+        <button type="submit" class="btn btn-primary btn-large">Start Practice</button>
+        <a href="{{ url_for('home') }}" class="btn btn-secondary">Back</a>
+    </div>
+</form>
+
+<div style="margin-top: 30px; padding: 20px; background: var(--light-gray); border-radius: 8px;">
+    <h3 style="font-size: 1.1rem; margin-bottom: 10px;">💡 What You'll Practice:</h3>
+    <p style="color: #666; margin-bottom: 15px;">Reflexive verbs with their pronouns:</p>
+    <ul style="margin-left: 20px; color: #666; columns: 2;">
+        <li>alzarsi (to get up)</li>
+        <li>svegliarsi (to wake up)</li>
+        <li>lavarsi (to wash)</li>
+        <li>vestirsi (to get dressed)</li>
+        <li>chiamarsi (to be called)</li>
+        <li>sentirsi (to feel)</li>
+        <li>divertirsi (to have fun)</li>
+        <li>riposarsi (to rest)</li>
+    </ul>
+    <p style="color: #666; margin-top: 15px; font-style: italic;">Remember: mi alzo, ti alzi, si alza, ci alziamo, vi alzate, si alzano</p>
+</div>
+{% endblock %}

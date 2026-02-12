@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}Negations Setup{% endblock %}
+
+{% block content %}
+<div class="text-center mb-30">
+    <h2>🚫 Negations</h2>
+    <p>Practice Italian double negatives</p>
+</div>
+
+<form method="POST">
+    <input type="hidden" name="level" value="{{ level or 'A2' }}" action="{{ url_for('negations') }}">
+    <div class="form-group">
+        <label for="count">Number of Questions:</label>
+        <input type="number" name="count" id="count" value="10" min="5" max="20">
+    </div>
+
+    <div class="button-group">
+        <button type="submit" class="btn btn-primary btn-large">Start Practice</button>
+        <a href="{{ url_for('home') }}" class="btn btn-secondary">Back</a>
+    </div>
+</form>
+
+<div style="margin-top: 30px; padding: 20px; background: var(--light-gray); border-radius: 8px;">
+    <h3 style="font-size: 1.1rem; margin-bottom: 10px;">💡 Italian Double Negatives:</h3>
+    <ul style="margin-left: 20px; color: #666;">
+        <li><strong>non...mai</strong> = never → "Non vado mai al cinema"</li>
+        <li><strong>non...più</strong> = not anymore → "Non lavoro più qui"</li>
+        <li><strong>non...niente/nulla</strong> = nothing → "Non ho niente da fare"</li>
+        <li><strong>non...nessuno</strong> = nobody → "Non conosco nessuno"</li>
+        <li><strong>non...neanche</strong> = not even → "Non ho neanche un euro"</li>
+    </ul>
+    <p style="color: #666; margin-top: 15px; font-style: italic;">You'll practice both fill-in and transformation exercises!</p>
+</div>
+{% endblock %}

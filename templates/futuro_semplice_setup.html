@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}Futuro Semplice Setup{% endblock %}
+
+{% block content %}
+<div class="text-center mb-30">
+    <h2>🔮 Futuro Semplice</h2>
+    <p>Practice future tense conjugations</p>
+</div>
+
+<form method="POST">
+    <input type="hidden" name="level" value="{{ level or 'A2' }}" action="{{ url_for('futuro_semplice') }}">
+    <div class="form-group">
+        <label for="count">Number of Questions:</label>
+        <input type="number" name="count" id="count" value="10" min="5" max="30">
+    </div>
+
+    <div class="button-group">
+        <button type="submit" class="btn btn-primary btn-large">Start Practice</button>
+        <a href="{{ url_for('home') }}" class="btn btn-secondary">Back</a>
+    </div>
+</form>
+
+<div style="margin-top: 30px; padding: 20px; background: var(--light-gray); border-radius: 8px;">
+    <h3 style="font-size: 1.1rem; margin-bottom: 10px;">💡 What You'll Practice:</h3>
+    <p style="color: #666; margin-bottom: 15px;">Future tense (futuro semplice) for regular and irregular verbs:</p>
+    <ul style="margin-left: 20px; color: #666;">
+        <li>Regular -are verbs: parlerò, parlerai, parlerà...</li>
+        <li>Regular -ere verbs: vedrò, vedrai, vedrà...</li>
+        <li>Regular -ire verbs: dormirò, dormirai, dormirà...</li>
+        <li>Irregular verbs: sarò, avrò, farò, andrò, vorrò...</li>
+    </ul>
+</div>
+{% endblock %}

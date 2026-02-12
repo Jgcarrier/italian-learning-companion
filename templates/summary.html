@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block title %}Quiz Summary{% endblock %}
+
+{% block content %}
+<div class="summary-card">
+    <h2>📊 Quiz Complete!</h2>
+
+    <div class="grade-display">{{ summary.grade_emoji }}</div>
+    <div class="grade-text">{{ summary.grade }}</div>
+
+    <div class="summary-stats">
+        <div class="stat-item">
+            <div class="label">Score</div>
+            <div class="value">{{ summary.correct }}/{{ summary.total }}</div>
+        </div>
+
+        <div class="stat-item">
+            <div class="label">Accuracy</div>
+            <div class="value">{{ "%.1f"|format(summary.accuracy) }}%</div>
+        </div>
+
+        <div class="stat-item">
+            <div class="label">Time</div>
+            <div class="value" style="font-size: 1.3rem;">{{ summary.time }}</div>
+        </div>
+    </div>
+
+    <div style="margin-top: 30px; padding-top: 20px; border-top: 2px solid var(--medium-gray);">
+        <p style="color: #666; font-size: 0.9rem;">Session saved to database (ID: {{ summary.session_id }})</p>
+    </div>
+</div>
+
+<!-- Review Answers -->
+<div class="mb-30">
+    <h3 style="margin-bottom: 20px;">Review Your Answers</h3>
+
+    {% for answer in summary.answers %}
+        <div class="feedback {% if answer.is_correct %}correct{% else %}incorrect{% endif %}" style="margin-bottom: 15px; padding: 15px; text-align: left;">
+            <div style="font-weight: 600; margin-bottom: 8px;">{{ answer.question }}</div>
+
+            {% if answer.is_correct %}
+                <div style="color: #059669;">✅ {{ answer.user_answer }}</div>
+            {% else %}
+                <div style="color: #DC2626;">❌ Your answer: {{ answer.user_answer }}</div>
+                <div style="color: #059669;">✅ Correct: {{ answer.correct_answer }}</div>
+            {% endif %}
+        </div>
+    {% endfor %}
+</div>
+
+<div class="button-group">
+    <a href="{{ url_for('vocabulary_quiz') }}" class="btn btn-primary">Practice Again</a>
+    <a href="{{ url_for('home') }}" class="btn btn-secondary">Back to Menu</a>
+</div>
+{% endblock %}

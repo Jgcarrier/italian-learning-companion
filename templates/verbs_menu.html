@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}{{ level }} - Verb Practice{% endblock %}
+
+{% block content %}
+<div class="text-center mb-30">
+    <h2>{{ level }} - Verb Practice</h2>
+    <p>Choose a verb exercise</p>
+    <a href="{{ url_for('category_menu', level=level) }}" style="color: var(--green); text-decoration: none;">← Back to Categories</a>
+</div>
+
+<div class="menu-grid">
+    <a href="{{ url_for('verb_conjugation') }}?level={{ level }}" class="menu-item">
+        <div class="menu-icon">🗣️</div>
+        <h3>General Conjugation</h3>
+        <p>All tenses and persons</p>
+    </a>
+
+    <a href="{{ url_for('irregular_passato') }}?level={{ level }}" class="menu-item">
+        <div class="menu-icon">⏰</div>
+        <h3>Irregular Passato</h3>
+        <p>Past participles</p>
+    </a>
+
+    <a href="{{ url_for('auxiliary_choice') }}?level={{ level }}" class="menu-item">
+        <div class="menu-icon">🔄</div>
+        <h3>Avere vs Essere</h3>
+        <p>Choose auxiliary verb</p>
+    </a>
+
+    <a href="{{ url_for('futuro_semplice') }}?level={{ level }}" class="menu-item">
+        <div class="menu-icon">🔮</div>
+        <h3>Futuro Semplice</h3>
+        <p>Future tense practice</p>
+    </a>
+
+    <a href="{{ url_for('reflexive_verbs') }}?level={{ level }}" class="menu-item">
+        <div class="menu-icon">🪞</div>
+        <h3>Reflexive Verbs</h3>
+        <p>Practice reflexives</p>
+    </a>
+</div>
+{% endblock %}

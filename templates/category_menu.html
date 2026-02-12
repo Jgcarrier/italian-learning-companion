@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %}{{ level }} Practice - Categories{% endblock %}
+
+{% block content %}
+<div class="text-center mb-30">
+    <h2>{{ level }} Practice</h2>
+    <p>Choose a category to practice</p>
+    <a href="{{ url_for('home') }}" style="color: var(--green); text-decoration: none;">← Back to Level Selection</a>
+</div>
+
+<div class="menu-grid">
+    <!-- Verbs Category -->
+    <a href="{{ url_for('verbs_menu', level=level) }}" class="menu-item">
+        <div class="menu-icon">🗣️</div>
+        <h3>Verbs</h3>
+        <p>Conjugation practice</p>
+    </a>
+
+    <!-- Vocabulary Category -->
+    <a href="{{ url_for('vocabulary_menu', level=level) }}" class="menu-item">
+        <div class="menu-icon">📚</div>
+        <h3>Vocabulary</h3>
+        <p>Words and phrases</p>
+    </a>
+
+    <!-- Grammar Category -->
+    <a href="{{ url_for('grammar_menu', level=level) }}" class="menu-item">
+        <div class="menu-icon">📝</div>
+        <h3>Grammar</h3>
+        <p>Prepositions, negations, etc.</p>
+    </a>
+
+    <!-- Mixed Practice -->
+    <a href="{{ url_for('mixed_menu', level=level) }}" class="menu-item">
+        <div class="menu-icon">🎯</div>
+        <h3>Mixed Practice</h3>
+        <p>Combined exercises</p>
+    </a>
+</div>
+{% endblock %}

@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block title %}Sentence Translator Setup{% endblock %}
+
+{% block content %}
+<div class="text-center mb-30">
+    <h2>💬 Sentence Translator</h2>
+    <p>Translate complete Italian sentences</p>
+</div>
+
+<form method="POST">
+    <input type="hidden" name="level" value="{{ level or 'A2' }}" action="{{ url_for('sentence_translator') }}">
+    <div class="form-group">
+        <label for="level">Level:</label>
+        <select name="level" id="level">
+            <option value="A1">A1 - Beginner</option>
+            <option value="A2" selected>A2 - Elementary</option>
+            <option value="B1">B1 - Intermediate</option>
+            <option value="B2">B2 - Upper Intermediate</option>
+            <option value="GCSE">GCSE</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="direction">Translation Direction:</label>
+        <select name="direction" id="direction">
+            <option value="it_to_en">Italian → English</option>
+            <option value="en_to_it">English → Italian</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="count">Number of Questions:</label>
+        <input type="number" name="count" id="count" value="10" min="5" max="30">
+    </div>
+
+    <div class="button-group">
+        <button type="submit" class="btn btn-primary btn-large">Start Practice</button>
+        <a href="{{ url_for('home') }}" class="btn btn-secondary">Back</a>
+    </div>
+</form>
+
+<div style="margin-top: 30px; padding: 20px; background: var(--light-gray); border-radius: 8px;">
+    <h3 style="font-size: 1.1rem; margin-bottom: 10px;">💡 What You'll Practice:</h3>
+    <p style="color: #666; margin-bottom: 15px;">Translate complete sentences to test your comprehension:</p>
+
+    <p style="color: #666; margin-bottom: 10px;"><strong>A1 Examples:</strong></p>
+    <ul style="margin-left: 20px; color: #666; margin-bottom: 15px;">
+        <li>"Mi chiamo Marco" → "My name is Marco"</li>
+        <li>"Vado al cinema" → "I go to the cinema"</li>
+        <li>"Mi piace il caffè" → "I like coffee"</li>
+    </ul>
+
+    <p style="color: #666; margin-bottom: 10px;"><strong>A2 Examples:</strong></p>
+    <ul style="margin-left: 20px; color: #666;">
+        <li>"Ieri sono andato al mare" → "Yesterday I went to the beach"</li>
+        <li>"Studio italiano da due anni" → "I've been studying Italian for two years"</li>
+        <li>"Non vado mai in palestra" → "I never go to the gym"</li>
+    </ul>
+
+    <p style="color: #666; margin-top: 15px; font-style: italic;">
+        💡 Tip: Your translation doesn't need to be word-for-word perfect - it should capture the meaning of the sentence!
+    </p>
+</div>
+{% endblock %}

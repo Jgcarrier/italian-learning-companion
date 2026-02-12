@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}{{ level }} - Mixed Practice{% endblock %}
+
+{% block content %}
+<div class="text-center mb-30">
+    <h2>{{ level }} - Mixed Practice</h2>
+    <p>Combined exercises</p>
+    <a href="{{ url_for('category_menu', level=level) }}" style="color: var(--green); text-decoration: none;">← Back to Categories</a>
+</div>
+
+<div class="menu-grid">
+    <a href="{{ url_for('fill_in_blank') }}?level={{ level }}" class="menu-item">
+        <div class="menu-icon">✍️</div>
+        <h3>Fill in the Blank</h3>
+        <p>Complete sentences</p>
+    </a>
+
+    <a href="{{ url_for('multiple_choice') }}?level={{ level }}" class="menu-item">
+        <div class="menu-icon">🎯</div>
+        <h3>Multiple Choice</h3>
+        <p>Mixed grammar quiz</p>
+    </a>
+</div>
+{% endblock %}

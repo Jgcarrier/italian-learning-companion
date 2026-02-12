@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+
+{% block title %}Progress Stats{% endblock %}
+
+{% block content %}
+<div class="text-center mb-30">
+    <h2>📊 Your Progress</h2>
+    <p>Track your learning journey</p>
+</div>
+
+<!-- 7 Days Stats -->
+<div class="stats-section">
+    <h3>Last 7 Days</h3>
+    <div class="stats-grid">
+        <div class="stat-card">
+            <div class="stat-label">Sessions</div>
+            <div class="stat-value">{{ stats_7.total_sessions or 0 }}</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-label">Questions</div>
+            <div class="stat-value">{{ stats_7.total_questions or 0 }}</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-label">Accuracy</div>
+            <div class="stat-value">
+                {% if stats_7.avg_accuracy %}
+                    {{ "%.1f"|format(stats_7.avg_accuracy) }}%
+                {% else %}
+                    N/A
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 30 Days Stats -->
+<div class="stats-section">
+    <h3>Last 30 Days</h3>
+    <div class="stats-grid">
+        <div class="stat-card">
+            <div class="stat-label">Sessions</div>
+            <div class="stat-value">{{ stats_30.total_sessions or 0 }}</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-label">Questions</div>
+            <div class="stat-value">{{ stats_30.total_questions or 0 }}</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-label">Accuracy</div>
+            <div class="stat-value">
+                {% if stats_30.avg_accuracy %}
+                    {{ "%.1f"|format(stats_30.avg_accuracy) }}%
+                {% else %}
+                    N/A
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 90 Days Stats -->
+<div class="stats-section">
+    <h3>Last 90 Days</h3>
+    <div class="stats-grid">
+        <div class="stat-card">
+            <div class="stat-label">Sessions</div>
+            <div class="stat-value">{{ stats_90.total_sessions or 0 }}</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-label">Questions</div>
+            <div class="stat-value">{{ stats_90.total_questions or 0 }}</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-label">Accuracy</div>
+            <div class="stat-value">
+                {% if stats_90.avg_accuracy %}
+                    {{ "%.1f"|format(stats_90.avg_accuracy) }}%
+                {% else %}
+                    N/A
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Weak Areas -->
+<div class="stats-section">
+    <h3>Areas Needing Practice</h3>
+    {% if weak_areas %}
+        <ul class="weak-areas-list">
+            {% for area in weak_areas %}
+                <li>
+                    {% if area.topic_name %}
+                        <strong>{{ area.topic_name }}</strong> - {{ area.error_count }} errors
+                    {% elif area.vocab_word %}
+                        <strong>{{ area.vocab_word }}</strong> - {{ area.error_count }} errors
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p style="color: #666;">No weak areas yet - keep practicing!</p>
+    {% endif %}
+</div>
+
+<div class="button-group">
+    <a href="{{ url_for('home') }}" class="btn btn-primary">Back to Menu</a>
+</div>
+{% endblock %}

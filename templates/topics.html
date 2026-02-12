@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% block title %}Topic List{% endblock %}
+
+{% block content %}
+<div class="text-center mb-30">
+    <h2>📋 All Topics</h2>
+    <p>Browse learning topics by level</p>
+</div>
+
+<!-- A1 Topics -->
+<div class="topic-section">
+    <h3>A1 Topics ({{ topics_a1|length }})</h3>
+    {% if topics_a1 %}
+        <ul class="topic-list">
+            {% for topic in topics_a1 %}
+                <li class="topic-item">
+                    <div class="topic-header">
+                        <span class="status-icon">
+                            {% if topic.completed %}✅{% else %}🔄{% endif %}
+                        </span>
+                        <span class="topic-name">{{ topic.name }}</span>
+                        <span class="topic-category">({{ topic.category }})</span>
+                    </div>
+                    {% if topic.description %}
+                        <div class="topic-description">{{ topic.description }}</div>
+                    {% endif %}
+                    {% if topic.lesson_reference %}
+                        <div class="topic-description" style="font-style: italic;">
+                            📖 {{ topic.lesson_reference }}
+                        </div>
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p style="color: #666;">No A1 topics yet</p>
+    {% endif %}
+</div>
+
+<!-- A2 Topics -->
+<div class="topic-section">
+    <h3>A2 Topics ({{ topics_a2|length }})</h3>
+    {% if topics_a2 %}
+        <ul class="topic-list">
+            {% for topic in topics_a2 %}
+                <li class="topic-item">
+                    <div class="topic-header">
+                        <span class="status-icon">
+                            {% if topic.completed %}✅{% else %}🔄{% endif %}
+                        </span>
+                        <span class="topic-name">{{ topic.name }}</span>
+                        <span class="topic-category">({{ topic.category }})</span>
+                    </div>
+                    {% if topic.description %}
+                        <div class="topic-description">{{ topic.description }}</div>
+                    {% endif %}
+                    {% if topic.lesson_reference %}
+                        <div class="topic-description" style="font-style: italic;">
+                            📖 {{ topic.lesson_reference }}
+                        </div>
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p style="color: #666;">No A2 topics yet</p>
+    {% endif %}
+</div>
+
+<div class="button-group">
+    <a href="{{ url_for('home') }}" class="btn btn-primary">Back to Menu</a>
+</div>
+{% endblock %}

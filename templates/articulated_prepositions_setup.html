@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}Articulated Prepositions Setup{% endblock %}
+
+{% block content %}
+<div class="text-center mb-30">
+    <h2>📍 Articulated Prepositions</h2>
+    <p>Practice combined prepositions and articles</p>
+</div>
+
+<form method="POST">
+    <input type="hidden" name="level" value="{{ level or 'A2' }}" action="{{ url_for('articulated_prepositions') }}">
+    <div class="form-group">
+        <label for="count">Number of Questions:</label>
+        <input type="number" name="count" id="count" value="10" min="5" max="20">
+    </div>
+
+    <div class="button-group">
+        <button type="submit" class="btn btn-primary btn-large">Start Practice</button>
+        <a href="{{ url_for('home') }}" class="btn btn-secondary">Back</a>
+    </div>
+</form>
+
+<div style="margin-top: 30px; padding: 20px; background: var(--light-gray); border-radius: 8px;">
+    <h3 style="font-size: 1.1rem; margin-bottom: 10px;">💡 What You'll Practice:</h3>
+    <p style="color: #666; margin-bottom: 15px;">Prepositions combined with articles:</p>
+    <ul style="margin-left: 20px; color: #666;">
+        <li><strong>di + il = del</strong> (of the)</li>
+        <li><strong>a + la = alla</strong> (to/at the)</li>
+        <li><strong>da + il = dal</strong> (from the)</li>
+        <li><strong>in + il = nel</strong> (in the)</li>
+        <li><strong>su + la = sulla</strong> (on the)</li>
+    </ul>
+    <p style="color: #666; margin-top: 15px;"><strong>Example:</strong> "Vado ___ cinema" → al (a + il)</p>
+</div>
+{% endblock %}

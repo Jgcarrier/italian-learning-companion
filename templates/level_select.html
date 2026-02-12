@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block title %}Choose Your Level{% endblock %}
+
+{% block content %}
+<div class="text-center mb-30">
+    <h2>Choose Your Level</h2>
+    <p>Select the level you want to practice</p>
+</div>
+
+<div class="menu-grid" style="max-width: 900px; margin: 0 auto;">
+    <a href="{{ url_for('category_menu', level='A1') }}" class="menu-item">
+        <div class="menu-icon">🌱</div>
+        <h3>A1 - Beginner</h3>
+        <p>Basic words and phrases</p>
+        <small style="color: #666;">First steps in Italian</small>
+    </a>
+
+    <a href="{{ url_for('category_menu', level='A2') }}" class="menu-item">
+        <div class="menu-icon">🌿</div>
+        <h3>A2 - Elementary</h3>
+        <p>Simple conversations</p>
+        <small style="color: #666;">Everyday topics</small>
+    </a>
+
+    <a href="{{ url_for('category_menu', level='B1') }}" class="menu-item">
+        <div class="menu-icon">🌳</div>
+        <h3>B1 - Intermediate</h3>
+        <p>More complex structures</p>
+        <small style="color: #666;">Express opinions and ideas</small>
+    </a>
+
+    <a href="{{ url_for('category_menu', level='B2') }}" class="menu-item">
+        <div class="menu-icon">🏔️</div>
+        <h3>B2 - Upper Intermediate</h3>
+        <p>Sophisticated language</p>
+        <small style="color: #666;">Detailed arguments and topics</small>
+    </a>
+
+    <a href="{{ url_for('category_menu', level='GCSE') }}" class="menu-item">
+        <div class="menu-icon">🎓</div>
+        <h3>GCSE</h3>
+        <p>Exam preparation</p>
+        <small style="color: #666;">UK GCSE curriculum focus</small>
+    </a>
+
+    <a href="{{ url_for('view_stats') }}" class="menu-item">
+        <div class="menu-icon">📊</div>
+        <h3>Progress Stats</h3>
+        <p>View your performance</p>
+    </a>
+
+    <a href="{{ url_for('view_topics') }}" class="menu-item">
+        <div class="menu-icon">📋</div>
+        <h3>Topic List</h3>
+        <p>Browse all topics</p>
+    </a>
+</div>
+{% endblock %}

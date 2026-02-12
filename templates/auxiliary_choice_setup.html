@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}Avere vs Essere Setup{% endblock %}
+
+{% block content %}
+<div class="text-center mb-30">
+    <h2>🔄 Avere vs Essere</h2>
+    <p>Choose the correct auxiliary for passato prossimo</p>
+</div>
+
+<form method="POST">
+    <input type="hidden" name="level" value="{{ level or 'A2' }}" action="{{ url_for('auxiliary_choice') }}">
+    <div class="form-group">
+        <label for="count">Number of Questions:</label>
+        <input type="number" name="count" id="count" value="10" min="5" max="20">
+    </div>
+
+    <div class="button-group">
+        <button type="submit" class="btn btn-primary btn-large">Start Practice</button>
+        <a href="{{ url_for('home') }}" class="btn btn-secondary">Back</a>
+    </div>
+</form>
+
+<div style="margin-top: 30px; padding: 20px; background: var(--light-gray); border-radius: 8px;">
+    <h3 style="font-size: 1.1rem; margin-bottom: 10px;">💡 What You'll Learn:</h3>
+    <p style="color: #666; margin-bottom: 10px;">Choose between <strong>avere</strong> and <strong>essere</strong> for passato prossimo.</p>
+    <p style="color: #666; margin-bottom: 10px;"><strong>Use ESSERE for:</strong></p>
+    <ul style="margin-left: 20px; color: #666;">
+        <li>Movement verbs (andare, venire, arrivare, partire)</li>
+        <li>State verbs (essere, stare, rimanere)</li>
+        <li>Change of state (nascere, morire)</li>
+    </ul>
+    <p style="color: #666; margin-top: 10px;"><strong>Use AVERE for:</strong></p>
+    <ul style="margin-left: 20px; color: #666;">
+        <li>Transitive verbs (verbs with direct objects)</li>
+        <li>No movement (dormire, lavorare)</li>
+    </ul>
+    <p style="color: #666; margin-top: 10px; font-style: italic;">You'll get explanations for each answer!</p>
+</div>
+{% endblock %}

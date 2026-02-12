@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block title %}Answer Feedback{% endblock %}
+
+{% block content %}
+<div class="feedback {% if is_correct %}correct{% else %}incorrect{% endif %}">
+    <div class="feedback-icon">
+        {% if is_correct %}
+            ✅
+        {% else %}
+            ❌
+        {% endif %}
+    </div>
+
+    <h2>
+        {% if is_correct %}
+            Correct!
+        {% else %}
+            Incorrect
+        {% endif %}
+    </h2>
+
+    {% if is_correct %}
+        {% if user_answer.lower() != correct_answer.lower() %}
+            <div class="answer-display">
+                <p><strong>Your answer:</strong> {{ user_answer }}</p>
+                <p><strong>Proper spelling:</strong> {{ correct_answer }}</p>
+            </div>
+        {% endif %}
+    {% else %}
+        <div class="answer-display">
+            <p><strong>Your answer:</strong> {{ user_answer }}</p>
+            <p><strong>Correct answer:</strong> {{ correct_answer }}</p>
+        </div>
+    {% endif %}
+</div>
+
+<div class="text-center">
+    <p style="margin-bottom: 20px;">Question {{ question_num }} of {{ total_questions }}</p>
+    <a href="{{ url_for('next_question') }}" class="btn btn-primary btn-large">
+        {% if question_num < total_questions %}
+            Next Question →
+        {% else %}
+            See Results
+        {% endif %}
+    </a>
+</div>
+
+<script>
+// Auto-advance after 2 seconds (optional - can remove if you prefer manual)
+setTimeout(function() {
+    window.location.href = "{{ url_for('next_question') }}";
+}, 2000);
+</script>
+{% endblock %}
