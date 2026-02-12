@@ -16,10 +16,11 @@ from database import ItalianDatabase
 from practice_generator import PracticeGenerator
 
 app = Flask(__name__)
-app.secret_key = 'italian-learning-companion-secret-key-2024'  # Change this in production
+# Use environment variable in production, fallback to development key
+app.secret_key = os.environ.get('SECRET_KEY', 'italian-learning-companion-secret-key-2024')
 
-# Database path
-DB_PATH = "../data/curriculum.db"
+# Database path - use environment variable if available
+DB_PATH = os.environ.get('DB_PATH', "../data/curriculum.db")
 
 
 def get_db():
