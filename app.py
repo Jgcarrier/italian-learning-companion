@@ -327,12 +327,17 @@ def submit_answer():
     })
     session['answers'] = answers
 
-    # Show feedback
+    # Show feedback (with explanation if available)
+    explanation = question.get('explanation', None)
+    hint = question.get('hint', None)
+
     return render_template('feedback.html',
                           is_correct=is_correct,
                           user_answer=user_answer,
                           correct_answer=display_answer,
                           question_type=question_type,
+                          explanation=explanation,
+                          hint=hint,
                           question_num=current_idx + 1,
                           total_questions=len(questions))
 
@@ -558,6 +563,27 @@ def reflexive_verbs():
     questions = generator.generate_reflexive_verbs(count)
 
     session['practice_type'] = 'reflexive_verbs'
+    session['questions'] = questions
+    session['current_question'] = 0
+    session['correct_count'] = 0
+    session['answers'] = []
+    session['start_time'] = time.time()
+
+    return redirect(url_for('practice_question'))
+
+
+@app.route('/noun-gender-number', methods=['GET', 'POST'])
+def noun_gender_number():
+    """Noun gender and number identification practice."""
+    if request.method == 'GET':
+        level = request.args.get('level') or request.form.get('level', 'A1')
+        return render_template('noun_gender_number_setup.html', level=level)
+
+    count = int(request.form.get('count', 10))
+    generator = get_generator()
+    questions = generator.generate_noun_gender_number(count)
+
+    session['practice_type'] = 'noun_gender_number'
     session['questions'] = questions
     session['current_question'] = 0
     session['correct_count'] = 0

@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block title %}Noun Gender & Number Setup{% endblock %}
+
+{% block content %}
+<div class="text-center mb-30">
+    <h2>🔍 Noun Gender & Number</h2>
+    <p>Identify if nouns are masculine/feminine and singular/plural</p>
+</div>
+
+<form method="POST" action="{{ url_for('noun_gender_number') }}">
+    <input type="hidden" name="level" value="{{ level or 'A1' }}">
+    <div class="form-group">
+        <label for="count">Number of Questions:</label>
+        <input type="number" name="count" id="count" value="10" min="5" max="20">
+    </div>
+
+    <div class="button-group">
+        <button type="submit" class="btn btn-primary btn-large">Start Practice ({{ level or 'A1' }})</button>
+        <a href="{{ url_for('grammar_menu', level=level or 'A1') }}" class="btn btn-secondary">Back</a>
+    </div>
+</form>
+
+<div style="margin-top: 30px; padding: 20px; background: var(--light-gray); border-radius: 8px;">
+    <h3 style="font-size: 1.1rem; margin-bottom: 10px;">💡 What You'll Practice:</h3>
+    <p style="color: #666; margin-bottom: 15px;">Learn to identify noun gender and number in Italian:</p>
+
+    <div style="margin-left: 20px; color: #666;">
+        <p><strong>Regular Patterns:</strong></p>
+        <ul>
+            <li><strong>-o</strong> = Masculine Singular (libro, gatto)</li>
+            <li><strong>-a</strong> = Feminine Singular (casa, pizza)</li>
+            <li><strong>-i</strong> = Masculine Plural (libri, gatti)</li>
+            <li><strong>-e</strong> = Feminine Plural (case, pizze)</li>
+        </ul>
+
+        <p style="margin-top: 15px;"><strong>Important Exceptions:</strong></p>
+        <ul>
+            <li><strong>-ma words</strong> (problema, cinema) = Masculine despite -a!</li>
+            <li><strong>Accented words</strong> (città, caffè) = No plural form</li>
+            <li><strong>Foreign words</strong> (sport, computer) = No plural form</li>
+            <li><strong>-e ending</strong> = Can be masculine or feminine (padre, madre)</li>
+            <li><strong>mano</strong> = Feminine despite ending in -o!</li>
+        </ul>
+
+        <p style="margin-top: 15px; font-style: italic; color: var(--green);">
+            ✓ When you answer, you'll see the rule explained!
+        </p>
+    </div>
+</div>
+{% endblock %}

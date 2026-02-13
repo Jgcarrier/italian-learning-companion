@@ -39,6 +39,22 @@
             <p><strong>Correct answer:</strong> {{ correct_answer }}</p>
         </div>
     {% endif %}
+
+    {% if explanation %}
+        <div style="margin-top: 20px; padding: 15px; background: #f0f9ff; border-left: 4px solid var(--green); border-radius: 4px;">
+            <p style="margin: 0; color: #333; font-size: 0.95rem;">
+                <strong>📖 Rule:</strong> {{ explanation }}
+            </p>
+        </div>
+    {% endif %}
+
+    {% if hint and not explanation %}
+        <div style="margin-top: 20px; padding: 15px; background: #fffbeb; border-left: 4px solid #f59e0b; border-radius: 4px;">
+            <p style="margin: 0; color: #333; font-size: 0.95rem;">
+                <strong>💡 Hint:</strong> {{ hint }}
+            </p>
+        </div>
+    {% endif %}
 </div>
 
 <div class="text-center">
