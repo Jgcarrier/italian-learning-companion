@@ -50,7 +50,7 @@
 </div>
 
 <div class="button-group">
-    <a href="{{ url_for('vocabulary_quiz') }}" class="btn btn-primary">Practice Again</a>
-    <a href="{{ url_for('home') }}" class="btn btn-secondary">Back to Menu</a>
+    <a href="{{ url_for('category_menu', level=level) }}" class="btn btn-primary">🔙 Back to {{ level }} Menu</a>
+    <a href="{{ url_for('home') }}" class="btn btn-secondary">🏠 Home (Choose Level)</a>
 </div>
 {% endblock %}

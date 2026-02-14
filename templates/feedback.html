@@ -69,9 +69,15 @@
 </div>
 
 <script>
-// Auto-advance after 2 seconds (optional - can remove if you prefer manual)
+// Only auto-advance if answer was correct
+// If incorrect, require user to click to see explanation
+{% if is_correct %}
 setTimeout(function() {
     window.location.href = "{{ url_for('next_question') }}";
 }, 2000);
+{% else %}
+// No auto-advance on wrong answers - user must click to continue
+// This gives them time to read the explanation
+{% endif %}
 </script>
 {% endblock %}

@@ -272,6 +272,7 @@ def vocabulary_quiz():
     session['answers'] = []
     session['start_time'] = time.time()
     session['direction'] = direction
+    session['level'] = level  # Store level for navigation
 
     return redirect(url_for('practice_question'))
 
@@ -407,6 +408,9 @@ def practice_summary():
         'answers': session.get('answers', [])
     }
 
+    # Get level before clearing session
+    level = session.get('level', 'A2')
+
     # Clear session
     session.pop('questions', None)
     session.pop('current_question', None)
@@ -414,8 +418,9 @@ def practice_summary():
     session.pop('answers', None)
     session.pop('start_time', None)
     session.pop('practice_type', None)
+    session.pop('level', None)
 
-    return render_template('summary.html', summary=summary)
+    return render_template('summary.html', summary=summary, level=level)
 
 
 @app.route('/verb-conjugation', methods=['GET', 'POST'])
