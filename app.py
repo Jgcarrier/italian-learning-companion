@@ -24,12 +24,12 @@ app = Flask(__name__)
 # Use environment variable in production, fallback to development key
 app.secret_key = os.environ.get('SECRET_KEY', 'italian-learning-companion-secret-key-2024')
 
-# Database path - use environment variable if available
+# Database path - use absolute path to avoid path resolution issues
 # Try local data/ first (deployment), then parent (development)
 if (current_dir / 'data' / 'curriculum.db').exists():
-    DB_PATH = "data/curriculum.db"
+    DB_PATH = str(current_dir / 'data' / 'curriculum.db')
 else:
-    DB_PATH = "../data/curriculum.db"
+    DB_PATH = str(current_dir.parent / 'data' / 'curriculum.db')
 
 
 def get_db():
