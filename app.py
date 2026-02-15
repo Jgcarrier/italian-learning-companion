@@ -10,7 +10,12 @@ import time
 from datetime import datetime
 
 # Add src directory to path so we can import existing modules
-sys.path.insert(0, str(Path(__file__).parent.parent / 'src'))
+# Try local src/ first (for deployment), then parent (for development)
+current_dir = Path(__file__).parent
+if (current_dir / 'src').exists():
+    sys.path.insert(0, str(current_dir / 'src'))
+else:
+    sys.path.insert(0, str(current_dir.parent / 'src'))
 
 from database import ItalianDatabase
 from practice_generator import PracticeGenerator
@@ -20,7 +25,11 @@ app = Flask(__name__)
 app.secret_key = os.environ.get('SECRET_KEY', 'italian-learning-companion-secret-key-2024')
 
 # Database path - use environment variable if available
-DB_PATH = os.environ.get('DB_PATH', "../data/curriculum.db")
+# Try local data/ first (deployment), then parent (development)
+if (current_dir / 'data' / 'curriculum.db').exists():
+    DB_PATH = "data/curriculum.db"
+else:
+    DB_PATH = "../data/curriculum.db"
 
 
 def get_db():

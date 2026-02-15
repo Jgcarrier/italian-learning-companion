@@ -27,10 +27,14 @@ wheels/
 instance/
 .webassets-cache
 
-# Database
-*.db
-*.sqlite
-*.sqlite3
+# Database (but include curriculum.db for deployment)
+# *.db
+# *.sqlite
+# *.sqlite3
+
+# Backup files
+*.backup_*
+*.bak
 
 # Environment variables
 .env
