@@ -271,6 +271,7 @@ def vocabulary_quiz():
     session['correct_count'] = 0
     session['answers'] = []
     session['start_time'] = time.time()
+    session['level'] = level  # Store level for navigation
     session['direction'] = direction
     session['level'] = level  # Store level for navigation
 
@@ -408,8 +409,10 @@ def practice_summary():
         'answers': session.get('answers', [])
     }
 
-    # Get level before clearing session
+    # Get level and practice type before clearing session
     level = session.get('level', 'A2')
+    practice_type = session.get('practice_type', 'vocabulary_quiz')
+    direction = session.get('direction', None)  # For vocabulary quiz
 
     # Clear session
     session.pop('questions', None)
@@ -419,8 +422,13 @@ def practice_summary():
     session.pop('start_time', None)
     session.pop('practice_type', None)
     session.pop('level', None)
+    session.pop('direction', None)
 
-    return render_template('summary.html', summary=summary, level=level)
+    return render_template('summary.html',
+                          summary=summary,
+                          level=level,
+                          practice_type=practice_type,
+                          direction=direction)
 
 
 @app.route('/verb-conjugation', methods=['GET', 'POST'])
@@ -440,6 +448,7 @@ def verb_conjugation():
     session['correct_count'] = 0
     session['answers'] = []
     session['start_time'] = time.time()
+    session['level'] = level  # Store level for navigation
 
     return redirect(url_for('practice_question'))
 
@@ -466,6 +475,7 @@ def irregular_passato():
     session['correct_count'] = 0
     session['answers'] = []
     session['start_time'] = time.time()
+    session['level'] = level  # Store level for navigation
 
     return redirect(url_for('practice_question'))
 
@@ -488,6 +498,7 @@ def regular_passato():
     session['correct_count'] = 0
     session['answers'] = []
     session['start_time'] = time.time()
+    session['level'] = level  # Store level for navigation
 
     return redirect(url_for('practice_question'))
 
@@ -510,6 +521,7 @@ def imperfect_tense():
     session['correct_count'] = 0
     session['answers'] = []
     session['start_time'] = time.time()
+    session['level'] = level  # Store level for navigation
 
     return redirect(url_for('practice_question'))
 
@@ -531,6 +543,7 @@ def auxiliary_choice():
     session['correct_count'] = 0
     session['answers'] = []
     session['start_time'] = time.time()
+    session['level'] = level  # Store level for navigation
 
     return redirect(url_for('practice_question'))
 
@@ -552,6 +565,7 @@ def futuro_semplice():
     session['correct_count'] = 0
     session['answers'] = []
     session['start_time'] = time.time()
+    session['level'] = level  # Store level for navigation
 
     return redirect(url_for('practice_question'))
 
@@ -573,6 +587,7 @@ def reflexive_verbs():
     session['correct_count'] = 0
     session['answers'] = []
     session['start_time'] = time.time()
+    session['level'] = level  # Store level for navigation
 
     return redirect(url_for('practice_question'))
 
@@ -594,6 +609,7 @@ def noun_gender_number():
     session['correct_count'] = 0
     session['answers'] = []
     session['start_time'] = time.time()
+    session['level'] = level  # Store level for navigation
 
     return redirect(url_for('practice_question'))
 
@@ -615,6 +631,7 @@ def articulated_prepositions():
     session['correct_count'] = 0
     session['answers'] = []
     session['start_time'] = time.time()
+    session['level'] = level  # Store level for navigation
 
     return redirect(url_for('practice_question'))
 
@@ -636,6 +653,7 @@ def time_prepositions():
     session['correct_count'] = 0
     session['answers'] = []
     session['start_time'] = time.time()
+    session['level'] = level  # Store level for navigation
 
     return redirect(url_for('practice_question'))
 
@@ -657,6 +675,7 @@ def negations():
     session['correct_count'] = 0
     session['answers'] = []
     session['start_time'] = time.time()
+    session['level'] = level  # Store level for navigation
 
     return redirect(url_for('practice_question'))
 
@@ -679,6 +698,7 @@ def fill_in_blank():
     session['correct_count'] = 0
     session['answers'] = []
     session['start_time'] = time.time()
+    session['level'] = level  # Store level for navigation
 
     return redirect(url_for('practice_question'))
 
@@ -701,6 +721,7 @@ def multiple_choice():
     session['correct_count'] = 0
     session['answers'] = []
     session['start_time'] = time.time()
+    session['level'] = level  # Store level for navigation
 
     return redirect(url_for('practice_question'))
 
@@ -725,6 +746,7 @@ def sentence_translator():
     session['correct_count'] = 0
     session['answers'] = []
     session['start_time'] = time.time()
+    session['level'] = level  # Store level for navigation
 
     return redirect(url_for('practice_question'))
 
