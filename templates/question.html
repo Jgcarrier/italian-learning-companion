@@ -40,7 +40,10 @@
 
         <div class="button-group">
             <button type="submit" class="btn btn-primary btn-large">Submit Answer</button>
-            <a href="{{ url_for('home') }}" class="btn btn-secondary" onclick="return confirm('Are you sure you want to exit this practice session? Your progress will be lost.')">🚪 Exit Practice</a>
+        </div>
+        <div class="button-group" style="margin-top: 10px;">
+            <a href="{{ url_for('home') }}" class="btn btn-secondary" onclick="return confirm('Are you sure you want to exit? Your progress will be lost.')">🏠 Home</a>
+            <a href="javascript:history.back()" class="btn btn-secondary" onclick="return confirm('Are you sure you want to go back? Your progress will be lost.')">↩️ Back to Menu</a>
         </div>
     </form>
 </div>

@@ -55,6 +55,14 @@
             </p>
         </div>
     {% endif %}
+
+    {% if etymology %}
+        <div style="margin-top: 20px; padding: 15px; background: #f3e8ff; border-left: 4px solid #9333ea; border-radius: 4px;">
+            <p style="margin: 0; color: #333; font-size: 0.95rem;">
+                <strong>📚 Etymology:</strong> {{ etymology }}
+            </p>
+        </div>
+    {% endif %}
 </div>
 
 <div class="text-center">
@@ -66,6 +74,10 @@
             See Results
         {% endif %}
     </a>
+    <div class="button-group" style="margin-top: 15px;">
+        <a href="{{ url_for('home') }}" class="btn btn-secondary" onclick="return confirm('Are you sure you want to exit? Your progress will be lost.')">🏠 Home</a>
+        <a href="javascript:history.back()" class="btn btn-secondary" onclick="return confirm('Are you sure you want to go back? Your progress will be lost.')">↩️ Back to Menu</a>
+    </div>
 </div>
 
 <script>

@@ -13,11 +13,11 @@
     <div class="form-group">
         <label for="level">Level:</label>
         <select name="level" id="level">
-            <option value="A1">A1 - Beginner</option>
-            <option value="A2" selected>A2 - Elementary</option>
-            <option value="B1">B1 - Intermediate</option>
-            <option value="B2">B2 - Upper Intermediate</option>
-            <option value="GCSE">GCSE</option>
+            <option value="A1" {% if level == 'A1' %}selected{% endif %}>A1 - Beginner</option>
+            <option value="A2" {% if level == 'A2' or not level %}selected{% endif %}>A2 - Elementary</option>
+            <option value="B1" {% if level == 'B1' %}selected{% endif %}>B1 - Intermediate</option>
+            <option value="B2" {% if level == 'B2' %}selected{% endif %}>B2 - Upper Intermediate</option>
+            <option value="GCSE" {% if level == 'GCSE' %}selected{% endif %}>GCSE</option>
         </select>
     </div>
 

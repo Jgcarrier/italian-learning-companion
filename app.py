@@ -59,6 +59,67 @@ def remove_accents(text: str) -> str:
     return result
 
 
+def get_etymology_fact(word: str) -> str:
+    """Get an interesting etymology fact for Italian vocabulary words."""
+    etymology_facts = {
+        # Days of the week
+        'lunedì': 'Named after Luna (the Moon) - "Moon\'s day"',
+        'martedì': 'Named after Mars (god of war) - "Mars\' day"',
+        'mercoledì': 'Named after Mercury (god of commerce) - "Mercury\'s day"',
+        'giovedì': 'Named after Jupiter/Jove (king of gods) - "Jupiter\'s day"',
+        'venerdì': 'Named after Venus (goddess of love) - "Venus\' day"',
+        'sabato': 'From Hebrew "Shabbat" (day of rest)',
+        'domenica': 'From Latin "dies dominica" (the Lord\'s day)',
+
+        # Common words
+        'caffè': 'From Turkish "kahve", originally from Arabic "qahwah"',
+        'pasta': 'From Greek "pasta" meaning "barley porridge"',
+        'pizza': 'Possibly from Greek "pitta" (flatbread) or Latin "pinsa" (to pound)',
+        'ciao': 'From Venetian "s-ciào" meaning "I am your slave" (polite greeting)',
+        'piano': 'Means "soft" or "slow", also related to "pianoforte" (soft-loud)',
+        'solo': 'From Latin "solus" meaning "alone" - used worldwide in music',
+        'soprano': 'From Italian "sopra" (above) - the highest singing voice',
+        'maestro': 'From Latin "magister" (master/teacher)',
+        'libretto': 'Diminutive of "libro" (book) - literally "little book"',
+        'tempo': 'From Latin "tempus" (time) - used globally in music',
+        'allegro': 'Means "cheerful/lively" in Italian, used in music for fast tempo',
+
+        # Food and drink
+        'vino': 'From Latin "vinum", one of the oldest cultivated words',
+        'pane': 'From Latin "panis" - same root as English "pantry"',
+        'acqua': 'From Latin "aqua" - root of "aquatic", "aquarium"',
+        'formaggio': 'From Latin "formaticus" (made in a mold)',
+        'gelato': 'From Latin "gelatus" (frozen) - related to "gelid"',
+        'limone': 'From Arabic "laymūn" via Persian',
+        'zucchero': 'From Arabic "sukkar" via Sanskrit "śárkarā" (gravel/sand)',
+
+        # Common verbs
+        'parlare': 'From Latin "parabola" (parable/speech) via Greek',
+        'mangiare': 'From Latin "manducare" (to chew)',
+        'bere': 'From Latin "bibere" (to drink) - root of "beverage"',
+        'dormire': 'From Latin "dormire" - root of "dormitory"',
+        'studiare': 'From Latin "studium" (zeal/study) - root of "student"',
+
+        # Colors
+        'rosso': 'From Latin "russus" (red) - related to "rust"',
+        'bianco': 'From Germanic "blank" (white/shining)',
+        'nero': 'From Latin "niger" (black)',
+        'verde': 'From Latin "viridis" (green) - root of "verdant"',
+        'azzurro': 'From Persian "lāžward" (lapis lazuli stone)',
+
+        # Family
+        'madre': 'From Latin "mater" - one of the oldest human words',
+        'padre': 'From Latin "pater" - found in similar forms across Indo-European languages',
+        'fratello': 'From Latin "fraternus" (brotherly) - root of "fraternity"',
+        'sorella': 'From Latin "soror" (sister) - root of "sorority"',
+    }
+
+    # Remove articles and normalize
+    word_clean = word.lower().replace('il ', '').replace('la ', '').replace('i ', '').replace('le ', '').replace('gli ', '').replace('lo ', '').replace("l'", '').strip()
+
+    return etymology_facts.get(word_clean, None)
+
+
 def check_answer(user_answer: str, correct_answer: str, question_type: str = None) -> tuple[bool, str]:
     """
     Check if user answer matches the correct answer with flexible matching.
@@ -342,6 +403,13 @@ def submit_answer():
     explanation = question.get('explanation', None)
     hint = question.get('hint', None)
 
+    # Add etymology fact for vocabulary questions
+    etymology = None
+    if question_type == 'vocabulary':
+        # Try to get etymology from the Italian word
+        italian_word = question.get('italian', display_answer)
+        etymology = get_etymology_fact(italian_word)
+
     return render_template('feedback.html',
                           is_correct=is_correct,
                           user_answer=user_answer,
@@ -349,6 +417,7 @@ def submit_answer():
                           question_type=question_type,
                           explanation=explanation,
                           hint=hint,
+                          etymology=etymology,
                           question_num=current_idx + 1,
                           total_questions=len(questions))
 
@@ -465,9 +534,11 @@ def verb_conjugation():
 @app.route('/irregular-passato', methods=['GET', 'POST'])
 def irregular_passato():
     """Irregular passato prossimo practice."""
+    level = request.args.get('level') or request.form.get('level') or session.get('level', 'A2')
+
     if request.method == 'GET':
         # Show setup form
-        level = request.args.get('level') or request.form.get('level', 'A2')
+        session['level'] = level
         return render_template('irregular_passato_setup.html', level=level)
 
     # POST: Start new practice
@@ -476,6 +547,13 @@ def irregular_passato():
     # Generate questions using fresh generator
     generator = get_generator()
     questions = generator.generate_irregular_passato_prossimo(count)
+
+    # Check if questions were generated
+    if not questions or len(questions) == 0:
+        session['level'] = level
+        return render_template('error.html',
+                             error_message=f"No irregular passato prossimo exercises available for {level}. Please try a different level.",
+                             back_link=url_for('verbs_menu', level=level))
 
     # Store in session
     session['practice_type'] = 'irregular_passato'
@@ -492,14 +570,23 @@ def irregular_passato():
 @app.route('/regular-passato', methods=['GET', 'POST'])
 def regular_passato():
     """Regular passato prossimo practice."""
+    level = request.args.get('level') or request.form.get('level') or session.get('level', 'A2')
+
     if request.method == 'GET':
-        level = request.args.get('level') or request.form.get('level', 'A2')
+        session['level'] = level
         return render_template('regular_passato_setup.html', level=level)
 
     # POST: Start new practice
     count = int(request.form.get('count', 10))
     generator = get_generator()
     questions = generator.generate_regular_passato_prossimo(count)
+
+    # Check if questions were generated
+    if not questions or len(questions) == 0:
+        session['level'] = level
+        return render_template('error.html',
+                             error_message=f"No regular passato prossimo exercises available for {level}. Please try a different level.",
+                             back_link=url_for('verbs_menu', level=level))
 
     session['practice_type'] = 'regular_passato'
     session['questions'] = questions
@@ -538,13 +625,22 @@ def imperfect_tense():
 @app.route('/auxiliary-choice', methods=['GET', 'POST'])
 def auxiliary_choice():
     """Avere vs Essere auxiliary choice practice."""
+    level = request.args.get('level') or request.form.get('level') or session.get('level', 'A2')
+
     if request.method == 'GET':
-        level = request.args.get('level') or request.form.get('level', 'A2')
+        session['level'] = level
         return render_template('auxiliary_choice_setup.html', level=level)
 
     count = int(request.form.get('count', 10))
     generator = get_generator()
     questions = generator.generate_auxiliary_choice(count)
+
+    # Check if questions were generated
+    if not questions or len(questions) == 0:
+        session['level'] = level
+        return render_template('error.html',
+                             error_message=f"No auxiliary verb exercises available for {level}. Please try a different level.",
+                             back_link=url_for('verbs_menu', level=level))
 
     session['practice_type'] = 'auxiliary_choice'
     session['questions'] = questions
@@ -738,16 +834,24 @@ def multiple_choice():
 @app.route('/sentence-translator', methods=['GET', 'POST'])
 def sentence_translator():
     """Sentence translation practice."""
+    level = request.args.get('level') or request.form.get('level') or session.get('level', 'A2')
+
     if request.method == 'GET':
-        level = request.args.get('level') or request.form.get('level', 'A2')
+        session['level'] = level
         return render_template('sentence_translator_setup.html', level=level)
 
-    level = request.args.get('level') or request.form.get('level', 'A2')
     direction = request.form.get('direction', 'it_to_en')
     count = int(request.form.get('count', 10))
 
     generator = get_generator()
     questions = generator.generate_sentence_translation(level, count, direction)
+
+    # Check if questions were generated
+    if not questions or len(questions) == 0:
+        session['level'] = level
+        return render_template('error.html',
+                             error_message=f"No sentence translation exercises available for {level}. Please try a different level.",
+                             back_link=url_for('vocabulary_menu', level=level))
 
     session['practice_type'] = 'sentence_translator'
     session['questions'] = questions
