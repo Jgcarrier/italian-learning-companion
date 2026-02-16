@@ -1,0 +1,24 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(gh auth status:*)",
+      "Bash(git --version:*)",
+      "Bash(git config:*)",
+      "Bash(brew install:*)",
+      "Bash(gh --version:*)",
+      "Bash(gh auth login:*)",
+      "Bash(gh repo view:*)",
+      "Bash(git init:*)",
+      "Bash(git remote:*)",
+      "Bash(sqlite3:*)",
+      "Bash(ls:*)",
+      "Bash(git add:*)",
+      "Bash(git push:*)",
+      "Bash(gh repo set-default:*)",
+      "Bash(gh repo sync:*)",
+      "Bash(gh auth setup-git:*)",
+      "Bash(git commit:*)",
+      "Bash(railway login)"
+    ]
+  }
+}
