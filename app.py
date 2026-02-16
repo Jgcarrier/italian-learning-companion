@@ -45,9 +45,10 @@ def get_generator():
 def get_menu_for_practice_type(practice_type: str) -> str:
     """Get the appropriate menu route for a given practice type."""
     verb_types = ['verb_conjugation', 'irregular_passato', 'auxiliary_choice',
-                  'imperfect_tense', 'futuro_semplice', 'reflexive_verbs', 'regular_passato']
+                  'imperfect_tense', 'futuro_semplice', 'reflexive_verbs', 'regular_passato',
+                  'conditional_present']
     grammar_types = ['noun_gender_number', 'articulated_prepositions',
-                     'time_prepositions', 'negations', 'pronouns', 'adverbs']
+                     'time_prepositions', 'negations', 'pronouns', 'adverbs', 'imperative']
     vocabulary_types = ['vocabulary_quiz', 'sentence_translator']
     mixed_types = ['fill_in_blank', 'multiple_choice']
     reading_types = ['reading_comprehension']
@@ -973,6 +974,54 @@ def reflexive_verbs():
     questions = generator.generate_reflexive_verbs(count)
 
     session['practice_type'] = 'reflexive_verbs'
+    session['questions'] = questions
+    session['current_question'] = 0
+    session['correct_count'] = 0
+    session['answers'] = []
+    session['start_time'] = time.time()
+    session['level'] = level  # Store level for navigation
+
+    return redirect(url_for('practice_question'))
+
+
+@app.route('/conditional-present', methods=['GET', 'POST'])
+def conditional_present():
+    """Conditional present tense practice."""
+    level = request.args.get('level') or request.form.get('level') or session.get('level', 'A2')
+
+    if request.method == 'GET':
+        session['level'] = level
+        return render_template('conditional_present_setup.html', level=level)
+
+    count = int(request.form.get('count', 10))
+    generator = get_generator()
+    questions = generator.generate_conditional_present(count)
+
+    session['practice_type'] = 'conditional_present'
+    session['questions'] = questions
+    session['current_question'] = 0
+    session['correct_count'] = 0
+    session['answers'] = []
+    session['start_time'] = time.time()
+    session['level'] = level  # Store level for navigation
+
+    return redirect(url_for('practice_question'))
+
+
+@app.route('/imperative', methods=['GET', 'POST'])
+def imperative():
+    """Imperative (command) tense practice."""
+    level = request.args.get('level') or request.form.get('level') or session.get('level', 'A2')
+
+    if request.method == 'GET':
+        session['level'] = level
+        return render_template('imperative_setup.html', level=level)
+
+    count = int(request.form.get('count', 10))
+    generator = get_generator()
+    questions = generator.generate_imperative_practice(count)
+
+    session['practice_type'] = 'imperative'
     session['questions'] = questions
     session['current_question'] = 0
     session['correct_count'] = 0

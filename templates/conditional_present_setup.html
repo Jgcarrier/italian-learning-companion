@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block title %}Conditional Present Setup{% endblock %}
+
+{% block content %}
+<div class="text-center mb-30">
+    <h2>🤔 Conditional Present</h2>
+    <p>Practice Italian conditional tense (would, could, should)</p>
+</div>
+
+<form method="POST">
+    <input type="hidden" name="level" value="{{ level or 'A2' }}" action="{{ url_for('conditional_present') }}">
+    <div class="form-group">
+        <label for="count">Number of Questions:</label>
+        <input type="number" name="count" id="count" value="10" min="5" max="20">
+    </div>
+
+    <div class="button-group">
+        <button type="submit" class="btn btn-primary btn-large">Start Practice</button>
+        <a href="{{ url_for('verbs_menu', level=level) }}" class="btn btn-secondary">Back</a>
+    </div>
+</form>
+
+<div style="margin-top: 30px; padding: 20px; background: var(--light-gray); border-radius: 8px;">
+    <h3 style="font-size: 1.1rem; margin-bottom: 10px;">💡 Italian Conditional Present:</h3>
+
+    <p style="color: #666; margin-bottom: 15px;">The conditional expresses what <strong>would happen</strong> under certain conditions. It's used for:</p>
+
+    <ul style="margin-left: 20px; color: #666; margin-bottom: 15px;">
+        <li><strong>Polite requests:</strong> Vorrei un caffè (I would like a coffee)</li>
+        <li><strong>Hypothetical situations:</strong> Sarebbe bello (It would be nice)</li>
+        <li><strong>Advice/suggestions:</strong> Dovresti studiare (You should study)</li>
+        <li><strong>Possibility:</strong> Potrei aiutarti (I could help you)</li>
+    </ul>
+
+    <div style="margin-bottom: 15px;">
+        <strong>Regular Formation:</strong>
+        <ul style="margin-left: 20px; color: #666;">
+            <li>Take the infinitive stem</li>
+            <li>Add endings: <strong>-ei, -esti, -ebbe, -emmo, -este, -ebbero</strong></li>
+            <li><em>parlare</em> → parlerei, parleresti, parlerebbe...</li>
+            <li><em>leggere</em> → leggerei, leggeresti, leggerebbe...</li>
+        </ul>
+    </div>
+
+    <div>
+        <strong>Common Irregular Verbs:</strong>
+        <ul style="margin-left: 20px; color: #666;">
+            <li><strong>essere</strong> → sarei, saresti, sarebbe (I would be...)</li>
+            <li><strong>avere</strong> → avrei, avresti, avrebbe (I would have...)</li>
+            <li><strong>volere</strong> → vorrei, vorresti, vorrebbe (I would like...)</li>
+            <li><strong>dovere</strong> → dovrei, dovresti, dovrebbe (I should...)</li>
+            <li><strong>potere</strong> → potrei, potresti, potrebbe (I could...)</li>
+            <li><strong>andare</strong> → andrei, andresti, andrebbe (I would go...)</li>
+            <li><strong>fare</strong> → farei, faresti, farebbe (I would do/make...)</li>
+        </ul>
+    </div>
+
+    <p style="color: #666; margin-top: 15px; font-style: italic;">
+        <strong>Tip:</strong> The conditional is often used with "se" (if) clauses for hypothetical situations!
+    </p>
+</div>
+{% endblock %}

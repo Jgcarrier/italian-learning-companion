@@ -1309,6 +1309,203 @@ class PracticeGenerator:
 
         return questions
 
+    def generate_imperative_practice(self, count: int = 10) -> List[Dict]:
+        """Practice Italian imperative (command) forms.
+
+        Imperative is used for commands, instructions, and requests.
+        Forms: tu (informal you), Lei (formal you), noi (let's), voi (you plural)
+        """
+        import random
+
+        templates = [
+            # Tu form (informal you) - regular verbs
+            ("___ la porta! (aprire - tu)", "Apri", "Imperative tu form - open", "Open the door!"),
+            ("___ piano! (parlare - tu)", "Parla", "Imperative tu form - speak", "Speak quietly!"),
+            ("___ la finestra! (chiudere - tu)", "Chiudi", "Imperative tu form - close", "Close the window!"),
+            ("___ qui! (venire - tu)", "Vieni", "Imperative tu form - come", "Come here!"),
+            ("___ a casa! (andare - tu)", "Va'", "Imperative tu form - go (irregular)", "Go home!"),
+            ("___ il libro! (leggere - tu)", "Leggi", "Imperative tu form - read", "Read the book!"),
+            ("___ la verità! (dire - tu)", "Di'", "Imperative tu form - say (irregular)", "Tell the truth!"),
+            ("___ pazienza! (avere - tu)", "Abbi", "Imperative tu form - have (irregular)", "Have patience!"),
+            ("___ gentile! (essere - tu)", "Sii", "Imperative tu form - be (irregular)", "Be kind!"),
+            ("___ il caffè! (fare - tu)", "Fa'", "Imperative tu form - make (irregular)", "Make the coffee!"),
+
+            # Lei form (formal you)
+            ("___ pure! (entrare - Lei)", "Entri", "Imperative Lei form - enter", "Please enter!"),
+            ("___ qui, prego. (aspettare - Lei)", "Aspetti", "Imperative Lei form - wait", "Wait here, please."),
+            ("___ un attimo. (scusare - Lei)", "Scusi", "Imperative Lei form - excuse", "Excuse me a moment."),
+            ("___ da questa parte. (venire - Lei)", "Venga", "Imperative Lei form - come", "Come this way."),
+            ("___ con calma. (parlare - Lei)", "Parli", "Imperative Lei form - speak", "Speak calmly."),
+            ("___ questa medicina. (prendere - Lei)", "Prenda", "Imperative Lei form - take", "Take this medicine."),
+
+            # Noi form (let's)
+            ("___ al cinema! (andare - noi)", "Andiamo", "Imperative noi form - let's go", "Let's go to the cinema!"),
+            ("___ una pizza! (mangiare - noi)", "Mangiamo", "Imperative noi form - let's eat", "Let's eat a pizza!"),
+            ("___ domani! (partire - noi)", "Partiamo", "Imperative noi form - let's leave", "Let's leave tomorrow!"),
+            ("___ un caffè! (prendere - noi)", "Prendiamo", "Imperative noi form - let's take", "Let's have a coffee!"),
+
+            # Voi form (you plural)
+            ("___ attenti! (stare - voi)", "State", "Imperative voi form - be/stay", "Be careful!"),
+            ("___ forte! (parlare - voi)", "Parlate", "Imperative voi form - speak", "Speak loudly!"),
+            ("___ i compiti! (fare - voi)", "Fate", "Imperative voi form - do", "Do your homework!"),
+            ("___ subito! (venire - voi)", "Venite", "Imperative voi form - come", "Come immediately!"),
+            ("___ buoni! (essere - voi)", "Siate", "Imperative voi form - be", "Be good!"),
+
+            # Common expressions
+            ("___ attenzione! (fare - tu)", "Fa'", "Imperative - pay attention", "Pay attention!"),
+            ("___ silenzio! (fare - voi)", "Fate", "Imperative - be quiet", "Be quiet!"),
+            ("___ presto! (venire - tu)", "Vieni", "Imperative - come", "Come quickly!"),
+        ]
+
+        # Randomly select templates
+        selected = random.sample(templates, min(count, len(templates)))
+
+        questions = []
+        for sentence, correct, explanation, english in selected:
+            # Generate choices based on similar imperative forms
+            if "tu" in sentence:
+                all_choices = ["Apri", "Parla", "Chiudi", "Vieni", "Va'", "Leggi", "Di'", "Abbi", "Sii", "Fa'"]
+            elif "Lei" in sentence:
+                all_choices = ["Entri", "Aspetti", "Scusi", "Venga", "Parli", "Prenda"]
+            elif "noi" in sentence:
+                all_choices = ["Andiamo", "Mangiamo", "Partiamo", "Prendiamo"]
+            else:  # voi
+                all_choices = ["State", "Parlate", "Fate", "Venite", "Siate"]
+
+            # Always include the correct answer
+            choices = [correct]
+            # Add 3 more random choices
+            remaining = [c for c in all_choices if c != correct]
+            choices.extend(random.sample(remaining, min(3, len(remaining))))
+            random.shuffle(choices)
+
+            questions.append({
+                "question": sentence,
+                "answer": correct,
+                "type": "multiple_choice",
+                "choices": choices,
+                "hint": english,
+                "explanation": explanation
+            })
+
+        return questions
+
+    def generate_conditional_present(self, count: int = 10) -> List[Dict]:
+        """Practice Italian conditional present (condizionale presente).
+
+        The conditional is used for:
+        - Polite requests: Vorrei un caffè (I would like a coffee)
+        - Hypothetical situations: Sarebbe bello (It would be nice)
+        - Advice/suggestions: Dovresti studiare (You should study)
+
+        Formation: infinitive stem + -ei, -esti, -ebbe, -emmo, -este, -ebbero
+        """
+        import random
+
+        templates = [
+            # Regular -are verbs
+            ("Io ___ volentieri in Italia. (viaggiare - io)", "viaggerei", "Conditional - I would travel", "I would gladly travel to Italy."),
+            ("Tu ___ l'italiano? (parlare - tu)", "parleresti", "Conditional - you would speak", "Would you speak Italian?"),
+            ("Lei ___ domani. (arrivare - lei)", "arriverebbe", "Conditional - she would arrive", "She would arrive tomorrow."),
+            ("Noi ___ insieme. (cenare - noi)", "ceneremmo", "Conditional - we would have dinner", "We would have dinner together."),
+
+            # Regular -ere verbs
+            ("Io ___ un libro. (leggere - io)", "leggerei", "Conditional - I would read", "I would read a book."),
+            ("Tu ___ la verità? (credere - tu)", "crederesti", "Conditional - you would believe", "Would you believe the truth?"),
+            ("Lui ___ una lettera. (scrivere - lui)", "scriverebbe", "Conditional - he would write", "He would write a letter."),
+
+            # Regular -ire verbs
+            ("Io ___ la finestra. (aprire - io)", "aprirei", "Conditional - I would open", "I would open the window."),
+            ("Tu ___ alle otto. (partire - tu)", "partiresti", "Conditional - you would leave", "You would leave at eight."),
+            ("Lei ___ subito. (capire - lei)", "capirebbe", "Conditional - she would understand", "She would understand immediately."),
+
+            # Irregular: volere (to want)
+            ("Io ___ un caffè. (volere - io)", "vorrei", "Conditional irregular - I would like", "I would like a coffee."),
+            ("Tu ___ venire? (volere - tu)", "vorresti", "Conditional irregular - you would like", "Would you like to come?"),
+            ("Lei ___ aiuto. (volere - lei)", "vorrebbe", "Conditional irregular - she would like", "She would like help."),
+            ("Noi ___ partire. (volere - noi)", "vorremmo", "Conditional irregular - we would like", "We would like to leave."),
+
+            # Irregular: essere (to be)
+            ("___ bello andare al mare. (essere - lui/lei)", "Sarebbe", "Conditional irregular - it would be", "It would be nice to go to the sea."),
+            ("Io ___ felice di aiutarti. (essere - io)", "sarei", "Conditional irregular - I would be", "I would be happy to help you."),
+            ("Tu ___ contento? (essere - tu)", "saresti", "Conditional irregular - you would be", "Would you be happy?"),
+
+            # Irregular: avere (to have)
+            ("Io ___ bisogno di aiuto. (avere - io)", "avrei", "Conditional irregular - I would have", "I would need help."),
+            ("Tu ___ tempo? (avere - tu)", "avresti", "Conditional irregular - you would have", "Would you have time?"),
+            ("Lei ___ ragione. (avere - lei)", "avrebbe", "Conditional irregular - she would have/be right", "She would be right."),
+
+            # Irregular: dovere (should/ought to)
+            ("Io ___ studiare. (dovere - io)", "dovrei", "Conditional irregular - I should", "I should study."),
+            ("Tu ___ riposare. (dovere - tu)", "dovresti", "Conditional irregular - you should", "You should rest."),
+            ("Lui ___ lavorare di più. (dovere - lui)", "dovrebbe", "Conditional irregular - he should", "He should work more."),
+
+            # Irregular: potere (could)
+            ("Io ___ aiutarti. (potere - io)", "potrei", "Conditional irregular - I could", "I could help you."),
+            ("Tu ___ venire domani? (potere - tu)", "potresti", "Conditional irregular - you could", "Could you come tomorrow?"),
+            ("Lei ___ telefonare. (potere - lei)", "potrebbe", "Conditional irregular - she could", "She could call."),
+
+            # Irregular: fare (to do/make)
+            ("Io ___ un errore. (fare - io)", "farei", "Conditional irregular - I would do/make", "I would make a mistake."),
+            ("Tu ___ meglio ad aspettare. (fare - tu)", "faresti", "Conditional irregular - you would do", "You would do better to wait."),
+            ("Lei ___ qualsiasi cosa. (fare - lei)", "farebbe", "Conditional irregular - she would do", "She would do anything."),
+
+            # Irregular: andare (to go)
+            ("Io ___ al cinema. (andare - io)", "andrei", "Conditional irregular - I would go", "I would go to the cinema."),
+            ("Tu ___ con me? (andare - tu)", "andresti", "Conditional irregular - you would go", "Would you go with me?"),
+            ("Lui ___ volentieri. (andare - lui)", "andrebbe", "Conditional irregular - he would go", "He would gladly go."),
+
+            # Irregular: venire (to come)
+            ("Io ___ domani. (venire - io)", "verrei", "Conditional irregular - I would come", "I would come tomorrow."),
+            ("Tu ___ alla festa? (venire - tu)", "verresti", "Conditional irregular - you would come", "Would you come to the party?"),
+            ("Lei ___ con noi. (venire - lei)", "verrebbe", "Conditional irregular - she would come", "She would come with us."),
+        ]
+
+        # Randomly select templates
+        selected = random.sample(templates, min(count, len(templates)))
+
+        questions = []
+        for sentence, correct, explanation, english in selected:
+            # Generate choices based on conditional conjugations
+            if correct in ["vorrei", "vorresti", "vorrebbe", "vorremmo"]:
+                all_choices = ["vorrei", "vorresti", "vorrebbe", "vorremmo"]
+            elif correct in ["sarei", "saresti", "sarebbe"]:
+                all_choices = ["sarei", "saresti", "sarebbe", "Sarebbe"]
+            elif correct in ["avrei", "avresti", "avrebbe"]:
+                all_choices = ["avrei", "avresti", "avrebbe"]
+            elif correct in ["dovrei", "dovresti", "dovrebbe"]:
+                all_choices = ["dovrei", "dovresti", "dovrebbe"]
+            elif correct in ["potrei", "potresti", "potrebbe"]:
+                all_choices = ["potrei", "potresti", "potrebbe"]
+            elif correct in ["farei", "faresti", "farebbe"]:
+                all_choices = ["farei", "faresti", "farebbe"]
+            elif correct in ["andrei", "andresti", "andrebbe"]:
+                all_choices = ["andrei", "andresti", "andrebbe"]
+            elif correct in ["verrei", "verresti", "verrebbe"]:
+                all_choices = ["verrei", "verresti", "verrebbe"]
+            else:
+                # Regular verbs - mix different verbs to make it challenging
+                all_choices = ["viaggerei", "parleresti", "arriverebbe", "leggerei", "crederesti", "scriverebbe",
+                              "aprirei", "partiresti", "capirebbe", "ceneremmo"]
+
+            # Always include the correct answer
+            choices = [correct]
+            # Add 3 more random choices
+            remaining = [c for c in all_choices if c != correct]
+            choices.extend(random.sample(remaining, min(3, len(remaining))))
+            random.shuffle(choices)
+
+            questions.append({
+                "question": sentence,
+                "answer": correct,
+                "type": "multiple_choice",
+                "choices": choices,
+                "hint": english,
+                "explanation": explanation
+            })
+
+        return questions
+
 
 if __name__ == "__main__":
     # Test the practice generator

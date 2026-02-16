@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block title %}Imperative Setup{% endblock %}
+
+{% block content %}
+<div class="text-center mb-30">
+    <h2>📣 Imperative (Commands)</h2>
+    <p>Practice Italian command forms</p>
+</div>
+
+<form method="POST">
+    <input type="hidden" name="level" value="{{ level or 'A2' }}" action="{{ url_for('imperative') }}">
+    <div class="form-group">
+        <label for="count">Number of Questions:</label>
+        <input type="number" name="count" id="count" value="10" min="5" max="20">
+    </div>
+
+    <div class="button-group">
+        <button type="submit" class="btn btn-primary btn-large">Start Practice</button>
+        <a href="{{ url_for('grammar_menu', level=level) }}" class="btn btn-secondary">Back</a>
+    </div>
+</form>
+
+<div style="margin-top: 30px; padding: 20px; background: var(--light-gray); border-radius: 8px;">
+    <h3 style="font-size: 1.1rem; margin-bottom: 10px;">💡 Italian Imperative:</h3>
+
+    <p style="color: #666; margin-bottom: 15px;">The imperative is used for commands, instructions, and requests. It has different forms depending on who you're addressing:</p>
+
+    <div style="margin-bottom: 15px;">
+        <strong>Tu (informal you):</strong>
+        <ul style="margin-left: 20px; color: #666;">
+            <li><strong>-are verbs:</strong> parla! (speak!), mangia! (eat!)</li>
+            <li><strong>-ere verbs:</strong> prendi! (take!), scrivi! (write!)</li>
+            <li><strong>-ire verbs:</strong> apri! (open!), parti! (leave!)</li>
+            <li><strong>Irregular:</strong> va'! (go!), fa'! (do/make!), di'! (say!), sii! (be!)</li>
+        </ul>
+    </div>
+
+    <div style="margin-bottom: 15px;">
+        <strong>Lei (formal you):</strong>
+        <ul style="margin-left: 20px; color: #666;">
+            <li><strong>-are verbs:</strong> parli! (speak!), mangi! (eat!)</li>
+            <li><strong>-ere/-ire:</strong> prenda! (take!), apra! (open!)</li>
+            <li>Used for polite requests: Scusi! (Excuse me!), Venga! (Come!)</li>
+        </ul>
+    </div>
+
+    <div style="margin-bottom: 15px;">
+        <strong>Noi (let's):</strong>
+        <ul style="margin-left: 20px; color: #666;">
+            <li>Andiamo! (Let's go!), Mangiamo! (Let's eat!)</li>
+            <li>Same as present tense noi form</li>
+        </ul>
+    </div>
+
+    <div>
+        <strong>Voi (you plural):</strong>
+        <ul style="margin-left: 20px; color: #666;">
+            <li>Parlate! (Speak!), Venite! (Come!), State attenti! (Pay attention!)</li>
+            <li>Same as present tense voi form</li>
+        </ul>
+    </div>
+
+    <p style="color: #666; margin-top: 15px; font-style: italic;">
+        <strong>Note:</strong> Negative commands for tu use "non + infinitive": Non parlare! (Don't speak!)
+    </p>
+</div>
+{% endblock %}

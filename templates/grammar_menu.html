@@ -54,6 +54,12 @@
         <h3>Negations</h3>
         <p>non...mai, non...più</p>
     </a>
+
+    <a href="{{ url_for('imperative') }}?level={{ level }}" class="menu-item">
+        <div class="menu-icon">📣</div>
+        <h3>Imperative (Commands)</h3>
+        <p>Apri!, Parli!, Andiamo!</p>
+    </a>
     {% endif %}
 </div>
 {% endblock %}
