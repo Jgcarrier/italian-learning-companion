@@ -2,4 +2,4 @@
 builder = "nixpacks"
 
 [deploy]
-startCommand = "cd web_app && gunicorn app:app"
+startCommand = "gunicorn --chdir web_app app:app"
