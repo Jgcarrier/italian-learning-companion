@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block title %}Pronouns Setup{% endblock %}
+
+{% block content %}
+<div class="text-center mb-30">
+    <h2>👤 Direct & Indirect Pronouns</h2>
+    <p>Practice Italian object pronouns</p>
+</div>
+
+<form method="POST">
+    <input type="hidden" name="level" value="{{ level or 'A1' }}" action="{{ url_for('pronouns') }}">
+    <div class="form-group">
+        <label for="count">Number of Questions:</label>
+        <input type="number" name="count" id="count" value="10" min="5" max="20">
+    </div>
+
+    <div class="button-group">
+        <button type="submit" class="btn btn-primary btn-large">Start Practice</button>
+        <a href="{{ url_for('grammar_menu', level=level) }}" class="btn btn-secondary">Back</a>
+    </div>
+</form>
+
+<div style="margin-top: 30px; padding: 20px; background: var(--light-gray); border-radius: 8px;">
+    <h3 style="font-size: 1.1rem; margin-bottom: 10px;">💡 Italian Object Pronouns:</h3>
+    <div style="margin-bottom: 15px;">
+        <strong>Direct Object Pronouns</strong> (replace the direct object):
+        <ul style="margin-left: 20px; color: #666;">
+            <li><strong>mi</strong> = me → "Marco mi vede" (Marco sees me)</li>
+            <li><strong>ti</strong> = you → "Ti chiamo" (I call you)</li>
+            <li><strong>lo/la</strong> = him/her/it → "Lo conosco" (I know him)</li>
+            <li><strong>ci</strong> = us → "Ci aspetta" (He/she waits for us)</li>
+            <li><strong>vi</strong> = you (plural) → "Vi ascolto" (I listen to you)</li>
+            <li><strong>li/le</strong> = them (m/f) → "Li vedo" (I see them)</li>
+        </ul>
+    </div>
+    <div>
+        <strong>Indirect Object Pronouns</strong> (replace "to/for" someone):
+        <ul style="margin-left: 20px; color: #666;">
+            <li><strong>mi</strong> = to me → "Mi scrive" (He/she writes to me)</li>
+            <li><strong>ti</strong> = to you → "Ti parlo" (I speak to you)</li>
+            <li><strong>gli/le</strong> = to him/her → "Gli telefono" (I call him)</li>
+            <li><strong>ci</strong> = to us → "Ci parla" (He/she speaks to us)</li>
+            <li><strong>vi</strong> = to you (plural) → "Vi do" (I give to you)</li>
+            <li><strong>gli</strong> = to them → "Gli scrivo" (I write to them)</li>
+        </ul>
+    </div>
+    <p style="color: #666; margin-top: 15px; font-style: italic;">Pronouns usually come before the verb!</p>
+</div>
+{% endblock %}

@@ -10,6 +10,20 @@
 </div>
 
 <div class="menu-grid">
+    {% if level in ['A1'] %}
+    <a href="{{ url_for('pronouns') }}?level={{ level }}" class="menu-item">
+        <div class="menu-icon">👤</div>
+        <h3>Direct & Indirect Pronouns</h3>
+        <p>mi, ti, lo, la, gli, le</p>
+    </a>
+
+    <a href="{{ url_for('adverbs') }}?level={{ level }}" class="menu-item">
+        <div class="menu-icon">⚡</div>
+        <h3>Adverbs</h3>
+        <p>sempre, bene, oggi, qui</p>
+    </a>
+    {% endif %}
+
     {% if level in ['A1', 'A2'] %}
     <a href="{{ url_for('noun_gender_number') }}?level={{ level }}" class="menu-item">
         <div class="menu-icon">🔍</div>

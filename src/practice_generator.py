@@ -1145,6 +1145,170 @@ class PracticeGenerator:
 
         return questions
 
+    def generate_pronouns_practice(self, count: int = 10) -> List[Dict]:
+        """Practice direct and indirect object pronouns.
+
+        Direct pronouns: mi, ti, lo/la, ci, vi, li/le (me, you, him/her/it, us, you, them)
+        Indirect pronouns: mi, ti, gli/le, ci, vi, gli (to me, to you, to him/her, to us, to you, to them)
+        """
+        import random
+
+        templates = [
+            # Direct object pronouns
+            ("Vedo Maria ogni giorno. ___ vedo ogni giorno.", "La", "Direct object pronoun - her", "I see Maria every day. I see HER every day."),
+            ("Compro il pane al supermercato. ___ compro al supermercato.", "Lo", "Direct object pronoun - it", "I buy bread at the supermarket. I buy IT there."),
+            ("Chiamo i miei amici. ___ chiamo spesso.", "Li", "Direct object pronoun - them (masc.)", "I call my friends. I call THEM often."),
+            ("Incontro le ragazze al bar. ___ incontro ogni sabato.", "Le", "Direct object pronoun - them (fem.)", "I meet the girls at the bar. I meet THEM every Saturday."),
+            ("Conosco te e tuo fratello. ___ conosco bene.", "Vi", "Direct object pronoun - you (pl.)", "I know you and your brother. I know YOU (plural) well."),
+            ("Aspetto mia sorella. ___ aspetto qui.", "La", "Direct object pronoun - her", "I'm waiting for my sister. I'm waiting for HER here."),
+            ("Leggo i libri italiani. ___ leggo volentieri.", "Li", "Direct object pronoun - them (masc.)", "I read Italian books. I read THEM willingly."),
+            ("Guardo la TV. ___ guardo ogni sera.", "La", "Direct object pronoun - it (fem.)", "I watch TV. I watch IT every evening."),
+            ("Mangio le mele. ___ mangio sempre.", "Le", "Direct object pronoun - them (fem.)", "I eat apples. I always eat THEM."),
+            ("Porto il computer. ___ porto sempre con me.", "Lo", "Direct object pronoun - it (masc.)", "I carry the computer. I always carry IT with me."),
+
+            # Indirect object pronouns
+            ("Parlo a Maria. ___ parlo ogni giorno.", "Le", "Indirect object pronoun - to her", "I speak to Maria. I speak TO HER every day."),
+            ("Scrivo a mio padre. ___ scrivo spesso.", "Gli", "Indirect object pronoun - to him", "I write to my father. I write TO HIM often."),
+            ("Telefono ai miei amici. ___ telefono la sera.", "Gli", "Indirect object pronoun - to them", "I call my friends. I call THEM in the evening."),
+            ("Do il libro a te. ___ do il libro.", "Ti", "Indirect object pronoun - to you", "I give the book to you. I give the book TO YOU."),
+            ("Mando un messaggio a voi. ___ mando un messaggio.", "Vi", "Indirect object pronoun - to you (pl.)", "I send a message to you. I send a message TO YOU (plural)."),
+            ("Compro un regalo per mia madre. ___ compro un regalo.", "Le", "Indirect object pronoun - to/for her", "I buy a gift for my mother. I buy HER a gift."),
+            ("Racconti la storia a me. ___ racconti la storia.", "Mi", "Indirect object pronoun - to me", "You tell the story to me. You tell ME the story."),
+            ("Spiego la lezione agli studenti. ___ spiego la lezione.", "Gli", "Indirect object pronoun - to them", "I explain the lesson to the students. I explain the lesson TO THEM."),
+            ("Chiedo un favore a te. ___ chiedo un favore.", "Ti", "Indirect object pronoun - to you", "I ask you a favor. I ask YOU a favor."),
+            ("Offro un caffè a noi. ___ offre un caffè.", "Ci", "Indirect object pronoun - to us", "He/she offers us a coffee. He/she offers US a coffee."),
+
+            # Mixed practice
+            ("Vedo Maria e Marco. ___ vedo domani.", "Li", "Direct pronoun - them (mixed gender uses masc. plural)", "I see Maria and Marco. I see THEM tomorrow."),
+            ("Parlo a mia sorella. ___ parlo spesso.", "Le", "Indirect object pronoun - to her", "I speak to my sister. I speak TO HER often."),
+            ("Compro le scarpe. ___ compro in Italia.", "Le", "Direct object pronoun - them (fem.)", "I buy shoes. I buy THEM in Italy."),
+            ("Do il passaporto all'agente. ___ do il passaporto.", "Gli", "Indirect object pronoun - to him/her", "I give the passport to the agent. I give HIM/HER the passport."),
+            ("Aspetto mio padre. ___ aspetto alla stazione.", "Lo", "Direct object pronoun - him", "I'm waiting for my father. I'm waiting for HIM at the station."),
+        ]
+
+        # Randomly select templates
+        selected = random.sample(templates, min(count, len(templates)))
+
+        questions = []
+        for sentence, correct, explanation, english in selected:
+            # Generate choices based on the correct answer
+            if correct in ["Lo", "La", "Li", "Le"]:
+                # Direct pronouns
+                all_choices = ["Lo", "La", "Li", "Le", "Mi", "Ti", "Ci", "Vi"]
+            else:
+                # Indirect pronouns
+                all_choices = ["Mi", "Ti", "Gli", "Le", "Ci", "Vi"]
+
+            # Always include the correct answer
+            choices = [correct]
+            # Add 3 more random choices
+            remaining = [c for c in all_choices if c != correct]
+            choices.extend(random.sample(remaining, min(3, len(remaining))))
+            random.shuffle(choices)
+
+            questions.append({
+                "question": sentence,
+                "answer": correct,
+                "type": "multiple_choice",
+                "choices": choices,
+                "hint": english,
+                "explanation": explanation
+            })
+
+        return questions
+
+    def generate_adverbs_practice(self, count: int = 10) -> List[Dict]:
+        """Practice Italian adverbs - frequency, manner, time, and place.
+
+        Common adverb types at A1 level:
+        - Frequency: sempre, mai, spesso, raramente, qualche volta
+        - Manner: bene, male, piano, forte, velocemente, lentamente
+        - Time: ora, adesso, oggi, ieri, domani, presto, tardi
+        - Place: qui, lì, là, vicino, lontano, sopra, sotto
+        """
+        import random
+
+        templates = [
+            # Frequency adverbs
+            ("Vado ___ al cinema il sabato.", "sempre", "Frequency adverb - always", "I always go to the cinema on Saturday."),
+            ("Non mangio ___ la carne.", "mai", "Frequency adverb - never", "I never eat meat."),
+            ("Vedo ___ Maria al bar.", "spesso", "Frequency adverb - often", "I often see Maria at the bar."),
+            ("Vado ___ al ristorante.", "raramente", "Frequency adverb - rarely", "I rarely go to the restaurant."),
+            ("Leggo ___ un libro.", "qualche volta", "Frequency adverb - sometimes", "Sometimes I read a book."),
+            ("Studio ___ italiano.", "sempre", "Frequency adverb - always", "I always study Italian."),
+            ("___ dimentico le chiavi.", "spesso", "Frequency adverb - often", "I often forget the keys."),
+
+            # Manner adverbs
+            ("Parlo italiano molto ___.", "bene", "Manner adverb - well", "I speak Italian very well."),
+            ("Canto molto ___.", "male", "Manner adverb - badly", "I sing very badly."),
+            ("Parla ___!", "piano", "Manner adverb - quietly/slowly", "Speak quietly/slowly!"),
+            ("La musica è troppo ___.", "forte", "Manner adverb - loud", "The music is too loud."),
+            ("Corro ___.", "velocemente", "Manner adverb - quickly", "I run quickly."),
+            ("Cammino ___.", "lentamente", "Manner adverb - slowly", "I walk slowly."),
+            ("Lavoro molto ___.", "bene", "Manner adverb - well", "I work very well."),
+
+            # Time adverbs
+            ("Vado al supermercato ___.", "adesso", "Time adverb - now", "I'm going to the supermarket now."),
+            ("Sono stanco ___.", "oggi", "Time adverb - today", "I'm tired today."),
+            ("___ ho visto Maria.", "ieri", "Time adverb - yesterday", "Yesterday I saw Maria."),
+            ("Parto ___.", "domani", "Time adverb - tomorrow", "I'm leaving tomorrow."),
+            ("Mi sveglio ___.", "presto", "Time adverb - early", "I wake up early."),
+            ("Arrivo sempre ___.", "tardi", "Time adverb - late", "I always arrive late."),
+            ("Devo andare ___.", "ora", "Time adverb - now", "I have to go now."),
+
+            # Place adverbs
+            ("Il libro è ___.", "qui", "Place adverb - here", "The book is here."),
+            ("Maria abita ___.", "lì", "Place adverb - there", "Maria lives there."),
+            ("La stazione è ___.", "vicino", "Place adverb - near", "The station is near."),
+            ("Il mare è ___.", "lontano", "Place adverb - far", "The sea is far."),
+            ("Il gatto è ___ il tavolo.", "sopra", "Place adverb - above/on", "The cat is on the table."),
+            ("Il cane dorme ___ il letto.", "sotto", "Place adverb - under", "The dog sleeps under the bed."),
+            ("Vieni ___!", "qui", "Place adverb - here", "Come here!"),
+
+            # Mixed practice
+            ("Studio ___ la sera.", "sempre", "Frequency adverb - always", "I always study in the evening."),
+            ("Parlo ___ italiano.", "bene", "Manner adverb - well", "I speak Italian well."),
+            ("Vado a casa ___.", "adesso", "Time adverb - now", "I'm going home now."),
+            ("L'ufficio è ___ casa mia.", "vicino", "Place adverb - near", "The office is near my house."),
+        ]
+
+        # Randomly select templates
+        selected = random.sample(templates, min(count, len(templates)))
+
+        questions = []
+        for sentence, correct, explanation, english in selected:
+            # Generate choices based on the type of adverb
+            if correct in ["sempre", "mai", "spesso", "raramente", "qualche volta"]:
+                # Frequency adverbs
+                all_choices = ["sempre", "mai", "spesso", "raramente", "qualche volta"]
+            elif correct in ["bene", "male", "piano", "forte", "velocemente", "lentamente"]:
+                # Manner adverbs
+                all_choices = ["bene", "male", "piano", "forte", "velocemente", "lentamente"]
+            elif correct in ["ora", "adesso", "oggi", "ieri", "domani", "presto", "tardi"]:
+                # Time adverbs
+                all_choices = ["ora", "adesso", "oggi", "ieri", "domani", "presto", "tardi"]
+            else:
+                # Place adverbs
+                all_choices = ["qui", "lì", "là", "vicino", "lontano", "sopra", "sotto"]
+
+            # Always include the correct answer
+            choices = [correct]
+            # Add 3 more random choices
+            remaining = [c for c in all_choices if c != correct]
+            choices.extend(random.sample(remaining, min(3, len(remaining))))
+            random.shuffle(choices)
+
+            questions.append({
+                "question": sentence,
+                "answer": correct,
+                "type": "multiple_choice",
+                "choices": choices,
+                "hint": english,
+                "explanation": explanation
+            })
+
+        return questions
+
 
 if __name__ == "__main__":
     # Test the practice generator

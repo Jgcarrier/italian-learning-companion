@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% block title %}Adverbs Setup{% endblock %}
+
+{% block content %}
+<div class="text-center mb-30">
+    <h2>⚡ Adverbs</h2>
+    <p>Practice Italian adverbs of frequency, manner, time, and place</p>
+</div>
+
+<form method="POST">
+    <input type="hidden" name="level" value="{{ level or 'A1' }}" action="{{ url_for('adverbs') }}">
+    <div class="form-group">
+        <label for="count">Number of Questions:</label>
+        <input type="number" name="count" id="count" value="10" min="5" max="20">
+    </div>
+
+    <div class="button-group">
+        <button type="submit" class="btn btn-primary btn-large">Start Practice</button>
+        <a href="{{ url_for('grammar_menu', level=level) }}" class="btn btn-secondary">Back</a>
+    </div>
+</form>
+
+<div style="margin-top: 30px; padding: 20px; background: var(--light-gray); border-radius: 8px;">
+    <h3 style="font-size: 1.1rem; margin-bottom: 10px;">💡 Italian Adverbs:</h3>
+
+    <div style="margin-bottom: 15px;">
+        <strong>Frequency (how often):</strong>
+        <ul style="margin-left: 20px; color: #666;">
+            <li><strong>sempre</strong> = always</li>
+            <li><strong>mai</strong> = never</li>
+            <li><strong>spesso</strong> = often</li>
+            <li><strong>raramente</strong> = rarely</li>
+            <li><strong>qualche volta</strong> = sometimes</li>
+        </ul>
+    </div>
+
+    <div style="margin-bottom: 15px;">
+        <strong>Manner (how something is done):</strong>
+        <ul style="margin-left: 20px; color: #666;">
+            <li><strong>bene</strong> = well</li>
+            <li><strong>male</strong> = badly</li>
+            <li><strong>piano</strong> = quietly/slowly</li>
+            <li><strong>forte</strong> = loud(ly)</li>
+            <li><strong>velocemente</strong> = quickly</li>
+            <li><strong>lentamente</strong> = slowly</li>
+        </ul>
+    </div>
+
+    <div style="margin-bottom: 15px;">
+        <strong>Time (when):</strong>
+        <ul style="margin-left: 20px; color: #666;">
+            <li><strong>ora/adesso</strong> = now</li>
+            <li><strong>oggi</strong> = today</li>
+            <li><strong>ieri</strong> = yesterday</li>
+            <li><strong>domani</strong> = tomorrow</li>
+            <li><strong>presto</strong> = early</li>
+            <li><strong>tardi</strong> = late</li>
+        </ul>
+    </div>
+
+    <div>
+        <strong>Place (where):</strong>
+        <ul style="margin-left: 20px; color: #666;">
+            <li><strong>qui/qua</strong> = here</li>
+            <li><strong>lì/là</strong> = there</li>
+            <li><strong>vicino</strong> = near</li>
+            <li><strong>lontano</strong> = far</li>
+            <li><strong>sopra</strong> = above/on</li>
+            <li><strong>sotto</strong> = under</li>
+        </ul>
+    </div>
+</div>
+{% endblock %}

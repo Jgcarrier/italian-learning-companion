@@ -47,7 +47,7 @@ def get_menu_for_practice_type(practice_type: str) -> str:
     verb_types = ['verb_conjugation', 'irregular_passato', 'auxiliary_choice',
                   'imperfect_tense', 'futuro_semplice', 'reflexive_verbs', 'regular_passato']
     grammar_types = ['noun_gender_number', 'articulated_prepositions',
-                     'time_prepositions', 'negations']
+                     'time_prepositions', 'negations', 'pronouns', 'adverbs']
     vocabulary_types = ['vocabulary_quiz', 'sentence_translator']
     mixed_types = ['fill_in_blank', 'multiple_choice']
     reading_types = ['reading_comprehension']
@@ -1069,6 +1069,54 @@ def negations():
     questions = generator.generate_negation_practice(count)
 
     session['practice_type'] = 'negations'
+    session['questions'] = questions
+    session['current_question'] = 0
+    session['correct_count'] = 0
+    session['answers'] = []
+    session['start_time'] = time.time()
+    session['level'] = level  # Store level for navigation
+
+    return redirect(url_for('practice_question'))
+
+
+@app.route('/pronouns', methods=['GET', 'POST'])
+def pronouns():
+    """Direct and indirect pronouns practice."""
+    level = request.args.get('level') or request.form.get('level') or session.get('level', 'A1')
+
+    if request.method == 'GET':
+        session['level'] = level
+        return render_template('pronouns_setup.html', level=level)
+
+    count = int(request.form.get('count', 10))
+    generator = get_generator()
+    questions = generator.generate_pronouns_practice(count)
+
+    session['practice_type'] = 'pronouns'
+    session['questions'] = questions
+    session['current_question'] = 0
+    session['correct_count'] = 0
+    session['answers'] = []
+    session['start_time'] = time.time()
+    session['level'] = level  # Store level for navigation
+
+    return redirect(url_for('practice_question'))
+
+
+@app.route('/adverbs', methods=['GET', 'POST'])
+def adverbs():
+    """Adverbs practice."""
+    level = request.args.get('level') or request.form.get('level') or session.get('level', 'A1')
+
+    if request.method == 'GET':
+        session['level'] = level
+        return render_template('adverbs_setup.html', level=level)
+
+    count = int(request.form.get('count', 10))
+    generator = get_generator()
+    questions = generator.generate_adverbs_practice(count)
+
+    session['practice_type'] = 'adverbs'
     session['questions'] = questions
     session['current_question'] = 0
     session['correct_count'] = 0
