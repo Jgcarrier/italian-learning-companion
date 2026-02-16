@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block title %}Question {{ question_num }} of {{ total_questions }}{% endblock %}
+
+{% block content %}
+<div class="question-card">
+    <div class="question-header">
+        Question {{ question_num }} of {{ total_questions }}
+    </div>
+
+    <div class="progress-bar">
+        <div class="progress-fill" style="width: {{ (question_num / total_questions * 100) }}%"></div>
+    </div>
+
+    <!-- Story reference -->
+    <details style="margin-bottom: 20px; padding: 15px; background: #f9fafb; border-radius: 8px;">
+        <summary style="cursor: pointer; font-weight: bold; color: var(--primary);">📖 View Story</summary>
+        <div style="margin-top: 15px; font-size: 0.95rem; line-height: 1.6; color: #555; max-height: 300px; overflow-y: auto; white-space: pre-line;">
+{{ story.text }}
+        </div>
+    </details>
+
+    <div class="question-text">
+        {{ question.question }}
+    </div>
+
+    <form method="POST" action="{{ url_for('reading_comprehension') }}">
+        <!-- Multiple choice options -->
+        <div style="margin-bottom: 20px;">
+            {% for choice in question.choices %}
+                <label style="display: block; padding: 15px; margin-bottom: 10px; background: white; border: 2px solid var(--medium-gray); border-radius: 8px; cursor: pointer; transition: all 0.3s;">
+                    <input type="radio" name="answer" value="{{ choice }}" required style="margin-right: 10px;">
+                    <span style="font-size: 1.1rem;">{{ choice }}</span>
+                </label>
+            {% endfor %}
+        </div>
+
+        <div class="button-group">
+            <button type="submit" class="btn btn-primary btn-large">Submit Answer</button>
+        </div>
+        <div class="button-group" style="margin-top: 10px;">
+            <a href="{{ url_for('home') }}" class="btn btn-secondary" onclick="return confirm('Are you sure you want to exit? Your progress will be lost.')">🏠 Home</a>
+            <a href="{{ url_for(menu_route, level=level) }}" class="btn btn-secondary" onclick="return confirm('Are you sure you want to go back? Your progress will be lost.')">↩️ Back to Menu</a>
+        </div>
+    </form>
+</div>
+
+<div class="text-center">
+    <p style="color: #999; font-size: 0.85rem;">
+        💡 Tip: Use the "View Story" dropdown above to check the text if needed!
+    </p>
+</div>
+{% endblock %}

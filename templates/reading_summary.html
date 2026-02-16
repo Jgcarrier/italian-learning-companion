@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+
+{% block title %}Reading Comprehension Results{% endblock %}
+
+{% block content %}
+<div class="summary-card">
+    <h2>📊 Reading Comprehension Results</h2>
+
+    <div class="stats-grid">
+        <div class="stat-card">
+            <div class="stat-value">{{ correct_count }}/{{ total_questions }}</div>
+            <div class="stat-label">Correct Answers</div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-value">{{ "%.0f"|format(accuracy) }}%</div>
+            <div class="stat-label">Accuracy</div>
+        </div>
+    </div>
+
+    {% if accuracy >= 80 %}
+        <div class="result-message success">
+            <h3>🌟 Excellent Comprehension!</h3>
+            <p>You understood the story very well. Your reading skills are strong at this level!</p>
+        </div>
+    {% elif accuracy >= 60 %}
+        <div class="result-message good">
+            <h3>👍 Good Job!</h3>
+            <p>You grasped the main ideas. Keep practicing to improve your comprehension!</p>
+        </div>
+    {% else %}
+        <div class="result-message needs-work">
+            <h3>📚 Keep Practicing!</h3>
+            <p>Reading comprehension takes time. Try reading more Italian texts at your level!</p>
+        </div>
+    {% endif %}
+
+    <div class="review-section">
+        <h3>📝 Answer Review</h3>
+        {% for answer in answers %}
+            <div class="answer-review {% if answer.is_correct %}correct{% else %}incorrect{% endif %}">
+                <p><strong>Q:</strong> {{ answer.question }}</p>
+                <p><strong>Your answer:</strong> {{ answer.user_answer }} {% if answer.is_correct %}✓{% else %}✗{% endif %}</p>
+                {% if not answer.is_correct %}
+                    <p><strong>Correct answer:</strong> {{ answer.correct_answer }}</p>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class="button-group">
+        <a href="{{ url_for('reading_comprehension', level=level) }}" class="btn btn-primary">📖 Read Another Story</a>
+        <a href="{{ url_for('reading_menu', level=level) }}" class="btn btn-secondary">← Back to Reading</a>
+        <a href="{{ url_for('home') }}" class="btn btn-secondary">🏠 Home</a>
+    </div>
+</div>
+
+<style>
+.answer-review {
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    border-left: 4px solid;
+}
+
+.answer-review.correct {
+    background: #f0fdf4;
+    border-color: #10b981;
+}
+
+.answer-review.incorrect {
+    background: #fef2f2;
+    border-color: #ef4444;
+}
+
+.answer-review p {
+    margin: 5px 0;
+}
+</style>
+{% endblock %}

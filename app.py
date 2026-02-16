@@ -50,6 +50,7 @@ def get_menu_for_practice_type(practice_type: str) -> str:
                      'time_prepositions', 'negations']
     vocabulary_types = ['vocabulary_quiz', 'sentence_translator']
     mixed_types = ['fill_in_blank', 'multiple_choice']
+    reading_types = ['reading_comprehension']
 
     if practice_type in verb_types:
         return 'verbs_menu'
@@ -59,6 +60,8 @@ def get_menu_for_practice_type(practice_type: str) -> str:
         return 'vocabulary_menu'
     elif practice_type in mixed_types:
         return 'mixed_menu'
+    elif practice_type in reading_types:
+        return 'reading_menu'
     else:
         return 'category_menu'
 
@@ -334,6 +337,235 @@ def grammar_menu(level):
 def mixed_menu(level):
     """Mixed practice submenu for a specific level."""
     return render_template('mixed_menu.html', level=level)
+
+
+@app.route('/reading/<level>')
+def reading_menu(level):
+    """Reading comprehension menu for a specific level."""
+    return render_template('reading_menu.html', level=level)
+
+
+@app.route('/reading-comprehension', methods=['GET', 'POST'])
+def reading_comprehension():
+    """Reading comprehension practice with Italian stories."""
+    level = request.args.get('level') or request.form.get('level') or session.get('level', 'A2')
+
+    if request.method == 'GET':
+        session['level'] = level
+        # Generate a new story for this level
+        story = generate_story_for_level(level)
+        questions = generate_comprehension_questions(story, level)
+
+        # Store in session
+        session['reading_story'] = story
+        session['reading_questions'] = questions
+        session['reading_current'] = 0
+        session['reading_correct'] = 0
+        session['reading_answers'] = []
+
+        return render_template('reading_story.html', story=story, level=level)
+
+    # POST: Submit answer to comprehension question
+    answer = request.form.get('answer', '').strip()
+    current_idx = session.get('reading_current', 0)
+    questions = session.get('reading_questions', [])
+
+    if current_idx < len(questions):
+        question = questions[current_idx]
+        is_correct = answer.lower() == question['correct'].lower()
+
+        if is_correct:
+            session['reading_correct'] = session.get('reading_correct', 0) + 1
+
+        # Store answer
+        answers = session.get('reading_answers', [])
+        answers.append({
+            'question': question['question'],
+            'user_answer': answer,
+            'correct_answer': question['correct'],
+            'is_correct': is_correct
+        })
+        session['reading_answers'] = answers
+        session['reading_current'] = current_idx + 1
+
+    # Check if quiz is complete
+    if session.get('reading_current', 0) >= len(questions):
+        return redirect(url_for('reading_summary'))
+
+    return redirect(url_for('reading_question'))
+
+
+@app.route('/reading/question')
+def reading_question():
+    """Show current reading comprehension question."""
+    if 'reading_questions' not in session:
+        return redirect(url_for('home'))
+
+    current_idx = session.get('reading_current', 0)
+    questions = session.get('reading_questions', [])
+    story = session.get('reading_story', {})
+    level = session.get('level', 'A2')
+
+    if current_idx >= len(questions):
+        return redirect(url_for('reading_summary'))
+
+    question = questions[current_idx]
+
+    # Get the appropriate menu for the back button
+    menu_route = 'reading_menu'
+
+    return render_template('reading_question.html',
+                          story=story,
+                          question=question,
+                          question_num=current_idx + 1,
+                          total_questions=len(questions),
+                          menu_route=menu_route,
+                          level=level)
+
+
+@app.route('/reading/summary')
+def reading_summary():
+    """Show reading comprehension summary."""
+    if 'reading_questions' not in session:
+        return redirect(url_for('home'))
+
+    questions = session.get('reading_questions', [])
+    correct_count = session.get('reading_correct', 0)
+    answers = session.get('reading_answers', [])
+    level = session.get('level', 'A2')
+
+    total_questions = len(questions)
+    accuracy = (correct_count / total_questions * 100) if total_questions > 0 else 0
+
+    # Clear session
+    session.pop('reading_story', None)
+    session.pop('reading_questions', None)
+    session.pop('reading_current', None)
+    session.pop('reading_correct', None)
+    session.pop('reading_answers', None)
+
+    return render_template('reading_summary.html',
+                          correct_count=correct_count,
+                          total_questions=total_questions,
+                          accuracy=accuracy,
+                          answers=answers,
+                          level=level)
+
+
+def generate_story_for_level(level: str) -> dict:
+    """Generate an Italian story appropriate for the given CEFR level."""
+    stories = {
+        'A1': {
+            'title': 'Una Giornata di Maria',
+            'text': '''Maria è una studentessa italiana. Lei abita a Roma con la sua famiglia.
+
+Ogni mattina Maria si sveglia alle sette. Lei fa colazione con un cappuccino e un cornetto. Dopo colazione, Maria va a scuola in autobus.
+
+A scuola, Maria studia italiano, matematica e inglese. Le piace molto l'inglese. Durante la pausa, Maria parla con i suoi amici.
+
+Dopo la scuola, Maria torna a casa. Lei fa i compiti e poi guarda la televisione. La sera, Maria cena con la sua famiglia. Loro mangiano pasta e insalata.
+
+Prima di dormire, Maria legge un libro. Lei va a letto alle dieci.''',
+            'vocab_hints': 'si sveglia = wakes up, fa colazione = has breakfast, compiti = homework, cena = has dinner'
+        },
+        'A2': {
+            'title': 'Il Weekend di Luca',
+            'text': '''Luca è un ragazzo di diciotto anni. Abita a Milano e lavora in un bar. Il fine settimana scorso, Luca ha fatto molte cose interessanti.
+
+Sabato mattina, Luca si è alzato tardi. Dopo colazione, è andato in centro con i suoi amici. Hanno visitato il Duomo e hanno preso un gelato.
+
+Nel pomeriggio, Luca è tornato a casa perché doveva studiare. Aveva un esame importante lunedì. Ha studiato per tre ore, poi si è riposato.
+
+La sera, Luca è uscito con la sua ragazza. Sono andati al cinema e hanno visto un film d'azione. Dopo il film, hanno cenato in una pizzeria.
+
+Domenica, Luca ha lavorato tutto il giorno al bar. Era stanco ma contento perché ha guadagnato molti soldi.''',
+            'vocab_hints': 'fine settimana = weekend, si è alzato = got up, doveva = had to, ha guadagnato = earned'
+        },
+        'B1': {
+            'title': 'Un Viaggio Inaspettato',
+            'text': '''Mentre aspettavo il treno alla stazione di Firenze, ho incontrato una persona che ha cambiato la mia giornata completamente.
+
+Era un uomo anziano che sembrava confuso. Mi ha chiesto se potevo aiutarlo a trovare il binario giusto. Gli ho spiegato come arrivare al suo treno, ma lui mi ha detto che aveva paura di perdersi.
+
+Siccome il mio treno partiva un'ora dopo, ho deciso di accompagnarlo. Durante il cammino, abbiamo cominciato a parlare. Mi ha raccontato che andava a trovare sua figlia che non vedeva da cinque anni.
+
+Era molto emozionato e un po' nervoso. Mi ha mostrato le foto della nipotina che non aveva mai conosciuto di persona. Vedendolo così felice, mi sono commosso anch'io.
+
+Quando siamo arrivati al suo binario, mi ha abbracciato e ringraziato. In quel momento ho capito che a volte i piccoli gesti di gentilezza possono significare molto per qualcuno.''',
+            'vocab_hints': 'inaspettato = unexpected, anziano = elderly, siccome = since/because, commosso = moved/touched emotionally'
+        },
+        'B2': {
+            'title': 'Il Dilemma Professionale',
+            'text': '''Sara si trovava di fronte a una delle decisioni più difficili della sua carriera. Dopo dieci anni di lavoro presso una prestigiosa azienda farmaceutica, le era stata offerta una posizione dirigenziale che avrebbe comportato il trasferimento all'estero.
+
+Da un lato, l'opportunità rappresentava il culmine delle sue aspirazioni professionali. Il ruolo le avrebbe permesso di coordinare un team internazionale e di contribuire allo sviluppo di farmaci innovativi. Inoltre, lo stipendio era decisamente allettante.
+
+Dall'altro lato, però, Sara si rendeva conto che accettare avrebbe significato allontanarsi dalla famiglia e dagli amici. I suoi genitori, ormai anziani, avevano sempre contato sul suo sostegno. Inoltre, aveva appena iniziato una relazione con Marco, un uomo che considerava speciale.
+
+Quella sera, seduta sul balcone del suo appartamento, Sara rifletteva sulle parole che sua nonna le aveva detto anni prima: "La vita è fatta di scelte, e ogni scelta comporta dei sacrifici. L'importante è essere fedeli a se stessi."
+
+Guardando il cielo stellato, Sara capì che non esisteva una risposta giusta o sbagliata. Qualunque decisione avesse preso, avrebbe dovuto viverla pienamente, senza rimpianti.''',
+            'vocab_hints': 'dirigenziale = managerial, comportare = to entail, allettante = appealing, sostegno = support, rimpianti = regrets'
+        },
+        'GCSE': {
+            'title': 'La Mia Scuola',
+            'text': '''Mi chiamo Paolo e frequento il liceo scientifico a Torino. La mia scuola è grande e moderna.
+
+Ogni giorno ho sei ore di lezione. Studio materie come italiano, matematica, fisica e inglese. La mia materia preferita è la fisica perché il professore è molto bravo.
+
+Durante l'intervallo, vado al bar della scuola con i miei compagni. Di solito compro un panino e una bibita.
+
+Dopo la scuola, spesso vado in biblioteca a fare i compiti. Nel weekend, mi piace giocare a calcio con gli amici.
+
+L'anno prossimo voglio andare all'università per studiare ingegneria. Devo studiare molto per passare gli esami.''',
+            'vocab_hints': 'frequento = attend, liceo = high school, materie = subjects, intervallo = break, ingegneria = engineering'
+        }
+    }
+
+    return stories.get(level, stories['A2'])
+
+
+def generate_comprehension_questions(story: dict, level: str) -> list:
+    """Generate comprehension questions in English for an Italian story."""
+    questions_by_level = {
+        'A1': [
+            {'question': 'What time does Maria wake up?', 'choices': ['6:00', '7:00', '8:00', '9:00'], 'correct': '7:00'},
+            {'question': 'How does Maria go to school?', 'choices': ['by car', 'by bus', 'by bike', 'on foot'], 'correct': 'by bus'},
+            {'question': 'Which subject does Maria like?', 'choices': ['Math', 'Italian', 'English', 'Science'], 'correct': 'English'},
+            {'question': 'What does Maria eat for dinner?', 'choices': ['pizza', 'pasta and salad', 'soup', 'fish'], 'correct': 'pasta and salad'},
+            {'question': 'What time does Maria go to bed?', 'choices': ['9:00', '10:00', '11:00', '12:00'], 'correct': '10:00'},
+        ],
+        'A2': [
+            {'question': 'Where does Luca work?', 'choices': ['restaurant', 'bar', 'shop', 'office'], 'correct': 'bar'},
+            {'question': 'What did Luca visit on Saturday?', 'choices': ['museum', 'Duomo', 'park', 'beach'], 'correct': 'Duomo'},
+            {'question': 'Why did Luca go home in the afternoon?', 'choices': ['was tired', 'had to study', 'had to work', 'was sick'], 'correct': 'had to study'},
+            {'question': 'Where did Luca and his girlfriend go Saturday evening?', 'choices': ['theatre', 'concert', 'cinema', 'museum'], 'correct': 'cinema'},
+            {'question': 'What did Luca do on Sunday?', 'choices': ['studied', 'went out', 'worked', 'rested'], 'correct': 'worked'},
+        ],
+        'B1': [
+            {'question': 'Where did the narrator meet the elderly man?', 'choices': ['on the train', 'at the station', 'in the street', 'at a café'], 'correct': 'at the station'},
+            {'question': 'What was the elderly man trying to find?', 'choices': ['his ticket', 'the exit', 'the right platform', 'his luggage'], 'correct': 'the right platform'},
+            {'question': 'Why did the narrator help the man?', 'choices': ['was paid', 'had time before train', 'was asked by staff', 'knew him'], 'correct': 'had time before train'},
+            {'question': 'Who was the elderly man going to visit?', 'choices': ['his son', 'his daughter', 'his friend', 'his brother'], 'correct': 'his daughter'},
+            {'question': 'What lesson did the narrator learn?', 'choices': ['travel is important', 'small kindnesses matter', 'trains are confusing', 'family is everything'], 'correct': 'small kindnesses matter'},
+        ],
+        'B2': [
+            {'question': 'How long has Sara worked at her current company?', 'choices': ['5 years', '10 years', '15 years', '20 years'], 'correct': '10 years'},
+            {'question': 'What type of company does Sara work for?', 'choices': ['technology', 'pharmaceutical', 'financial', 'automotive'], 'correct': 'pharmaceutical'},
+            {'question': 'What is one advantage of the new job offer?', 'choices': ['closer to home', 'international team', 'shorter hours', 'more vacation'], 'correct': 'international team'},
+            {'question': 'What is Sara\'s main personal concern about accepting?', 'choices': ['salary', 'workload', 'leaving family', 'learning languages'], 'correct': 'leaving family'},
+            {'question': 'What did Sara\'s grandmother advise?', 'choices': ['take risks', 'stay close to family', 'be true to yourself', 'money matters most'], 'correct': 'be true to yourself'},
+        ],
+        'GCSE': [
+            {'question': 'What type of school does Paolo attend?', 'choices': ['primary', 'technical', 'scientific', 'art'], 'correct': 'scientific'},
+            {'question': 'How many lessons does Paolo have per day?', 'choices': ['4', '5', '6', '7'], 'correct': '6'},
+            {'question': 'What is Paolo\'s favorite subject?', 'choices': ['Italian', 'Math', 'Physics', 'English'], 'correct': 'Physics'},
+            {'question': 'Where does Paolo do homework after school?', 'choices': ['at home', 'in library', 'at café', 'at friend\'s'], 'correct': 'in library'},
+            {'question': 'What does Paolo want to study at university?', 'choices': ['medicine', 'law', 'engineering', 'physics'], 'correct': 'engineering'},
+        ],
+    }
+
+    return questions_by_level.get(level, questions_by_level['A2'])
 
 
 @app.route('/vocabulary-quiz', methods=['GET', 'POST'])

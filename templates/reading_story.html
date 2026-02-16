@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}{{ story.title }}{% endblock %}
+
+{% block content %}
+<div class="text-center mb-30">
+    <h2>📖 Reading Comprehension</h2>
+    <p>Level: {{ level }}</p>
+</div>
+
+<div style="max-width: 800px; margin: 0 auto; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+    <h1 style="color: var(--primary); margin-bottom: 20px; font-size: 1.8rem;">{{ story.title }}</h1>
+
+    <div style="font-size: 1.1rem; line-height: 1.8; color: #333; white-space: pre-line;">
+{{ story.text }}
+    </div>
+
+    {% if story.vocab_hints %}
+    <div style="margin-top: 30px; padding: 15px; background: #f0f9ff; border-left: 4px solid var(--primary); border-radius: 4px;">
+        <p style="margin: 0; color: #666; font-size: 0.9rem;">
+            <strong>📝 Vocabulary Hints:</strong> {{ story.vocab_hints }}
+        </p>
+    </div>
+    {% endif %}
+</div>
+
+<div class="text-center" style="margin-top: 30px;">
+    <p style="color: #666; margin-bottom: 20px;">Ready to test your comprehension?</p>
+    <a href="{{ url_for('reading_question') }}" class="btn btn-primary btn-large">Start Questions →</a>
+</div>
+
+<div class="button-group" style="margin-top: 20px;">
+    <a href="{{ url_for('reading_menu', level=level) }}" class="btn btn-secondary">← Back to Reading Menu</a>
+    <a href="{{ url_for('home') }}" class="btn btn-secondary">🏠 Home</a>
+</div>
+
+<div style="margin-top: 30px; padding: 20px; background: var(--light-gray); border-radius: 8px; max-width: 800px; margin-left: auto; margin-right: auto;">
+    <p style="color: #666; font-style: italic; margin: 0;">
+        💡 <strong>Tip:</strong> Read the story carefully and try to understand the main ideas. The questions will be in English, so focus on comprehension rather than translation!
+    </p>
+</div>
+{% endblock %}
