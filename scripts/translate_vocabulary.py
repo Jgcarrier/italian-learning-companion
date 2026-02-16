@@ -842,6 +842,20 @@ def translate_word(italian: str, word_type: str = None) -> str:
             clean = clean[len(article):]
             break
 
+    # Remove gender markers and reflexive indicators
+    # Handle professions with gender markers: professore/ssa, dottore/ssa, etc.
+    if '/trice' in clean or '/ssa' in clean or '/essa' in clean:
+        clean = clean.split('/')[0]
+
+    # Handle reflexive verbs: chiamare/si, vedere/si, etc.
+    if '/si' in clean:
+        clean = clean.split('/')[0]
+
+    # Remove any trailing extra text after spaces or numbers
+    # E.g., "ricordare/si v.t. - v.t. pron. 650. incidente (s.m." -> "ricordare"
+    if ' ' in clean:
+        clean = clean.split(' ')[0]
+
     # Look up in dictionary
     if clean in TRANSLATIONS:
         return TRANSLATIONS[clean]
@@ -2965,3 +2979,19 @@ ADDITIONAL_TRANSLATIONS_10 = {
 
 # Merge batch 10 into main dictionary
 TRANSLATIONS.update(ADDITIONAL_TRANSLATIONS_10)
+
+# Additional translations - Final proper nouns and articles
+ADDITIONAL_TRANSLATIONS_FINAL = {
+    # Capitalized proper nouns (holidays and religious)
+    'pasqua': 'Easter',
+    'natale': 'Christmas',
+    'dio': 'God',
+    'papa': 'Pope',
+    
+    # Article with slash (both forms)
+    'un/o': 'a, an',
+    'un': 'a, an',
+}
+
+# Merge final translations
+TRANSLATIONS.update(ADDITIONAL_TRANSLATIONS_FINAL)
