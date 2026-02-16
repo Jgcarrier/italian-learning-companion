@@ -24,8 +24,8 @@
     <div class="form-group">
         <label for="direction">Translation Direction:</label>
         <select name="direction" id="direction">
-            <option value="it_to_en">Italian → English</option>
-            <option value="en_to_it">English → Italian</option>
+            <option value="it_to_en" {% if direction == 'it_to_en' or not direction %}selected{% endif %}>Italian → English</option>
+            <option value="en_to_it" {% if direction == 'en_to_it' %}selected{% endif %}>English → Italian</option>
         </select>
     </div>
 

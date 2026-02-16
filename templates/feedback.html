@@ -76,20 +76,12 @@
     </a>
     <div class="button-group" style="margin-top: 15px;">
         <a href="{{ url_for('home') }}" class="btn btn-secondary" onclick="return confirm('Are you sure you want to exit? Your progress will be lost.')">🏠 Home</a>
-        <a href="javascript:history.back()" class="btn btn-secondary" onclick="return confirm('Are you sure you want to go back? Your progress will be lost.')">↩️ Back to Menu</a>
+        <a href="{{ url_for(menu_route, level=level) }}" class="btn btn-secondary" onclick="return confirm('Are you sure you want to go back? Your progress will be lost.')">↩️ Back to Menu</a>
     </div>
 </div>
 
 <script>
-// Only auto-advance if answer was correct
-// If incorrect, require user to click to see explanation
-{% if is_correct %}
-setTimeout(function() {
-    window.location.href = "{{ url_for('next_question') }}";
-}, 2000);
-{% else %}
-// No auto-advance on wrong answers - user must click to continue
-// This gives them time to read the explanation
-{% endif %}
+// Auto-advance disabled - user must click "Next Question" button
+// This gives them time to read feedback, explanations, and etymology
 </script>
 {% endblock %}

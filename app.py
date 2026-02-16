@@ -42,6 +42,27 @@ def get_generator():
     return PracticeGenerator(get_db())
 
 
+def get_menu_for_practice_type(practice_type: str) -> str:
+    """Get the appropriate menu route for a given practice type."""
+    verb_types = ['verb_conjugation', 'irregular_passato', 'auxiliary_choice',
+                  'imperfect_tense', 'futuro_semplice', 'reflexive_verbs', 'regular_passato']
+    grammar_types = ['noun_gender_number', 'articulated_prepositions',
+                     'time_prepositions', 'negations']
+    vocabulary_types = ['vocabulary_quiz', 'sentence_translator']
+    mixed_types = ['fill_in_blank', 'multiple_choice']
+
+    if practice_type in verb_types:
+        return 'verbs_menu'
+    elif practice_type in grammar_types:
+        return 'grammar_menu'
+    elif practice_type in vocabulary_types:
+        return 'vocabulary_menu'
+    elif practice_type in mixed_types:
+        return 'mixed_menu'
+    else:
+        return 'category_menu'
+
+
 def remove_accents(text: str) -> str:
     """Remove Italian accents from text for flexible answer checking."""
     accent_map = {
@@ -364,10 +385,17 @@ def practice_question():
     question = questions[current_idx]
     total_questions = len(questions)
 
+    # Get the appropriate menu for the back button
+    practice_type = session.get('practice_type', '')
+    menu_route = get_menu_for_practice_type(practice_type)
+    level = session.get('level', 'A2')
+
     return render_template('question.html',
                           question=question,
                           question_num=current_idx + 1,
-                          total_questions=total_questions)
+                          total_questions=total_questions,
+                          menu_route=menu_route,
+                          level=level)
 
 
 @app.route('/practice/submit', methods=['POST'])
@@ -400,7 +428,7 @@ def submit_answer():
     session['answers'] = answers
 
     # Show feedback (with explanation if available)
-    explanation = question.get('explanation', None)
+    explanation = question.get('explanation', None) or question.get('reason', None)
     hint = question.get('hint', None)
 
     # Add etymology fact for vocabulary questions
@@ -409,6 +437,11 @@ def submit_answer():
         # Try to get etymology from the Italian word
         italian_word = question.get('italian', display_answer)
         etymology = get_etymology_fact(italian_word)
+
+    # Get the appropriate menu for the back button
+    practice_type = session.get('practice_type', '')
+    menu_route = get_menu_for_practice_type(practice_type)
+    level = session.get('level', 'A2')
 
     return render_template('feedback.html',
                           is_correct=is_correct,
@@ -419,7 +452,9 @@ def submit_answer():
                           hint=hint,
                           etymology=etymology,
                           question_num=current_idx + 1,
-                          total_questions=len(questions))
+                          total_questions=len(questions),
+                          menu_route=menu_route,
+                          level=level)
 
 
 @app.route('/practice/next')
@@ -512,12 +547,25 @@ def practice_summary():
 @app.route('/verb-conjugation', methods=['GET', 'POST'])
 def verb_conjugation():
     """General verb conjugation practice."""
-    level = request.args.get('level') or request.form.get('level', 'A2')
+    level = request.args.get('level') or request.form.get('level') or session.get('level', 'A2')
+
+    if request.method == 'GET':
+        session['level'] = level
+        return render_template('verb_conjugation_setup.html', level=level)
+
+    # POST: Start new practice
     count = int(request.form.get('count', 10))
 
     # Generate questions using fresh generator
     generator = get_generator()
     questions = generator.generate_verb_conjugation_drill(level, count)
+
+    # Check if questions were generated
+    if not questions or len(questions) == 0:
+        session['level'] = level
+        return render_template('error.html',
+                             error_message=f"No verb conjugation exercises available for {level}. Please try a different level.",
+                             back_link=url_for('verbs_menu', level=level))
 
     # Store in session
     session['practice_type'] = 'verb_conjugation'
@@ -602,8 +650,10 @@ def regular_passato():
 @app.route('/imperfect-tense', methods=['GET', 'POST'])
 def imperfect_tense():
     """Imperfect tense (imperfetto) practice."""
+    level = request.args.get('level') or request.form.get('level') or session.get('level', 'A2')
+
     if request.method == 'GET':
-        level = request.args.get('level') or request.form.get('level', 'A2')
+        session['level'] = level
         return render_template('imperfect_tense_setup.html', level=level)
 
     # POST: Start new practice
@@ -656,8 +706,10 @@ def auxiliary_choice():
 @app.route('/futuro-semplice', methods=['GET', 'POST'])
 def futuro_semplice():
     """Futuro semplice practice."""
+    level = request.args.get('level') or request.form.get('level') or session.get('level', 'A2')
+
     if request.method == 'GET':
-        level = request.args.get('level') or request.form.get('level', 'A2')
+        session['level'] = level
         return render_template('futuro_semplice_setup.html', level=level)
 
     count = int(request.form.get('count', 10))
@@ -678,8 +730,10 @@ def futuro_semplice():
 @app.route('/reflexive-verbs', methods=['GET', 'POST'])
 def reflexive_verbs():
     """Reflexive verbs practice."""
+    level = request.args.get('level') or request.form.get('level') or session.get('level', 'A2')
+
     if request.method == 'GET':
-        level = request.args.get('level') or request.form.get('level', 'A2')
+        session['level'] = level
         return render_template('reflexive_verbs_setup.html', level=level)
 
     count = int(request.form.get('count', 10))
@@ -700,8 +754,10 @@ def reflexive_verbs():
 @app.route('/noun-gender-number', methods=['GET', 'POST'])
 def noun_gender_number():
     """Noun gender and number identification practice."""
+    level = request.args.get('level') or request.form.get('level') or session.get('level', 'A1')
+
     if request.method == 'GET':
-        level = request.args.get('level') or request.form.get('level', 'A1')
+        session['level'] = level
         return render_template('noun_gender_number_setup.html', level=level)
 
     count = int(request.form.get('count', 10))
@@ -722,8 +778,10 @@ def noun_gender_number():
 @app.route('/articulated-prepositions', methods=['GET', 'POST'])
 def articulated_prepositions():
     """Articulated prepositions practice."""
+    level = request.args.get('level') or request.form.get('level') or session.get('level', 'A2')
+
     if request.method == 'GET':
-        level = request.args.get('level') or request.form.get('level', 'A2')
+        session['level'] = level
         return render_template('articulated_prepositions_setup.html', level=level)
 
     count = int(request.form.get('count', 10))
@@ -744,8 +802,10 @@ def articulated_prepositions():
 @app.route('/time-prepositions', methods=['GET', 'POST'])
 def time_prepositions():
     """Time prepositions practice."""
+    level = request.args.get('level') or request.form.get('level') or session.get('level', 'A2')
+
     if request.method == 'GET':
-        level = request.args.get('level') or request.form.get('level', 'A2')
+        session['level'] = level
         return render_template('time_prepositions_setup.html', level=level)
 
     count = int(request.form.get('count', 10))
@@ -766,8 +826,10 @@ def time_prepositions():
 @app.route('/negations', methods=['GET', 'POST'])
 def negations():
     """Negations practice."""
+    level = request.args.get('level') or request.form.get('level') or session.get('level', 'A2')
+
     if request.method == 'GET':
-        level = request.args.get('level') or request.form.get('level', 'A2')
+        session['level'] = level
         return render_template('negations_setup.html', level=level)
 
     count = int(request.form.get('count', 10))
@@ -788,11 +850,12 @@ def negations():
 @app.route('/fill-in-blank', methods=['GET', 'POST'])
 def fill_in_blank():
     """Fill in the blank practice."""
+    level = request.args.get('level') or request.form.get('level') or session.get('level', 'A2')
+
     if request.method == 'GET':
-        level = request.args.get('level') or request.form.get('level', 'A2')
+        session['level'] = level
         return render_template('fill_in_blank_setup.html', level=level)
 
-    level = request.args.get('level') or request.form.get('level', 'A2')
     count = int(request.form.get('count', 10))
     generator = get_generator()
     questions = generator.generate_fill_in_blank(level, count)
@@ -811,11 +874,12 @@ def fill_in_blank():
 @app.route('/multiple-choice', methods=['GET', 'POST'])
 def multiple_choice():
     """Multiple choice practice."""
+    level = request.args.get('level') or request.form.get('level') or session.get('level', 'A2')
+
     if request.method == 'GET':
-        level = request.args.get('level') or request.form.get('level', 'A2')
+        session['level'] = level
         return render_template('multiple_choice_setup.html', level=level)
 
-    level = request.args.get('level') or request.form.get('level', 'A2')
     count = int(request.form.get('count', 10))
     generator = get_generator()
     questions = generator.generate_multiple_choice(level, count)
@@ -837,8 +901,9 @@ def sentence_translator():
     level = request.args.get('level') or request.form.get('level') or session.get('level', 'A2')
 
     if request.method == 'GET':
+        direction = request.args.get('direction', 'it_to_en')
         session['level'] = level
-        return render_template('sentence_translator_setup.html', level=level)
+        return render_template('sentence_translator_setup.html', level=level, direction=direction)
 
     direction = request.form.get('direction', 'it_to_en')
     count = int(request.form.get('count', 10))

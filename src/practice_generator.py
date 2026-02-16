@@ -815,7 +815,7 @@ class PracticeGenerator:
             ("Mi piacerebbe visitare Venezia.", "I would like to visit Venice.", "conditional"),
             ("Se avessi tempo, viaggerei di più.", "If I had time, I would travel more.", "conditional"),
             ("Penso che sia una buona idea.", "I think it's a good idea.", "subjunctive"),
-            ("Credo che abbia ragione.", "I believe he/she is right.", "subjunctive"),
+            ("Credo che abbia ragione.", "I believe he/she has reason / I believe he/she is right.", "subjunctive"),
             ("Prima di uscire, mi vesto.", "Before going out, I get dressed.", "before_after"),
             ("Dopo aver mangiato, vado a dormire.", "After eating, I go to sleep.", "before_after"),
             ("Mentre studiavo, ascoltavo musica.", "While I was studying, I listened to music.", "simultaneous"),
