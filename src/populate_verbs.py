@@ -189,6 +189,26 @@ def populate_verb_conjugations(db_path='../data/curriculum.db'):
             """, (infinitive, english, verb_type, "condizionale", person, form, level))
             conjugations_inserted += 1
 
+        # Subjunctive present (congiuntivo_presente)
+        congiuntivo_presente = get_congiuntivo_presente(infinitive, verb_type)
+        for person, form in congiuntivo_presente.items():
+            cursor.execute("""
+                INSERT INTO verb_conjugations
+                (infinitive, english, verb_type, tense, person, conjugated_form, level)
+                VALUES (?, ?, ?, ?, ?, ?, ?)
+            """, (infinitive, english, verb_type, "congiuntivo_presente", person, form, level))
+            conjugations_inserted += 1
+
+        # Subjunctive imperfect (congiuntivo_imperfetto)
+        congiuntivo_imperfetto = get_congiuntivo_imperfetto(infinitive, verb_type)
+        for person, form in congiuntivo_imperfetto.items():
+            cursor.execute("""
+                INSERT INTO verb_conjugations
+                (infinitive, english, verb_type, tense, person, conjugated_form, level)
+                VALUES (?, ?, ?, ?, ?, ?, ?)
+            """, (infinitive, english, verb_type, "congiuntivo_imperfetto", person, form, level))
+            conjugations_inserted += 1
+
     db.conn.commit()
     print(f"✓ Successfully inserted {conjugations_inserted} conjugations for {len(verbs_data)} verbs")
     print(f"✓ Average of {conjugations_inserted // len(verbs_data)} conjugations per verb")
@@ -471,6 +491,143 @@ def get_condizionale(infinitive, verb_type):
             "noi": stem + "remmo",
             "voi": stem + "reste",
             "loro": stem + "rebbero"
+        }
+
+
+def get_congiuntivo_presente(infinitive, verb_type):
+    """Get subjunctive present tense."""
+    if infinitive == "essere":
+        return {"io": "sia", "tu": "sia", "lui_lei": "sia", "noi": "siamo", "voi": "siate", "loro": "siano"}
+    elif infinitive == "avere":
+        return {"io": "abbia", "tu": "abbia", "lui_lei": "abbia", "noi": "abbiamo", "voi": "abbiate", "loro": "abbiano"}
+    elif infinitive == "fare":
+        return {"io": "faccia", "tu": "faccia", "lui_lei": "faccia", "noi": "facciamo", "voi": "facciate", "loro": "facciano"}
+    elif infinitive == "andare":
+        return {"io": "vada", "tu": "vada", "lui_lei": "vada", "noi": "andiamo", "voi": "andiate", "loro": "vadano"}
+    elif infinitive == "dare":
+        return {"io": "dia", "tu": "dia", "lui_lei": "dia", "noi": "diamo", "voi": "diate", "loro": "diano"}
+    elif infinitive == "stare":
+        return {"io": "stia", "tu": "stia", "lui_lei": "stia", "noi": "stiamo", "voi": "stiate", "loro": "stiano"}
+    elif infinitive == "dire":
+        return {"io": "dica", "tu": "dica", "lui_lei": "dica", "noi": "diciamo", "voi": "diciate", "loro": "dicano"}
+    elif infinitive == "venire":
+        return {"io": "venga", "tu": "venga", "lui_lei": "venga", "noi": "veniamo", "voi": "veniate", "loro": "vengano"}
+    elif infinitive == "potere":
+        return {"io": "possa", "tu": "possa", "lui_lei": "possa", "noi": "possiamo", "voi": "possiate", "loro": "possano"}
+    elif infinitive == "volere":
+        return {"io": "voglia", "tu": "voglia", "lui_lei": "voglia", "noi": "vogliamo", "voi": "vogliate", "loro": "vogliano"}
+    elif infinitive == "dovere":
+        return {"io": "deva", "tu": "deva", "lui_lei": "deva", "noi": "dobbiamo", "voi": "dobbiate", "loro": "devano"}
+    elif infinitive == "sapere":
+        return {"io": "sappia", "tu": "sappia", "lui_lei": "sappia", "noi": "sappiamo", "voi": "sappiate", "loro": "sappiano"}
+    elif infinitive == "uscire":
+        return {"io": "esca", "tu": "esca", "lui_lei": "esca", "noi": "usciamo", "voi": "usciate", "loro": "escano"}
+    elif infinitive == "salire":
+        return {"io": "salga", "tu": "salga", "lui_lei": "salga", "noi": "saliamo", "voi": "saliate", "loro": "salgano"}
+    elif infinitive == "rimanere":
+        return {"io": "rimanga", "tu": "rimanga", "lui_lei": "rimanga", "noi": "rimaniamo", "voi": "rimaniate", "loro": "rimangano"}
+    elif infinitive == "tenere":
+        return {"io": "tenga", "tu": "tenga", "lui_lei": "tenga", "noi": "teniamo", "voi": "teniate", "loro": "tengano"}
+    elif infinitive == "bere":
+        return {"io": "beva", "tu": "beva", "lui_lei": "beva", "noi": "beviamo", "voi": "beviate", "loro": "bevano"}
+    elif verb_type == "regular_are":
+        stem = infinitive[:-3]
+        return {
+            "io": stem + "i",
+            "tu": stem + "i",
+            "lui_lei": stem + "i",
+            "noi": stem + "iamo",
+            "voi": stem + "iate",
+            "loro": stem + "ino"
+        }
+    elif verb_type == "regular_ere":
+        stem = infinitive[:-3]
+        return {
+            "io": stem + "a",
+            "tu": stem + "a",
+            "lui_lei": stem + "a",
+            "noi": stem + "iamo",
+            "voi": stem + "iate",
+            "loro": stem + "ano"
+        }
+    elif verb_type == "regular_ire":
+        stem = infinitive[:-3]
+        if infinitive in ["capire", "finire", "preferire", "pulire", "spedire", "costruire", "contribuire"]:
+            # -isc verbs
+            return {
+                "io": stem + "isca",
+                "tu": stem + "isca",
+                "lui_lei": stem + "isca",
+                "noi": stem + "iamo",
+                "voi": stem + "iate",
+                "loro": stem + "iscano"
+            }
+        else:
+            return {
+                "io": stem + "a",
+                "tu": stem + "a",
+                "lui_lei": stem + "a",
+                "noi": stem + "iamo",
+                "voi": stem + "iate",
+                "loro": stem + "ano"
+            }
+    else:
+        # Default for unknown irregulars
+        stem = infinitive[:-3]
+        return {
+            "io": stem + "a",
+            "tu": stem + "a",
+            "lui_lei": stem + "a",
+            "noi": stem + "iamo",
+            "voi": stem + "iate",
+            "loro": stem + "ano"
+        }
+
+
+def get_congiuntivo_imperfetto(infinitive, verb_type):
+    """Get subjunctive imperfect tense."""
+    if infinitive == "essere":
+        return {"io": "fossi", "tu": "fossi", "lui_lei": "fosse", "noi": "fossimo", "voi": "foste", "loro": "fossero"}
+    elif infinitive == "dare":
+        return {"io": "dessi", "tu": "dessi", "lui_lei": "desse", "noi": "dessimo", "voi": "deste", "loro": "dessero"}
+    elif infinitive == "stare":
+        return {"io": "stessi", "tu": "stessi", "lui_lei": "stesse", "noi": "stessimo", "voi": "steste", "loro": "stessero"}
+    elif infinitive == "fare":
+        return {"io": "facessi", "tu": "facessi", "lui_lei": "facesse", "noi": "facessimo", "voi": "faceste", "loro": "facessero"}
+    elif infinitive == "dire":
+        return {"io": "dicessi", "tu": "dicessi", "lui_lei": "dicesse", "noi": "dicessimo", "voi": "diceste", "loro": "dicessero"}
+    elif infinitive == "bere":
+        return {"io": "bevessi", "tu": "bevessi", "lui_lei": "bevesse", "noi": "bevessimo", "voi": "beveste", "loro": "bevessero"}
+    elif verb_type == "regular_are":
+        stem = infinitive[:-3]
+        return {
+            "io": stem + "assi",
+            "tu": stem + "assi",
+            "lui_lei": stem + "asse",
+            "noi": stem + "assimo",
+            "voi": stem + "aste",
+            "loro": stem + "assero"
+        }
+    elif verb_type in ["regular_ere", "regular_ire"]:
+        stem = infinitive[:-3]
+        return {
+            "io": stem + "essi",
+            "tu": stem + "essi",
+            "lui_lei": stem + "esse",
+            "noi": stem + "essimo",
+            "voi": stem + "este",
+            "loro": stem + "essero"
+        }
+    else:
+        # Default for irregulars
+        stem = infinitive[:-3]
+        return {
+            "io": stem + "essi",
+            "tu": stem + "essi",
+            "lui_lei": stem + "esse",
+            "noi": stem + "essimo",
+            "voi": stem + "este",
+            "loro": stem + "essero"
         }
 
 
