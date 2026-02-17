@@ -100,6 +100,12 @@
         <h3>Subjunctive Present</h3>
         <p>Doubt, wish, emotion</p>
     </a>
+
+    <a href="{{ url_for('unreal_present') }}?level={{ level }}" class="menu-item">
+        <div class="menu-icon">🌀</div>
+        <h3>Unreal Present</h3>
+        <p>Se avessi..., farei...</p>
+    </a>
     {% endif %}
 
     {% if level in ['B1', 'B2', 'GCSE'] %}

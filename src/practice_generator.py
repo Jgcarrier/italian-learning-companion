@@ -4314,6 +4314,172 @@ class PracticeGenerator:
 
         return questions
 
+    def generate_unreal_present(self, count: int = 10) -> List[Dict]:
+        """
+        Generate unreal present/ongoing conditionals for B1 level.
+        Second conditional: If X were happening/were true now, Y would happen.
+        Structure: Se + subjunctive imperfect, conditional present
+        """
+        examples = [
+            {
+                "italian": "Se io _____ più soldi, comprerei una casa.",
+                "english": "If I had more money, I would buy a house.",
+                "answer": "avessi",
+                "full": "avessi più soldi",
+                "explanation": "Unreal present: Se + imperfect subjunctive + conditional present. 'Se avessi' = if I had (but I don't)."
+            },
+            {
+                "italian": "Se tu _____ più tempo, potresti studiare di più.",
+                "english": "If you had more time, you could study more.",
+                "answer": "avessi",
+                "full": "avessi più tempo",
+                "explanation": "Unreal present: 'Se avessi tempo' = if you had time (but you don't). Result: 'potresti'."
+            },
+            {
+                "italian": "Se lei _____ qui, sarebbe felice.",
+                "english": "If she were here, she would be happy.",
+                "answer": "fosse",
+                "full": "fosse qui",
+                "explanation": "Unreal present: 'Se fosse qui' = if she were here (but she isn't). 'Fosse' is the imperfect subjunctive of essere."
+            },
+            {
+                "italian": "Se noi _____ in Italia, mangeremmo bene ogni giorno.",
+                "english": "If we were in Italy, we would eat well every day.",
+                "answer": "fossimo",
+                "full": "fossimo in Italia",
+                "explanation": "Unreal present: 'Se fossimo' = if we were (noi form of imperfect subjunctive of essere)."
+            },
+            {
+                "italian": "Se voi _____ la risposta, me la direste?",
+                "english": "If you knew the answer, would you tell me?",
+                "answer": "sapeste",
+                "full": "sapeste la risposta",
+                "explanation": "Unreal present: 'Se sapeste' = if you knew (voi imperfect subjunctive of sapere). Implies you probably don't."
+            },
+            {
+                "italian": "Se loro _____ più attenti, capirebbero meglio.",
+                "english": "If they were more attentive, they would understand better.",
+                "answer": "fossero",
+                "full": "fossero più attenti",
+                "explanation": "Unreal present: 'Se fossero' = if they were (loro form of imperfect subjunctive of essere)."
+            },
+            {
+                "italian": "Se io _____ volare, visiterei ogni paese del mondo.",
+                "english": "If I could fly, I would visit every country in the world.",
+                "answer": "potessi",
+                "full": "potessi volare",
+                "explanation": "Unreal present: 'Se potessi' = if I could (io imperfect subjunctive of potere). A fantasy scenario."
+            },
+            {
+                "italian": "Se tu _____ il direttore, cosa cambieresti?",
+                "english": "If you were the director, what would you change?",
+                "answer": "fossi",
+                "full": "fossi il direttore",
+                "explanation": "Unreal present: 'Se fossi' = if you were (tu imperfect subjunctive of essere). A hypothetical role."
+            },
+            {
+                "italian": "Se non _____ così caldo, usciremmo a fare una passeggiata.",
+                "english": "If it weren't so hot, we would go out for a walk.",
+                "answer": "facesse",
+                "full": "non facesse così caldo",
+                "explanation": "Unreal present: 'Se non facesse' = if it didn't make / if it weren't (fare used for weather: fa caldo)."
+            },
+            {
+                "italian": "Se lui _____ la verità, tutti lo rispetterebbero di più.",
+                "english": "If he told the truth, everyone would respect him more.",
+                "answer": "dicesse",
+                "full": "dicesse la verità",
+                "explanation": "Unreal present: 'Se dicesse' = if he were to say/told (irregular imperfect subjunctive of dire)."
+            },
+            {
+                "italian": "Se io _____ come cucinare, ti preparerei una cena speciale.",
+                "english": "If I knew how to cook, I would make you a special dinner.",
+                "answer": "sapessi",
+                "full": "sapessi come cucinare",
+                "explanation": "Unreal present: 'Se sapessi' = if I knew (io imperfect subjunctive of sapere)."
+            },
+            {
+                "italian": "Se tu _____ meno timido, faresti più amici.",
+                "english": "If you were less shy, you would make more friends.",
+                "answer": "fossi",
+                "full": "fossi meno timido",
+                "explanation": "Unreal present: 'Se fossi' = if you were (tu imperfect subjunctive of essere). Suggests change needed."
+            },
+            {
+                "italian": "Se lei _____ dormire bene, sarebbe meno stanca.",
+                "english": "If she could sleep well, she would be less tired.",
+                "answer": "potesse",
+                "full": "potesse dormire bene",
+                "explanation": "Unreal present: 'Se potesse' = if she could (lei imperfect subjunctive of potere)."
+            },
+            {
+                "italian": "Se noi _____ una macchina, sarebbe più comodo.",
+                "english": "If we had a car, it would be more convenient.",
+                "answer": "avessimo",
+                "full": "avessimo una macchina",
+                "explanation": "Unreal present: 'Se avessimo' = if we had (noi imperfect subjunctive of avere)."
+            },
+            {
+                "italian": "Se voi _____ lavorare di meno, sareste più felici?",
+                "english": "If you could work less, would you be happier?",
+                "answer": "poteste",
+                "full": "poteste lavorare di meno",
+                "explanation": "Unreal present: 'Se poteste' = if you could (voi imperfect subjunctive of potere)."
+            },
+            {
+                "italian": "Se loro _____ più vicini, ci vedremmo ogni giorno.",
+                "english": "If they lived closer, we would see each other every day.",
+                "answer": "abitassero",
+                "full": "abitassero più vicini",
+                "explanation": "Unreal present: 'Se abitassero' = if they lived (loro imperfect subjunctive of abitare, regular -are verb)."
+            },
+            {
+                "italian": "Se io _____ in forma, correrei una maratona.",
+                "english": "If I were fit, I would run a marathon.",
+                "answer": "fossi",
+                "full": "fossi in forma",
+                "explanation": "Unreal present: 'Se fossi in forma' = if I were fit (but I'm not). Imperfect subjunctive of essere."
+            },
+            {
+                "italian": "Se tu _____ parlare italiano perfettamente, vivresti in Italia?",
+                "english": "If you could speak Italian perfectly, would you live in Italy?",
+                "answer": "potessi",
+                "full": "potessi parlare italiano perfettamente",
+                "explanation": "Unreal present: 'Se potessi' = if you could (tu imperfect subjunctive of potere)."
+            },
+            {
+                "italian": "Se lui non _____ così impegnato, ti aiuterebbe volentieri.",
+                "english": "If he weren't so busy, he would gladly help you.",
+                "answer": "fosse",
+                "full": "non fosse così impegnato",
+                "explanation": "Unreal present: 'Se non fosse' = if he weren't (lui imperfect subjunctive of essere, negative)."
+            },
+            {
+                "italian": "Se io _____ al governo, migliorerei la scuola pubblica.",
+                "english": "If I were in government, I would improve public education.",
+                "answer": "fossi",
+                "full": "fossi al governo",
+                "explanation": "Unreal present: 'Se fossi' = if I were (a classic hypothetical about power and change)."
+            },
+        ]
+
+        import random
+        random.shuffle(examples)
+        selected = examples[:count]
+        questions = []
+
+        for ex in selected:
+            questions.append({
+                "question": ex["italian"],
+                "answer": ex["answer"],
+                "english": ex["english"],
+                "type": "fill_in",
+                "hint": f"Complete the if-clause | {ex['english']}",
+                "explanation": ex["explanation"]
+            })
+
+        return questions
+
 
 if __name__ == "__main__":
     # Test the practice generator

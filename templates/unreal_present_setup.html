@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block title %}Unreal Present Setup{% endblock %}
+
+{% block content %}
+<div class="text-center mb-30">
+    <h2>💭 Periodo Ipotetico del Presente (Unreal Present)</h2>
+    <p>Second conditional: If X were true now, Y would happen</p>
+</div>
+
+<form method="POST" action="{{ url_for('unreal_present') }}">
+    <input type="hidden" name="level" value="{{ level or 'B1' }}">
+    <div class="form-group">
+        <label for="count">Number of Questions:</label>
+        <input type="number" name="count" id="count" value="10" min="5" max="20">
+    </div>
+
+    <div class="button-group">
+        <button type="submit" class="btn btn-primary btn-large">Start Practice ({{ level or 'B1' }})</button>
+        <a href="{{ url_for('verbs_menu', level=level or 'B1') }}" class="btn btn-secondary">Back</a>
+    </div>
+</form>
+
+<div style="margin-top: 30px; padding: 20px; background: var(--light-gray); border-radius: 8px;">
+    <h3 style="font-size: 1.1rem; margin-bottom: 10px;">💡 Structure:</h3>
+    <p style="color: #666; margin-bottom: 15px;">
+        <strong>Se + subjunctive imperfect, conditional present</strong>
+    </p>
+
+    <div style="margin-bottom: 15px;">
+        <h4 style="font-size: 1rem; color: #333; margin-bottom: 8px;">Formula:</h4>
+        <p style="color: #666; margin-left: 15px;">
+            <strong>If clause:</strong> Se + imperfect subjunctive (avessi, fossi, parlassi...)
+            <br><strong>Main clause:</strong> conditional present (avrei, sarei, parlerei...)
+        </p>
+    </div>
+
+    <div style="margin-bottom: 15px;">
+        <h4 style="font-size: 1rem; color: #333; margin-bottom: 8px;">Imperfect Subjunctive endings:</h4>
+        <ul style="margin-left: 20px; color: #666;">
+            <li>-are verbs: parlassi, parlassi, parlasse, parlassimo, parlaste, parlassero</li>
+            <li>-ere/-ire verbs: avessi, avessi, avesse, avessimo, aveste, avessero</li>
+            <li>essere: fossi, fossi, fosse, fossimo, foste, fossero</li>
+        </ul>
+    </div>
+
+    <div style="margin-bottom: 15px;">
+        <h4 style="font-size: 1rem; color: #333; margin-bottom: 8px;">Examples:</h4>
+        <ul style="margin-left: 20px; color: #666;">
+            <li><strong>Se avessi più soldi</strong>, comprerei una casa<br>
+                <em style="font-size: 0.85rem;">(If I had more money, I would buy a house)</em>
+            </li>
+            <li><strong>Se lei fosse qui</strong>, sarebbe felice<br>
+                <em style="font-size: 0.85rem;">(If she were here, she would be happy)</em>
+            </li>
+            <li><strong>Se potessi volare</strong>, visiterei ogni paese<br>
+                <em style="font-size: 0.85rem;">(If I could fly, I would visit every country)</em>
+            </li>
+        </ul>
+    </div>
+
+    <p style="color: #666; margin-top: 15px; font-style: italic;">
+        <strong>Use:</strong> Hypothetical situations in the present or future that are unlikely or contrary to fact.
+    </p>
+</div>
+{% endblock %}

@@ -144,6 +144,7 @@ PRACTICE_ROUTES = {
     'relative_pronouns': ('relative_pronouns', ['level']),
     'comprehensive_subjunctives': ('comprehensive_subjunctives', ['level']),
     'unreal_past': ('unreal_past', ['level']),
+    'unreal_present': ('unreal_present', ['level']),
     'progressive_gerund': ('progressive_gerund', ['level']),
     'causative': ('causative', ['level']),
     'advanced_pronouns': ('advanced_pronouns', ['level']),
@@ -1250,6 +1251,17 @@ def unreal_past():
         practice_type='unreal_past',
         generator_method='generate_unreal_past',
         setup_template='unreal_past_setup.html',
+        menu_type='verbs_menu'
+    )()
+
+
+@app.route('/unreal-present', methods=['GET', 'POST'])
+def unreal_present():
+    """Unreal present conditionals (B1 level) - Se + imperfect subjunctive + conditional."""
+    return create_practice_route(
+        practice_type='unreal_present',
+        generator_method='generate_unreal_present',
+        setup_template='unreal_present_setup.html',
         menu_type='verbs_menu'
     )()
 
