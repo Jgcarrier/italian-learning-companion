@@ -416,7 +416,39 @@ class PracticeGenerator:
             ("scrivere", "to write", "avere", "Transitive verb"),
             ("dormire", "to sleep", "avere", "No movement"),
             ("lavorare", "to work", "avere", "No movement"),
-            
+            ("bere", "to drink", "avere", "Transitive verb"),
+            ("comprare", "to buy", "avere", "Transitive verb"),
+            ("vendere", "to sell", "avere", "Transitive verb"),
+            ("sentire", "to hear/feel", "avere", "Transitive verb"),
+            ("aprire", "to open", "avere", "Transitive verb"),
+            ("chiudere", "to close", "avere", "Transitive verb"),
+            ("prendere", "to take", "avere", "Transitive verb"),
+            ("mettere", "to put", "avere", "Transitive verb"),
+            ("dire", "to say", "avere", "Transitive verb"),
+            ("sapere", "to know", "avere", "Mental state"),
+            ("conoscere", "to know (person)", "avere", "Transitive verb"),
+            ("capire", "to understand", "avere", "Mental state"),
+            ("pensare", "to think", "avere", "Mental state"),
+            ("credere", "to believe", "avere", "Mental state"),
+            ("volere", "to want", "avere", "Modal verb"),
+            ("potere", "to be able", "avere", "Modal verb"),
+            ("dovere", "to have to", "avere", "Modal verb"),
+            ("cercare", "to look for", "avere", "Transitive verb"),
+            ("trovare", "to find", "avere", "Transitive verb"),
+            ("perdere", "to lose", "avere", "Transitive verb"),
+            ("ricevere", "to receive", "avere", "Transitive verb"),
+            ("dare", "to give", "avere", "Transitive verb"),
+            ("portare", "to bring/carry", "avere", "Transitive verb"),
+            ("pagare", "to pay", "avere", "Transitive verb"),
+            ("studiare", "to study", "avere", "Transitive verb"),
+            ("imparare", "to learn", "avere", "Transitive verb"),
+            ("insegnare", "to teach", "avere", "Transitive verb"),
+            ("aiutare", "to help", "avere", "Transitive verb"),
+            ("aspettare", "to wait", "avere", "Transitive verb"),
+            ("chiamare", "to call", "avere", "Transitive verb"),
+            ("ascoltare", "to listen", "avere", "Transitive verb"),
+            ("guardare", "to watch", "avere", "Transitive verb"),
+
             # ESSERE verbs (movement, change of state, reflexive-like)
             ("andare", "to go", "essere", "Movement verb"),
             ("venire", "to come", "essere", "Movement verb"),
@@ -430,6 +462,14 @@ class PracticeGenerator:
             ("rimanere", "to remain", "essere", "State verb"),
             ("nascere", "to be born", "essere", "Change of state"),
             ("morire", "to die", "essere", "Change of state"),
+            ("cadere", "to fall", "essere", "Movement verb"),
+            ("salire", "to go up", "essere", "Movement verb"),
+            ("scendere", "to go down", "essere", "Movement verb"),
+            ("diventare", "to become", "essere", "Change of state"),
+            ("crescere", "to grow", "essere", "Change of state"),
+            ("restare", "to stay/remain", "essere", "State verb"),
+            ("succedere", "to happen", "essere", "Impersonal verb"),
+            ("accadere", "to happen", "essere", "Impersonal verb"),
         ]
         
         questions = []
@@ -493,6 +533,222 @@ class PracticeGenerator:
             ("volere", "to want", "irregular", {
                 "io": "vorrò", "tu": "vorrai", "lui_lei": "vorrà",
                 "noi": "vorremo", "voi": "vorrete", "loro": "vorranno"
+            }),
+
+            # More regular -ARE verbs
+            ("mangiare", "to eat", "regular_are", {
+                "io": "mangerò", "tu": "mangerai", "lui_lei": "mangerà",
+                "noi": "mangeremo", "voi": "mangerete", "loro": "mangeranno"
+            }),
+            ("lavorare", "to work", "regular_are", {
+                "io": "lavorerò", "tu": "lavorerai", "lui_lei": "lavorerà",
+                "noi": "lavoreremo", "voi": "lavorerete", "loro": "lavoreranno"
+            }),
+            ("studiare", "to study", "regular_are", {
+                "io": "studierò", "tu": "studierai", "lui_lei": "studierà",
+                "noi": "studieremo", "voi": "studierete", "loro": "studieranno"
+            }),
+            ("comprare", "to buy", "regular_are", {
+                "io": "comprerò", "tu": "comprerai", "lui_lei": "comprerà",
+                "noi": "compreremo", "voi": "comprerete", "loro": "compreranno"
+            }),
+            ("ascoltare", "to listen", "regular_are", {
+                "io": "ascolterò", "tu": "ascolterai", "lui_lei": "ascolterà",
+                "noi": "ascolteremo", "voi": "ascolterete", "loro": "ascolteranno"
+            }),
+            ("guardare", "to watch", "regular_are", {
+                "io": "guarderò", "tu": "guarderai", "lui_lei": "guarderà",
+                "noi": "guarderemo", "voi": "guarderete", "loro": "guarderanno"
+            }),
+            ("chiamare", "to call", "regular_are", {
+                "io": "chiamerò", "tu": "chiamerai", "lui_lei": "chiamerà",
+                "noi": "chiameremo", "voi": "chiamerete", "loro": "chiameranno"
+            }),
+            ("arrivare", "to arrive", "regular_are", {
+                "io": "arriverò", "tu": "arriverai", "lui_lei": "arriverà",
+                "noi": "arriveremo", "voi": "arriverete", "loro": "arriveranno"
+            }),
+            ("tornare", "to return", "regular_are", {
+                "io": "tornerò", "tu": "tornerai", "lui_lei": "tornerà",
+                "noi": "torneremo", "voi": "tornerete", "loro": "torneranno"
+            }),
+            ("visitare", "to visit", "regular_are", {
+                "io": "visiterò", "tu": "visiterai", "lui_lei": "visiterà",
+                "noi": "visiteremo", "voi": "visiterete", "loro": "visiteranno"
+            }),
+            ("incontrare", "to meet", "regular_are", {
+                "io": "incontrerò", "tu": "incontrerai", "lui_lei": "incontrerà",
+                "noi": "incontreremo", "voi": "incontrerete", "loro": "incontreranno"
+            }),
+            ("viaggiare", "to travel", "regular_are", {
+                "io": "viaggerò", "tu": "viaggerai", "lui_lei": "viaggerà",
+                "noi": "viaggeremo", "voi": "viaggerete", "loro": "viaggeranno"
+            }),
+            ("pensare", "to think", "regular_are", {
+                "io": "penserò", "tu": "penserai", "lui_lei": "penserà",
+                "noi": "penseremo", "voi": "penserete", "loro": "penseranno"
+            }),
+            ("sperare", "to hope", "regular_are", {
+                "io": "spererò", "tu": "spererai", "lui_lei": "spererà",
+                "noi": "spereremo", "voi": "spererete", "loro": "spereranno"
+            }),
+            ("cercare", "to look for", "regular_are", {
+                "io": "cercherò", "tu": "cercherai", "lui_lei": "cercherà",
+                "noi": "cercheremo", "voi": "cercherete", "loro": "cercheranno"
+            }),
+            ("pagare", "to pay", "regular_are", {
+                "io": "pagherò", "tu": "pagherai", "lui_lei": "pagherà",
+                "noi": "pagheremo", "voi": "pagherete", "loro": "pagheranno"
+            }),
+
+            # More regular -ERE verbs
+            ("prendere", "to take", "regular_ere", {
+                "io": "prenderò", "tu": "prenderai", "lui_lei": "prenderà",
+                "noi": "prenderemo", "voi": "prenderete", "loro": "prenderanno"
+            }),
+            ("scrivere", "to write", "regular_ere", {
+                "io": "scriverò", "tu": "scriverai", "lui_lei": "scriverà",
+                "noi": "scriveremo", "voi": "scriverete", "loro": "scriveranno"
+            }),
+            ("leggere", "to read", "regular_ere", {
+                "io": "leggerò", "tu": "leggerai", "lui_lei": "leggerà",
+                "noi": "leggeremo", "voi": "leggerete", "loro": "leggeranno"
+            }),
+            ("vendere", "to sell", "regular_ere", {
+                "io": "venderò", "tu": "venderai", "lui_lei": "venderà",
+                "noi": "venderemo", "voi": "venderete", "loro": "venderanno"
+            }),
+            ("rispondere", "to answer", "regular_ere", {
+                "io": "risponderò", "tu": "risponderai", "lui_lei": "risponderà",
+                "noi": "risponderemo", "voi": "risponderete", "loro": "risponderanno"
+            }),
+            ("credere", "to believe", "regular_ere", {
+                "io": "crederò", "tu": "crederai", "lui_lei": "crederà",
+                "noi": "crederemo", "voi": "crederete", "loro": "crederanno"
+            }),
+            ("ricevere", "to receive", "regular_ere", {
+                "io": "riceverò", "tu": "riceverai", "lui_lei": "riceverà",
+                "noi": "riceveremo", "voi": "riceverete", "loro": "riceveranno"
+            }),
+            ("mettere", "to put", "regular_ere", {
+                "io": "metterò", "tu": "metterai", "lui_lei": "metterà",
+                "noi": "metteremo", "voi": "metterete", "loro": "metteranno"
+            }),
+            ("perdere", "to lose", "regular_ere", {
+                "io": "perderò", "tu": "perderai", "lui_lei": "perderà",
+                "noi": "perderemo", "voi": "perderete", "loro": "perderanno"
+            }),
+            ("conoscere", "to know", "regular_ere", {
+                "io": "conoscerò", "tu": "conoscerai", "lui_lei": "conoscerà",
+                "noi": "conosceremo", "voi": "conoscerete", "loro": "conosceranno"
+            }),
+            ("crescere", "to grow", "regular_ere", {
+                "io": "crescerò", "tu": "crescerai", "lui_lei": "crescerà",
+                "noi": "cresceremo", "voi": "crescerete", "loro": "cresceranno"
+            }),
+
+            # More regular -IRE verbs
+            ("partire", "to leave", "regular_ire", {
+                "io": "partirò", "tu": "partirai", "lui_lei": "partirà",
+                "noi": "partiremo", "voi": "partirete", "loro": "partiranno"
+            }),
+            ("sentire", "to hear/feel", "regular_ire", {
+                "io": "sentirò", "tu": "sentirai", "lui_lei": "sentirà",
+                "noi": "sentiremo", "voi": "sentirete", "loro": "sentiranno"
+            }),
+            ("aprire", "to open", "regular_ire", {
+                "io": "aprirò", "tu": "aprirai", "lui_lei": "aprirà",
+                "noi": "apriremo", "voi": "aprirete", "loro": "apriranno"
+            }),
+            ("offrire", "to offer", "regular_ire", {
+                "io": "offrirò", "tu": "offrirai", "lui_lei": "offrirà",
+                "noi": "offriremo", "voi": "offrirete", "loro": "offriranno"
+            }),
+            ("seguire", "to follow", "regular_ire", {
+                "io": "seguirò", "tu": "seguirai", "lui_lei": "seguirà",
+                "noi": "seguiremo", "voi": "seguirete", "loro": "seguiranno"
+            }),
+            ("capire", "to understand", "regular_ire", {
+                "io": "capirò", "tu": "capirai", "lui_lei": "capirà",
+                "noi": "capiremo", "voi": "capirete", "loro": "capiranno"
+            }),
+            ("finire", "to finish", "regular_ire", {
+                "io": "finirò", "tu": "finirai", "lui_lei": "finirà",
+                "noi": "finiremo", "voi": "finirete", "loro": "finiranno"
+            }),
+            ("preferire", "to prefer", "regular_ire", {
+                "io": "preferirò", "tu": "preferirai", "lui_lei": "preferirà",
+                "noi": "preferiremo", "voi": "preferirete", "loro": "preferiranno"
+            }),
+            ("costruire", "to build", "regular_ire", {
+                "io": "costruirò", "tu": "costruirai", "lui_lei": "costruirà",
+                "noi": "costruiremo", "voi": "costruirete", "loro": "costruiranno"
+            }),
+            ("pulire", "to clean", "regular_ire", {
+                "io": "pulirò", "tu": "pulirai", "lui_lei": "pulirà",
+                "noi": "puliremo", "voi": "pulirete", "loro": "puliranno"
+            }),
+
+            # More irregular verbs
+            ("dare", "to give", "irregular", {
+                "io": "darò", "tu": "darai", "lui_lei": "darà",
+                "noi": "daremo", "voi": "darete", "loro": "daranno"
+            }),
+            ("stare", "to stay", "irregular", {
+                "io": "starò", "tu": "starai", "lui_lei": "starà",
+                "noi": "staremo", "voi": "starete", "loro": "staranno"
+            }),
+            ("venire", "to come", "irregular", {
+                "io": "verrò", "tu": "verrai", "lui_lei": "verrà",
+                "noi": "verremo", "voi": "verrete", "loro": "verranno"
+            }),
+            ("dovere", "to have to", "irregular", {
+                "io": "dovrò", "tu": "dovrai", "lui_lei": "dovrà",
+                "noi": "dovremo", "voi": "dovrete", "loro": "dovranno"
+            }),
+            ("potere", "to be able", "irregular", {
+                "io": "potrò", "tu": "potrai", "lui_lei": "potrà",
+                "noi": "potremo", "voi": "potrete", "loro": "potranno"
+            }),
+            ("sapere", "to know", "irregular", {
+                "io": "saprò", "tu": "saprai", "lui_lei": "saprà",
+                "noi": "sapremo", "voi": "saprete", "loro": "sapranno"
+            }),
+            ("vedere", "to see", "irregular", {
+                "io": "vedrò", "tu": "vedrai", "lui_lei": "vedrà",
+                "noi": "vedremo", "voi": "vedrete", "loro": "vedranno"
+            }),
+            ("vivere", "to live", "irregular", {
+                "io": "vivrò", "tu": "vivrai", "lui_lei": "vivrà",
+                "noi": "vivremo", "voi": "vivrete", "loro": "vivranno"
+            }),
+            ("bere", "to drink", "irregular", {
+                "io": "berrò", "tu": "berrai", "lui_lei": "berrà",
+                "noi": "berremo", "voi": "berrete", "loro": "berranno"
+            }),
+            ("rimanere", "to remain", "irregular", {
+                "io": "rimarrò", "tu": "rimarrai", "lui_lei": "rimarrà",
+                "noi": "rimarremo", "voi": "rimarrete", "loro": "rimarranno"
+            }),
+            ("tenere", "to keep/hold", "irregular", {
+                "io": "terrò", "tu": "terrai", "lui_lei": "terrà",
+                "noi": "terremo", "voi": "terrete", "loro": "terranno"
+            }),
+            ("cadere", "to fall", "irregular", {
+                "io": "cadrò", "tu": "cadrai", "lui_lei": "cadrà",
+                "noi": "cadremo", "voi": "cadrete", "loro": "cadranno"
+            }),
+            ("tradurre", "to translate", "irregular", {
+                "io": "tradurrò", "tu": "tradurrai", "lui_lei": "tradurrà",
+                "noi": "tradurremo", "voi": "tradurrete", "loro": "tradurranno"
+            }),
+            ("porre", "to put/place", "irregular", {
+                "io": "porrò", "tu": "porrai", "lui_lei": "porrà",
+                "noi": "porremo", "voi": "porrete", "loro": "porranno"
+            }),
+            ("dire", "to say", "irregular", {
+                "io": "dirò", "tu": "dirai", "lui_lei": "dirà",
+                "noi": "diremo", "voi": "direte", "loro": "diranno"
             }),
         ]
         
@@ -2597,6 +2853,329 @@ class PracticeGenerator:
                 "answer": "Daglielo",
                 "breakdown": "da' (give) + glie (to her) + lo (it)",
                 "explanation": "'Daglielo!' = Give it to her! With imperative, pronouns attach: da' + glielo = daglielo."
+            },
+            # Additional me lo/la/li/le examples
+            {
+                "italian": "Mi compri il giornale? Sì, _____ compro.",
+                "english": "Will you buy me the newspaper? Yes, I'll buy it for you.",
+                "answer": "te lo",
+                "breakdown": "te (to you) + lo (it)",
+                "explanation": "'Te lo compro' = I'll buy it for you."
+            },
+            {
+                "italian": "Mi presti questi libri? Sì, _____ presto volentieri.",
+                "english": "Will you lend me these books? Yes, I'll gladly lend them to you.",
+                "answer": "te li",
+                "breakdown": "te (to you) + li (them)",
+                "explanation": "'Te li presto' = I'll lend them to you. 'Ti' → 'te' before 'li'."
+            },
+            {
+                "italian": "Mi porti le valigie? Sì, _____ porto subito.",
+                "english": "Will you bring me the suitcases? Yes, I'll bring them to you right away.",
+                "answer": "te le",
+                "breakdown": "te (to you) + le (them)",
+                "explanation": "'Te le porto' = I'll bring them to you."
+            },
+            {
+                "italian": "Chi mi ha mandato questo pacco? _____ ha mandato tua sorella.",
+                "english": "Who sent me this package? Your sister sent it to you.",
+                "answer": "Te lo",
+                "breakdown": "te (to you) + lo (it)",
+                "explanation": "'Te lo ha mandato' = sent it to you."
+            },
+            {
+                "italian": "Mi restituisci la macchina? Sì, _____ restituisco domani.",
+                "english": "Will you return the car to me? Yes, I'll return it to you tomorrow.",
+                "answer": "te la",
+                "breakdown": "te (to you) + la (it)",
+                "explanation": "'Te la restituisco' = I'll return it to you."
+            },
+            # Additional glielo/gliela/glieli/gliele examples
+            {
+                "italian": "Hai portato il documento al direttore? Sì, _____ ho portato stamattina.",
+                "english": "Did you bring the document to the director? Yes, I brought it to him this morning.",
+                "answer": "glielo",
+                "breakdown": "glie (to him) + lo (it)",
+                "explanation": "'Glielo ho portato' = I brought it to him."
+            },
+            {
+                "italian": "Hai mandato l'email alla professoressa? Sì, _____ ho mandata ieri.",
+                "english": "Did you send the email to the professor? Yes, I sent it to her yesterday.",
+                "answer": "gliela",
+                "breakdown": "glie (to her) + la (it)",
+                "explanation": "'Gliela ho mandata' = I sent it to her."
+            },
+            {
+                "italian": "Hai consegnato i compiti all'insegnante? Sì, _____ ho consegnati.",
+                "english": "Did you turn in the homework to the teacher? Yes, I turned it in to him/her.",
+                "answer": "glieli",
+                "breakdown": "glie (to him/her) + li (them)",
+                "explanation": "'Glieli ho consegnati' = I turned them in to him/her."
+            },
+            {
+                "italian": "Hai raccontato le notizie a tua madre? Sì, _____ ho raccontate.",
+                "english": "Did you tell the news to your mother? Yes, I told it to her.",
+                "answer": "gliele",
+                "breakdown": "glie (to her) + le (them)",
+                "explanation": "'Gliele ho raccontate' = I told them to her."
+            },
+            {
+                "italian": "Devi spiegare il problema al capo? Sì, _____ devo spiegare.",
+                "english": "Do you have to explain the problem to the boss? Yes, I have to explain it to him.",
+                "answer": "glielo",
+                "breakdown": "glie (to him) + lo (it)",
+                "explanation": "'Glielo devo spiegare' = I have to explain it to him."
+            },
+            {
+                "italian": "Vuoi mostrare la foto ai nonni? Sì, _____ voglio mostrare.",
+                "english": "Do you want to show the photo to the grandparents? Yes, I want to show it to them.",
+                "answer": "gliela",
+                "breakdown": "glie (to them) + la (it)",
+                "explanation": "'Gliela voglio mostrare' = I want to show it to them."
+            },
+            {
+                "italian": "Hai preparato i panini per i bambini? Sì, _____ ho preparati.",
+                "english": "Did you prepare the sandwiches for the children? Yes, I prepared them for them.",
+                "answer": "glieli",
+                "breakdown": "glie (to them) + li (them)",
+                "explanation": "'Glieli ho preparati' = I prepared them for them."
+            },
+            {
+                "italian": "Hai comprato le scarpe a tua figlia? Sì, _____ ho comprate.",
+                "english": "Did you buy the shoes for your daughter? Yes, I bought them for her.",
+                "answer": "gliele",
+                "breakdown": "glie (to her) + le (them)",
+                "explanation": "'Gliele ho comprate' = I bought them for her."
+            },
+            # Additional ce lo/la/li/le examples
+            {
+                "italian": "Chi vi ha dato questo consiglio? _____ ha dato il professore.",
+                "english": "Who gave you this advice? The professor gave it to us.",
+                "answer": "Ce lo",
+                "breakdown": "ce (to us) + lo (it)",
+                "explanation": "'Ce lo ha dato' = gave it to us."
+            },
+            {
+                "italian": "Vi hanno prestato la macchina? Sì, _____ hanno prestata.",
+                "english": "Did they lend you the car? Yes, they lent it to us.",
+                "answer": "ce la",
+                "breakdown": "ce (to us) + la (it)",
+                "explanation": "'Ce la hanno prestata' = they lent it to us."
+            },
+            {
+                "italian": "Vi hanno restituito i documenti? Sì, _____ hanno restituiti.",
+                "english": "Did they return the documents to you? Yes, they returned them to us.",
+                "answer": "ce li",
+                "breakdown": "ce (to us) + li (them)",
+                "explanation": "'Ce li hanno restituiti' = they returned them to us."
+            },
+            {
+                "italian": "Vi hanno mandato le istruzioni? Sì, _____ hanno mandate ieri.",
+                "english": "Did they send you the instructions? Yes, they sent them to us yesterday.",
+                "answer": "ce le",
+                "breakdown": "ce (to us) + le (them)",
+                "explanation": "'Ce le hanno mandate' = they sent them to us."
+            },
+            # Additional ve lo/la/li/le examples
+            {
+                "italian": "Chi vi ha consigliato questo ristorante? _____ ha consigliato Marco.",
+                "english": "Who recommended this restaurant to you? Marco recommended it to you.",
+                "answer": "Ve lo",
+                "breakdown": "ve (to you pl) + lo (it)",
+                "explanation": "'Ve lo ha consigliato' = recommended it to you."
+            },
+            {
+                "italian": "Vi hanno mostrato la strada? Sì, _____ hanno mostrata.",
+                "english": "Did they show you the way? Yes, they showed it to us.",
+                "answer": "ve la",
+                "breakdown": "ve (to you pl) + la (it)",
+                "explanation": "'Ve la hanno mostrata' = they showed it to you."
+            },
+            {
+                "italian": "Vi hanno portato i fiori? Sì, _____ hanno portati.",
+                "english": "Did they bring you the flowers? Yes, they brought them to you.",
+                "answer": "ve li",
+                "breakdown": "ve (to you pl) + li (them)",
+                "explanation": "'Ve li hanno portati' = they brought them to you."
+            },
+            {
+                "italian": "Vi hanno spedito le cartoline? Sì, _____ hanno spedite.",
+                "english": "Did they send you the postcards? Yes, they sent them to you.",
+                "answer": "ve le",
+                "breakdown": "ve (to you pl) + le (them)",
+                "explanation": "'Ve le hanno spedite' = they sent them to you."
+            },
+            # More mixed examples
+            {
+                "italian": "Puoi prestarmi la tua penna? Sì, _____ presto.",
+                "english": "Can you lend me your pen? Yes, I'll lend it to you.",
+                "answer": "te la",
+                "breakdown": "te (to you) + la (it)",
+                "explanation": "'Te la presto' = I'll lend it to you."
+            },
+            {
+                "italian": "Mi spieghi questa regola? Sì, _____ spiego subito.",
+                "english": "Will you explain this rule to me? Yes, I'll explain it to you right away.",
+                "answer": "te la",
+                "breakdown": "te (to you) + la (it)",
+                "explanation": "'Te la spiego' = I'll explain it to you."
+            },
+            {
+                "italian": "Chi ti ha insegnato queste canzoni? _____ ha insegnate mia nonna.",
+                "english": "Who taught you these songs? My grandmother taught them to me.",
+                "answer": "Me le",
+                "breakdown": "me (to me) + le (them)",
+                "explanation": "'Me le ha insegnate' = taught them to me."
+            },
+            {
+                "italian": "Hai presentato il nuovo collega ai tuoi amici? Sì, _____ ho presentato.",
+                "english": "Did you introduce the new colleague to your friends? Yes, I introduced him to them.",
+                "answer": "glielo",
+                "breakdown": "glie (to them) + lo (him)",
+                "explanation": "'Glielo ho presentato' = I introduced him to them."
+            },
+            {
+                "italian": "Posso chiederti un favore? Sì, _____ puoi chiedere.",
+                "english": "Can I ask you a favor? Yes, you can ask it of me.",
+                "answer": "me lo",
+                "breakdown": "me (to me) + lo (it)",
+                "explanation": "'Me lo puoi chiedere' = you can ask it of me."
+            },
+            {
+                "italian": "Devo portare questi documenti al direttore? Sì, _____ devi portare.",
+                "english": "Do I have to bring these documents to the director? Yes, you have to bring them to him.",
+                "answer": "glieli",
+                "breakdown": "glie (to him) + li (them)",
+                "explanation": "'Glieli devi portare' = you have to bring them to him."
+            },
+            {
+                "italian": "Vuoi dire la verità ai tuoi genitori? Sì, _____ voglio dire.",
+                "english": "Do you want to tell the truth to your parents? Yes, I want to tell it to them.",
+                "answer": "gliela",
+                "breakdown": "glie (to them) + la (it)",
+                "explanation": "'Gliela voglio dire' = I want to tell it to them."
+            },
+            {
+                "italian": "Mi fai vedere le tue foto? Sì, _____ faccio vedere.",
+                "english": "Will you show me your photos? Yes, I'll show them to you.",
+                "answer": "te le",
+                "breakdown": "te (to you) + le (them)",
+                "explanation": "'Te le faccio vedere' = I'll show them to you."
+            },
+            # With imperatives - more examples
+            {
+                "italian": "Devo mandare la lettera a Paolo? Sì, _____ !",
+                "english": "Should I send the letter to Paolo? Yes, send it to him!",
+                "answer": "Mandagliela",
+                "breakdown": "manda + glie (to him) + la (it)",
+                "explanation": "'Mandagliela!' = Send it to him! Imperative with attached pronouns."
+            },
+            {
+                "italian": "Devo comprare il regalo per Maria? Sì, _____ !",
+                "english": "Should I buy the gift for Maria? Yes, buy it for her!",
+                "answer": "Compraglielo",
+                "breakdown": "compra + glie (to her) + lo (it)",
+                "explanation": "'Compraglielo!' = Buy it for her!"
+            },
+            {
+                "italian": "Devo dire queste cose ai miei amici? Sì, _____ !",
+                "english": "Should I tell these things to my friends? Yes, tell them to them!",
+                "answer": "Digliele",
+                "breakdown": "di' + glie (to them) + le (them)",
+                "explanation": "'Digliele!' = Tell them to them! With imperative 'di' + glielo."
+            },
+            {
+                "italian": "Devo portare i documenti al professore? Sì, _____ !",
+                "english": "Should I bring the documents to the professor? Yes, bring them to him!",
+                "answer": "Portaglieli",
+                "breakdown": "porta + glie (to him) + li (them)",
+                "explanation": "'Portaglieli!' = Bring them to him!"
+            },
+            {
+                "italian": "Devo mostrare la mia tesi alla professoressa? Sì, _____ !",
+                "english": "Should I show my thesis to the professor? Yes, show it to her!",
+                "answer": "Mostragliela",
+                "breakdown": "mostra + glie (to her) + la (it)",
+                "explanation": "'Mostragliela!' = Show it to her!"
+            },
+            # Negative imperatives
+            {
+                "italian": "Devo dire il segreto a Marco? No, non _____ !",
+                "english": "Should I tell the secret to Marco? No, don't tell it to him!",
+                "answer": "diglielo",
+                "breakdown": "non di' + glie + lo",
+                "explanation": "'Non diglielo!' = Don't tell it to him! Negative imperative with pronouns."
+            },
+            {
+                "italian": "Devo dare le chiavi a Luca? No, non _____ !",
+                "english": "Should I give the keys to Luca? No, don't give them to him!",
+                "answer": "dargliele",
+                "breakdown": "non dare + glie + le",
+                "explanation": "'Non dargliele!' = Don't give them to him!"
+            },
+            # More everyday examples
+            {
+                "italian": "Hai lasciato il messaggio a Carla? Sì, _____ ho lasciato.",
+                "english": "Did you leave the message for Carla? Yes, I left it for her.",
+                "answer": "glielo",
+                "breakdown": "glie (to her) + lo (it)",
+                "explanation": "'Glielo ho lasciato' = I left it for her."
+            },
+            {
+                "italian": "Ci hanno dato le informazioni? Sì, _____ hanno date.",
+                "english": "Did they give us the information? Yes, they gave it to us.",
+                "answer": "ce le",
+                "breakdown": "ce (to us) + le (them)",
+                "explanation": "'Ce le hanno date' = they gave them to us."
+            },
+            {
+                "italian": "Ti hanno chiesto il numero di telefono? Sì, _____ hanno chiesto.",
+                "english": "Did they ask you for your phone number? Yes, they asked me for it.",
+                "answer": "me lo",
+                "breakdown": "me (to me) + lo (it)",
+                "explanation": "'Me lo hanno chiesto' = they asked me for it."
+            },
+            {
+                "italian": "Vi hanno offerto il caffè? Sì, _____ hanno offerto.",
+                "english": "Did they offer you coffee? Yes, they offered it to us.",
+                "answer": "ce lo",
+                "breakdown": "ce (to us) + lo (it)",
+                "explanation": "'Ce lo hanno offerto' = they offered it to us."
+            },
+            {
+                "italian": "Mi porti i giornali? Sì, _____ porto.",
+                "english": "Will you bring me the newspapers? Yes, I'll bring them to you.",
+                "answer": "te li",
+                "breakdown": "te (to you) + li (them)",
+                "explanation": "'Te li porto' = I'll bring them to you."
+            },
+            {
+                "italian": "Hai scritto la lettera ai tuoi zii? Sì, _____ ho scritta.",
+                "english": "Did you write the letter to your uncles? Yes, I wrote it to them.",
+                "answer": "gliela",
+                "breakdown": "glie (to them) + la (it)",
+                "explanation": "'Gliela ho scritta' = I wrote it to them."
+            },
+            {
+                "italian": "Mi hai preparato la colazione? Sì, _____ ho preparata.",
+                "english": "Did you prepare breakfast for me? Yes, I prepared it for you.",
+                "answer": "te la",
+                "breakdown": "te (to you) + la (it)",
+                "explanation": "'Te la ho preparata' = I prepared it for you."
+            },
+            {
+                "italian": "Chi vi ha insegnato l'italiano? _____ ha insegnato la professoressa Rossi.",
+                "english": "Who taught you Italian? Professor Rossi taught it to us.",
+                "answer": "Ce lo",
+                "breakdown": "ce (to us) + lo (it)",
+                "explanation": "'Ce lo ha insegnato' = taught it to us."
+            },
+            {
+                "italian": "Devo ripetere le istruzioni ai ragazzi? Sì, _____ devi ripetere.",
+                "english": "Do I have to repeat the instructions to the kids? Yes, you have to repeat them to them.",
+                "answer": "gliele",
+                "breakdown": "glie (to them) + le (them)",
+                "explanation": "'Gliele devi ripetere' = you have to repeat them to them."
             }
         ]
 
