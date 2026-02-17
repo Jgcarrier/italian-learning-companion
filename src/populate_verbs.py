@@ -400,6 +400,8 @@ def get_futuro(infinitive, verb_type):
         return {"io": "farò", "tu": "farai", "lui_lei": "farà", "noi": "faremo", "voi": "farete", "loro": "faranno"}
     elif infinitive == "andare":
         return {"io": "andrò", "tu": "andrai", "lui_lei": "andrà", "noi": "andremo", "voi": "andrete", "loro": "andranno"}
+    elif infinitive == "venire":
+        return {"io": "verrò", "tu": "verrai", "lui_lei": "verrà", "noi": "verremo", "voi": "verrete", "loro": "verranno"}
     elif infinitive == "dare":
         return {"io": "darò", "tu": "darai", "lui_lei": "darà", "noi": "daremo", "voi": "darete", "loro": "daranno"}
     elif infinitive == "stare":
@@ -459,6 +461,9 @@ def get_imperfetto(infinitive, verb_type):
         return {"io": "dicevo", "tu": "dicevi", "lui_lei": "diceva", "noi": "dicevamo", "voi": "dicevate", "loro": "dicevano"}
     elif infinitive == "bere":
         return {"io": "bevevo", "tu": "bevevi", "lui_lei": "beveva", "noi": "bevevamo", "voi": "bevevate", "loro": "bevevano"}
+    elif infinitive == "andare":
+        # Andare is irregular in presente, but regular in imperfetto
+        return {"io": "andavo", "tu": "andavi", "lui_lei": "andava", "noi": "andavamo", "voi": "andavate", "loro": "andavano"}
     elif verb_type == "regular_are":
         stem = infinitive[:-3]
         return {
@@ -501,6 +506,8 @@ def get_condizionale(infinitive, verb_type):
         return {"io": "farei", "tu": "faresti", "lui_lei": "farebbe", "noi": "faremmo", "voi": "fareste", "loro": "farebbero"}
     elif infinitive == "andare":
         return {"io": "andrei", "tu": "andresti", "lui_lei": "andrebbe", "noi": "andremmo", "voi": "andreste", "loro": "andrebbero"}
+    elif infinitive == "venire":
+        return {"io": "verrei", "tu": "verresti", "lui_lei": "verrebbe", "noi": "verremmo", "voi": "verreste", "loro": "verrebbero"}
     elif verb_type == "regular_are":
         stem = infinitive[:-3]
 
@@ -512,7 +519,7 @@ def get_condizionale(infinitive, verb_type):
                 "lui_lei": stem + "herebbe",
                 "noi": stem + "heremmo",
                 "voi": stem + "hereste",
-                "loro": stem + "erebbero"
+                "loro": stem + "herebbero"  # cercherebbero, pagherebbero
             }
         # -iare verbs and regular -are verbs
         else:
