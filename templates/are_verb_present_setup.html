@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block title %}-ARE Verbs Present Tense Setup{% endblock %}
+
+{% block content %}
+<div class="text-center mb-30">
+    <h2>🔵 Regular -ARE Verbs: Present Tense</h2>
+    <p>Master the present tense endings for regular -ARE verbs</p>
+</div>
+
+<form method="POST" action="{{ url_for('are_verb_present') }}">
+    <input type="hidden" name="level" value="{{ level or 'A1' }}">
+    <div class="form-group">
+        <label for="count">Number of Questions:</label>
+        <input type="number" name="count" id="count" value="10" min="5" max="20">
+    </div>
+
+    <div class="button-group">
+        <button type="submit" class="btn btn-primary btn-large">Start Practice ({{ level or 'A1' }})</button>
+        <a href="{{ url_for('verbs_menu', level=level or 'A1') }}" class="btn btn-secondary">Back</a>
+    </div>
+</form>
+
+<div style="margin-top: 30px; padding: 20px; background: var(--light-gray); border-radius: 8px;">
+    <h3 style="font-size: 1.1rem; margin-bottom: 10px;">💡 -ARE Verb Endings (Presente):</h3>
+    <p style="color: #666; margin-bottom: 15px;">
+        Remove <strong>-are</strong> from the infinitive to get the stem, then add the ending:
+    </p>
+
+    <div style="margin-bottom: 15px;">
+        <table style="width: 100%; border-collapse: collapse; color: #555;">
+            <thead>
+                <tr style="background: #e8e8e8;">
+                    <th style="padding: 8px; text-align: left; border: 1px solid #ccc;">Person</th>
+                    <th style="padding: 8px; text-align: left; border: 1px solid #ccc;">Ending</th>
+                    <th style="padding: 8px; text-align: left; border: 1px solid #ccc;">parlare → parl-</th>
+                    <th style="padding: 8px; text-align: left; border: 1px solid #ccc;">lavorare → lavor-</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td style="padding: 8px; border: 1px solid #ccc;">io</td><td style="padding: 8px; border: 1px solid #ccc;"><strong>-o</strong></td><td style="padding: 8px; border: 1px solid #ccc;">parlo</td><td style="padding: 8px; border: 1px solid #ccc;">lavoro</td></tr>
+                <tr><td style="padding: 8px; border: 1px solid #ccc;">tu</td><td style="padding: 8px; border: 1px solid #ccc;"><strong>-i</strong></td><td style="padding: 8px; border: 1px solid #ccc;">parli</td><td style="padding: 8px; border: 1px solid #ccc;">lavori</td></tr>
+                <tr><td style="padding: 8px; border: 1px solid #ccc;">lui/lei</td><td style="padding: 8px; border: 1px solid #ccc;"><strong>-a</strong></td><td style="padding: 8px; border: 1px solid #ccc;">parla</td><td style="padding: 8px; border: 1px solid #ccc;">lavora</td></tr>
+                <tr><td style="padding: 8px; border: 1px solid #ccc;">noi</td><td style="padding: 8px; border: 1px solid #ccc;"><strong>-iamo</strong></td><td style="padding: 8px; border: 1px solid #ccc;">parliamo</td><td style="padding: 8px; border: 1px solid #ccc;">lavoriamo</td></tr>
+                <tr><td style="padding: 8px; border: 1px solid #ccc;">voi</td><td style="padding: 8px; border: 1px solid #ccc;"><strong>-ate</strong></td><td style="padding: 8px; border: 1px solid #ccc;">parlate</td><td style="padding: 8px; border: 1px solid #ccc;">lavorate</td></tr>
+                <tr><td style="padding: 8px; border: 1px solid #ccc;">loro</td><td style="padding: 8px; border: 1px solid #ccc;"><strong>-ano</strong></td><td style="padding: 8px; border: 1px solid #ccc;">parlano</td><td style="padding: 8px; border: 1px solid #ccc;">lavorano</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div style="margin-bottom: 15px;">
+        <h4 style="font-size: 1rem; color: #333; margin-bottom: 8px;">Common -ARE verbs you'll see:</h4>
+        <ul style="margin-left: 20px; color: #666;">
+            <li><strong>parlare</strong> – to speak</li>
+            <li><strong>mangiare</strong> – to eat</li>
+            <li><strong>studiare</strong> – to study</li>
+            <li><strong>abitare</strong> – to live (somewhere)</li>
+            <li><strong>lavorare</strong> – to work</li>
+            <li><strong>comprare</strong> – to buy</li>
+            <li><strong>ascoltare</strong> – to listen</li>
+            <li><strong>guardare</strong> – to watch/look at</li>
+        </ul>
+    </div>
+
+    <p style="color: #666; margin-top: 15px; font-style: italic;">
+        <strong>Tip:</strong> -ARE verbs are the largest group in Italian. Once you know the pattern, you can conjugate hundreds of verbs!
+    </p>
+</div>
+{% endblock %}

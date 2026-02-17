@@ -18,51 +18,78 @@ class PracticeGenerator:
             return 'B2'
         return level
 
+    # Bug-0090b: only show level-appropriate tenses in general conjugation
+    LEVEL_TENSES = {
+        'A1':   ['presente', 'passato_prossimo'],
+        'A2':   ['presente', 'passato_prossimo', 'imperfetto', 'futuro', 'condizionale'],
+        'B1':   ['presente', 'passato_prossimo', 'imperfetto', 'futuro', 'condizionale',
+                 'congiuntivo_presente', 'congiuntivo_imperfetto'],
+        'B2':   ['presente', 'passato_prossimo', 'imperfetto', 'futuro', 'condizionale',
+                 'congiuntivo_presente', 'congiuntivo_imperfetto'],
+        'GCSE': ['presente', 'passato_prossimo', 'imperfetto', 'futuro', 'condizionale',
+                 'congiuntivo_presente', 'congiuntivo_imperfetto'],
+    }
+
+    # Bug-0089: human-readable tense names for questions
+    TENSE_DISPLAY = {
+        'presente':              'Present Tense (Presente)',
+        'passato_prossimo':      'Past Tense (Passato Prossimo)',
+        'imperfetto':            'Imperfect (Imperfetto)',
+        'futuro':                'Future (Futuro Semplice)',
+        'condizionale':          'Conditional (Condizionale)',
+        'congiuntivo_presente':  'Subjunctive Present (Congiuntivo Presente)',
+        'congiuntivo_imperfetto':'Subjunctive Imperfect (Congiuntivo Imperfetto)',
+    }
+
     def generate_verb_conjugation_drill(self, level: str = "A1", count: int = 10) -> List[Dict]:
-        """Generate verb conjugation practice questions."""
+        """Generate verb conjugation practice questions (Bug-0089/0090b fixed)."""
         cursor = self.db.conn.cursor()
 
-        # Get the appropriate level (GCSE → B2)
+        # Get the appropriate level (GCSE → B2 for DB lookup)
         query_level = self._get_verb_level(level)
 
-        # Get random verbs from the specified level
-        cursor.execute("""
+        # Bug-0090b: restrict to level-appropriate tenses only
+        allowed_tenses = self.LEVEL_TENSES.get(level, self.LEVEL_TENSES['B2'])
+        placeholders = ','.join('?' * len(allowed_tenses))
+
+        cursor.execute(f"""
             SELECT DISTINCT infinitive, english, verb_type, tense
             FROM verb_conjugations
-            WHERE level = ?
+            WHERE level = ? AND tense IN ({placeholders})
             ORDER BY RANDOM()
             LIMIT ?
-        """, (query_level, count))
-        
+        """, [query_level] + allowed_tenses + [count])
+
         verbs = cursor.fetchall()
         questions = []
-        
+
         for verb in verbs:
             infinitive, english, verb_type, tense = verb
-            
+
             # Pick a random person
             persons = ["io", "tu", "lui_lei", "noi", "voi", "loro"]
             person = random.choice(persons)
-            
+
             # Get the correct conjugation
             cursor.execute("""
                 SELECT conjugated_form, auxiliary
                 FROM verb_conjugations
                 WHERE infinitive = ? AND tense = ? AND person = ?
             """, (infinitive, tense, person))
-            
+
             result = cursor.fetchone()
             if result:
                 conjugated, auxiliary = result
-                
-                # Format the question
+
                 person_display = {
                     "io": "io", "tu": "tu", "lui_lei": "lui/lei",
                     "noi": "noi", "voi": "voi", "loro": "loro"
                 }
-                
+
+                # Bug-0089: always include the tense name in the question
+                tense_label = self.TENSE_DISPLAY.get(tense, tense.replace('_', ' ').title())
+
                 if tense == "passato_prossimo" and auxiliary:
-                    # For past tense, show the auxiliary conjugation
                     aux_forms = {
                         "io": "ho" if auxiliary == "avere" else "sono",
                         "tu": "hai" if auxiliary == "avere" else "sei",
@@ -72,33 +99,80 @@ class PracticeGenerator:
                         "loro": "hanno" if auxiliary == "avere" else "sono"
                     }
                     full_answer = f"{aux_forms[person]} {conjugated}"
-                    question_text = f"Conjugate '{infinitive}' ({english}) in {tense} for {person_display[person]}"
                 else:
                     full_answer = conjugated
-                    question_text = f"Conjugate '{infinitive}' ({english}) for {person_display[person]}"
-                
+
+                question_text = (
+                    f"Conjugate '{infinitive}' ({english}) "
+                    f"in the {tense_label} for {person_display[person]}"
+                )
+
                 questions.append({
                     "question": question_text,
                     "answer": full_answer,
                     "infinitive": infinitive,
                     "person": person,
                     "tense": tense,
-                    "type": "verb_conjugation"
+                    "type": "verb_conjugation",
+                    "hint": f"{tense_label} | {english}"
                 })
-        
+
         return questions
     
-    def generate_vocabulary_quiz(self, level: str = "A1", count: int = 10, 
-                                 direction: str = "it_to_en") -> List[Dict]:
-        """Generate vocabulary translation questions.
-        
-        Args:
-            level: Language level (A1, A2, etc.)
-            count: Number of questions
-            direction: 'it_to_en' (Italian to English) or 'en_to_it' (English to Italian)
+    @staticmethod
+    def _get_italian_article(italian: str, gender: str, definite: bool = True) -> str:
         """
+        Return the correct Italian article for a noun (Bug-0090a).
+        Handles: vowel-starting nouns, s+consonant, z, gn, ps, x, y.
+        """
+        word = italian.lower().strip()
+        vowels = set('aeiouàèéìíîòóùú')
+        needs_lo = (
+            word.startswith('z') or
+            word.startswith('gn') or
+            word.startswith('ps') or
+            word.startswith('x') or
+            word.startswith('y') or
+            (word.startswith('s') and len(word) > 1 and word[1] not in vowels)
+        )
+        starts_vowel = word[0] in vowels if word else False
+
+        if gender == 'masculine':
+            if definite:
+                if starts_vowel:
+                    return "l'"
+                elif needs_lo:
+                    return 'lo'
+                else:
+                    return 'il'
+            else:  # indefinite
+                if needs_lo or starts_vowel:
+                    return 'uno'
+                else:
+                    return 'un'
+        else:  # feminine
+            if definite:
+                if starts_vowel:
+                    return "l'"
+                else:
+                    return 'la'
+            else:
+                if starts_vowel:
+                    return "un'"
+                else:
+                    return 'una'
+
+    @staticmethod
+    def _get_english_article(english: str) -> str:
+        """Return 'an' or 'a' based on English word."""
+        first_word = english.strip().split()[0].lower() if english.strip() else ''
+        return 'an' if first_word and first_word[0] in 'aeiou' else 'a'
+
+    def generate_vocabulary_quiz(self, level: str = "A1", count: int = 10,
+                                 direction: str = "it_to_en") -> List[Dict]:
+        """Generate vocabulary translation questions with consistent articles (Bug-0090a)."""
         cursor = self.db.conn.cursor()
-        
+
         cursor.execute("""
             SELECT italian, english, word_type, gender, category
             FROM vocabulary
@@ -106,24 +180,33 @@ class PracticeGenerator:
             ORDER BY RANDOM()
             LIMIT ?
         """, (level, count))
-        
+
         words = cursor.fetchall()
         questions = []
-        
+
         for word in words:
             italian, english, word_type, gender, category = word
-            
+            is_noun = word_type == 'noun' and gender
+
             if direction == "it_to_en":
-                question_text = f"Translate: {italian}"
-                answer = english
-            else:
-                question_text = f"Translate: {english}"
-                answer = italian
-                if gender and word_type == "noun":
-                    # Accept answers with or without articles
-                    article = "il" if gender == "masculine" else "la"
-                    answer = f"{article} {italian}"
-            
+                if is_noun:
+                    # Italian question includes definite article; English answer includes 'the'
+                    art = self._get_italian_article(italian, gender, definite=True)
+                    question_text = f"Translate: {art} {italian}"
+                    answer = f"the {english}"
+                else:
+                    question_text = f"Translate: {italian}"
+                    answer = english
+            else:  # en_to_it
+                if is_noun:
+                    # English question includes 'the'; Italian answer includes definite article
+                    question_text = f"Translate: the {english}"
+                    art = self._get_italian_article(italian, gender, definite=True)
+                    answer = f"{art} {italian}"
+                else:
+                    question_text = f"Translate: {english}"
+                    answer = italian
+
             questions.append({
                 "question": question_text,
                 "answer": answer,
@@ -132,7 +215,7 @@ class PracticeGenerator:
                 "type": "vocabulary",
                 "category": category
             })
-        
+
         return questions
     
     def generate_fill_in_blank(self, level: str = "A1", count: int = 10) -> List[Dict]:
@@ -1052,10 +1135,13 @@ class PracticeGenerator:
             
             # A - at (age, point in time)
             ("Ho finito la scuola ___ 18 anni.", "a", "a (at an age)", "I finished school at 18"),
-            ("Sono arrivato ___ mezzanotte.", "a", "a (at a time)", "I arrived at midnight"),
+            ("Sono arrivato ___ mezzanotte.", "a", "a + mezzanotte (bare 'a' — mezzanotte takes no article)", "I arrived at midnight"),
             ("Mi sono sposata ___ 25 anni.", "a", "a (at an age)", "I got married at 25"),
-            ("Il film comincia ___ otto.", "a", "a (at a time)", "The movie starts at eight"),
-            ("Ci vediamo ___ pranzo.", "a", "a (at a meal time)", "See you at lunch"),
+            ("Il film comincia ___ otto.", "alle", "a + le → alle (clock times: numbers use 'alle')", "The movie starts at eight"),
+            ("Ci vediamo ___ pranzo.", "a", "a pranzo (set expression, bare 'a')", "See you at lunch"),
+            ("Il treno parte ___ tre.", "alle", "a + le → alle (clock times: numbers use 'alle')", "The train leaves at three"),
+            ("La lezione finisce ___ undici.", "alle", "a + le → alle (clock times: numbers use 'alle')", "The lesson ends at eleven"),
+            ("Ci incontriamo ___ mezzogiorno.", "a", "a + mezzogiorno (bare 'a' — mezzogiorno takes no article)", "We meet at noon"),
             
             # FA - ago
             ("Sono arrivato tre giorni ___.", "fa", "fa (ago)", "I arrived three days ago"),
@@ -1751,8 +1837,13 @@ class PracticeGenerator:
             choices.extend(random.sample(remaining, min(3, len(remaining))))
             random.shuffle(choices)
 
+            # Extract the English adverb word from the explanation (e.g. "Frequency adverb - always" → "always")
+            # Bug-0092: embed the English adverb meaning directly in the question so users know which adverb is needed
+            english_adverb = explanation.split(" - ")[-1].strip() if " - " in explanation else ""
+            question_text = f"{sentence} (English: {english_adverb})" if english_adverb else sentence
+
             questions.append({
-                "question": sentence,
+                "question": question_text,
                 "answer": correct,
                 "type": "multiple_choice",
                 "choices": choices,
@@ -4476,6 +4567,399 @@ class PracticeGenerator:
                 "type": "fill_in",
                 "hint": f"Complete the if-clause | {ex['english']}",
                 "explanation": ex["explanation"]
+            })
+
+        return questions
+
+    # -----------------------------------------------------------------------
+    # Bug-0088: Focused present-tense conjugation drills by verb ending type
+    # -----------------------------------------------------------------------
+
+    # -----------------------------------------------------------------------
+    # Bug-0094: New A1 Italian articles activity
+    # -----------------------------------------------------------------------
+
+    def generate_italian_articles(self, count: int = 10) -> List[Dict]:
+        """Drill Italian definite and indefinite articles at A1 level.
+
+        Covers:
+          Definite singular:   il, lo, la, l'
+          Definite plural:     i, gli, le
+          Indefinite singular: un, uno, una, un'
+        Each question shows the English sentence for context and asks the
+        learner to supply the correct article for the highlighted noun.
+        """
+        # Templates: (article, noun, english_sentence, article_rule, is_definite, choices_group)
+        # choices_group groups semantically close wrong answers
+        templates = [
+            # --- DEFINITE SINGULAR ---
+            # il: masculine singular before consonant (not s+c, z, gn, ps, x, y)
+            ("il", "libro", "I'm reading the book.", "masculine singular + consonant start → il",
+             True, ["il", "lo", "la", "l'"]),
+            ("il", "gatto", "The cat is sleeping.", "masculine singular + consonant start → il",
+             True, ["il", "lo", "la", "l'"]),
+            ("il", "cane", "The dog is running.", "masculine singular + consonant start → il",
+             True, ["il", "lo", "la", "l'"]),
+            ("il", "treno", "I'm taking the train.", "masculine singular + consonant start → il",
+             True, ["il", "lo", "la", "l'"]),
+            ("il", "bambino", "The boy is playing.", "masculine singular + consonant start → il",
+             True, ["il", "lo", "la", "l'"]),
+
+            # lo: masculine singular before s+consonant, z, gn, ps, x, y
+            ("lo", "studente", "The student is studying.", "masculine singular + s+consonant → lo",
+             True, ["il", "lo", "la", "l'"]),
+            ("lo", "zaino", "Where is the backpack?", "masculine singular + z → lo",
+             True, ["il", "lo", "la", "l'"]),
+            ("lo", "zoo", "We visited the zoo.", "masculine singular + z → lo",
+             True, ["il", "lo", "la", "l'"]),
+            ("lo", "specchio", "Look in the mirror!", "masculine singular + sp → lo",
+             True, ["il", "lo", "la", "l'"]),
+
+            # la: feminine singular before consonant
+            ("la", "casa", "The house is big.", "feminine singular + consonant start → la",
+             True, ["il", "lo", "la", "l'"]),
+            ("la", "scuola", "The school is near.", "feminine singular + sc → la",
+             True, ["il", "lo", "la", "l'"]),
+            ("la", "ragazza", "The girl is reading.", "feminine singular + consonant start → la",
+             True, ["il", "lo", "la", "l'"]),
+            ("la", "borsa", "I like the bag.", "feminine singular + consonant start → la",
+             True, ["il", "lo", "la", "l'"]),
+            ("la", "città", "The city is beautiful.", "feminine singular + consonant start → la",
+             True, ["il", "lo", "la", "l'"]),
+
+            # l': before vowel (both genders)
+            ("l'", "amico", "The friend is here.", "masculine singular + vowel → l'",
+             True, ["il", "lo", "la", "l'"]),
+            ("l'", "amica", "The (female) friend called.", "feminine singular + vowel → l'",
+             True, ["il", "lo", "la", "l'"]),
+            ("l'", "acqua", "The water is cold.", "feminine singular + vowel → l'",
+             True, ["il", "lo", "la", "l'"]),
+            ("l'", "ora", "The hour has passed.", "feminine singular + vowel → l'",
+             True, ["il", "lo", "la", "l'"]),
+            ("l'", "estate", "The summer is hot.", "feminine singular + vowel → l'",
+             True, ["il", "lo", "la", "l'"]),
+            ("l'", "ufficio", "The office is closed.", "masculine singular + vowel → l'",
+             True, ["il", "lo", "la", "l'"]),
+
+            # --- DEFINITE PLURAL ---
+            # i: masculine plural (non-special start)
+            ("i", "libri", "The books are on the table.", "masculine plural + consonant → i",
+             True, ["i", "gli", "le"]),
+            ("i", "gatti", "The cats are sleeping.", "masculine plural + consonant → i",
+             True, ["i", "gli", "le"]),
+            ("i", "ragazzi", "The boys are playing.", "masculine plural + consonant → i",
+             True, ["i", "gli", "le"]),
+
+            # gli: masculine plural before vowel or s+cons/z/gn
+            ("gli", "studenti", "The students are studying.", "masculine plural + s+cons → gli",
+             True, ["i", "gli", "le"]),
+            ("gli", "amici", "The friends are here.", "masculine plural + vowel → gli",
+             True, ["i", "gli", "le"]),
+            ("gli", "zaini", "The backpacks are heavy.", "masculine plural + z → gli",
+             True, ["i", "gli", "le"]),
+
+            # le: feminine plural
+            ("le", "case", "The houses are big.", "feminine plural → le",
+             True, ["i", "gli", "le"]),
+            ("le", "ragazze", "The girls are singing.", "feminine plural → le",
+             True, ["i", "gli", "le"]),
+            ("le", "scuole", "The schools are open.", "feminine plural → le",
+             True, ["i", "gli", "le"]),
+            ("le", "amiche", "The (female) friends are coming.", "feminine plural + vowel → le",
+             True, ["i", "gli", "le"]),
+
+            # --- INDEFINITE SINGULAR ---
+            # un: masculine before consonant
+            ("un", "libro", "I'm reading a book.", "masculine singular + consonant → un",
+             False, ["un", "uno", "una", "un'"]),
+            ("un", "cane", "I have a dog.", "masculine singular + consonant → un",
+             False, ["un", "uno", "una", "un'"]),
+            ("un", "bambino", "I see a boy.", "masculine singular + consonant → un",
+             False, ["un", "uno", "una", "un'"]),
+
+            # uno: masculine before s+cons/z/gn/ps/x/y
+            ("uno", "studente", "I met a student.", "masculine singular + s+cons → uno",
+             False, ["un", "uno", "una", "un'"]),
+            ("uno", "zaino", "I bought a backpack.", "masculine singular + z → uno",
+             False, ["un", "uno", "una", "un'"]),
+            ("uno", "specchio", "I need a mirror.", "masculine singular + sp → uno",
+             False, ["un", "uno", "una", "un'"]),
+
+            # una: feminine before consonant
+            ("una", "casa", "I want to buy a house.", "feminine singular + consonant → una",
+             False, ["un", "uno", "una", "un'"]),
+            ("una", "ragazza", "I see a girl.", "feminine singular + consonant → una",
+             False, ["un", "uno", "una", "un'"]),
+            ("una", "scuola", "We need a school.", "feminine singular + consonant → una",
+             False, ["un", "uno", "una", "un'"]),
+
+            # un': feminine before vowel
+            ("un'", "amica", "I have a (female) friend.", "feminine singular + vowel → un'",
+             False, ["un", "uno", "una", "un'"]),
+            ("un'", "ora", "Wait an hour.", "feminine singular + vowel → un'",
+             False, ["un", "uno", "una", "un'"]),
+            ("un'", "estate", "It was a beautiful summer.", "feminine singular + vowel → un'",
+             False, ["un", "uno", "una", "un'"]),
+            ("un'", "idea", "I have an idea.", "feminine singular + vowel → un'",
+             False, ["un", "uno", "una", "un'"]),
+        ]
+
+        selected = random.sample(templates, min(count, len(templates)))
+        questions = []
+
+        for article, noun, english_sentence, rule, is_definite, choice_pool in selected:
+            article_type = "definite article" if is_definite else "indefinite article"
+            choices = list(choice_pool)  # already a good 4-option set
+            random.shuffle(choices)
+
+            questions.append({
+                "question": (
+                    f"Choose the correct {article_type} for '{noun}':\n"
+                    f"(English: {english_sentence})"
+                ),
+                "answer": article,
+                "type": "multiple_choice",
+                "choices": choices,
+                "hint": f"The noun is '{noun}' — {english_sentence}",
+                "explanation": f"Rule: {rule}. The correct article is '{article} {noun}'."
+            })
+
+        return questions
+
+    def generate_are_verb_present(self, count: int = 10) -> List[Dict]:
+        """Drill regular -ARE verbs in the present tense only (A1 level).
+
+        Endings: -o, -i, -a, -iamo, -ate, -ano
+        Examples: parlare, mangiare, studiare, abitare, lavorare
+        """
+        cursor = self.db.conn.cursor()
+
+        cursor.execute("""
+            SELECT DISTINCT infinitive, english
+            FROM verb_conjugations
+            WHERE tense = 'presente' AND verb_type = 'regular_are'
+        """)
+        verbs = cursor.fetchall()
+        if not verbs:
+            return []
+
+        persons = ["io", "tu", "lui_lei", "noi", "voi", "loro"]
+        person_display = {
+            "io": "io", "tu": "tu", "lui_lei": "lui/lei",
+            "noi": "noi", "voi": "voi", "loro": "loro"
+        }
+        # Present-tense -ARE endings for reference
+        are_endings = {
+            "io": "-o", "tu": "-i", "lui_lei": "-a",
+            "noi": "-iamo", "voi": "-ate", "loro": "-ano"
+        }
+
+        questions = []
+        for _ in range(count):
+            infinitive, english = random.choice(verbs)
+            person = random.choice(persons)
+
+            cursor.execute("""
+                SELECT conjugated_form FROM verb_conjugations
+                WHERE infinitive = ? AND tense = 'presente' AND person = ?
+            """, (infinitive, person))
+            result = cursor.fetchone()
+            if not result:
+                continue
+            correct_form = result[0]
+
+            # Distractors: other persons of the same verb
+            cursor.execute("""
+                SELECT conjugated_form FROM verb_conjugations
+                WHERE infinitive = ? AND tense = 'presente' AND person != ?
+                ORDER BY RANDOM() LIMIT 3
+            """, (infinitive, person))
+            distractors = [row[0] for row in cursor.fetchall()]
+
+            choices = [correct_form] + distractors
+            if len(choices) < 4:
+                cursor.execute("""
+                    SELECT conjugated_form FROM verb_conjugations
+                    WHERE infinitive != ? AND tense = 'presente' AND verb_type = 'regular_are'
+                    AND person = ? ORDER BY RANDOM() LIMIT ?
+                """, (infinitive, person, 4 - len(choices)))
+                choices += [row[0] for row in cursor.fetchall()]
+            random.shuffle(choices)
+
+            stem = infinitive[:-3]  # remove -are
+            questions.append({
+                "question": (
+                    f"Conjugate the -ARE verb '{infinitive}' ({english}) "
+                    f"in the Present Tense (Presente) for {person_display[person]}"
+                ),
+                "answer": correct_form,
+                "type": "multiple_choice",
+                "choices": choices[:4],
+                "hint": f"Stem: {stem} + ending {are_endings[person]}",
+                "explanation": (
+                    f"Regular -ARE verb: remove -are → stem '{stem}', "
+                    f"add '{are_endings[person]}' for {person_display[person]} → {correct_form}"
+                )
+            })
+
+        return questions
+
+    def generate_ere_verb_present(self, count: int = 10) -> List[Dict]:
+        """Drill regular -ERE verbs in the present tense only (A2 level).
+
+        Endings: -o, -i, -e, -iamo, -ete, -ono
+        Examples: scrivere, leggere, prendere, credere, vendere
+        """
+        cursor = self.db.conn.cursor()
+
+        cursor.execute("""
+            SELECT DISTINCT infinitive, english
+            FROM verb_conjugations
+            WHERE tense = 'presente' AND verb_type = 'regular_ere'
+        """)
+        verbs = cursor.fetchall()
+        if not verbs:
+            return []
+
+        persons = ["io", "tu", "lui_lei", "noi", "voi", "loro"]
+        person_display = {
+            "io": "io", "tu": "tu", "lui_lei": "lui/lei",
+            "noi": "noi", "voi": "voi", "loro": "loro"
+        }
+        ere_endings = {
+            "io": "-o", "tu": "-i", "lui_lei": "-e",
+            "noi": "-iamo", "voi": "-ete", "loro": "-ono"
+        }
+
+        questions = []
+        for _ in range(count):
+            infinitive, english = random.choice(verbs)
+            person = random.choice(persons)
+
+            cursor.execute("""
+                SELECT conjugated_form FROM verb_conjugations
+                WHERE infinitive = ? AND tense = 'presente' AND person = ?
+            """, (infinitive, person))
+            result = cursor.fetchone()
+            if not result:
+                continue
+            correct_form = result[0]
+
+            cursor.execute("""
+                SELECT conjugated_form FROM verb_conjugations
+                WHERE infinitive = ? AND tense = 'presente' AND person != ?
+                ORDER BY RANDOM() LIMIT 3
+            """, (infinitive, person))
+            distractors = [row[0] for row in cursor.fetchall()]
+
+            choices = [correct_form] + distractors
+            if len(choices) < 4:
+                cursor.execute("""
+                    SELECT conjugated_form FROM verb_conjugations
+                    WHERE infinitive != ? AND tense = 'presente' AND verb_type = 'regular_ere'
+                    AND person = ? ORDER BY RANDOM() LIMIT ?
+                """, (infinitive, person, 4 - len(choices)))
+                choices += [row[0] for row in cursor.fetchall()]
+            random.shuffle(choices)
+
+            stem = infinitive[:-3]  # remove -ere
+            questions.append({
+                "question": (
+                    f"Conjugate the -ERE verb '{infinitive}' ({english}) "
+                    f"in the Present Tense (Presente) for {person_display[person]}"
+                ),
+                "answer": correct_form,
+                "type": "multiple_choice",
+                "choices": choices[:4],
+                "hint": f"Stem: {stem} + ending {ere_endings[person]}",
+                "explanation": (
+                    f"Regular -ERE verb: remove -ere → stem '{stem}', "
+                    f"add '{ere_endings[person]}' for {person_display[person]} → {correct_form}"
+                )
+            })
+
+        return questions
+
+    def generate_ire_verb_present(self, count: int = 10) -> List[Dict]:
+        """Drill regular -IRE verbs in the present tense only (A2 level).
+
+        Two patterns:
+          Standard: -o, -i, -e, -iamo, -ite, -ono  (e.g. dormire, partire)
+          -isc- pattern: -isco, -isci, -isce, -iamo, -ite, -iscono  (e.g. finire, capire)
+        """
+        cursor = self.db.conn.cursor()
+
+        cursor.execute("""
+            SELECT DISTINCT infinitive, english, verb_type
+            FROM verb_conjugations
+            WHERE tense = 'presente' AND verb_type IN ('regular_ire', 'regular_isc')
+        """)
+        verbs = cursor.fetchall()
+        if not verbs:
+            return []
+
+        persons = ["io", "tu", "lui_lei", "noi", "voi", "loro"]
+        person_display = {
+            "io": "io", "tu": "tu", "lui_lei": "lui/lei",
+            "noi": "noi", "voi": "voi", "loro": "loro"
+        }
+        ire_endings = {
+            "io": "-o", "tu": "-i", "lui_lei": "-e",
+            "noi": "-iamo", "voi": "-ite", "loro": "-ono"
+        }
+        isc_endings = {
+            "io": "-isco", "tu": "-isci", "lui_lei": "-isce",
+            "noi": "-iamo", "voi": "-ite", "loro": "-iscono"
+        }
+
+        questions = []
+        for _ in range(count):
+            infinitive, english, verb_type = random.choice(verbs)
+            person = random.choice(persons)
+
+            cursor.execute("""
+                SELECT conjugated_form FROM verb_conjugations
+                WHERE infinitive = ? AND tense = 'presente' AND person = ?
+            """, (infinitive, person))
+            result = cursor.fetchone()
+            if not result:
+                continue
+            correct_form = result[0]
+
+            cursor.execute("""
+                SELECT conjugated_form FROM verb_conjugations
+                WHERE infinitive = ? AND tense = 'presente' AND person != ?
+                ORDER BY RANDOM() LIMIT 3
+            """, (infinitive, person))
+            distractors = [row[0] for row in cursor.fetchall()]
+
+            choices = [correct_form] + distractors
+            if len(choices) < 4:
+                cursor.execute("""
+                    SELECT conjugated_form FROM verb_conjugations
+                    WHERE infinitive != ? AND tense = 'presente'
+                    AND verb_type IN ('regular_ire', 'regular_isc')
+                    AND person = ? ORDER BY RANDOM() LIMIT ?
+                """, (infinitive, person, 4 - len(choices)))
+                choices += [row[0] for row in cursor.fetchall()]
+            random.shuffle(choices)
+
+            stem = infinitive[:-3]  # remove -ire
+            endings_ref = isc_endings if verb_type == "regular_isc" else ire_endings
+            pattern_note = " (uses -isc- pattern)" if verb_type == "regular_isc" else ""
+            questions.append({
+                "question": (
+                    f"Conjugate the -IRE verb '{infinitive}' ({english}) "
+                    f"in the Present Tense (Presente) for {person_display[person]}"
+                ),
+                "answer": correct_form,
+                "type": "multiple_choice",
+                "choices": choices[:4],
+                "hint": f"Stem: {stem} + ending {endings_ref[person]}{pattern_note}",
+                "explanation": (
+                    f"Regular -IRE verb{pattern_note}: remove -ire → stem '{stem}', "
+                    f"add '{endings_ref[person]}' for {person_display[person]} → {correct_form}"
+                )
             })
 
         return questions

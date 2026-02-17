@@ -25,6 +25,12 @@
     {% endif %}
 
     {% if level in ['A1'] %}
+    <a href="{{ url_for('italian_articles') }}?level={{ level }}" class="menu-item">
+        <div class="menu-icon">📋</div>
+        <h3>Italian Articles</h3>
+        <p>il, lo, la, l', i, gli, le, un, una...</p>
+    </a>
+
     <a href="{{ url_for('noun_gender_number') }}?level={{ level }}" class="menu-item">
         <div class="menu-icon">🔍</div>
         <h3>Noun Gender & Number</h3>

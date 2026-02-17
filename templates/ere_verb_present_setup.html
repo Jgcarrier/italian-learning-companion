@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block title %}-ERE Verbs Present Tense Setup{% endblock %}
+
+{% block content %}
+<div class="text-center mb-30">
+    <h2>🟢 Regular -ERE Verbs: Present Tense</h2>
+    <p>Master the present tense endings for regular -ERE verbs</p>
+</div>
+
+<form method="POST" action="{{ url_for('ere_verb_present') }}">
+    <input type="hidden" name="level" value="{{ level or 'A2' }}">
+    <div class="form-group">
+        <label for="count">Number of Questions:</label>
+        <input type="number" name="count" id="count" value="10" min="5" max="20">
+    </div>
+
+    <div class="button-group">
+        <button type="submit" class="btn btn-primary btn-large">Start Practice ({{ level or 'A2' }})</button>
+        <a href="{{ url_for('verbs_menu', level=level or 'A2') }}" class="btn btn-secondary">Back</a>
+    </div>
+</form>
+
+<div style="margin-top: 30px; padding: 20px; background: var(--light-gray); border-radius: 8px;">
+    <h3 style="font-size: 1.1rem; margin-bottom: 10px;">💡 -ERE Verb Endings (Presente):</h3>
+    <p style="color: #666; margin-bottom: 15px;">
+        Remove <strong>-ere</strong> from the infinitive to get the stem, then add the ending:
+    </p>
+
+    <div style="margin-bottom: 15px;">
+        <table style="width: 100%; border-collapse: collapse; color: #555;">
+            <thead>
+                <tr style="background: #e8e8e8;">
+                    <th style="padding: 8px; text-align: left; border: 1px solid #ccc;">Person</th>
+                    <th style="padding: 8px; text-align: left; border: 1px solid #ccc;">Ending</th>
+                    <th style="padding: 8px; text-align: left; border: 1px solid #ccc;">scrivere → scriv-</th>
+                    <th style="padding: 8px; text-align: left; border: 1px solid #ccc;">prendere → prend-</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td style="padding: 8px; border: 1px solid #ccc;">io</td><td style="padding: 8px; border: 1px solid #ccc;"><strong>-o</strong></td><td style="padding: 8px; border: 1px solid #ccc;">scrivo</td><td style="padding: 8px; border: 1px solid #ccc;">prendo</td></tr>
+                <tr><td style="padding: 8px; border: 1px solid #ccc;">tu</td><td style="padding: 8px; border: 1px solid #ccc;"><strong>-i</strong></td><td style="padding: 8px; border: 1px solid #ccc;">scrivi</td><td style="padding: 8px; border: 1px solid #ccc;">prendi</td></tr>
+                <tr><td style="padding: 8px; border: 1px solid #ccc;">lui/lei</td><td style="padding: 8px; border: 1px solid #ccc;"><strong>-e</strong></td><td style="padding: 8px; border: 1px solid #ccc;">scrive</td><td style="padding: 8px; border: 1px solid #ccc;">prende</td></tr>
+                <tr><td style="padding: 8px; border: 1px solid #ccc;">noi</td><td style="padding: 8px; border: 1px solid #ccc;"><strong>-iamo</strong></td><td style="padding: 8px; border: 1px solid #ccc;">scriviamo</td><td style="padding: 8px; border: 1px solid #ccc;">prendiamo</td></tr>
+                <tr><td style="padding: 8px; border: 1px solid #ccc;">voi</td><td style="padding: 8px; border: 1px solid #ccc;"><strong>-ete</strong></td><td style="padding: 8px; border: 1px solid #ccc;">scrivete</td><td style="padding: 8px; border: 1px solid #ccc;">prendete</td></tr>
+                <tr><td style="padding: 8px; border: 1px solid #ccc;">loro</td><td style="padding: 8px; border: 1px solid #ccc;"><strong>-ono</strong></td><td style="padding: 8px; border: 1px solid #ccc;">scrivono</td><td style="padding: 8px; border: 1px solid #ccc;">prendono</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div style="margin-bottom: 15px;">
+        <h4 style="font-size: 1rem; color: #333; margin-bottom: 8px;">Common -ERE verbs you'll see:</h4>
+        <ul style="margin-left: 20px; color: #666;">
+            <li><strong>scrivere</strong> – to write</li>
+            <li><strong>leggere</strong> – to read</li>
+            <li><strong>prendere</strong> – to take/have (food/drink)</li>
+            <li><strong>credere</strong> – to believe</li>
+            <li><strong>vendere</strong> – to sell</li>
+            <li><strong>ricevere</strong> – to receive</li>
+            <li><strong>rispondere</strong> – to respond/reply</li>
+            <li><strong>chiedere</strong> – to ask</li>
+        </ul>
+    </div>
+
+    <p style="color: #666; margin-top: 15px; font-style: italic;">
+        <strong>Note:</strong> -ERE verbs differ from -ARE verbs in the lui/lei form (-e not -a) and the voi form (-ete not -ate).
+    </p>
+</div>
+{% endblock %}

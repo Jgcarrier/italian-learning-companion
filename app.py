@@ -1301,6 +1301,54 @@ def present_tense():
     return redirect(url_for('practice_question'))
 
 
+# Bug-0088: Focused present-tense conjugation drills by verb ending type
+
+@app.route('/are-verb-present', methods=['GET', 'POST'])
+def are_verb_present():
+    """Regular -ARE verb present tense conjugation practice (A1 level)."""
+    return create_practice_route(
+        practice_type='are_verb_present',
+        generator_method='generate_are_verb_present',
+        setup_template='are_verb_present_setup.html',
+        menu_type='verbs_menu'
+    )()
+
+
+@app.route('/ere-verb-present', methods=['GET', 'POST'])
+def ere_verb_present():
+    """Regular -ERE verb present tense conjugation practice (A2 level)."""
+    return create_practice_route(
+        practice_type='ere_verb_present',
+        generator_method='generate_ere_verb_present',
+        setup_template='ere_verb_present_setup.html',
+        menu_type='verbs_menu'
+    )()
+
+
+@app.route('/ire-verb-present', methods=['GET', 'POST'])
+def ire_verb_present():
+    """Regular -IRE verb present tense conjugation practice (A2 level)."""
+    return create_practice_route(
+        practice_type='ire_verb_present',
+        generator_method='generate_ire_verb_present',
+        setup_template='ire_verb_present_setup.html',
+        menu_type='verbs_menu'
+    )()
+
+
+# Bug-0094: New A1 Italian articles activity
+
+@app.route('/italian-articles', methods=['GET', 'POST'])
+def italian_articles():
+    """Italian articles practice (A1 level) — definite, indefinite, gender and vowel rules."""
+    return create_practice_route(
+        practice_type='italian_articles',
+        generator_method='generate_italian_articles',
+        setup_template='italian_articles_setup.html',
+        menu_type='grammar_menu'
+    )()
+
+
 @app.route('/noun-gender-number', methods=['GET', 'POST'])
 def noun_gender_number():
     """Noun gender and number identification practice."""

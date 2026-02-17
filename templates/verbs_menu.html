@@ -22,6 +22,26 @@
         <h3>Present Tense</h3>
         <p>Basic present conjugations</p>
     </a>
+
+    <a href="{{ url_for('are_verb_present') }}?level={{ level }}" class="menu-item">
+        <div class="menu-icon">🔵</div>
+        <h3>-ARE Verbs</h3>
+        <p>parlare, mangiare, studiare...</p>
+    </a>
+    {% endif %}
+
+    {% if level in ['A2'] %}
+    <a href="{{ url_for('ere_verb_present') }}?level={{ level }}" class="menu-item">
+        <div class="menu-icon">🟢</div>
+        <h3>-ERE Verbs</h3>
+        <p>scrivere, leggere, prendere...</p>
+    </a>
+
+    <a href="{{ url_for('ire_verb_present') }}?level={{ level }}" class="menu-item">
+        <div class="menu-icon">🟠</div>
+        <h3>-IRE Verbs</h3>
+        <p>dormire, finire, capire...</p>
+    </a>
     {% endif %}
 
     {% if level in ['A1', 'A2'] %}

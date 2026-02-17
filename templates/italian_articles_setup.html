@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+
+{% block title %}Italian Articles Setup{% endblock %}
+
+{% block content %}
+<div class="text-center mb-30">
+    <h2>📋 Italian Articles</h2>
+    <p>Master definite (the) and indefinite (a/an) articles in Italian</p>
+</div>
+
+<form method="POST" action="{{ url_for('italian_articles') }}">
+    <input type="hidden" name="level" value="{{ level or 'A1' }}">
+    <div class="form-group">
+        <label for="count">Number of Questions:</label>
+        <input type="number" name="count" id="count" value="10" min="5" max="20">
+    </div>
+
+    <div class="button-group">
+        <button type="submit" class="btn btn-primary btn-large">Start Practice ({{ level or 'A1' }})</button>
+        <a href="{{ url_for('grammar_menu', level=level or 'A1') }}" class="btn btn-secondary">Back</a>
+    </div>
+</form>
+
+<div style="margin-top: 30px; padding: 20px; background: var(--light-gray); border-radius: 8px;">
+    <h3 style="font-size: 1.1rem; margin-bottom: 10px;">💡 Italian Article Rules:</h3>
+
+    <div style="margin-bottom: 20px;">
+        <h4 style="font-size: 1rem; color: #333; margin-bottom: 8px;">Definite Articles ("the"):</h4>
+        <table style="width: 100%; border-collapse: collapse; color: #555; font-size: 0.9rem;">
+            <thead>
+                <tr style="background: #e8e8e8;">
+                    <th style="padding: 8px; text-align: left; border: 1px solid #ccc;"></th>
+                    <th style="padding: 8px; text-align: center; border: 1px solid #ccc;">Masculine</th>
+                    <th style="padding: 8px; text-align: center; border: 1px solid #ccc;">Feminine</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="padding: 8px; border: 1px solid #ccc;"><strong>Singular (normal)</strong></td>
+                    <td style="padding: 8px; text-align: center; border: 1px solid #ccc;"><strong>il</strong> (il libro)</td>
+                    <td style="padding: 8px; text-align: center; border: 1px solid #ccc;"><strong>la</strong> (la casa)</td>
+                </tr>
+                <tr>
+                    <td style="padding: 8px; border: 1px solid #ccc;"><strong>Singular (before vowel)</strong></td>
+                    <td style="padding: 8px; text-align: center; border: 1px solid #ccc;"><strong>l'</strong> (l'amico)</td>
+                    <td style="padding: 8px; text-align: center; border: 1px solid #ccc;"><strong>l'</strong> (l'amica)</td>
+                </tr>
+                <tr>
+                    <td style="padding: 8px; border: 1px solid #ccc;"><strong>Singular (s+cons, z, gn…)</strong></td>
+                    <td style="padding: 8px; text-align: center; border: 1px solid #ccc;"><strong>lo</strong> (lo studente)</td>
+                    <td style="padding: 8px; text-align: center; border: 1px solid #ccc;"><em>la</em> (la strega)</td>
+                </tr>
+                <tr>
+                    <td style="padding: 8px; border: 1px solid #ccc;"><strong>Plural (normal)</strong></td>
+                    <td style="padding: 8px; text-align: center; border: 1px solid #ccc;"><strong>i</strong> (i libri)</td>
+                    <td style="padding: 8px; text-align: center; border: 1px solid #ccc;"><strong>le</strong> (le case)</td>
+                </tr>
+                <tr>
+                    <td style="padding: 8px; border: 1px solid #ccc;"><strong>Plural (vowel / s+cons…)</strong></td>
+                    <td style="padding: 8px; text-align: center; border: 1px solid #ccc;"><strong>gli</strong> (gli amici, gli studenti)</td>
+                    <td style="padding: 8px; text-align: center; border: 1px solid #ccc;"><strong>le</strong> (le amiche)</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div style="margin-bottom: 20px;">
+        <h4 style="font-size: 1rem; color: #333; margin-bottom: 8px;">Indefinite Articles ("a" / "an"):</h4>
+        <table style="width: 100%; border-collapse: collapse; color: #555; font-size: 0.9rem;">
+            <thead>
+                <tr style="background: #e8e8e8;">
+                    <th style="padding: 8px; text-align: left; border: 1px solid #ccc;">Context</th>
+                    <th style="padding: 8px; text-align: center; border: 1px solid #ccc;">Article</th>
+                    <th style="padding: 8px; text-align: center; border: 1px solid #ccc;">Example</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="padding: 8px; border: 1px solid #ccc;">Masculine + consonant</td>
+                    <td style="padding: 8px; text-align: center; border: 1px solid #ccc;"><strong>un</strong></td>
+                    <td style="padding: 8px; border: 1px solid #ccc;">un libro (a book)</td>
+                </tr>
+                <tr>
+                    <td style="padding: 8px; border: 1px solid #ccc;">Masculine + s+cons, z, gn…</td>
+                    <td style="padding: 8px; text-align: center; border: 1px solid #ccc;"><strong>uno</strong></td>
+                    <td style="padding: 8px; border: 1px solid #ccc;">uno studente (a student)</td>
+                </tr>
+                <tr>
+                    <td style="padding: 8px; border: 1px solid #ccc;">Feminine + consonant</td>
+                    <td style="padding: 8px; text-align: center; border: 1px solid #ccc;"><strong>una</strong></td>
+                    <td style="padding: 8px; border: 1px solid #ccc;">una casa (a house)</td>
+                </tr>
+                <tr>
+                    <td style="padding: 8px; border: 1px solid #ccc;">Feminine + vowel</td>
+                    <td style="padding: 8px; text-align: center; border: 1px solid #ccc;"><strong>un'</strong></td>
+                    <td style="padding: 8px; border: 1px solid #ccc;">un'amica (a friend)</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div style="margin-bottom: 10px;">
+        <h4 style="font-size: 1rem; color: #333; margin-bottom: 8px;">⚠️ Special start sounds → use lo / uno / gli:</h4>
+        <ul style="margin-left: 20px; color: #666; font-size: 0.9rem;">
+            <li><strong>s + consonant:</strong> lo studente, lo specchio, uno sbaglio</li>
+            <li><strong>z:</strong> lo zaino, uno zaino, gli zaini</li>
+            <li><strong>gn:</strong> lo gnocco, gli gnocchi</li>
+            <li><strong>ps / x / y:</strong> lo psicologo, lo yogurt</li>
+        </ul>
+    </div>
+
+    <p style="color: #666; margin-top: 15px; font-style: italic;">
+        <strong>Each question</strong> shows an English sentence for context. Choose the article that matches the noun's gender, number, and initial sound.
+    </p>
+</div>
+{% endblock %}

@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+{% block title %}-IRE Verbs Present Tense Setup{% endblock %}
+
+{% block content %}
+<div class="text-center mb-30">
+    <h2>🟠 Regular -IRE Verbs: Present Tense</h2>
+    <p>Master both patterns of -IRE verb conjugation in the present tense</p>
+</div>
+
+<form method="POST" action="{{ url_for('ire_verb_present') }}">
+    <input type="hidden" name="level" value="{{ level or 'A2' }}">
+    <div class="form-group">
+        <label for="count">Number of Questions:</label>
+        <input type="number" name="count" id="count" value="10" min="5" max="20">
+    </div>
+
+    <div class="button-group">
+        <button type="submit" class="btn btn-primary btn-large">Start Practice ({{ level or 'A2' }})</button>
+        <a href="{{ url_for('verbs_menu', level=level or 'A2') }}" class="btn btn-secondary">Back</a>
+    </div>
+</form>
+
+<div style="margin-top: 30px; padding: 20px; background: var(--light-gray); border-radius: 8px;">
+    <h3 style="font-size: 1.1rem; margin-bottom: 10px;">💡 -IRE Verb Endings (Presente):</h3>
+    <p style="color: #666; margin-bottom: 15px;">
+        -IRE verbs have <strong>two patterns</strong>. Remove <strong>-ire</strong> to get the stem:
+    </p>
+
+    <div style="margin-bottom: 20px;">
+        <h4 style="font-size: 1rem; color: #333; margin-bottom: 8px;">Pattern 1 – Standard (e.g. dormire, partire):</h4>
+        <table style="width: 100%; border-collapse: collapse; color: #555;">
+            <thead>
+                <tr style="background: #e8e8e8;">
+                    <th style="padding: 8px; text-align: left; border: 1px solid #ccc;">Person</th>
+                    <th style="padding: 8px; text-align: left; border: 1px solid #ccc;">Ending</th>
+                    <th style="padding: 8px; text-align: left; border: 1px solid #ccc;">dormire → dorm-</th>
+                    <th style="padding: 8px; text-align: left; border: 1px solid #ccc;">partire → part-</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td style="padding: 8px; border: 1px solid #ccc;">io</td><td style="padding: 8px; border: 1px solid #ccc;"><strong>-o</strong></td><td style="padding: 8px; border: 1px solid #ccc;">dormo</td><td style="padding: 8px; border: 1px solid #ccc;">parto</td></tr>
+                <tr><td style="padding: 8px; border: 1px solid #ccc;">tu</td><td style="padding: 8px; border: 1px solid #ccc;"><strong>-i</strong></td><td style="padding: 8px; border: 1px solid #ccc;">dormi</td><td style="padding: 8px; border: 1px solid #ccc;">parti</td></tr>
+                <tr><td style="padding: 8px; border: 1px solid #ccc;">lui/lei</td><td style="padding: 8px; border: 1px solid #ccc;"><strong>-e</strong></td><td style="padding: 8px; border: 1px solid #ccc;">dorme</td><td style="padding: 8px; border: 1px solid #ccc;">parte</td></tr>
+                <tr><td style="padding: 8px; border: 1px solid #ccc;">noi</td><td style="padding: 8px; border: 1px solid #ccc;"><strong>-iamo</strong></td><td style="padding: 8px; border: 1px solid #ccc;">dormiamo</td><td style="padding: 8px; border: 1px solid #ccc;">partiamo</td></tr>
+                <tr><td style="padding: 8px; border: 1px solid #ccc;">voi</td><td style="padding: 8px; border: 1px solid #ccc;"><strong>-ite</strong></td><td style="padding: 8px; border: 1px solid #ccc;">dormite</td><td style="padding: 8px; border: 1px solid #ccc;">partite</td></tr>
+                <tr><td style="padding: 8px; border: 1px solid #ccc;">loro</td><td style="padding: 8px; border: 1px solid #ccc;"><strong>-ono</strong></td><td style="padding: 8px; border: 1px solid #ccc;">dormono</td><td style="padding: 8px; border: 1px solid #ccc;">partono</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div style="margin-bottom: 15px;">
+        <h4 style="font-size: 1rem; color: #333; margin-bottom: 8px;">Pattern 2 – -isc- pattern (e.g. finire, capire):</h4>
+        <p style="color: #666; margin-bottom: 8px; font-size: 0.9rem;">
+            The -isc- insert appears in io/tu/lui/loro forms (but NOT noi/voi):
+        </p>
+        <table style="width: 100%; border-collapse: collapse; color: #555;">
+            <thead>
+                <tr style="background: #e8e8e8;">
+                    <th style="padding: 8px; text-align: left; border: 1px solid #ccc;">Person</th>
+                    <th style="padding: 8px; text-align: left; border: 1px solid #ccc;">Ending</th>
+                    <th style="padding: 8px; text-align: left; border: 1px solid #ccc;">finire → fin-</th>
+                    <th style="padding: 8px; text-align: left; border: 1px solid #ccc;">capire → cap-</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td style="padding: 8px; border: 1px solid #ccc;">io</td><td style="padding: 8px; border: 1px solid #ccc;"><strong>-isco</strong></td><td style="padding: 8px; border: 1px solid #ccc;">finisco</td><td style="padding: 8px; border: 1px solid #ccc;">capisco</td></tr>
+                <tr><td style="padding: 8px; border: 1px solid #ccc;">tu</td><td style="padding: 8px; border: 1px solid #ccc;"><strong>-isci</strong></td><td style="padding: 8px; border: 1px solid #ccc;">finisci</td><td style="padding: 8px; border: 1px solid #ccc;">capisci</td></tr>
+                <tr><td style="padding: 8px; border: 1px solid #ccc;">lui/lei</td><td style="padding: 8px; border: 1px solid #ccc;"><strong>-isce</strong></td><td style="padding: 8px; border: 1px solid #ccc;">finisce</td><td style="padding: 8px; border: 1px solid #ccc;">capisce</td></tr>
+                <tr><td style="padding: 8px; border: 1px solid #ccc;">noi</td><td style="padding: 8px; border: 1px solid #ccc;"><strong>-iamo</strong></td><td style="padding: 8px; border: 1px solid #ccc;">finiamo</td><td style="padding: 8px; border: 1px solid #ccc;">capiamo</td></tr>
+                <tr><td style="padding: 8px; border: 1px solid #ccc;">voi</td><td style="padding: 8px; border: 1px solid #ccc;"><strong>-ite</strong></td><td style="padding: 8px; border: 1px solid #ccc;">finite</td><td style="padding: 8px; border: 1px solid #ccc;">capite</td></tr>
+                <tr><td style="padding: 8px; border: 1px solid #ccc;">loro</td><td style="padding: 8px; border: 1px solid #ccc;"><strong>-iscono</strong></td><td style="padding: 8px; border: 1px solid #ccc;">finiscono</td><td style="padding: 8px; border: 1px solid #ccc;">capiscono</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <p style="color: #666; margin-top: 15px; font-style: italic;">
+        <strong>Tip:</strong> You'll need to memorise which -IRE verbs take the -isc- pattern. Common ones include: finire, capire, preferire, costruire, pulire, obbedire.
+    </p>
+</div>
+{% endblock %}
