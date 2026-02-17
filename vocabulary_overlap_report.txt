@@ -1,0 +1,2564 @@
+VOCABULARY OVERLAP DETAILED REPORT
+================================================================================
+
+B1 DUPLICATES (should be removed from B1):
+--------------------------------------------------------------------------------
+a                              → A1, A2, B1, B2
+abbastanza                     → A2, B1, B2
+abbonamento                    → A2, B1, B2
+abbracciare                    → A2, B1, B2
+abbraccio                      → A2, B1, B2
+abitare                        → A1, A2, B1, B2
+accendere                      → A2, B1, B2
+accendino                      → A2, B1, B2
+accompagnare                   → A2, B1, B2
+accordo                        → A2, B1, B2
+aceto                          → A1, A2, B1, B2
+acqua                          → A1, A2, B1, B2
+acquistare                     → A2, B1, B2
+addio                          → A2, B1, B2
+addormentarsi                  → A2, B1, B2
+adesso                         → A1, A2, B1, B2
+adulto                         → A2, B1, B2
+aereo                          → A1, A2, B1, B2
+aeroporto                      → A1, A2, B1, B2
+affetto                        → A1, A2, B1, B2
+affittare                      → A2, B1, B2
+affitto                        → A2, B1, B2
+agenzia                        → A1, A2, B1, B2
+agosto                         → A1, A2, B1, B2
+aiutare                        → A2, B1, B2
+aiuto                          → A1, A2, B1, B2
+albergo                        → A1, A2, B1, B2
+albero                         → A1, A2, B1, B2
+alcuno                         → A2, B1, B2
+alfabeto                       → A1, A2, B1, B2
+alimentari                     → A2, B1, B2
+allegro                        → A2, B1, B2
+allora                         → A2, B1, B2
+alto                           → A1, A2, B1, B2
+altro                          → A2, B1, B2
+alzarsi                        → A2, B1, B2
+amare                          → A1, A2, B1, B2
+amaro                          → A2, B1, B2
+ambasciata                     → A1, A2, B1, B2
+amico                          → A1, A2, B1, B2
+amore                          → A1, A2, B1, B2
+anche                          → A1, A2, B1, B2
+ancora                         → A2, B1, B2
+andare                         → A1, A2, B1, B2
+anello                         → A2, B1, B2
+animale                        → A1, A2, B1, B2
+anno                           → A1, A2, B1, B2
+annoiarsi                      → A2, B1, B2
+anticipo                       → A2, B1, B2
+antico                         → A2, B1, B2
+antipasto                      → A2, B1, B2
+antipatico                     → A2, B1, B2
+anziano                        → A2, B1, B2
+aperitivo                      → A2, B1, B2
+appartamento                   → A1, A2, B1, B2
+appena                         → A2, B1, B2
+appetito                       → A2, B1, B2
+appuntamento                   → A1, A2, B1, B2
+aprile                         → A1, A2, B1, B2
+aprire                         → A1, A2, B1, B2
+arancia                        → A2, B1, B2
+arancione                      → A2, B1, B2
+argento                        → A2, B1, B2
+aria                           → A2, B1, B2
+armadio                        → A2, B1, B2
+arrabbiarsi                    → A2, B1, B2
+arrivare                       → A1, A2, B1, B2
+arrivederci                    → A1, A2, B1, B2
+arrivo                         → A2, B1, B2
+arrosto                        → A2, B1, B2
+arte                           → A1, A2, B1, B2
+articolo                       → A2, B1, B2
+ascensore                      → A2, B1, B2
+asciugamano                    → A2, B1, B2
+ascoltare                      → A1, A2, B1, B2
+aspettare                      → A1, A2, B1
+attento                        → A1, A2, B1, B2
+attenzione                     → A1, A2, B1, B2
+attraversare                   → A2, B1, B2
+augurio                        → A1, A2, B1, B2
+aula                           → A2, B1, B2
+auto                           → A2, B1, B2
+autobus                        → A1, A2, B1, B2
+autostrada                     → A2, B1, B2
+autunno                        → A1, A2, B1, B2
+avanti                         → A1, A2, B1, B2
+avere                          → A1, A2, B1, B2
+azzurro                        → A2, B1, B2
+baciare                        → A2, B1, B2
+bacio                          → A1, A2, B1, B2
+baffo                          → A2, B1, B2
+bagno                          → A1, A2, B1, B2
+balcone                        → A2, B1, B2
+ballare                        → A1, A2, B1, B2
+bambino                        → A1, A2, B1, B2
+bambola                        → A2, B1, B2
+banana                         → A2, B1, B2
+banca                          → A1, A2, B1, B2
+banco                          → A2, B1, B2
+bar                            → A1, A2, B1, B2
+barba                          → A2, B1, B2
+barca                          → A2, B1, B2
+basso                          → A2, B1, B2
+basta                          → A2, B1, B2
+bello                          → A1, A2, B1, B2
+bene                           → A1, A2, B1, B2
+benvenuto                      → A2, B1, B2
+benzina                        → A2, B1, B2
+bere                           → A1, A2, B1, B2
+bianco                         → A1, A2, B1, B2
+bibita                         → A2, B1, B2
+biblioteca                     → A2, B1, B2
+bicchiere                      → A1, A2, B1, B2
+bicicletta                     → A2, B1, B2
+biglietteria                   → A2, B1, B2
+biglietto                      → A1, A2, B1, B2
+biondo                         → A1, A2, B1, B2
+birra                          → A1, A2, B1, B2
+bisogno                        → A2, B1, B2
+bistecca                       → A2, B1, B2
+blu                            → A1, A2, B1, B2
+bocca                          → A2, B1, B2
+borsa                          → A1, A2, B1, B2
+bosco                          → A2, B1, B2
+bottiglia                      → A1, A2, B1, B2
+braccio                        → A2, B1, B2
+brutto                         → A2, B1, B2
+buio                           → A2, B1, B2
+buonanotte                     → A1, A2, B1, B2
+buonasera                      → A1, A2, B1, B2
+buongiorno                     → A1, A2, B1, B2
+buono                          → A1, A2, B1, B2
+burro                          → A2, B1, B2
+busta                          → A1, A2, B1, B2
+caffè                          → A1, A2, B1, B2
+calcio                         → A2, B1, B2
+caldo                          → A1, A2, B1, B2
+calmo                          → A2, B1, B2
+calza                          → A1, A2, B1, B2
+cambiare                       → A1, A2, B1, B2
+camera                         → A1, A2, B1, B2
+cameriere                      → A1, A2, B1, B2
+camicia                        → A1, A2, B1, B2
+camminare                      → A2, B1, B2
+campagna                       → A1, A2, B1, B2
+campeggio                      → A2, B1, B2
+camper                         → A2, B1, B2
+cane                           → A1, A2, B1, B2
+cantare                        → A1, A2, B1, B2
+cantina                        → A2, B1, B2
+canzone                        → A1, A2, B1, B2
+capello                        → A1, A2, B1, B2
+capire                         → A1, A2, B1, B2
+capo                           → A2, B1, B2
+cappello                       → A2, B1, B2
+cappotto                       → A1, A2, B1, B2
+cappuccino                     → A1, A2, B1, B2
+carne                          → A1, A2, B1, B2
+caro                           → A1, A2, B1, B2
+carota                         → A2, B1, B2
+carta                          → A1, A2, B1, B2
+cartolina                      → A1, A2, B1, B2
+casa                           → A1, A2, B1, B2
+casalingo                      → A2, B1, B2
+cassa                          → A2, B1, B2
+castano                        → A1, A2, B1, B2
+cattivo                        → A2, B1, B2
+cavallo                        → A2, B1, B2
+cd                             → A1, A2, B1, B2
+cellulare                      → A1, A2, B1, B2
+cena                           → A1, A2, B1, B2
+cenare                         → A1, A2, B1, B2
+centimetro                     → A2, B1, B2
+centro                         → A1, A2, B1, B2
+cercare                        → A1, A2, B1, B2
+che                            → A1, A2, B1, B2
+check-in                       → A1, A2, B1, B2
+chi                            → A1, A2, B1, B2
+chiamare/si                    → A1, A2, B1, B2
+chiaro                         → A2, B1, B2
+chiave                         → A1, A2, B1, B2
+chiedere                       → A2, B1, B2
+chiesa                         → A1, A2, B1, B2
+chilo                          → A2, B1, B2
+chilometro                     → A2, B1, B2
+chiudere                       → A1, A2, B1, B2
+ci                             → A1, A2, B1, B2
+ciao                           → A1, A2, B1, B2
+cibo                           → A1, A2, B1, B2
+cielo                          → A2, B1, B2
+cin cin                        → A1, B1, B2
+cinema                         → A1, A2, B1, B2
+cioccolato                     → A2, B1, B2
+circa                          → A2, B1, B2
+città                          → A1, A2, B1, B2
+classe                         → A1, A2, B1, B2
+cognato                        → A2, B1, B2
+cognome                        → A1, A2, B1, B2
+colazione                      → A1, A2, B1, B2
+collana                        → A2, B1, B2
+collega                        → A2, B1, B2
+collina                        → A2, B1, B2
+colorare                       → A2, B1, B2
+colore                         → A1, A2, B1, B2
+coltello                       → A1, A2, B1, B2
+come                           → A1, A2, B1, B2
+cominciare                     → A1, A2, B1, B2
+commesso                       → A2, B1, B2
+comodino                       → A2, B1, B2
+comodo                         → A2, B1, B2
+compagno                       → A1, A2, B1, B2
+compito                        → A2, B1, B2
+compleanno                     → A1, A2, B1, B2
+completo                       → A2, B1, B2
+complimento                    → A2, B1, B2
+comprare                       → A1, A2, B1, B2
+computer                       → A1, A2, B1, B2
+con                            → A1, A2, B1, B2
+concerto                       → A2, B1, B2
+confine                        → A2, B1, B2
+congratulazione                → A2, B1, B2
+conoscere                      → A2, B1, B2
+consolato                      → A1, A2, B1, B2
+contento                       → A2, B1, B2
+continuare                     → A2, B1, B2
+conto                          → A1, A2, B1, B2
+contorno                       → A2, B1, B2
+conversazione                  → A2, B1, B2
+coperta                        → A2, B1, B2
+coppia                         → A2, B1, B2
+corpo                          → A2, B1, B2
+correggere                     → A2, B1, B2
+correre                        → A2, B1, B2
+corso                          → A1, A2, B1, B2
+corto                          → A1, A2, B1, B2
+cosa                           → A1, A2, B1, B2
+costare                        → A1, A2, B1, B2
+costo                          → A2, B1, B2
+così                           → A2, B1, B2
+cotone                         → A2, B1, B2
+credere                        → A2, B1, B2
+credito                        → A1, A2, B1, B2
+crema                          → A2, B1, B2
+crociera                       → A2, B1, B2
+cucchiaio                      → A1, A2, B1, B2
+cucina                         → A1, A2, B1, B2
+cucinare                       → A2, B1, B2
+cugino                         → A2, B1, B2
+cultura                        → A2, B1, B2
+cuscino                        → A2, B1, B2
+da                             → A2, B1, B2
+dare                           → A1, A2, B1, B2
+data                           → A1, A2, B1, B2
+davanti                        → A1, A2, B1, B2
+debole                         → A2, B1, B2
+dente                          → A2, B1, B2
+dentifricio                    → A2, B1, B2
+dentro                         → A1, A2, B1, B2
+destra                         → A1, A2, B1, B2
+dettato                        → A2, B1, B2
+di                             → A1, A2, B1, B2
+dialogo                        → A2, B1, B2
+dicembre                       → A1, A2, B1, B2
+dietro                         → A1, A2, B1, B2
+difficile                      → A1, A2, B1, B2
+dipingere                      → A2, B1, B2
+dipinto                        → A2, B1, B2
+dire                           → A1, A2, B1, B2
+direttore/trice                → A2, B1, B2
+discoteca                      → A2, B1, B2
+disegnare                      → A2, B1, B2
+dispiacere                     → A2, B1, B2
+distributore                   → A2, B1, B2
+dito                           → A2, B1, B2
+ditta                          → A2, B1, B2
+divano                         → A2, B1, B2
+diverso                        → A2, B1, B2
+divertente                     → A2, B1, B2
+divertimento                   → A2, B1, B2
+divertirsi                     → A2, B1, B2
+divorziare                     → A2, B1, B2
+dizionario                     → A2, B1, B2
+doccia                         → A1, A2, B1, B2
+documento                      → A1, A2, B1, B2
+dogana                         → A2, B1, B2
+dolce                          → A2, B1, B2
+domanda                        → A1, A2, B1, B2
+domandare                      → A1, A2, B1, B2
+domani                         → A1, A2, B1, B2
+domenica                       → A1, A2, B1, B2
+donna                          → A1, A2, B1, B2
+dopo                           → A1, A2, B1, B2
+doppio                         → A1, A2, B1, B2
+dormire                        → A1, A2, B1, B2
+dottore/ssa                    → A1, A2, B1, B2
+dove                           → A1, A2, B1, B2
+dovere                         → A1, A2, B1, B2
+dritto                         → A2, B1, B2
+durante                        → A2, B1, B2
+e                              → A1, A2, B1, B2
+e-mail                         → A1, A2, B1, B2
+ecco                           → A2, B1, B2
+economia                       → A2, B1, B2
+elegante                       → A2, B1, B2
+elementare                     → A2, B1, B2
+entrare                        → A1, A2, B1, B2
+entrata                        → A2, B1, B2
+erba                           → A2, B1, B2
+errore                         → A2, B1, B2
+esame                          → A2, B1, B2
+esempio                        → A2, B1, B2
+esercizio                      → A1, A2, B1, B2
+essere                         → A1, A2, B1, B2
+est                            → A2, B1, B2
+estate                         → A1, A2, B1, B2
+estero                         → A1, A2, B1, B2
+etto                           → A2, B1, B2
+età                            → A2, B1, B2
+euro                           → A1, A2, B1, B2
+fabbrica                       → A1, A2, B1, B2
+faccia                         → A2, B1, B2
+facile                         → A1, A2, B1, B2
+facoltà                        → A2, B1, B2
+falso                          → A1, A2, B1, B2
+fame                           → A1, A2, B1, B2
+famiglia                       → A1, A2, B1, B2
+fare                           → A1, A2, B1, B2
+farmacia                       → A1, A2, B1, B2
+fattoria                       → A2, B1, B2
+favore                         → A1, A2, B1, B2
+fax                            → A1, A2, B1, B2
+febbraio                       → A1, A2, B1, B2
+febbre                         → A2, B1, B2
+felice                         → A1, A2, B1, B2
+femmina                        → A1, A2, B1, B2
+femminile                      → A2, B1, B2
+fermata                        → A1, A2, B1, B2
+fermo                          → A2, B1, B2
+ferro                          → A2, B1, B2
+festa                          → A1, A2, B1, B2
+fetta                          → A2, B1, B2
+fiammifero                     → A2, B1, B2
+fidanzato                      → A2, B1, B2
+figlio                         → A1, A2, B1, B2
+film                           → A1, A2, B1, B2
+fine                           → A2, B1, B2
+finestra                       → A1, A2, B1, B2
+finire                         → A1, A2, B1, B2
+fino                           → A2, B1, B2
+fiore                          → A1, A2, B1, B2
+firma                          → A2, B1, B2
+firmare                        → A2, B1, B2
+fiume                          → A2, B1, B2
+foglio                         → A2, B1, B2
+forchetta                      → A1, A2, B1, B2
+formaggio                      → A2, B1, B2
+fornello                       → A2, B1, B2
+forno                          → A2, B1, B2
+forse                          → A2, B1, B2
+forte                          → A2, B1, B2
+fortuna                        → A2, B1, B2
+fotografia                     → A1, A2, B1, B2
+fra                            → A2, B1, B2
+francobollo                    → A1, A2, B1, B2
+frase                          → A2, B1, B2
+fratello                       → A1, A2, B1, B2
+freddo                         → A1, A2, B1, B2
+freezer                        → A2, B1, B2
+frequentare                    → A2, B1, B2
+fresco                         → A2, B1, B2
+frigorifero                    → A2, B1, B2
+fronte                         → A2, B1, B2
+frutta                         → A1, A2, B1, B2
+fulmine                        → A2, B1, B2
+fumare                         → A1, A2, B1, B2
+fuoco                          → A2, B1, B2
+fuori                          → A1, A2, B1, B2
+gamba                          → A2, B1, B2
+garage                         → A2, B1, B2
+gas                            → A2, B1, B2
+gatto                          → A1, A2, B1, B2
+gelato                         → A2, B1, B2
+genero                         → A2, B1, B2
+genitore                       → A2, B1, B2
+gennaio                        → A1, A2, B1, B2
+gentile                        → A1, A2, B1, B2
+geografia                      → A2, B1, B2
+ghiaccio                       → A2, B1, B2
+giacca                         → A1, A2, B1, B2
+giallo                         → A1, A2, B1, B2
+giardino                       → A1, A2, B1, B2
+ginnastica                     → A2, B1, B2
+giocare                        → A1, A2, B1, B2
+giocattolo                     → A2, B1, B2
+gioco                          → A2, B1, B2
+giornale                       → A1, A2, B1, B2
+giornalista                    → A2, B1, B2
+giornata                       → A1, A2, B1, B2
+giorno                         → A1, A2, B1, B2
+giovane                        → A1, A2, B1, B2
+giovedì                        → A1, A2, B1, B2
+girare                         → A2, B1, B2
+giro                           → A2, B1, B2
+gita                           → A2, B1, B2
+giugno                         → A2, B1, B2
+giusto                         → A2, B1, B2
+già                            → A2, B1, B2
+giù                            → A1, A2, B1, B2
+gli                            → A1, A2, B1, B2
+gonna                          → A1, A2, B1, B2
+grado                          → A2, B1, B2
+grande                         → A1, A2, B1, B2
+grasso                         → A2, B1, B2
+gratis                         → A2, B1, B2
+grazie                         → A1, A2, B1, B2
+grigio                         → A2, B1, B2
+guanto                         → A2, B1, B2
+guardare                       → A1, A2, B1, B2
+guida                          → A2, B1, B2
+guidare                        → A2, B1, B2
+hobby                          → A1, A2, B1, B2
+hotel                          → A1, A2, B1, B2
+i                              → A1, A2, B1, B2
+idea                           → A2, B1, B2
+identità                       → A2, B1, B2
+ieri                           → A1, A2, B1, B2
+il                             → A1, A2, B1, B2
+imparare                       → A1, A2, B1, B2
+impermeabile                   → A2, B1, B2
+impiegato                      → A2, B1, B2
+importante                     → A1, A2, B1, B2
+impossibile                    → A2, B1, B2
+in                             → A1, A2, B1, B2
+incontrare/si                  → A2, B1, B2
+indietro                       → A1, A2, B1, B2
+indirizzo                      → A1, A2, B1, B2
+indossare                      → A2, B1, B2
+industria                      → A1, A2, B1, B2
+infermiere                     → A2, B1, B2
+informazione                   → A1, A2, B1, B2
+ingegnere                      → A2, B1, B2
+iniziare                       → A2, B1, B2
+inizio                         → A2, B1, B2
+insalata                       → A2, B1, B2
+insegnante                     → A1, A2, B1, B2
+insegnare                      → A1, A2, B1, B2
+insieme                        → A2, B1, B2
+intelligente                   → A1, A2, B1, B2
+interessante                   → A1, A2, B1, B2
+internazionale                 → A1, A2, B1, B2
+internet                       → A1, A2, B1, B2
+intorno                        → A2, B1, B2
+inutile                        → A2, B1, B2
+inverno                        → A1, A2, B1, B2
+invitare                       → A2, B1, B2
+io                             → A1, A2, B1, B2
+isola                          → A2, B1, B2
+italiano                       → A1, A2, B1, B2
+la                             → A1, A2, B1, B2
+lago                           → A1, A2, B1, B2
+lampada                        → A2, B1, B2
+lana                           → A2, B1, B2
+largo                          → A1, A2, B1, B2
+lasciare                       → A2, B1, B2
+latte                          → A1, A2, B1, B2
+lavagna                        → A2, B1, B2
+lavanderia                     → A2, B1, B2
+lavandino                      → A2, B1, B2
+lavastoviglie                  → A2, B1, B2
+lavatrice                      → A2, B1, B2
+lavorare                       → A1, A2, B1, B2
+lavoro                         → A1, A2, B1, B2
+le                             → A1, A2, B1, B2
+leggere                        → A1, A2, B1, B2
+leggero                        → A2, B1, B2
+legno                          → A2, B1, B2
+lei                            → A1, A2, B1, B2
+lento                          → A2, B1, B2
+lenzuolo                       → A2, B1, B2
+lettera                        → A1, A2, B1, B2
+letto                          → A1, A2, B1, B2
+lezione                        → A1, A2, B1, B2
+li                             → A2, B1, B2
+libero                         → A2, B1, B2
+libreria                       → A2, B1, B2
+libro                          → A1, A2, B1, B2
+lingua                         → A1, A2, B1, B2
+liscio                         → A2, B1, B2
+litro                          → A2, B1, B2
+livello                        → A2, B1, B2
+lo                             → A1, A2, B1, B2
+lontano                        → A1, A2, B1, B2
+loro                           → A1, A2, B1, B2
+luce                           → A2, B1, B2
+luglio                         → A1, A2, B1, B2
+lui                            → A1, A2, B1, B2
+luna                           → A2, B1, B2
+lunedì                         → A1, A2, B1, B2
+lungo                          → A1, A2, B1, B2
+luogo                          → A2, B1, B2
+là                             → A1, A2, B1, B2
+lì                             → A1, A2, B1, B2
+ma                             → A2, B1, B2
+macchina                       → A1, A2, B1, B2
+madre                          → A1, A2, B1, B2
+maggio                         → A1, A2, B1, B2
+maglietta                      → A1, A2, B1, B2
+maglione                       → A1, A2, B1, B2
+magro                          → A1, A2, B1, B2
+mai                            → A1, A2, B1, B2
+maiale                         → A2, B1, B2
+malato                         → A1, A2, B1, B2
+male                           → A1, A2, B1, B2
+mamma                          → A1, A2, B1, B2
+mancia                         → A2, B1, B2
+mangiare                       → A1, A2, B1, B2
+manica                         → A2, B1, B2
+mano                           → A2, B1, B2
+mare                           → A1, A2, B1, B2
+marito                         → A1, A2, B1, B2
+marrone                        → A2, B1, B2
+martedì                        → A1, A2, B1, B2
+marzo                          → A1, A2, B1, B2
+maschile                       → A2, B1, B2
+maschio                        → A1, A2, B1, B2
+matematica                     → A2, B1, B2
+materia                        → A2, B1, B2
+matita                         → A1, A2, B1, B2
+matrimonio                     → A2, B1, B2
+mattina                        → A1, A2, B1, B2
+me                             → A1, A2, B1, B2
+meccanico                      → A2, B1, B2
+medicina                       → A1, A2, B1, B2
+medico                         → A2, B1, B2
+meglio                         → A2, B1, B2
+mela                           → A2, B1, B2
+meno                           → A1, A2, B1, B2
+mensa                          → A2, B1, B2
+menù                           → A1, A2, B1, B2
+mercato                        → A1, A2, B1, B2
+mercoledì                      → A1, A2, B1, B2
+merenda                        → A2, B1, B2
+mese                           → A1, A2, B1, B2
+messaggio                      → A2, B1, B2
+metro                          → A2, A2, B1, B1, B2, B2
+mettere/si                     → A2, B1, B2
+metà                           → A1, A2, B1, B2
+mezzanotte                     → A1, A2, B1, B2
+mezzo                          → A1, A2, B1, B2
+mezzogiorno                    → A1, A2, B1, B2
+mi                             → A1, A2, B1, B2
+minestra                       → A2, B1, B2
+minuto                         → A1, A2, B1, B2
+mio                            → A1, A2, B1, B2
+mobile                         → A2, B1, B2
+moda                           → A2, B1, B2
+moderno                        → A2, B1, B2
+moglie                         → A1, A2, B1, B2
+molto                          → A1, A2, B1, B2
+momento                        → A1, A2, B1, B2
+mondo                          → A2, B1, B2
+montagna                       → A1, A2, B1, B2
+monumento                      → A2, B1, B2
+morire                         → A1, A2, B1, B2
+mostra                         → A2, B1, B2
+moto                           → A1, A2, B1, B2
+motorino                       → A2, B1, B2
+mucca                          → A2, B1, B2
+muovere/si                     → A2, B1, B2
+muro                           → A2, B1, B2
+museo                          → A1, A2, B1, B2
+musica                         → A1, A2, B1, B2
+nascere                        → A1, A2, B1, B2
+naso                           → A2, B1, B2
+natale                         → A1, A2, B1, B2
+natura                         → A2, B1, B2
+nave                           → A2, B1, B2
+nazionalità                    → A1, A2, B1, B2
+nazione                        → A1, A2, B1, B2
+nebbia                         → A2, B1, B2
+negozio                        → A1, A2, B1, B2
+nero                           → A1, A2, B1, B2
+nervoso                        → A2, B1, B2
+nessuno                        → A1, A2, B1, B2
+neve                           → A2, B1, B2
+nevicare                       → A2, B1, B2
+niente                         → A1, A2, B1, B2
+nipote                         → A2, B1, B2
+no                             → A1, A2, B1, B2
+noi                            → A1, A2, B1, B2
+noioso                         → A2, B1, B2
+noleggiare                     → A2, B1, B2
+nome                           → A1, A2, B1, B2
+non                            → A1, A2, B1, B2
+nonno                          → A1, A2, B1, B2
+nord                           → A2, B1, B2
+normale                        → A2, B1, B2
+nostalgia                      → A2, B1, B2
+nostro                         → A2, B1, B2
+notte                          → A1, A2, B1, B2
+novembre                       → A1, A2, B1, B2
+numero                         → A1, A2, B1, B2
+nuora                          → A2, B1, B2
+nuotare                        → A2, B1, B2
+nuoto                          → A2, B1, B2
+nuovo                          → A1, A2, B1, B2
+nuvola                         → A2, B1, B2
+nuvoloso                       → A2, B1, B2
+o                              → A1, A2, B1, B2
+occhiale                       → A1, A2, B1, B2
+occhio                         → A2, B1, B2
+odore                          → A2, B1, B2
+offrire                        → A2, B1, B2
+oggetto                        → A2, B1, B2
+oggi                           → A1, A2, B1, B2
+ogni                           → A2, B1, B2
+ok                             → A2, B1, B2
+olio                           → A1, A2, B1, B2
+ombrello                       → A1, A2, B1, B2
+operaio                        → A2, B1, B2
+ora                            → A1, A2, B1, B2
+orario                         → A2, B1, B2
+ordinare                       → A2, B1, B2
+orecchio                       → A2, B1, B2
+organizzare                    → A2, B1, B2
+oro                            → A2, B1, B2
+orologio                       → A1, A2, B1, B2
+ospedale                       → A1, A2, B1, B2
+ospite                         → A2, B1, B2
+ottobre                        → A1, A2, B1, B2
+ovest                          → A2, B1, B2
+pacco                          → A1, A2, B1, B2
+padella                        → A2, B1, B2
+padre                          → A1, A2, B1, B2
+padrone                        → A2, B1, B2
+pagare                         → A1, A2, B1, B2
+pagina                         → A2, B1, B2
+paio                           → A2, B1, B2
+palazzo                        → A2, B1, B2
+palestra                       → A2, B1, B2
+palla                          → A2, B1, B2
+pallacanestro                  → A2, B1, B2
+pane                           → A1, A2, B1, B2
+panino                         → A2, B1, B2
+pantalone                      → A1, A2, B1, B2
+papà                           → A1, A2, B1, B2
+parcheggio                     → A1, A2, B1, B2
+parco                          → A1, A2, B1, B2
+parente                        → A2, B1, B2
+parete                         → A2, B1, B2
+parlare                        → A1, A2, B1, B2
+parola                         → A1, A2, B1, B2
+parte                          → A2, B1, B2
+partenza                       → A2, B1, B2
+partire                        → A1, A2, B1, B2
+partita                        → A2, B1, B2
+pasqua                         → A1, A2, B1, B2
+passaporto                     → A1, A2, B1, B2
+passare                        → A2, B1, B2
+passato                        → A2, B1, B2
+passeggiare                    → A2, B1, B2
+passeggiata                    → A2, B1, B2
+pasta                          → A1, A2, B1, B2
+pasto                          → A2, B1, B2
+patata                         → A2, B1, B2
+patente                        → A2, B1, B2
+paura                          → A2, B1, B2
+pausa                          → A2, B1, B2
+pavimento                      → A2, B1, B2
+peccato                        → A2, B1, B2
+pelle                          → A2, B1, B2
+penna                          → A1, A2, B1, B2
+pensare                        → A2, B1, B2
+pensione                       → A2, B1, B2
+pentola                        → A2, B1, B2
+pepe                           → A1, A2, B1, B2
+per                            → A1, A2, B1, B2
+pera                           → A2, B1, B2
+perché                         → A1, A2, B1, B2
+perdere                        → A2, B1, B2
+periferia                      → A2, B1, B2
+persona                        → A2, B1, B2
+pesante                        → A2, B1, B2
+pescare                        → A2, B1, B2
+pesce                          → A1, A2, B1, B2
+pettine                        → A2, B1, B2
+pezzo                          → A2, B1, B2
+piacere                        → A1, A2, B1, B2
+piangere                       → A2, B1, B2
+piano                          → A1, A2, B1, B2
+pianta                         → A1, A2, B1, B2
+piatto                         → A1, A2, B1, B2
+piazza                         → A1, A2, B1, B2
+piccolo                        → A1, A2, B1, B2
+piede                          → A2, B1, B2
+pieno                          → A2, B1, B2
+pigro                          → A2, B1, B2
+pioggia                        → A2, B1, B2
+piovere                        → A1, A2, B1, B2
+pipa                           → A2, B1, B2
+piscina                        → A2, B1, B2
+pisello                        → A2, B1, B2
+pizza                          → A1, A2, B1, B2
+pizzeria                       → A1, A2, B1, B2
+più                            → A1, A2, B1, B2
+plurale                        → A2, B1, B2
+poco                           → A1, A2, B1, B2
+poi                            → A2, B1, B2
+polizia                        → A1, A2, B1, B2
+pollo                          → A2, B1, B2
+poltrona                       → A2, B1, B2
+pomeriggio                     → A1, A2, B1, B2
+pomodoro                       → A1, A2, B1, B2
+ponte                          → A2, B1, B2
+porta                          → A1, A2, B1, B2
+portare                        → A1, A2, B1, B2
+posacenere                     → A2, B1, B2
+posata                         → A2, B1, B2
+possibile                      → A2, B1, B2
+posta                          → A1, A2, B1, B2
+posto                          → A1, A2, B1, B2
+potere                         → A1, A2, B1, B2
+povero                         → A2, B1, B2
+pranzare                       → A1, A2, B1, B2
+pranzo                         → A1, A2, B1, B2
+prato                          → A2, B1, B2
+preferire                      → A2, B1, B2
+prego                          → A1, A2, B1, B2
+prendere                       → A1, A2, B1, B2
+prenotare                      → A1, A2, B1, B2
+preoccuparsi                   → A2, B1, B2
+preparare                      → A2, B1, B2
+presto                         → A1, A2, B1, B2
+prezzo                         → A1, A2, B1, B2
+prima                          → A2, B1, B2
+primavera                      → A1, A2, B1, B2
+primo                          → A2, B1, B2
+probabilmente                  → A2, B1, B2
+problema                       → A2, B1, B2
+professore/ssa                 → A1, A2, B1, B2
+profumo                        → A2, B1, B2
+programma                      → A2, B1, B2
+pronto                         → A2, B1, B2
+prosciutto                     → A2, B1, B2
+prossimo                       → A2, B1, B2
+provare                        → A2, B1, B2
+pulire                         → A1, A2, B1, B2
+punto                          → A2, B1, B2
+qua                            → A1, A2, B1, B2
+quaderno                       → A1, A2, B1, B2
+quadro                         → A1, A2, B1, B2
+qualche                        → A2, B1, B2
+qualcosa                       → A2, B1, B2
+qualcuno                       → A2, B1, B2
+quale                          → A1, A2, B1, B2
+quando                         → A1, A2, B1, B2
+quanto                         → A1, A2, B1, B2
+quarto                         → A1, A2, B1, B2
+quasi                          → A1, A2, B1, B2
+quello                         → A1, A2, B1, B2
+questo                         → A1, A2, B1, B2
+qui                            → A1, A2, B1, B2
+radio                          → A1, A2, B1, B2
+raffreddore                    → A2, B1, B2
+ragazzo                        → A1, A2, B1, B2
+ragione                        → A2, B1, B2
+regalare                       → A2, B1, B2
+regalo                         → A2, B1, B2
+restare                        → A2, B1, B2
+resto                          → A2, B1, B2
+riccio                         → A2, B1, B2
+ricco                          → A1, A2, B1, B2
+ricevere                       → A2, B1, B2
+ricordare/si                   → A2, B1, B2
+rilassarsi                     → A2, B1, B2
+rimanere                       → A2, B1, B2
+ripetere                       → A1, A2, B1, B2
+riscaldamento                  → A2, B1, B2
+riso                           → A1, A2, B1, B2
+rispondere                     → A1, A2, B1, B2
+risposta                       → A1, A2, B1, B2
+ristorante                     → A1, A2, B1, B2
+ritardo                        → A2, B1, B2
+ritornare                      → A1, A2, B1, B2
+ritrovare                      → A2, B1, B2
+rosa                           → A2, B1, B2
+rosso                          → A1, A2, B1, B2
+roulotte                       → A2, B1, B2
+rumore                         → A2, B1, B2
+sabato                         → A1, A2, B1, B2
+sala                           → A2, B1, B2
+salame                         → A2, B1, B2
+salato                         → A2, B1, B2
+saldo                          → A2, B1, B2
+sale                           → A1, A2, B1, B2
+salotto                        → A2, B1, B2
+salsa                          → A2, B1, B2
+salute                         → A1, A2, B1, B2
+saluto                         → A1, A2, B1, B2
+salve                          → A2, B1, B2
+sandalo                        → A2, B1, B2
+sapere                         → A1, A2, B1, B2
+sapone                         → A2, B1, B2
+sbaglio                        → A2, B1, B2
+scala                          → A2, B1, B2
+scarpa                         → A1, A2, B1, B2
+scegliere                      → A2, B1, B2
+sci                            → A2, B1, B2
+sciare                         → A2, B1, B2
+scienza                        → A2, B1, B2
+scomodo                        → A2, B1, B2
+scontrino                      → A2, B1, B2
+scorso                         → A2, B1, B2
+scrivania                      → A2, B1, B2
+scrivere                       → A1, A2, B1, B2
+scuola                         → A1, A2, B1, B2
+scuro                          → A2, B1, B2
+scusare                        → A1, A2, B1, B2
+se                             → A2, B1, B2
+secondo                        → A1, A2, B1, B2
+sedersi                        → A2, B1, B2
+sedia                          → A1, A2, B1, B2
+segretario                     → A2, B1, B2
+segreteria                     → A1, A2, B1, B2
+seguire                        → A2, B1, B2
+semaforo                       → A2, B1, B2
+sembrare                       → A2, B1, B2
+sempre                         → A1, A2, B1, B2
+sentire/si                     → A2, B1
+senza                          → A1, A2, B1, B2
+separare/si                    → A2, B1, B2
+sera                           → A1, A2, B1, B2
+serio                          → A2, B1, B2
+seta                           → A2, B1, B2
+sete                           → A1, A2, B1, B2
+settembre                      → A1, A2, B1, B2
+settimana                      → A1, A2, B1, B2
+shampoo                        → A2, B1, B2
+si                             → A1, A2, B1, B2
+sicuro                         → A2, B1, B2
+sigaretta                      → A1, A2, B1, B2
+sigaro                         → A2, B1, B2
+significare                    → A1, A2, B1, B2
+signore                        → A1, A2, B1, B2
+silenzio                       → A2, B1, B2
+simile                         → A2, B1, B2
+simpatico                      → A1, A2, B1, B2
+singolare                      → A2, B1, B2
+singolo                        → A1, A2, B1, B2
+sinistra                       → A1, A2, B1, B2
+soccorso                       → A2, B1, B2
+soffitto                       → A2, B1, B2
+soggiorno                      → A1, A2, B1, B2
+soldo                          → A1, A2, B1, B2
+sole                           → A1, A2, B1, B2
+solito                         → A2, B1, B2
+solo                           → A2, B1, B2
+sonno                          → A1, A2, B1, B2
+sopra                          → A1, A2, B1, B2
+sorella                        → A1, A2, B1, B2
+sorpresa                       → A2, B1, B2
+sorridere                      → A2, B1, B2
+sotto                          → A1, A2, B1, B2
+spaghetto                      → A1, A2, B1, B2
+spazzolino                     → A2, B1, B2
+specchio                       → A2, B1, B2
+spedire                        → A1, A2, B1, B2
+spegnere                       → A2, B1, B2
+spendere                       → A2, B1, B2
+sperare                        → A2, B1, B2
+spesa                          → A1, A2, B1, B2
+spesso                         → A1, A2, B1, B2
+spettacolo                     → A2, B1, B2
+spiaggia                       → A1, A2, B1, B2
+spiegare                       → A2, B1
+spingere                       → A2, B1, B2
+spogliarsi                     → A2, B1, B2
+sporcare                       → A2, B1, B2
+sporco                         → A1, A2, B1, B2
+sport                          → A1, A2, B1, B2
+sportivo                       → A2, B1, B2
+sposare/si                     → A2, B1, B2
+spuntino                       → A2, B1, B2
+squadra                        → A2, B1, B2
+stadio                         → A2, B1, B2
+stamattina                     → A2, B1, B2
+stanco                         → A1, A2, B1, B2
+stanotte                       → A2, B1, B2
+stanza                         → A2, B1, B2
+stare                          → A1, A2, B1, B2
+stasera                        → A2, B1, B2
+stazione                       → A1, A2, B1, B2
+stella                         → A2, B1, B2
+stesso                         → A2, B1, B2
+stirare                        → A2, B1, B2
+stiro                          → A2, B1, B2
+stivale                        → A2, B1, B2
+stop                           → A1, A2, B1, B2
+storia                         → A2, B1, B2
+strada                         → A1, A2, B1, B2
+straniero                      → A1, A2, B1, B2
+strano                         → A2, B1, B2
+stretto                        → A1, A2, B1, B2
+studente/ssa                   → A1, A2, B1, B2
+studiare                       → A1, A2, B1, B2
+studio                         → A2, B1, B2
+su                             → A1, A2, B1, B2
+subito                         → A2, B1, B2
+succedere                      → A2, B1, B2
+sud                            → A2, B1, B2
+suo                            → A2, B1, B2
+suocero                        → A2, B1, B2
+suonare                        → A1, A2, B1, B2
+supermercato                   → A1, A2, B1, B2
+svegliarsi                     → A1, A2, B1
+sì                             → A1, A2, B1, B2
+tabaccaio                      → A2, B1, B2
+tagliare                       → A2, B1, B2
+tanto                          → A1, A2, B1, B2
+tappeto                        → A2, B1, B2
+tardi                          → A1, A2, B1, B2
+tasca                          → A2, B1, B2
+tavolo                         → A1, A2, B1, B2
+taxi                           → A1, A2, B1, B2
+tazza                          → A2, B1, B2
+te                             → A1, A2, B1, B2
+teatro                         → A1, A2, B1, B2
+tecnico                        → A2, B1, B2
+telefonare                     → A1, A2, B1, B2
+telefonata                     → A2, B1, B2
+telefono                       → A1, A2, B1, B2
+televisione                    → A1, A2, B1, B2
+temperatura                    → A2, B1, B2
+tempo                          → A2, B1, B2
+temporale                      → A2, B1, B2
+tenda                          → A2, B1, B2
+tenere                         → A2, B1, B2
+tennis                         → A2, B1, B2
+terra                          → A2, B1, B2
+terrazza                       → A2, B1, B2
+testa                          → A2, B1, B2
+tetto                          → A2, B1, B2
+ti                             → A1, A2, B1, B2
+tiepido                        → A2, B1, B2
+timido                         → A2, B1, B2
+tirare                         → A2, B1, B2
+toccare                        → A2, B1, B2
+togliere                       → A2, B1, B2
+tornare                        → A1, A2, B1, B2
+torta                          → A2, B1, B2
+tortellino                     → A2, B1, B2
+tosse                          → A2, B1, B2
+tovaglia                       → A2, B1, B2
+tovagliolo                     → A2, B1, B2
+tra                            → A2, B1, B2
+traffico                       → A2, B1, B2
+tranquillo                     → A2, B1, B2
+trascorrere                    → A2, B1, B2
+treno                          → A1, A2, B1, B2
+triste                         → A1, A2, B1, B2
+troppo                         → A1, A2, B1, B2
+tu                             → A1, A2, B1, B2
+tuo                            → A1, A2, B1, B2
+tuono                          → A2, B1, B2
+turista                        → A1, A2, B1, B2
+tutto                          → A1, A2, B1, B2
+tv                             → A1, A2, B1, B2
+tè                             → A1, A2, B1, B2
+uccello                        → A2, B1, B2
+ufficio                        → A1, A2, B1, B2
+uguale                         → A2, B1, B2
+ultimo                         → A2, B1, B2
+un/o                           → A1, A2, B1, B2
+università                     → A1, A2, B1, B2
+uomo                           → A1, A2, B1, B2
+uovo                           → A1, A2, B1, B2
+usare                          → A2, B1, B2
+uscire                         → A1, A2, B1, B2
+uscita                         → A2, B1, B2
+utile                          → A2, B1, B2
+vacanza                        → A1, A2, B1, B2
+valigia                        → A1, A2, B1, B2
+vasca                          → A2, B1, B2
+vaso                           → A2, B1, B2
+vecchio                        → A1, A2, B1, B2
+vedere/si                      → A2, B1, B2
+vedovo                         → A2, B1, B2
+veloce                         → A2, B1, B2
+vendere                        → A2, B1, B2
+venerdì                        → A1, A2, B1, B2
+venire                         → A1, A2, B1, B2
+vento                          → A2, B1, B2
+veramente                      → A2, B1, B2
+verbo                          → A2, B1, B2
+verde                          → A1, A2, B1, B2
+verdura                        → A1, A2, B1, B2
+vero                           → A1, A2, B1, B2
+vestirsi                       → A2, B1, B2
+vestito                        → A1, A2, B1, B2
+vetrina                        → A2, B1, B2
+vetro                          → A2, B1, B2
+vi                             → A2, B1, B2
+via                            → A1, A2, B1, B2
+viaggiare                      → A1, A2, B1, B2
+viaggio                        → A1, A2, B1, B2
+vicino                         → A1, A2, B1, B2
+vino                           → A1, A2, B1, B2
+viola                          → A2, B1, B2
+virgola                        → A2, B1, B2
+visitare                       → A1, A2, B1, B2
+visto                          → A1, A2, B1, B2
+vivere                         → A1, A2, B1, B2
+voce                           → A2, B1, B2
+voglia                         → A2, B1, B2
+voi                            → A1, A2, B1, B2
+volare                         → A2, B1, B2
+volere                         → A1, A2, B1, B2
+volta                          → A2, B1, B2
+vostro                         → A2, B1, B2
+vuoto                          → A2, B1, B2
+water                          → A2, B1, B2
+zaino                          → A1, A2, B1, B2
+zio                            → A2, B1, B2
+zucchero                       → A1, A2, B1, B2
+
+
+B2 DUPLICATES (should be removed from B2):
+--------------------------------------------------------------------------------
+a                              → A1, A2, B1, B2
+abbastanza                     → A2, B1, B2
+abbonamento                    → A2, B1, B2
+abbracciare                    → A2, B1, B2
+abbraccio                      → A2, B1, B2
+abitante                       → B1, B2
+abitare                        → A1, A2, B1, B2
+accanto                        → B1, B2
+accendere                      → A2, B1, B2
+accendino                      → A2, B1, B2
+accento                        → B1, B2
+accomodarsi                    → B1, B2
+accompagnare                   → A2, B1, B2
+acconto                        → B1, B2
+accordo                        → A2, B1, B2
+aceto                          → A1, A2, B1, B2
+acido                          → B1, B2
+acqua                          → A1, A2, B1, B2
+acquistare                     → A2, B1, B2
+addio                          → A2, B1, B2
+addormentarsi                  → A2, B1, B2
+adesso                         → A1, A2, B1, B2
+adulto                         → A2, B1, B2
+aereo                          → A1, A2, B1, B2
+aeroporto                      → A1, A2, B1, B2
+affetto                        → A1, A2, B1, B2
+affettuoso                     → B1, B2
+affittare                      → A2, B1, B2
+affitto                        → A2, B1, B2
+agenzia                        → A1, A2, B1, B2
+aggiungere                     → B1, B2
+aggiustare                     → B1, B2
+aglio                          → B1, B2
+agosto                         → A1, A2, B1, B2
+aiutare                        → A2, B1, B2
+aiuto                          → A1, A2, B1, B2
+alba                           → B1, B2
+albergo                        → A1, A2, B1, B2
+albero                         → A1, A2, B1, B2
+alcuno                         → A2, B1, B2
+alfabeto                       → A1, A2, B1, B2
+alimentari                     → A2, B1, B2
+allegro                        → A2, B1, B2
+allergico                      → B1, B2
+alloggio                       → B1, B2
+allora                         → A2, B1, B2
+almeno                         → B1, B2
+alto                           → A1, A2, B1, B2
+altro                          → A2, B1, B2
+alzarsi                        → A2, B1, B2
+amare                          → A1, A2, B1, B2
+amaro                          → A2, B1, B2
+ambasciata                     → A1, A2, B1, B2
+ambulanza                      → B1, B2
+ambulatorio                    → B1, B2
+amicizia                       → B1, B2
+amico                          → A1, A2, B1, B2
+ammalarsi                      → B1, B2
+ammobiliato                    → B1, B2
+amore                          → A1, A2, B1, B2
+analisi                        → B1, B2
+anche                          → A1, A2, B1, B2
+ancora                         → A2, B1, B2
+andare                         → A1, A2, B1, B2
+anello                         → A2, B1, B2
+angolo                         → B1, B2
+animale                        → A1, A2, B1, B2
+anno                           → A1, A2, B1, B2
+annoiarsi                      → A2, B1, B2
+annuncio                       → B1, B2
+ansia                          → B1, B2
+ansioso                        → B1, B2
+anticipo                       → A2, B1, B2
+antico                         → A2, B1, B2
+antipasto                      → A2, B1, B2
+antipatico                     → A2, B1, B2
+anziano                        → A2, B1, B2
+aperitivo                      → A2, B1, B2
+appartamento                   → A1, A2, B1, B2
+appassionato                   → B1, B2
+appena                         → A2, B1, B2
+appetito                       → A2, B1, B2
+appuntamento                   → A1, A2, B1, B2
+appunto                        → B1, B2
+aprile                         → A1, A2, B1, B2
+aprire                         → A1, A2, B1, B2
+arancia                        → A2, B1, B2
+arancione                      → A2, B1, B2
+argento                        → A2, B1, B2
+aria                           → A2, B1, B2
+armadio                        → A2, B1, B2
+arrabbiarsi                    → A2, B1, B2
+arrivare                       → A1, A2, B1, B2
+arrivederci                    → A1, A2, B1, B2
+arrivo                         → A2, B1, B2
+arrosto                        → A2, B1, B2
+arte                           → A1, A2, B1, B2
+articolo                       → A2, B1, B2
+ascensore                      → A2, B1, B2
+asciugamano                    → A2, B1, B2
+ascoltare                      → A1, A2, B1, B2
+asilo                          → B1, B2
+aspro                          → B1, B2
+assegno                        → B1, B2
+assolutamente                  → B1, B2
+attendere                      → B1, B2
+attentamente                   → B1, B2
+attento                        → A1, A2, B1, B2
+attenzione                     → A1, A2, B1, B2
+attesa                         → B1, B2
+attore/trice                   → B1, B2
+attraversare                   → A2, B1, B2
+augurio                        → A1, A2, B1, B2
+aula                           → A2, B1, B2
+auto                           → A2, B1, B2
+autobus                        → A1, A2, B1, B2
+autostrada                     → A2, B1, B2
+autunno                        → A1, A2, B1, B2
+avanti                         → A1, A2, B1, B2
+avaro                          → B1, B2
+avere                          → A1, A2, B1, B2
+avverbio                       → B1, B2
+azzurro                        → A2, B1, B2
+baciare                        → A2, B1, B2
+bacio                          → A1, A2, B1, B2
+baffo                          → A2, B1, B2
+bagaglio                       → B1, B2
+bagnare/si                     → B1, B2
+bagno                          → A1, A2, B1, B2
+balcone                        → A2, B1, B2
+ballare                        → A1, A2, B1, B2
+bambino                        → A1, A2, B1, B2
+bambola                        → A2, B1, B2
+banana                         → A2, B1, B2
+banca                          → A1, A2, B1, B2
+banco                          → A2, B1, B2
+bancomat                       → B1, B2
+banconota                      → B1, B2
+bar                            → A1, A2, B1, B2
+barba                          → A2, B1, B2
+barca                          → A2, B1, B2
+basso                          → A2, B1, B2
+basta                          → A2, B1, B2
+beh                            → B1, B2
+bello                          → A1, A2, B1, B2
+bene                           → A1, A2, B1, B2
+benvenuto                      → A2, B1, B2
+benzina                        → A2, B1, B2
+bere                           → A1, A2, B1, B2
+bianco                         → A1, A2, B1, B2
+bibita                         → A2, B1, B2
+biblioteca                     → A2, B1, B2
+bicchiere                      → A1, A2, B1, B2
+bicicletta                     → A2, B1, B2
+biglietteria                   → A2, B1, B2
+biglietto                      → A1, A2, B1, B2
+bilancia                       → B1, B2
+bilocale                       → B1, B2
+binario                        → B1, B2
+biondo                         → A1, A2, B1, B2
+birra                          → A1, A2, B1, B2
+bisognare                      → B1, B2
+bisogno                        → A2, B1, B2
+bistecca                       → A2, B1, B2
+blu                            → A1, A2, B1, B2
+bocca                          → A2, B1, B2
+bocciare                       → B1, B2
+bollente                       → B1, B2
+bollire                        → B1, B2
+borsa                          → A1, A2, B1, B2
+bosco                          → A2, B1, B2
+bottiglia                      → A1, A2, B1, B2
+braccio                        → A2, B1, B2
+bravo                          → A1, A2, B2
+breve                          → B1, B2
+bruciarsi                      → B1, B2
+brutto                         → A2, B1, B2
+buio                           → A2, B1, B2
+buonanotte                     → A1, A2, B1, B2
+buonasera                      → A1, A2, B1, B2
+buongiorno                     → A1, A2, B1, B2
+buono                          → A1, A2, B1, B2
+burro                          → A2, B1, B2
+busta                          → A1, A2, B1, B2
+buttare                        → B1, B2
+cadere                         → B1, B2
+caffè                          → A1, A2, B1, B2
+calcio                         → A2, B1, B2
+caldo                          → A1, A2, B1, B2
+calma                          → B1, B2
+calmarsi                       → B1, B2
+calmo                          → A2, B1, B2
+calza                          → A1, A2, B1, B2
+cambiare                       → A1, A2, B1, B2
+camera                         → A1, A2, B1, B2
+cameriere                      → A1, A2, B1, B2
+camicia                        → A1, A2, B1, B2
+camion                         → B1, B2
+camminare                      → A2, B1, B2
+campagna                       → A1, A2, B1, B2
+campeggio                      → A2, B1, B2
+camper                         → A2, B1, B2
+campo                          → B1, B2
+canale                         → B1, B2
+cane                           → A1, A2, B1, B2
+canguro                        → B1, B2
+cantante                       → B1, B2
+cantare                        → A1, A2, B1, B2
+cantina                        → A2, B1, B2
+canzone                        → A1, A2, B1, B2
+capace                         → B1, B2
+capello                        → A1, A2, B1, B2
+capire                         → A1, A2, B1, B2
+capo                           → A2, B1, B2
+capodanno                      → B1, B2
+cappello                       → A2, B1, B2
+cappotto                       → A1, A2, B1, B2
+cappuccino                     → A1, A2, B1, B2
+caricare                       → B1, B2
+carne                          → A1, A2, B1, B2
+carnevale                      → B1, B2
+caro                           → A1, A2, B1, B2
+carota                         → A2, B1, B2
+carta                          → A1, A2, B1, B2
+cartolina                      → A1, A2, B1, B2
+cartone                        → B1, B2
+casa                           → A1, A2, B1, B2
+casalingo                      → A2, B1, B2
+cassa                          → A2, B1, B2
+cassettiera                    → B1, B2
+castano                        → A1, A2, B1, B2
+cattivo                        → A2, B1, B2
+causa                          → B1, B2
+cavallo                        → A2, B1, B2
+cd                             → A1, A2, B1, B2
+cellulare                      → A1, A2, B1, B2
+cena                           → A1, A2, B1, B2
+cenare                         → A1, A2, B1, B2
+centimetro                     → A2, B1, B2
+centro                         → A1, A2, B1, B2
+cercare                        → A1, A2, B1, B2
+cerotto                        → B1, B2
+certamente                     → B1, B2
+certo                          → A1, A2, B2
+cervello                       → B1, B2
+che                            → A1, A2, B1, B2
+check-in                       → A1, A2, B1, B2
+chi                            → A1, A2, B1, B2
+chiacchierare                  → B1, B2
+chiamare/si                    → A1, A2, B1, B2
+chiaro                         → A2, B1, B2
+chiave                         → A1, A2, B1, B2
+chiedere                       → A2, B1, B2
+chiesa                         → A1, A2, B1, B2
+chilo                          → A2, B1, B2
+chilometro                     → A2, B1, B2
+chiudere                       → A1, A2, B1, B2
+ci                             → A1, A2, B1, B2
+ciao                           → A1, A2, B1, B2
+cibo                           → A1, A2, B1, B2
+cielo                          → A2, B1, B2
+cimitero                       → B1, B2
+cin cin                        → A1, B1, B2
+cinema                         → A1, A2, B1, B2
+cioccolato                     → A2, B1, B2
+cioè                           → B1, B2
+cipolla                        → B1, B2
+circa                          → A2, B1, B2
+città                          → A1, A2, B1, B2
+classe                         → A1, A2, B1, B2
+classico                       → B1, B2
+cliccare                       → B1, B2
+cliente                        → B1, B2
+clima                          → B1, B2
+clinica                        → B1, B2
+cognato                        → A2, B1, B2
+cognome                        → A1, A2, B1, B2
+coincidenza                    → B1, B2
+colazione                      → A1, A2, B1, B2
+collana                        → A2, B1, B2
+collega                        → A2, B1, B2
+collegio                       → B1, B2
+collezionare                   → B1, B2
+collezione                     → B1, B2
+collina                        → A2, B1, B2
+colloquio                      → B1, B2
+colorare                       → A2, B1, B2
+colore                         → A1, A2, B1, B2
+colpa                          → B1, B2
+coltello                       → A1, A2, B1, B2
+come                           → A1, A2, B1, B2
+cominciare                     → A1, A2, B1, B2
+commedia                       → B1, B2
+commesso                       → A2, B1, B2
+comodino                       → A2, B1, B2
+comodo                         → A2, B1, B2
+compagnia                      → B1, B2
+compagno                       → A1, A2, B1, B2
+compilare                      → B1, B2
+compito                        → A2, B1, B2
+compleanno                     → A1, A2, B1, B2
+complemento                    → B1, B2
+completo                       → A2, B1, B2
+complicare                     → B1, B2
+complimento                    → A2, B1, B2
+comportarsi                    → B1, B2
+comprare                       → A1, A2, B1, B2
+computer                       → A1, A2, B1, B2
+comune                         → B1, B2
+comunicare                     → B1, B2
+comunicazione                  → B1, B2
+comunque                       → B1, B2
+con                            → A1, A2, B1, B2
+concerto                       → A2, B1, B2
+concorso                       → B1, B2
+condizionare                   → B1, B2
+condoglianza                   → B1, B2
+condominio                     → B1, B2
+confine                        → A2, B1, B2
+confuso                        → B1, B2
+congratulazione                → A2, B1, B2
+connettersi                    → B1, B2
+conoscenza                     → B1, B2
+conoscere                      → A2, B1, B2
+consegnare                     → B1, B2
+consigliare                    → B1, B2
+consiglio                      → B1, B2
+consolato                      → A1, A2, B1, B2
+contante                       → B1, B2
+contattare                     → B1, B2
+contemporaneo                  → B1, B2
+contento                       → A2, B1, B2
+continuare                     → A2, B1, B2
+conto                          → A1, A2, B1, B2
+contorno                       → A2, B1, B2
+conversazione                  → A2, B1, B2
+coperta                        → A2, B1, B2
+copia                          → B1, B2
+coppia                         → A2, B1, B2
+coraggio                       → B1, B2
+cordiale                       → B1, B2
+cordialmente                   → B1, B2
+corpo                          → A2, B1, B2
+correggere                     → A2, B1, B2
+corrente                       → B1, B2
+correre                        → A2, B1, B2
+corso                          → A1, A2, B1, B2
+corto                          → A1, A2, B1, B2
+cosa                           → A1, A2, B1, B2
+costare                        → A1, A2, B1, B2
+costo                          → A2, B1, B2
+costoso                        → B1, B2
+costruire                      → B1, B2
+costruzione                    → B1, B2
+così                           → A2, B1, B2
+cotone                         → A2, B1, B2
+credere                        → A2, B1, B2
+credito                        → A1, A2, B1, B2
+crema                          → A2, B1, B2
+crepare                        → B1, B2
+crociera                       → A2, B1, B2
+crudo                          → B1, B2
+cucchiaio                      → A1, A2, B1, B2
+cucina                         → A1, A2, B1, B2
+cucinare                       → A2, B1, B2
+cugino                         → A2, B1, B2
+cui                            → B1, B2
+cultura                        → A2, B1, B2
+cuocere                        → B1, B2
+cuore                          → B1, B2
+curioso                        → B1, B2
+curriculum vitae               → B1, B2
+cuscino                        → A2, B1, B2
+da                             → A2, B1, B2
+dappertutto                    → B1, B2
+dare                           → A1, A2, B1, B2
+data                           → A1, A2, B1, B2
+davanti                        → A1, A2, B1, B2
+davvero                        → B1, B2
+debole                         → A2, B1, B2
+decidere                       → B1, B2
+denaro                         → B1, B2
+dente                          → A2, B1, B2
+dentifricio                    → A2, B1, B2
+dentista                       → B1, B2
+dentro                         → A1, A2, B1, B2
+deprimere                      → B1, B2
+descrivere                     → B1, B2
+destra                         → A1, A2, B1, B2
+dettato                        → A2, B1, B2
+di                             → A1, A2, B1, B2
+dialetto                       → B1, B2
+dialogo                        → A2, B1, B2
+diario                         → B1, B2
+dicembre                       → A1, A2, B1, B2
+dieta                          → B1, B2
+dietro                         → A1, A2, B1, B2
+differente                     → B1, B2
+difficile                      → A1, A2, B1, B2
+dipendere                      → B1, B2
+dipingere                      → A2, B1, B2
+dipinto                        → A2, B1, B2
+diploma                        → B1, B2
+diplomarsi                     → B1, B2
+dire                           → A1, A2, B1, B2
+direttamente                   → B1, B2
+direttore/trice                → A2, B1, B2
+direzione                      → B1, B2
+discesa                        → B1, B2
+discoteca                      → A2, B1, B2
+disegnare                      → A2, B1, B2
+disoccupato                    → B1, B2
+dispensa                       → B1, B2
+disperare                      → B1, B2
+dispiacere                     → A2, B1, B2
+distinto                       → B1, B2
+distributore                   → A2, B1, B2
+dito                           → A2, B1, B2
+ditta                          → A2, B1, B2
+divano                         → A2, B1, B2
+diventare                      → B1, B2
+diverso                        → A2, B1, B2
+divertente                     → A2, B1, B2
+divertimento                   → A2, B1, B2
+divertirsi                     → A2, B1, B2
+divorziare                     → A2, B1, B2
+dizionario                     → A2, B1, B2
+doccia                         → A1, A2, B1, B2
+documentario                   → B1, B2
+documento                      → A1, A2, B1, B2
+dogana                         → A2, B1, B2
+dolce                          → A2, B1, B2
+dolore                         → B1, B2
+domanda                        → A1, A2, B1, B2
+domandare                      → A1, A2, B1, B2
+domani                         → A1, A2, B1, B2
+domenica                       → A1, A2, B1, B2
+donna                          → A1, A2, B1, B2
+dopo                           → A1, A2, B1, B2
+dopodomani                     → B1, B2
+doppio                         → A1, A2, B1, B2
+dormire                        → A1, A2, B1, B2
+dottore/ssa                    → A1, A2, B1, B2
+dove                           → A1, A2, B1, B2
+dovere                         → A1, A2, B1, B2
+dritto                         → A2, B1, B2
+dunque                         → B1, B2
+duomo                          → B1, B2
+durante                        → A2, B1, B2
+durare                         → B1, B2
+duro                           → B1, B2
+e                              → A1, A2, B1, B2
+e-mail                         → A1, A2, B1, B2
+eccezionale                    → B1, B2
+ecco                           → A2, B1, B2
+economia                       → A2, B1, B2
+egoista                        → B1, B2
+egregio                        → B1, B2
+eh                             → B1, B2
+elegante                       → A2, B1, B2
+elementare                     → A2, B1, B2
+elettricista                   → B1, B2
+elicottero                     → B1, B2
+emergenza                      → B1, B2
+emozione                       → B1, B2
+entrare                        → A1, A2, B1, B2
+entrata                        → A2, B1, B2
+erba                           → A2, B1, B2
+errore                         → A2, B1, B2
+esame                          → A2, B1, B2
+esempio                        → A2, B1, B2
+esercizio                      → A1, A2, B1, B2
+esperienza                     → B1, B2
+esprimere                      → B1, B2
+essere                         → A1, A2, B1, B2
+est                            → A2, B1, B2
+estate                         → A1, A2, B1, B2
+estero                         → A1, A2, B1, B2
+estroverso                     → B1, B2
+etto                           → A2, B1, B2
+età                            → A2, B1, B2
+euro                           → A1, A2, B1, B2
+fabbrica                       → A1, A2, B1, B2
+faccia                         → A2, B1, B2
+facile                         → A1, A2, B1, B2
+facoltà                        → A2, B1, B2
+falso                          → A1, A2, B1, B2
+fame                           → A1, A2, B1, B2
+famiglia                       → A1, A2, B1, B2
+famoso                         → B1, B2
+fantastico                     → B1, B2
+fare                           → A1, A2, B1, B2
+farina                         → B1, B2
+farmacia                       → A1, A2, B1, B2
+fattoria                       → A2, B1, B2
+favola                         → B1, B2
+favore                         → A1, A2, B1, B2
+fax                            → A1, A2, B1, B2
+febbraio                       → A1, A2, B1, B2
+febbre                         → A2, B1, B2
+felice                         → A1, A2, B1, B2
+felicità                       → B1, B2
+femmina                        → A1, A2, B1, B2
+femminile                      → A2, B1, B2
+feria                          → B1, B2
+ferire/si                      → B1, B2
+ferita                         → B1, B2
+fermare/si                     → B1, B2
+fermata                        → A1, A2, B1, B2
+fermo                          → A2, B1, B2
+ferro                          → A2, B1, B2
+festa                          → A1, A2, B1, B2
+festeggiare                    → B1, B2
+fetta                          → A2, B1, B2
+fiammifero                     → A2, B1, B2
+fiction                        → B1, B2
+fidanzato                      → A2, B1, B2
+figlio                         → A1, A2, B1, B2
+film                           → A1, A2, B1, B2
+finale                         → B1, B2
+finalmente                     → B1, B2
+fine                           → A2, B1, B2
+finestra                       → A1, A2, B1, B2
+finire                         → A1, A2, B1, B2
+fino                           → A2, B1, B2
+fiore                          → A1, A2, B1, B2
+firma                          → A2, B1, B2
+firmare                        → A2, B1, B2
+fiume                          → A2, B1, B2
+foglio                         → A2, B1, B2
+fontana                        → B1, B2
+forchetta                      → A1, A2, B1, B2
+forma                          → B1, B2
+formaggio                      → A2, B1, B2
+fornello                       → A2, B1, B2
+forno                          → A2, B1, B2
+forse                          → A2, B1, B2
+forte                          → A2, B1, B2
+fortuna                        → A2, B1, B2
+forza                          → B1, B2
+fotografia                     → A1, A2, B1, B2
+fra                            → A2, B1, B2
+francobollo                    → A1, A2, B1, B2
+frase                          → A2, B1, B2
+fratello                       → A1, A2, B1, B2
+freddo                         → A1, A2, B1, B2
+freezer                        → A2, B1, B2
+freno                          → B1, B2
+frequentare                    → A2, B1, B2
+fresco                         → A2, B1, B2
+fretta                         → B1, B2
+friggere                       → B1, B2
+frigorifero                    → A2, B1, B2
+fronte                         → A2, B1, B2
+frullatore                     → B1, B2
+frutta                         → A1, A2, B1, B2
+fulmine                        → A2, B1, B2
+fumare                         → A1, A2, B1, B2
+fumetto                        → B1, B2
+fumo                           → B1, B2
+funzionare                     → B1, B2
+fuoco                          → A2, B1, B2
+fuori                          → A1, A2, B1, B2
+futuro                         → B1, B2
+gamba                          → A2, B1, B2
+gara                           → B1, B2
+garage                         → A2, B1, B2
+gas                            → A2, B1, B2
+gatto                          → A1, A2, B1, B2
+gelato                         → A2, B1, B2
+generalmente                   → B1, B2
+genere                         → B1, B2
+genero                         → A2, B1, B2
+generoso                       → B1, B2
+genitore                       → A2, B1, B2
+gennaio                        → A1, A2, B1, B2
+gente                          → B1, B2
+gentile                        → A1, A2, B1, B2
+geografia                      → A2, B1, B2
+ghiaccio                       → A2, B1, B2
+giacca                         → A1, A2, B1, B2
+giallo                         → A1, A2, B1, B2
+giardinaggio                   → B1, B2
+giardino                       → A1, A2, B1, B2
+ginnastica                     → A2, B1, B2
+giocare                        → A1, A2, B1, B2
+giocatore/trice                → B1, B2
+giocattolo                     → A2, B1, B2
+gioco                          → A2, B1, B2
+gioia                          → B1, B2
+giornale                       → A1, A2, B1, B2
+giornalista                    → A2, B1, B2
+giornata                       → A1, A2, B1, B2
+giorno                         → A1, A2, B1, B2
+giovane                        → A1, A2, B1, B2
+giovedì                        → A1, A2, B1, B2
+girare                         → A2, B1, B2
+giro                           → A2, B1, B2
+gita                           → A2, B1, B2
+giugno                         → A2, B1, B2
+giusto                         → A2, B1, B2
+già                            → A2, B1, B2
+giù                            → A1, A2, B1, B2
+gli                            → A1, A2, B1, B2
+gonna                          → A1, A2, B1, B2
+grado                          → A2, B1, B2
+grammo                         → B1, B2
+grande                         → A1, A2, B1, B2
+grasso                         → A2, B1, B2
+gratis                         → A2, B1, B2
+grazie                         → A1, A2, B1, B2
+grigio                         → A2, B1, B2
+grosso                         → B1, B2
+gruppo                         → B1, B2
+guadagnare                     → B1, B2
+guanto                         → A2, B1, B2
+guardare                       → A1, A2, B1, B2
+guarire                        → B1, B2
+guasto                         → B1, B2
+guida                          → A2, B1, B2
+guidare                        → A2, B1, B2
+gusto                          → B1, B2
+hobby                          → A1, A2, B1, B2
+hotel                          → A1, A2, B1, B2
+i                              → A1, A2, B1, B2
+idea                           → A2, B1, B2
+identità                       → A2, B1, B2
+idraulico                      → B1, B2
+ieri                           → A1, A2, B1, B2
+il                             → A1, A2, B1, B2
+immaginare                     → B1, B2
+imparare                       → A1, A2, B1, B2
+impegnare                      → B1, B2
+impegno                        → B1, B2
+impermeabile                   → A2, B1, B2
+impianto                       → B1, B2
+impiegato                      → A2, B1, B2
+importante                     → A1, A2, B1, B2
+importare                      → B1, B2
+impossibile                    → A2, B1, B2
+improbabile                    → B1, B2
+improvvisamente                → B1, B2
+improvviso                     → B1, B2
+in                             → A1, A2, B1, B2
+incendio                       → B1, B2
+incominciare                   → B1, B2
+incontrare/si                  → A2, B1, B2
+incredibile                    → B1, B2
+incrocio                       → B1, B2
+incubo                         → B1, B2
+indietro                       → A1, A2, B1, B2
+indifferente                   → B1, B2
+indimenticabile                → B1, B2
+indirizzo                      → A1, A2, B1, B2
+indossare                      → A2, B1, B2
+industria                      → A1, A2, B1, B2
+infatti                        → B1, B2
+infermiere                     → A2, B1, B2
+infine                         → B1, B2
+informare                      → B1, B2
+informazione                   → A1, A2, B1, B2
+ingegnere                      → A2, B1, B2
+iniziare                       → A2, B1, B2
+inizio                         → A2, B1, B2
+innamorarsi                    → B1, B2
+inoltre                        → B1, B2
+insalata                       → A2, B1, B2
+insegnante                     → A1, A2, B1, B2
+insegnare                      → A1, A2, B1, B2
+insieme                        → A2, B1, B2
+insipido                       → B1, B2
+insomma                        → B1, B2
+intelligente                   → A1, A2, B1, B2
+interessante                   → A1, A2, B1, B2
+interessarsi                   → B1, B2
+internazionale                 → A1, A2, B1, B2
+internet                       → A1, A2, B1, B2
+intorno                        → A2, B1, B2
+introverso                     → B1, B2
+inutile                        → A2, B1, B2
+invece                         → B1, B2
+inventare                      → B1, B2
+inverno                        → A1, A2, B1, B2
+inviare                        → B1, B2
+invitare                       → A2, B1, B2
+io                             → A1, A2, B1, B2
+isola                          → A2, B1, B2
+istituto                       → B1, B2
+italiano                       → A1, A2, B1, B2
+la                             → A1, A2, B1, B2
+ladro                          → B1, B2
+lago                           → A1, A2, B1, B2
+lampada                        → A2, B1, B2
+lana                           → A2, B1, B2
+largo                          → A1, A2, B1, B2
+lasciare                       → A2, B1, B2
+latte                          → A1, A2, B1, B2
+laurea                         → B1, B2
+laurearsi                      → B1, B2
+lavagna                        → A2, B1, B2
+lavanderia                     → A2, B1, B2
+lavandino                      → A2, B1, B2
+lavare/si                      → B1, B2
+lavastoviglie                  → A2, B1, B2
+lavatrice                      → A2, B1, B2
+lavorare                       → A1, A2, B1, B2
+lavoro                         → A1, A2, B1, B2
+le                             → A1, A2, B1, B2
+leggere                        → A1, A2, B1, B2
+leggero                        → A2, B1, B2
+legno                          → A2, B1, B2
+lei                            → A1, A2, B1, B2
+lentamente                     → B1, B2
+lento                          → A2, B1, B2
+lenzuolo                       → A2, B1, B2
+leone                          → B1, B2
+lettera                        → A1, A2, B1, B2
+letto                          → A1, A2, B1, B2
+lezione                        → A1, A2, B1, B2
+li                             → A2, B1, B2
+libero                         → A2, B1, B2
+libreria                       → A2, B1, B2
+libro                          → A1, A2, B1, B2
+liceo                          → B1, B2
+linea                          → B1, B2
+lingua                         → A1, A2, B1, B2
+liquido                        → B1, B2
+lirica                         → B1, B2
+liscio                         → A2, B1, B2
+litro                          → A2, B1, B2
+livello                        → A2, B1, B2
+lo                             → A1, A2, B1, B2
+locale                         → B1, B2
+lontano                        → A1, A2, B1, B2
+loro                           → A1, A2, B1, B2
+lotto                          → B1, B2
+luce                           → A2, B1, B2
+luglio                         → A1, A2, B1, B2
+lui                            → A1, A2, B1, B2
+luna                           → A2, B1, B2
+lunedì                         → A1, A2, B1, B2
+lungo                          → A1, A2, B1, B2
+luogo                          → A2, B1, B2
+lupo                           → B1, B2
+là                             → A1, A2, B1, B2
+lì                             → A1, A2, B1, B2
+ma                             → A2, B1, B2
+macchina                       → A1, A2, B1, B2
+madre                          → A1, A2, B1, B2
+maestro                        → B1, B2
+maggio                         → A1, A2, B1, B2
+maggiore                       → B1, B2
+maglietta                      → A1, A2, B1, B2
+maglione                       → A1, A2, B1, B2
+magnifico                      → B1, B2
+magro                          → A1, A2, B1, B2
+mai                            → A1, A2, B1, B2
+maiale                         → A2, B1, B2
+malato                         → A1, A2, B1, B2
+malattia                       → B1, B2
+male                           → A1, A2, B1, B2
+mamma                          → A1, A2, B1, B2
+mancare                        → B1, B2
+mancia                         → A2, B1, B2
+mandare                        → B1, B2
+mangiare                       → A1, A2, B1, B2
+manica                         → A2, B1, B2
+mano                           → A2, B1, B2
+marca                          → B1, B2
+marciapiede                    → B1, B2
+mare                           → A1, A2, B1, B2
+marito                         → A1, A2, B1, B2
+marrone                        → A2, B1, B2
+martedì                        → A1, A2, B1, B2
+marzo                          → A1, A2, B1, B2
+maschile                       → A2, B1, B2
+maschio                        → A1, A2, B1, B2
+massimo                        → B1, B2
+master                         → B1, B2
+matematica                     → A2, B1, B2
+materia                        → A2, B1, B2
+matita                         → A1, A2, B1, B2
+matrimonio                     → A2, B1, B2
+mattina                        → A1, A2, B1, B2
+me                             → A1, A2, B1, B2
+meccanico                      → A2, B1, B2
+medicina                       → A1, A2, B1, B2
+medico                         → A2, B1, B2
+medio                          → B1, B2
+meglio                         → A2, B1, B2
+mela                           → A2, B1, B2
+meno                           → A1, A2, B1, B2
+mensa                          → A2, B1, B2
+mensile                        → B1, B2
+mensola                        → B1, B2
+mentre                         → B1, B2
+menù                           → A1, A2, B1, B2
+meraviglioso                   → B1, B2
+mercato                        → A1, A2, B1, B2
+mercoledì                      → A1, A2, B1, B2
+merenda                        → A2, B1, B2
+mese                           → A1, A2, B1, B2
+messaggio                      → A2, B1, B2
+metallo                        → B1, B2
+metro                          → A2, A2, B1, B1, B2, B2
+metropoli                      → B1, B2
+mettere/si                     → A2, B1, B2
+metà                           → A1, A2, B1, B2
+mezzanotte                     → A1, A2, B1, B2
+mezzo                          → A1, A2, B1, B2
+mezzogiorno                    → A1, A2, B1, B2
+mi                             → A1, A2, B1, B2
+migliorare                     → B1, B2
+migliore                       → B1, B2
+minestra                       → A2, B1, B2
+minimo                         → B1, B2
+minore                         → B1, B2
+minuto                         → A1, A2, B1, B2
+mio                            → A1, A2, B1, B2
+mite                           → B1, B2
+mobile                         → A2, B1, B2
+moda                           → A2, B1, B2
+moderno                        → A2, B1, B2
+modo                           → B1, B2
+modulo                         → B1, B2
+moglie                         → A1, A2, B1, B2
+molto                          → A1, A2, B1, B2
+momento                        → A1, A2, B1, B2
+mondo                          → A2, B1, B2
+moneta                         → B1, B2
+monolocale                     → B1, B2
+montagna                       → A1, A2, B1, B2
+monumento                      → A2, B1, B2
+morire                         → A1, A2, B1, B2
+morte                          → B1, B2
+mostra                         → A2, B1, B2
+motivo                         → B1, B2
+moto                           → A1, A2, B1, B2
+motore                         → B1, B2
+motorino                       → A2, B1, B2
+mucca                          → A2, B1, B2
+muovere/si                     → A2, B1, B2
+muro                           → A2, B1, B2
+museo                          → A1, A2, B1, B2
+musica                         → A1, A2, B1, B2
+musicale                       → B1, B2
+nascere                        → A1, A2, B1, B2
+nascondere                     → B1, B2
+naso                           → A2, B1, B2
+natale                         → A1, A2, B1, B2
+natura                         → A2, B1, B2
+naturale                       → B1, B2
+nave                           → A2, B1, B2
+navigare                       → B1, B2
+nazionalità                    → A1, A2, B1, B2
+nazione                        → A1, A2, B1, B2
+ne                             → B1, B2
+neanche                        → B1, B2
+nebbia                         → A2, B1, B2
+necessario                     → B1, B2
+negativo                       → B1, B2
+negozio                        → A1, A2, B1, B2
+nero                           → A1, A2, B1, B2
+nervoso                        → A2, B1, B2
+nessuno                        → A1, A2, B1, B2
+neve                           → A2, B1, B2
+nevicare                       → A2, B1, B2
+niente                         → A1, A2, B1, B2
+nipote                         → A2, B1, B2
+no                             → A1, A2, B1, B2
+noi                            → A1, A2, B1, B2
+noioso                         → A2, B1, B2
+noleggiare                     → A2, B1, B2
+nome                           → A1, A2, B1, B2
+non                            → A1, A2, B1, B2
+nonno                          → A1, A2, B1, B2
+nord                           → A2, B1, B2
+normale                        → A2, B1, B2
+nostalgia                      → A2, B1, B2
+nostro                         → A2, B1, B2
+notizia                        → B1, B2
+notte                          → A1, A2, B1, B2
+novembre                       → A1, A2, B1, B2
+novità                         → B1, B2
+numero                         → A1, A2, B1, B2
+nuora                          → A2, B1, B2
+nuotare                        → A2, B1, B2
+nuoto                          → A2, B1, B2
+nuovo                          → A1, A2, B1, B2
+nuvola                         → A2, B1, B2
+nuvoloso                       → A2, B1, B2
+né                             → B1, B2
+o                              → A1, A2, B1, B2
+obbligatorio                   → B1, B2
+occasione                      → B1, B2
+occhiale                       → A1, A2, B1, B2
+occhio                         → A2, B1, B2
+occupare/si                    → B1, B2
+odiare                         → B1, B2
+odio                           → B1, B2
+odore                          → A2, B1, B2
+offerta                        → B1, B2
+offrire                        → A2, B1, B2
+oggetto                        → A2, B1, B2
+oggi                           → A1, A2, B1, B2
+ogni                           → A2, B1, B2
+ok                             → A2, B1, B2
+olio                           → A1, A2, B1, B2
+ombrello                       → A1, A2, B1, B2
+onesto                         → B1, B2
+opera                          → B1, B2
+operaio                        → A2, B1, B2
+opinione                       → B1, B2
+oppure                         → B1, B2
+ora                            → A1, A2, B1, B2
+orario                         → A2, B1, B2
+ordinare                       → A2, B1, B2
+ordine                         → B1, B2
+orecchio                       → A2, B1, B2
+organizzare                    → A2, B1, B2
+oro                            → A2, B1, B2
+orologio                       → A1, A2, B1, B2
+orribile                       → B1, B2
+ospedale                       → A1, A2, B1, B2
+ospitalità                     → B1, B2
+ospite                         → A2, B1, B2
+osservare                      → B1, B2
+ottimista                      → B1, B2
+ottimo                         → B1, B2
+ottobre                        → A1, A2, B1, B2
+ovale                          → B1, B2
+ovest                          → A2, B1, B2
+pacco                          → A1, A2, B1, B2
+padella                        → A2, B1, B2
+padre                          → A1, A2, B1, B2
+padrone                        → A2, B1, B2
+paese                          → B1, B2
+pagare                         → A1, A2, B1, B2
+pagina                         → A2, B1, B2
+paio                           → A2, B1, B2
+palazzo                        → A2, B1, B2
+palestra                       → A2, B1, B2
+palla                          → A2, B1, B2
+pallacanestro                  → A2, B1, B2
+pane                           → A1, A2, B1, B2
+panino                         → A2, B1, B2
+pantalone                      → A1, A2, B1, B2
+papà                           → A1, A2, B1, B2
+parcheggio                     → A1, A2, B1, B2
+parco                          → A1, A2, B1, B2
+parente                        → A2, B1, B2
+parere                         → B1, B2
+parete                         → A2, B1, B2
+parlare                        → A1, A2, B1, B2
+parola                         → A1, A2, B1, B2
+parte                          → A2, B1, B2
+partecipare                    → B1, B2
+partenza                       → A2, B1, B2
+particolarmente                → B1, B2
+partire                        → A1, A2, B1, B2
+partita                        → A2, B1, B2
+pasqua                         → A1, A2, B1, B2
+passaggio                      → B1, B2
+passaporto                     → A1, A2, B1, B2
+passare                        → A2, B1, B2
+passato                        → A2, B1, B2
+passeggiare                    → A2, B1, B2
+passeggiata                    → A2, B1, B2
+passione                       → B1, B2
+pasta                          → A1, A2, B1, B2
+pasto                          → A2, B1, B2
+patata                         → A2, B1, B2
+patente                        → A2, B1, B2
+paura                          → A2, B1, B2
+pausa                          → A2, B1, B2
+pavimento                      → A2, B1, B2
+pazienza                       → B1, B2
+peccato                        → A2, B1, B2
+pediatra                       → B1, B2
+pedonale                       → B1, B2
+peggio                         → B1, B2
+peggiorare                     → B1, B2
+peggiore                       → B1, B2
+pelle                          → A2, B1, B2
+penna                          → A1, A2, B1, B2
+pensare                        → A2, B1, B2
+pensione                       → A2, B1, B2
+pentola                        → A2, B1, B2
+pepe                           → A1, A2, B1, B2
+per                            → A1, A2, B1, B2
+pera                           → A2, B1, B2
+perché                         → A1, A2, B1, B2
+perciò                         → B1, B2
+perdere                        → A2, B1, B2
+perfetto                       → B1, B2
+periferia                      → A2, B1, B2
+periodo                        → B1, B2
+permesso                       → B1, B2
+persona                        → A2, B1, B2
+però                           → B1, B2
+pesante                        → A2, B1, B2
+pesare                         → B1, B2
+pescare                        → A2, B1, B2
+pesce                          → A1, A2, B1, B2
+pessimista                     → B1, B2
+pessimo                        → B1, B2
+pettine                        → A2, B1, B2
+pezzo                          → A2, B1, B2
+phon                           → B1, B2
+piacere                        → A1, A2, B1, B2
+piacevole                      → B1, B2
+piangere                       → A2, B1, B2
+piano                          → A1, A2, B1, B2
+pianta                         → A1, A2, B1, B2
+piatto                         → A1, A2, B1, B2
+piazza                         → A1, A2, B1, B2
+piccante                       → B1, B2
+piccolo                        → A1, A2, B1, B2
+piede                          → A2, B1, B2
+piegare/si                     → B1, B2
+pieno                          → A2, B1, B2
+pigro                          → A2, B1, B2
+pillola                        → B1, B2
+pioggia                        → A2, B1, B2
+piovere                        → A1, A2, B1, B2
+pipa                           → A2, B1, B2
+piscina                        → A2, B1, B2
+pisello                        → A2, B1, B2
+pittore/trice                  → B1, B2
+pittura                        → B1, B2
+piuttosto                      → B1, B2
+pizza                          → A1, A2, B1, B2
+pizzeria                       → A1, A2, B1, B2
+pizzico                        → B1, B2
+più                            → A1, A2, B1, B2
+plastica                       → B1, B2
+plurale                        → A2, B1, B2
+poco                           → A1, A2, B1, B2
+poesia                         → B1, B2
+poeta/essa                     → B1, B2
+poi                            → A2, B1, B2
+polizia                        → A1, A2, B1, B2
+pollo                          → A2, B1, B2
+poltrona                       → A2, B1, B2
+pomeriggio                     → A1, A2, B1, B2
+pomodoro                       → A1, A2, B1, B2
+pompiere                       → B1, B2
+ponte                          → A2, B1, B2
+pop                            → B1, B2
+porta                          → A1, A2, B1, B2
+portare                        → A1, A2, B1, B2
+porto                          → B1, B2
+posacenere                     → A2, B1, B2
+posata                         → A2, B1, B2
+positivo                       → B1, B2
+possibile                      → A2, B1, B2
+possibilità                    → B1, B2
+posta                          → A1, A2, B1, B2
+postino                        → B1, B2
+posto                          → A1, A2, B1, B2
+potere                         → A1, A2, B1, B2
+povero                         → A2, B1, B2
+pranzare                       → A1, A2, B1, B2
+pranzo                         → A1, A2, B1, B2
+praticamente                   → B1, B2
+pratico                        → B1, B2
+prato                          → A2, B1, B2
+precedente                     → B1, B2
+preferire                      → A2, B1, B2
+prefisso                       → B1, B2
+pregare                        → B1, B2
+prego                          → A1, A2, B1, B2
+premere                        → B1, B2
+prendere                       → A1, A2, B1, B2
+prenotare                      → A1, A2, B1, B2
+preoccuparsi                   → A2, B1, B2
+preparare                      → A2, B1, B2
+preposizione                   → B1, B2
+presentare                     → B1, B2
+preside                        → B1, B2
+prestare                       → B1, B2
+presto                         → A1, A2, B1, B2
+previsione                     → B1, B2
+prezzemolo                     → B1, B2
+prezzo                         → A1, A2, B1, B2
+prima                          → A2, B1, B2
+primavera                      → A1, A2, B1, B2
+primo                          → A2, B1, B2
+probabile                      → B1, B2
+probabilmente                  → A2, B1, B2
+problema                       → A2, B1, B2
+prodotto                       → B1, B2
+professore/ssa                 → A1, A2, B1, B2
+profondo                       → B1, B2
+profumo                        → A2, B1, B2
+programma                      → A2, B1, B2
+promettere                     → B1, B2
+promuovere                     → B1, B2
+pronome                        → B1, B2
+pronto                         → A2, B1, B2
+pronuncia                      → B1, B2
+proporre                       → B1, B2
+proprio                        → B1, B2
+prosciutto                     → A2, B1, B2
+prossimo                       → A2, B1, B2
+protagonista                   → B1, B2
+provare                        → A2, B1, B2
+pubblicità                     → B1, B2
+pulire                         → A1, A2, B1, B2
+pulizia                        → B1, B2
+punto                          → A2, B1, B2
+pure                           → B1, B2
+purtroppo                      → B1, B2
+qua                            → A1, A2, B1, B2
+quaderno                       → A1, A2, B1, B2
+quadrato                       → B1, B2
+quadro                         → A1, A2, B1, B2
+qualche                        → A2, B1, B2
+qualcosa                       → A2, B1, B2
+qualcuno                       → A2, B1, B2
+quale                          → A1, A2, B1, B2
+qualsiasi                      → B1, B2
+quando                         → A1, A2, B1, B2
+quanto                         → A1, A2, B1, B2
+quartiere                      → B1, B2
+quarto                         → A1, A2, B1, B2
+quasi                          → A1, A2, B1, B2
+quello                         → A1, A2, B1, B2
+questo                         → A1, A2, B1, B2
+questura                       → B1, B2
+qui                            → A1, A2, B1, B2
+quindi                         → B1, B2
+quotidiano                     → B1, B2
+racchetta                      → B1, B2
+raccogliere                    → B1, B2
+raccomandata                   → B1, B2
+raccontare                     → B1, B2
+radio                          → A1, A2, B1, B2
+raffreddore                    → A2, B1, B2
+ragazzo                        → A1, A2, B1, B2
+ragione                        → A2, B1, B2
+raramente                      → B1, B2
+regalare                       → A2, B1, B2
+regalo                         → A2, B1, B2
+regista                        → B1, B2
+rendere                        → B1, B2
+reparto                        → B1, B2
+restare                        → A2, B1, B2
+restituire                     → B1, B2
+resto                          → A2, B1, B2
+rettangolare                   → B1, B2
+rettore                        → B1, B2
+riassumere                     → B1, B2
+riccio                         → A2, B1, B2
+ricco                          → A1, A2, B1, B2
+ricetta                        → B1, B2
+ricevere                       → A2, B1, B2
+ricordare/si                   → A2, B1, B2
+ricordo                        → B1, B2
+ridere                         → A2, B2
+rilassarsi                     → A2, B1, B2
+rimanere                       → A2, B1, B2
+ringraziare                    → B1, B2
+riparare                       → B1, B2
+ripetere                       → A1, A2, B1, B2
+riposare/si                    → B1, B2
+riscaldamento                  → A2, B1, B2
+riso                           → A1, A2, B1, B2
+rispondere                     → A1, A2, B1, B2
+risposta                       → A1, A2, B1, B2
+ristorante                     → A1, A2, B1, B2
+risultato                      → B1, B2
+ritardo                        → A2, B1, B2
+ritirare                       → B1, B2
+ritornare                      → A1, A2, B1, B2
+ritrovare                      → A2, B1, B2
+riuscire                       → B1, B2
+rivista                        → B1, B2
+rock                           → B1, B2
+romantico                      → B1, B2
+romanzo                        → B1, B2
+rompere/si                     → B1, B2
+rosa                           → A2, B1, B2
+rosso                          → A1, A2, B1, B2
+rotondo                        → B1, B2
+roulotte                       → A2, B1, B2
+rubare                         → B1, B2
+rumore                         → A2, B1, B2
+ruota                          → B1, B2
+sabato                         → A1, A2, B1, B2
+sacco                          → B1, B2
+sala                           → A2, B1, B2
+salame                         → A2, B1, B2
+salato                         → A2, B1, B2
+saldo                          → A2, B1, B2
+sale                           → A1, A2, B1, B2
+salire                         → B1, B2
+salita                         → B1, B2
+salotto                        → A2, B1, B2
+salsa                          → A2, B1, B2
+saltare                        → B1, B2
+salutare                       → B1, B2
+salute                         → A1, A2, B1, B2
+saluto                         → A1, A2, B1, B2
+salve                          → A2, B1, B2
+sandalo                        → A2, B1, B2
+sano                           → B1, B2
+sapere                         → A1, A2, B1, B2
+sapone                         → A2, B1, B2
+sapore                         → B1, B2
+sbaglio                        → A2, B1, B2
+sbucciare                      → B1, B2
+scaffale                       → B1, B2
+scala                          → A2, B1, B2
+scaricare                      → B1, B2
+scarpa                         → A1, A2, B1, B2
+scegliere                      → A2, B1, B2
+scendere                       → B1, B2
+schiera                        → B1, B2
+schifo                         → B1, B2
+sci                            → A2, B1, B2
+sciare                         → A2, B1, B2
+scienza                        → A2, B1, B2
+sciopero                       → B1, B2
+sciroppo                       → B1, B2
+scomodo                        → A2, B1, B2
+sconto                         → B1, B2
+scontrino                      → A2, B1, B2
+scoprire                       → B1, B2
+scorso                         → A2, B1, B2
+scrittore/trice                → B1, B2
+scrivania                      → A2, B1, B2
+scrivere                       → A1, A2, B1, B2
+scultore/trice                 → B1, B2
+scultura                       → B1, B2
+scuola                         → A1, A2, B1, B2
+scuro                          → A2, B1, B2
+scusare                        → A1, A2, B1, B2
+sdraiare/si                    → B1, B2
+se                             → A2, B1, B2
+secco                          → B1, B2
+secolo                         → B1, B2
+secondo                        → A1, A2, B1, B2
+sedersi                        → A2, B1, B2
+sedia                          → A1, A2, B1, B2
+segretario                     → A2, B1, B2
+segreteria                     → A1, A2, B1, B2
+seguente                       → B1, B2
+seguire                        → A2, B1, B2
+semaforo                       → A2, B1, B2
+sembrare                       → A2, B1, B2
+semplice                       → B1, B2
+sempre                         → A1, A2, B1, B2
+sennò                          → B1, B2
+senza                          → A1, A2, B1, B2
+separare/si                    → A2, B1, B2
+sera                           → A1, A2, B1, B2
+serata                         → B1, B2
+sereno                         → B1, B2
+serio                          → A2, B1, B2
+servire                        → B1, B2
+seta                           → A2, B1, B2
+sete                           → A1, A2, B1, B2
+settembre                      → A1, A2, B1, B2
+settimana                      → A1, A2, B1, B2
+settimanale                    → B1, B2
+sfortuna                       → B1, B2
+shampoo                        → A2, B1, B2
+si                             → A1, A2, B1, B2
+sia                            → B1, B2
+siccome                        → B1, B2
+sicuramente                    → B1, B2
+sicuro                         → A2, B1, B2
+sigaretta                      → A1, A2, B1, B2
+sigaro                         → A2, B1, B2
+significare                    → A1, A2, B1, B2
+signore                        → A1, A2, B1, B2
+silenzio                       → A2, B1, B2
+simile                         → A2, B1, B2
+simpatico                      → A1, A2, B1, B2
+singolare                      → A2, B1, B2
+singolo                        → A1, A2, B1, B2
+sinistra                       → A1, A2, B1, B2
+sito                           → B1, B2
+situazione                     → B1, B2
+smettere                       → B1, B2
+sms                            → B1, B2
+soccorso                       → A2, B1, B2
+socievole                      → B1, B2
+soffitto                       → A2, B1, B2
+soggetto                       → B1, B2
+soggiorno                      → A1, A2, B1, B2
+sognare                        → B1, B2
+sogno                          → B1, B2
+soldo                          → A1, A2, B1, B2
+sole                           → A1, A2, B1, B2
+solido                         → B1, B2
+solito                         → A2, B1, B2
+solo                           → A2, B1, B2
+soltanto                       → B1, B2
+sonno                          → A1, A2, B1, B2
+sopra                          → A1, A2, B1, B2
+soprattutto                    → B1, B2
+sorella                        → A1, A2, B1, B2
+sorpresa                       → A2, B1, B2
+sorridere                      → A2, B1, B2
+sottile                        → B1, B2
+sotto                          → A1, A2, B1, B2
+spaghetto                      → A1, A2, B1, B2
+spaventare                     → B1, B2
+spaventoso                     → B1, B2
+spazzolino                     → A2, B1, B2
+specchio                       → A2, B1, B2
+speciale                       → B1, B2
+specialmente                   → B1, B2
+spedire                        → A1, A2, B1, B2
+spegnere                       → A2, B1, B2
+spendere                       → A2, B1, B2
+sperare                        → A2, B1, B2
+spesa                          → A1, A2, B1, B2
+spesso                         → A1, A2, B1, B2
+spettabile                     → B1, B2
+spettacolo                     → A2, B1, B2
+spiaggia                       → A1, A2, B1, B2
+spicchio                       → B1, B2
+spingere                       → A2, B1, B2
+spogliarsi                     → A2, B1, B2
+sporcare                       → A2, B1, B2
+sporco                         → A1, A2, B1, B2
+sport                          → A1, A2, B1, B2
+sportivo                       → A2, B1, B2
+sposare/si                     → A2, B1, B2
+spostare                       → B1, B2
+spuntino                       → A2, B1, B2
+squadra                        → A2, B1, B2
+stadio                         → A2, B1, B2
+stage                          → B1, B2
+stamattina                     → A2, B1, B2
+stampare                       → B1, B2
+stanco                         → A1, A2, B1, B2
+stanotte                       → A2, B1, B2
+stanza                         → A2, B1, B2
+stare                          → A1, A2, B1, B2
+stasera                        → A2, B1, B2
+stazione                       → A1, A2, B1, B2
+stella                         → A2, B1, B2
+stendere/si                    → B1, B2
+stesso                         → A2, B1, B2
+stirare                        → A2, B1, B2
+stiro                          → A2, B1, B2
+stivale                        → A2, B1, B2
+stomaco                        → B1, B2
+stop                           → A1, A2, B1, B2
+storia                         → A2, B1, B2
+storico                        → A2, B2
+strada                         → A1, A2, B1, B2
+straniero                      → A1, A2, B1, B2
+strano                         → A2, B1, B2
+stress                         → B1, B2
+stressare                      → B1, B2
+stretto                        → A1, A2, B1, B2
+studente/ssa                   → A1, A2, B1, B2
+studiare                       → A1, A2, B1, B2
+studio                         → A2, B1, B2
+su                             → A1, A2, B1, B2
+subito                         → A2, B1, B2
+succedere                      → A2, B1, B2
+successo                       → B1, B2
+sud                            → A2, B1, B2
+suo                            → A2, B1, B2
+suocero                        → A2, B1, B2
+suonare                        → A1, A2, B1, B2
+superare                       → B1, B2
+supermercato                   → A1, A2, B1, B2
+svolgere                       → B1, B2
+sì                             → A1, A2, B1, B2
+tabaccaio                      → A2, B1, B2
+tagliare                       → A2, B1, B2
+talk-show                      → B1, B2
+tanto                          → A1, A2, B1, B2
+tappeto                        → A2, B1, B2
+tardi                          → A1, A2, B1, B2
+tasca                          → A2, B1, B2
+tavolo                         → A1, A2, B1, B2
+taxi                           → A1, A2, B1, B2
+tazza                          → A2, B1, B2
+te                             → A1, A2, B1, B2
+teatro                         → A1, A2, B1, B2
+tecnico                        → A2, B1, B2
+telefilm                       → B1, B2
+telefonare                     → A1, A2, B1, B2
+telefonata                     → A2, B1, B2
+telefono                       → A1, A2, B1, B2
+telegiornale                   → B1, B2
+televisione                    → A1, A2, B1, B2
+temperatura                    → A2, B1, B2
+tempo                          → A2, B1, B2
+temporale                      → A2, B1, B2
+tenda                          → A2, B1, B2
+tenere                         → A2, B1, B2
+tenero                         → B1, B2
+tennis                         → A2, B1, B2
+terminare                      → B1, B2
+termometro                     → B1, B2
+termosifone                    → B1, B2
+terra                          → A2, B1, B2
+terrazza                       → A2, B1, B2
+terribile                      → B1, B2
+testa                          → A2, B1, B2
+tetto                          → A2, B1, B2
+ti                             → A1, A2, B1, B2
+tiepido                        → A2, B1, B2
+tigre                          → B1, B2
+timido                         → A2, B1, B2
+tipo                           → B1, B2
+tirare                         → A2, B1, B2
+titolo                         → B1, B2
+toccare                        → A2, B1, B2
+togliere                       → A2, B1, B2
+tombola                        → B1, B2
+tornare                        → A1, A2, B1, B2
+torre                          → B1, B2
+torta                          → A2, B1, B2
+tortellino                     → A2, B1, B2
+tosse                          → A2, B1, B2
+tostapane                      → B1, B2
+totale                         → B1, B2
+tovaglia                       → A2, B1, B2
+tovagliolo                     → A2, B1, B2
+tra                            → A2, B1, B2
+tradurre                       → B1, B2
+traffico                       → A2, B1, B2
+tragedia                       → B1, B2
+tramonto                       → B1, B2
+tranquillo                     → A2, B1, B2
+trascorrere                    → A2, B1, B2
+trasferirsi                    → B1, B2
+traslocare                     → B1, B2
+trasloco                       → B1, B2
+trasmissione                   → B1, B2
+trasparente                    → B1, B2
+trasportare                    → B1, B2
+treno                          → A1, A2, B1, B2
+triste                         → A1, A2, B1, B2
+troppo                         → A1, A2, B1, B2
+trovare/si                     → B1, B2
+tu                             → A1, A2, B1, B2
+tuo                            → A1, A2, B1, B2
+tuono                          → A2, B1, B2
+turista                        → A1, A2, B1, B2
+tuttavia                       → B1, B2
+tutto                          → A1, A2, B1, B2
+tv                             → A1, A2, B1, B2
+tè                             → A1, A2, B1, B2
+ubriacarsi                     → B1, B2
+ubriaco                        → B1, B2
+uccello                        → A2, B1, B2
+ufficio                        → A1, A2, B1, B2
+uguale                         → A2, B1, B2
+ulteriore                      → B1, B2
+ultimo                         → A2, B1, B2
+umido                          → B1, B2
+umore                          → B1, B2
+un/o                           → A1, A2, B1, B2
+unico                          → B1, B2
+università                     → A1, A2, B1, B2
+uomo                           → A1, A2, B1, B2
+uovo                           → A1, A2, B1, B2
+usare                          → A2, B1, B2
+uscire                         → A1, A2, B1, B2
+uscita                         → A2, B1, B2
+utile                          → A2, B1, B2
+utilizzare                     → B1, B2
+vacanza                        → A1, A2, B1, B2
+vaglia                         → B1, B2
+vagone                         → B1, B2
+valigia                        → A1, A2, B1, B2
+variabile                      → B1, B2
+vasca                          → A2, B1, B2
+vaso                           → A2, B1, B2
+vecchio                        → A1, A2, B1, B2
+vedere/si                      → A2, B1, B2
+vedovo                         → A2, B1, B2
+veloce                         → A2, B1, B2
+velocemente                    → B1, B2
+vendere                        → A2, B1, B2
+venerdì                        → A1, A2, B1, B2
+venire                         → A1, A2, B1, B2
+vento                          → A2, B1, B2
+veramente                      → A2, B1, B2
+verbo                          → A2, B1, B2
+verde                          → A1, A2, B1, B2
+verdura                        → A1, A2, B1, B2
+vero                           → A1, A2, B1, B2
+versare                        → B1, B2
+verso                          → B1, B2
+vestirsi                       → A2, B1, B2
+vestito                        → A1, A2, B1, B2
+vetrina                        → A2, B1, B2
+vetro                          → A2, B1, B2
+vi                             → A2, B1, B2
+via                            → A1, A2, B1, B2
+viaggiare                      → A1, A2, B1, B2
+viaggio                        → A1, A2, B1, B2
+vicino                         → A1, A2, B1, B2
+vietare                        → B1, B2
+vigile/ssa                     → B1, B2
+villa                          → B1, B2
+villaggio                      → B1, B2
+vincere                        → B1, B2
+vino                           → A1, A2, B1, B2
+viola                          → A2, B1, B2
+virgola                        → A2, B1, B2
+visitare                       → A1, A2, B1, B2
+visto                          → A1, A2, B1, B2
+vita                           → B1, B2
+vivere                         → A1, A2, B1, B2
+vivo                           → B1, B2
+voce                           → A2, B1, B2
+voglia                         → A2, B1, B2
+voi                            → A1, A2, B1, B2
+volare                         → A2, B1, B2
+volentieri                     → B1, B2
+volere                         → A1, A2, B1, B2
+volta                          → A2, B1, B2
+vostro                         → A2, B1, B2
+vuoto                          → A2, B1, B2
+water                          → A2, B1, B2
+zaino                          → A1, A2, B1, B2
+zio                            → A2, B1, B2
+zucchero                       → A1, A2, B1, B2

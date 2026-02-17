@@ -136,10 +136,10 @@ class PracticeGenerator:
         return questions
     
     def generate_fill_in_blank(self, level: str = "A1", count: int = 10) -> List[Dict]:
-        """Generate fill-in-the-blank exercises with common sentence patterns."""
-        
-        # Sample sentence templates (you can expand this)
-        templates = [
+        """Generate fill-in-the-blank exercises scaled by CEFR level."""
+
+        # A1 - Basic present tense, articles, pronouns
+        templates_a1 = [
             ("Io ____ italiano.", "parlo", "I speak Italian", "verb"),
             ("Tu ____ al cinema?", "vai", "Do you go to the cinema?", "verb"),
             ("Lei ____ una studentessa.", "è", "She is a student", "verb"),
@@ -150,12 +150,68 @@ class PracticeGenerator:
             ("____ è il tuo nome?", "Qual", "What is your name?", "question_word"),
             ("Mi piace ____ caffè.", "il", "I like coffee", "article"),
             ("Vorrei ____ acqua.", "dell'", "I would like some water", "partitive"),
+            ("Maria ____ a scuola.", "va", "Maria goes to school", "verb"),
+            ("Io ____ un libro.", "ho", "I have a book", "verb"),
         ]
-        
+
+        # A2 - Passato prossimo, imperfetto, simple future
+        templates_a2 = [
+            ("Ieri ____ al cinema.", "sono andato/a", "Yesterday I went to the cinema", "passato"),
+            ("Loro ____ già mangiato.", "hanno", "They have already eaten", "auxiliary"),
+            ("Da bambino ____ in Italia.", "abitavo", "As a child I lived in Italy", "imperfect"),
+            ("Domani ____ a Roma.", "andrò", "Tomorrow I will go to Rome", "future"),
+            ("____ visto quel film?", "Hai", "Have you seen that film?", "auxiliary"),
+            ("Non ____ mai stato a Parigi.", "sono", "I've never been to Paris", "auxiliary"),
+            ("Quando ero piccolo ____ sempre felice.", "ero", "When I was little I was always happy", "imperfect"),
+            ("L'anno prossimo ____ italiano.", "studierò", "Next year I will study Italian", "future"),
+            ("____ miei amici ieri sera.", "Ho visto", "I saw my friends last night", "passato"),
+            ("Mentre ____, è arrivata Maria.", "studiavo", "While I was studying, Maria arrived", "imperfect"),
+        ]
+
+        # B1 - Subjunctive, conditional, progressive forms
+        templates_b1 = [
+            ("Penso che lui ____ ragione.", "abbia", "I think he is right", "subjunctive"),
+            ("Vorrei che tu ____ con me.", "venissi", "I wish you would come with me", "subjunctive_imp"),
+            ("Se avessi tempo, ____ un viaggio.", "farei", "If I had time, I would take a trip", "conditional"),
+            ("Sto ____ un libro.", "leggendo", "I am reading a book", "gerund"),
+            ("È importante che voi ____ in orario.", "siate", "It's important that you be on time", "subjunctive"),
+            ("Credo che Maria ____ partita.", "sia", "I believe Maria has left", "subjunctive_past"),
+            ("Bisogna che loro ____ subito.", "partano", "They need to leave immediately", "subjunctive"),
+            ("Stavo ____ quando hai chiamato.", "dormendo", "I was sleeping when you called", "gerund"),
+            ("Se potessi, ____ ogni giorno.", "viaggerei", "If I could, I would travel every day", "conditional"),
+            ("Spero che tu ____ bene.", "stia", "I hope you are well", "subjunctive"),
+        ]
+
+        # B2 - Complex subjunctive, passive, advanced constructions
+        templates_b2 = [
+            ("Sebbene ____ stanco, continuò a lavorare.", "fosse", "Although he was tired, he kept working", "subjunctive_imp"),
+            ("Il libro ____ letto da milioni di persone.", "è stato", "The book has been read by millions", "passive"),
+            ("Qualunque cosa tu ____, sarò con te.", "faccia", "Whatever you do, I'll be with you", "subjunctive"),
+            ("Se ____ saputo, non sarei venuto.", "avessi", "If I had known, I wouldn't have come", "past_perfect_subj"),
+            ("Benché ____ molto, non ha superato l'esame.", "avesse studiato", "Although he had studied a lot, he didn't pass", "subjunctive_plup"),
+            ("La casa ____ costruita nel 1920.", "fu", "The house was built in 1920", "passive"),
+            ("Prima che lui ____, devo parlargli.", "parta", "Before he leaves, I must talk to him", "subjunctive"),
+            ("Affinché voi ____ capire, vi spiego di nuovo.", "possiate", "So that you can understand, I'll explain again", "subjunctive"),
+            ("Purché ____ in tempo, non ci sono problemi.", "arrivi", "As long as he arrives on time, no problem", "subjunctive"),
+            ("Nonostante ____ piovuto, siamo usciti.", "avesse", "Despite it having rained, we went out", "subjunctive_plup"),
+        ]
+
+        # Select appropriate templates based on level
+        if level == "A1":
+            templates = templates_a1
+        elif level == "A2":
+            templates = templates_a2
+        elif level in ["B1", "GCSE"]:
+            templates = templates_b1
+        elif level == "B2":
+            templates = templates_b2
+        else:
+            templates = templates_a1  # fallback
+
         # Select random templates
         selected = random.sample(templates, min(count, len(templates)))
         questions = []
-        
+
         for template, answer, english, blank_type in selected:
             questions.append({
                 "question": f"Fill in the blank: {template}\n(English: {english})",
@@ -163,42 +219,43 @@ class PracticeGenerator:
                 "type": "fill_in_blank",
                 "blank_type": blank_type
             })
-        
+
         return questions
     
     def generate_multiple_choice(self, level: str = "A1", count: int = 10) -> List[Dict]:
-        """Generate multiple choice questions covering all grammar areas."""
+        """Generate multiple choice questions scaled by CEFR level."""
         all_questions = []
-        
-        # 1. VERB CONJUGATIONS (present, passato, futuro)
+
+        # 1. VERB CONJUGATIONS (from database - automatically level-appropriate)
         cursor = self.db.conn.cursor()
+        query_level = self._get_verb_level(level)
         cursor.execute("""
             SELECT DISTINCT infinitive, english, verb_type, tense
             FROM verb_conjugations
             WHERE level = ?
             ORDER BY RANDOM()
             LIMIT 3
-        """, (level,))
-        
+        """, (query_level,))
+
         verbs = cursor.fetchall()
-        
+
         for verb in verbs:
             infinitive, english, verb_type, tense = verb
             person = random.choice(["io", "tu", "lui_lei", "noi", "voi", "loro"])
-            
+
             # Get correct answer
             cursor.execute("""
                 SELECT conjugated_form
                 FROM verb_conjugations
                 WHERE infinitive = ? AND tense = ? AND person = ?
             """, (infinitive, tense, person))
-            
+
             correct = cursor.fetchone()
             if not correct:
                 continue
-            
+
             correct_answer = correct[0]
-            
+
             # Get wrong answers (other conjugations of same verb)
             cursor.execute("""
                 SELECT conjugated_form
@@ -207,140 +264,210 @@ class PracticeGenerator:
                 ORDER BY RANDOM()
                 LIMIT 3
             """, (infinitive, tense, person, correct_answer))
-            
+
             wrong_answers = [row[0] for row in cursor.fetchall()]
-            
+
             if len(wrong_answers) < 3:
                 continue
-            
+
             # Combine and shuffle
             all_choices = [correct_answer] + wrong_answers
             random.shuffle(all_choices)
-            
+
             person_display = {
                 "io": "io", "tu": "tu", "lui_lei": "lui/lei",
                 "noi": "noi", "voi": "voi", "loro": "loro"
             }
-            
+
             all_questions.append({
                 "question": f"Conjugate '{infinitive}' ({english}) for {person_display[person]}",
                 "choices": all_choices,
                 "answer": correct_answer,
                 "type": "multiple_choice"
             })
-        
-        # 2. IRREGULAR PASSATO PROSSIMO
+
+        # 2-7. LEVEL-SPECIFIC GRAMMAR QUESTIONS
+        if level == "A1":
+            # A1: Basic present tense, articles, simple pronouns
+            all_questions.extend(self._generate_a1_multiple_choice())
+        elif level == "A2":
+            # A2: Passato prossimo, imperfetto, reflexives
+            all_questions.extend(self._generate_a2_multiple_choice())
+        elif level in ["B1", "GCSE"]:
+            # B1: Subjunctive, conditional, progressive
+            all_questions.extend(self._generate_b1_multiple_choice())
+        elif level == "B2":
+            # B2: Advanced subjunctive, passive, complex constructions
+            all_questions.extend(self._generate_b2_multiple_choice())
+
+        # Shuffle all questions and return the requested count
+        random.shuffle(all_questions)
+        return all_questions[:count]
+
+    def _generate_a1_multiple_choice(self) -> List[Dict]:
+        """Generate A1-level multiple choice questions."""
+        questions = []
+
+        # Present tense essere/avere
+        essere_avere = [
+            ("Io ___ italiano", ["sono", "sei", "è", "siamo"], "sono"),
+            ("Tu ___ fame?", ["hai", "ho", "ha", "hanno"], "hai"),
+            ("Lei ___ una studentessa", ["è", "sei", "sono", "siete"], "è"),
+            ("Noi ___ a casa", ["siamo", "sono", "sei", "è"], "siamo"),
+        ]
+        for q, choices, ans in random.sample(essere_avere, min(2, len(essere_avere))):
+            questions.append({"question": q, "choices": choices, "answer": ans, "type": "multiple_choice"})
+
+        # Definite articles
+        articles = [
+            ("___ libro (masculine)", ["il", "la", "i", "le"], "il"),
+            ("___ casa (feminine)", ["la", "il", "le", "i"], "la"),
+            ("___ studenti (masc plural)", ["i", "gli", "le", "il"], "i"),
+            ("___ zio (masculine)", ["lo", "il", "la", "l'"], "lo"),
+        ]
+        for q, choices, ans in random.sample(articles, min(2, len(articles))):
+            questions.append({"question": q, "choices": choices, "answer": ans, "type": "multiple_choice"})
+
+        # Subject pronouns
+        pronouns = [
+            ("___ parlo italiano (I)", ["Io", "Tu", "Lui", "Noi"], "Io"),
+            ("___ sei italiano? (you, informal)", ["Tu", "Io", "Lei", "Voi"], "Tu"),
+        ]
+        for q, choices, ans in random.sample(pronouns, min(1, len(pronouns))):
+            questions.append({"question": q, "choices": choices, "answer": ans, "type": "multiple_choice"})
+
+        return questions
+
+    def _generate_a2_multiple_choice(self) -> List[Dict]:
+        """Generate A2-level multiple choice questions."""
+        questions = []
+
+        # Irregular passato prossimo
         irregular_verbs = [
             ("fare", "fatto"), ("dire", "detto"), ("leggere", "letto"),
             ("vedere", "visto"), ("scrivere", "scritto"), ("prendere", "preso"),
             ("mettere", "messo"), ("essere", "stato"), ("venire", "venuto"),
         ]
-        
         for infinitive, correct_pp in random.sample(irregular_verbs, 2):
-            # Generate plausible wrong answers
             wrong_endings = ["ato", "uto", "ito"]
             stem = infinitive[:-3] if infinitive.endswith(("are", "ere", "ire")) else infinitive[:-2]
             wrong_answers = [stem + ending for ending in wrong_endings if stem + ending != correct_pp]
-            
-            # Add some other real irregular forms
             other_irregulars = [pp for _, pp in irregular_verbs if pp != correct_pp]
             wrong_answers.extend(random.sample(other_irregulars, min(2, len(other_irregulars))))
             wrong_answers = wrong_answers[:3]
-            
             all_choices = [correct_pp] + wrong_answers
             random.shuffle(all_choices)
-            
-            all_questions.append({
-                "question": f"What is the past participle of '{infinitive}'?",
+            questions.append({
+                "question": f"Past participle of '{infinitive}'?",
                 "choices": all_choices,
                 "answer": correct_pp,
                 "type": "multiple_choice"
             })
-        
-        # 3. AVERE VS ESSERE
+
+        # Avere vs essere
         auxiliary_choices = [
-            ("andare", "essere", "movement"), ("mangiare", "avere", "transitive"),
-            ("arrivare", "essere", "movement"), ("parlare", "avere", "transitive"),
-            ("uscire", "essere", "movement"), ("dormire", "avere", "no movement"),
+            ("andare", "essere"), ("mangiare", "avere"), ("arrivare", "essere"),
+            ("parlare", "avere"), ("uscire", "essere"), ("dormire", "avere"),
         ]
-        
-        for infinitive, correct_aux, reason in random.sample(auxiliary_choices, 2):
-            all_choices = ["avere", "essere"]
-            
-            all_questions.append({
-                "question": f"Which auxiliary for '{infinitive}' in passato prossimo?",
-                "choices": all_choices,
+        for infinitive, correct_aux in random.sample(auxiliary_choices, 2):
+            questions.append({
+                "question": f"Auxiliary for '{infinitive}' in passato prossimo?",
+                "choices": ["avere", "essere"],
                 "answer": correct_aux,
                 "type": "multiple_choice"
             })
-        
-        # 4. ARTICULATED PREPOSITIONS
+
+        # Articulated prepositions
         prep_choices = [
             ("Vado ___ cinema", ["al", "del", "nel", "dal"], "al"),
             ("Vengo ___ stazione", ["dalla", "alla", "nella", "sulla"], "dalla"),
             ("Sono ___ parco", ["nel", "al", "del", "sul"], "nel"),
-            ("Il libro ___ studente", ["dello", "allo", "nello", "sullo"], "dello"),
         ]
-        
-        for question, choices, answer in random.sample(prep_choices, 2):
-            all_questions.append({
-                "question": f"Fill in: {question}",
-                "choices": choices,
-                "answer": answer,
-                "type": "multiple_choice"
-            })
-        
-        # 5. TIME PREPOSITIONS
-        time_prep_choices = [
-            ("Ho studiato italiano ___ tre anni", ["per", "da", "a", "fa"], "per"),
-            ("Studio italiano ___ due anni", ["da", "per", "a", "fa"], "da"),
-            ("Ho finito la scuola ___ 18 anni", ["a", "per", "da", "fa"], "a"),
-            ("Sono arrivato due ore ___", ["fa", "per", "da", "a"], "fa"),
-        ]
-        
-        for question, choices, answer in random.sample(time_prep_choices, 2):
-            all_questions.append({
-                "question": question,
-                "choices": choices,
-                "answer": answer,
-                "type": "multiple_choice"
-            })
-        
-        # 6. NEGATIONS
-        negation_choices = [
-            ("Non vado ___ al cinema", ["mai", "più", "niente", "nessuno"], "mai"),
-            ("Non lavoro ___ qui", ["più", "mai", "niente", "nessuno"], "più"),
-            ("Non ho ___ da fare", ["niente", "mai", "più", "nessuno"], "niente"),
-            ("Non conosco ___", ["nessuno", "niente", "mai", "più"], "nessuno"),
-        ]
-        
-        for question, choices, answer in random.sample(negation_choices, 2):
-            all_questions.append({
-                "question": f"Fill in the negation: {question}",
-                "choices": choices,
-                "answer": answer,
-                "type": "multiple_choice"
-            })
-        
-        # 7. REFLEXIVE PRONOUNS
+        for question, choices, answer in random.sample(prep_choices, min(2, len(prep_choices))):
+            questions.append({"question": question, "choices": choices, "answer": answer, "type": "multiple_choice"})
+
+        # Reflexive pronouns
         reflexive_choices = [
             ("Io ___ alzo", ["mi", "ti", "si", "ci"], "mi"),
-            ("Tu ___ chiami come?", ["ti", "mi", "si", "vi"], "ti"),
+            ("Tu ___ chiami?", ["ti", "mi", "si", "vi"], "ti"),
             ("Noi ___ divertiamo", ["ci", "vi", "si", "mi"], "ci"),
-            ("Loro ___ preparano", ["si", "ci", "vi", "ti"], "si"),
         ]
-        
-        for question, choices, answer in random.sample(reflexive_choices, 2):
-            all_questions.append({
-                "question": question,
-                "choices": choices,
-                "answer": answer,
-                "type": "multiple_choice"
-            })
-        
-        # Shuffle all questions and return the requested count
-        random.shuffle(all_questions)
-        return all_questions[:count]
+        for question, choices, answer in random.sample(reflexive_choices, min(2, len(reflexive_choices))):
+            questions.append({"question": question, "choices": choices, "answer": answer, "type": "multiple_choice"})
+
+        return questions
+
+    def _generate_b1_multiple_choice(self) -> List[Dict]:
+        """Generate B1-level multiple choice questions."""
+        questions = []
+
+        # Subjunctive present
+        subjunctive = [
+            ("Penso che lui ___ ragione", ["abbia", "ha", "avesse", "avrà"], "abbia"),
+            ("È importante che tu ___ in orario", ["sia", "sei", "eri", "sarai"], "sia"),
+            ("Spero che loro ___ presto", ["vengano", "vengono", "venissero", "verranno"], "vengano"),
+            ("Credo che Maria ___ partita", ["sia", "è", "fosse", "sarà"], "sia"),
+        ]
+        for q, choices, ans in random.sample(subjunctive, min(3, len(subjunctive))):
+            questions.append({"question": q, "choices": choices, "answer": ans, "type": "multiple_choice"})
+
+        # Conditional present
+        conditional = [
+            ("Se avessi tempo, ___ un viaggio", ["farei", "faccio", "ho fatto", "facessi"], "farei"),
+            ("Io ___ volentieri", ["verrei", "vengo", "sono venuto", "venissi"], "verrei"),
+            ("Tu cosa ___?", ["diresti", "dici", "hai detto", "dicessi"], "diresti"),
+        ]
+        for q, choices, ans in random.sample(conditional, min(2, len(conditional))):
+            questions.append({"question": q, "choices": choices, "answer": ans, "type": "multiple_choice"})
+
+        # Progressive/gerund
+        progressive = [
+            ("Io ___ leggendo un libro (present progressive)", ["sto", "sono", "ho", "stavo"], "sto"),
+            ("Loro stanno ___ (eating)", ["mangiando", "mangiare", "mangiato", "mangiano"], "mangiando"),
+        ]
+        for q, choices, ans in random.sample(progressive, min(2, len(progressive))):
+            questions.append({"question": q, "choices": choices, "answer": ans, "type": "multiple_choice"})
+
+        return questions
+
+    def _generate_b2_multiple_choice(self) -> List[Dict]:
+        """Generate B2-level multiple choice questions."""
+        questions = []
+
+        # Subjunctive imperfect
+        subjunctive_imp = [
+            ("Vorrei che tu ___ con me", ["venissi", "venga", "vieni", "sei venuto"], "venissi"),
+            ("Se io ___ ricco, comprerei una casa", ["fossi", "sia", "sono", "ero"], "fossi"),
+            ("Pensavo che lei ___ già partita", ["fosse", "sia", "è", "era"], "fosse"),
+        ]
+        for q, choices, ans in random.sample(subjunctive_imp, min(2, len(subjunctive_imp))):
+            questions.append({"question": q, "choices": choices, "answer": ans, "type": "multiple_choice"})
+
+        # Subjunctive pluperfect
+        subjunctive_plup = [
+            ("Sebbene ___ molto, non ha superato l'esame", ["avesse studiato", "abbia studiato", "ha studiato", "studiasse"], "avesse studiato"),
+            ("Se ___ saputo, non sarei venuto", ["avessi", "abbia", "ho", "avevo"], "avessi"),
+        ]
+        for q, choices, ans in random.sample(subjunctive_plup, min(2, len(subjunctive_plup))):
+            questions.append({"question": q, "choices": choices, "answer": ans, "type": "multiple_choice"})
+
+        # Passive voice
+        passive = [
+            ("Il libro ___ letto da molti", ["è stato", "ha stato", "è", "ha"], "è stato"),
+            ("La casa ___ costruita nel 1920", ["fu", "è stata", "ha", "era"], "fu"),
+        ]
+        for q, choices, ans in random.sample(passive, min(2, len(passive))):
+            questions.append({"question": q, "choices": choices, "answer": ans, "type": "multiple_choice"})
+
+        # Concessive conjunctions with subjunctive
+        concessive = [
+            ("___ sia tardi, devo finire", ["Benché", "Perché", "Quando", "Se"], "Benché"),
+            ("Qualunque cosa tu ___, ti supporto", ["faccia", "fai", "hai fatto", "farai"], "faccia"),
+        ]
+        for q, choices, ans in random.sample(concessive, min(2, len(concessive))):
+            questions.append({"question": q, "choices": choices, "answer": ans, "type": "multiple_choice"})
+
+        return questions
     
     def get_focused_practice(self, topic_name: str, count: int = 10) -> List[Dict]:
         """Generate practice focused on a specific topic."""
@@ -1092,8 +1219,50 @@ class PracticeGenerator:
             ("Non capisco questa parola.", "I don't understand this word.", "comprehension"),
         ]
 
+        sentences_b1 = [
+            ("Sebbene fosse stanco, ha deciso di continuare a lavorare.", "Although he was tired, he decided to continue working.", "complex_clauses"),
+            ("Mi piacerebbe che tu venissi alla festa con me.", "I would like you to come to the party with me.", "subjunctive_desire"),
+            ("È importante che gli studenti studino regolarmente per ottenere buoni risultati.", "It's important that students study regularly to get good results.", "subjunctive_importance"),
+            ("Non credo che abbiano capito la spiegazione del professore.", "I don't believe they understood the professor's explanation.", "subjunctive_doubt"),
+            ("Quando sarò in vacanza, visiterò tutti i musei della città.", "When I'm on vacation, I'll visit all the city museums.", "future_plans"),
+            ("Se avessi più tempo libero, imparerei a suonare uno strumento musicale.", "If I had more free time, I would learn to play a musical instrument.", "conditional_hypothetical"),
+            ("Mentre camminavo per la strada, ho incontrato un vecchio amico che non vedevo da anni.", "While I was walking down the street, I met an old friend I hadn't seen in years.", "past_narrative"),
+            ("Bisogna che tutti rispettino le regole stabilite dall'amministrazione.", "It's necessary that everyone respects the rules established by the administration.", "subjunctive_necessity"),
+            ("Mi sembra che questa soluzione sia la più adatta per risolvere il problema.", "It seems to me that this solution is the most suitable to solve the problem.", "subjunctive_opinion"),
+            ("Nonostante le difficoltà economiche, la famiglia è riuscita a mantenere un buon livello di vita.", "Despite economic difficulties, the family managed to maintain a good standard of living.", "complex_contrast"),
+            ("Prima che arrivino gli ospiti, devo preparare la cena e sistemare la casa.", "Before the guests arrive, I must prepare dinner and tidy the house.", "subjunctive_temporal"),
+            ("Penso che sarebbe meglio se discutessimo questo argomento in un altro momento.", "I think it would be better if we discussed this topic at another time.", "subjunctive_conditional"),
+            ("Dopo aver finito l'università, ho cominciato a cercare lavoro nel mio settore.", "After finishing university, I started looking for work in my field.", "past_sequence"),
+            ("È probabile che il treno arrivi in ritardo a causa dello sciopero dei ferrovieri.", "It's likely that the train will arrive late because of the railway workers' strike.", "subjunctive_probability"),
+            ("Qualunque cosa tu decida di fare, ti sosterrò sempre.", "Whatever you decide to do, I will always support you.", "subjunctive_indefinite"),
+        ]
+
+        sentences_b2 = [
+            ("Sebbene avesse dedicato anni alla ricerca, non era riuscito a ottenere risultati significativi che potessero confermare la sua teoria.", "Although he had dedicated years to research, he hadn't managed to obtain significant results that could confirm his theory.", "complex_subordination"),
+            ("Qualora dovessero sorgere problemi imprevisti durante l'implementazione del progetto, sarà fondamentale che il team si riunisca immediatamente per trovare soluzioni alternative.", "Should unexpected problems arise during project implementation, it will be essential that the team meets immediately to find alternative solutions.", "formal_hypothetical"),
+            ("Non solo aveva completato tutti i compiti assegnati con estrema precisione, ma aveva anche proposto miglioramenti innovativi che avrebbero potuto rivoluzionare l'intero processo produttivo.", "Not only had he completed all assigned tasks with extreme precision, but he had also proposed innovative improvements that could have revolutionized the entire production process.", "complex_coordination"),
+            ("Affinché la transizione ecologica possa avvenire in modo efficace, è indispensabile che governi e cittadini collaborino attivamente nell'adozione di politiche sostenibili e comportamenti responsabili.", "In order for the ecological transition to happen effectively, it is essential that governments and citizens actively collaborate in adopting sustainable policies and responsible behaviors.", "purpose_clauses"),
+            ("Chiunque abbia seguito il dibattito politico degli ultimi mesi si sarà reso conto della complessità delle questioni affrontate e delle divergenze profonde che caratterizzano le varie posizioni.", "Whoever has followed the political debate of recent months will have realized the complexity of the issues addressed and the profound divergences that characterize the various positions.", "indefinite_relative"),
+            ("Nel caso in cui le condizioni meteorologiche dovessero peggiorare drasticamente, le autorità competenti potrebbero decidere di evacuare preventivamente le zone considerate a rischio.", "In the event that weather conditions should worsen drastically, the competent authorities might decide to preventively evacuate the areas considered at risk.", "conditional_future"),
+            ("Malgrado avesse ricevuto numerose offerte vantaggiose da aziende prestigiose, aveva preferito mantenere la sua indipendenza professionale e continuare a lavorare come consulente freelance.", "Despite having received numerous advantageous offers from prestigious companies, he had preferred to maintain his professional independence and continue working as a freelance consultant.", "concessive_clauses"),
+            ("È essenziale che gli studenti sviluppino non soltanto competenze tecniche specifiche, ma anche capacità critiche e analitiche che permettano loro di affrontare situazioni complesse in modo autonomo.", "It is essential that students develop not only specific technical skills, but also critical and analytical abilities that allow them to face complex situations autonomously.", "correlative_conjunctions"),
+            ("Per quanto mi sforzassi di comprendere le motivazioni che l'avevano spinta a prendere quella decisione così drastica, non riuscivo a trovare una spiegazione logica e convincente.", "No matter how hard I tried to understand the motivations that had driven her to make such a drastic decision, I couldn't find a logical and convincing explanation.", "concessive_subjunctive"),
+            ("Sempreché riesca a ottenere il finanziamento necessario e a costituire un team di ricercatori qualificati, il progetto potrebbe rappresentare un contributo significativo al progresso scientifico nel campo delle energie rinnovabili.", "Provided that he manages to obtain the necessary funding and to form a team of qualified researchers, the project could represent a significant contribution to scientific progress in the field of renewable energy.", "conditional_provision"),
+            ("Benché fossero trascorsi diversi anni dall'accaduto, ricordava ancora con straordinaria nitidezza ogni minimo dettaglio di quella giornata che aveva cambiato radicalmente il corso della sua esistenza.", "Although several years had passed since the event, he still remembered with extraordinary clarity every minute detail of that day that had radically changed the course of his existence.", "temporal_complex"),
+            ("È auspicabile che le istituzioni internazionali intensifichino gli sforzi volti a promuovere il dialogo interculturale e a prevenire conflitti che potrebbero avere conseguenze devastanti per intere popolazioni.", "It is desirable that international institutions intensify efforts aimed at promoting intercultural dialogue and preventing conflicts that could have devastating consequences for entire populations.", "formal_subjunctive"),
+        ]
+
         # Select sentences based on level
-        sentence_pool = sentences_a1 if level == "A1" else sentences_a2
+        if level == "A1":
+            sentence_pool = sentences_a1
+        elif level == "A2":
+            sentence_pool = sentences_a2
+        elif level == "B1" or level == "GCSE":
+            sentence_pool = sentences_b1
+        elif level == "B2":
+            sentence_pool = sentences_b2
+        else:
+            sentence_pool = sentences_a2  # Default fallback
 
         # Randomly select sentences
         selected = random.sample(sentence_pool, min(count, len(sentence_pool)))
@@ -4030,6 +4199,117 @@ class PracticeGenerator:
                 "choices": choices,
                 "hint": f"{item['english']} | Tense: {item['tense']} subjunctive",
                 "explanation": item["explanation"]
+            })
+
+        return questions
+
+    def generate_progressive_gerund(self, count: int = 10) -> List[Dict]:
+        """Generate progressive/gerund practice (sto mangiando, stava leggendo)."""
+        verbs = [
+            ("mangiare", "to eat", "mangiando"),
+            ("leggere", "to read", "leggendo"),
+            ("scrivere", "to write", "scrivendo"),
+            ("parlare", "to speak", "parlando"),
+            ("dormire", "to sleep", "dormendo"),
+            ("guardare", "to watch", "guardando"),
+            ("lavorare", "to work", "lavorando"),
+            ("correre", "to run", "correndo"),
+            ("studiare", "to study", "studiando"),
+            ("ascoltare", "to listen", "ascoltando"),
+            ("fare", "to do/make", "facendo"),
+            ("dire", "to say", "dicendo"),
+            ("bere", "to drink", "bevendo"),
+            ("venire", "to come", "venendo"),
+            ("andare", "to go", "andando"),
+        ]
+
+        subjects = [
+            ("io", "sto"),
+            ("tu", "stai"),
+            ("lui/lei", "sta"),
+            ("noi", "stiamo"),
+            ("voi", "state"),
+            ("loro", "stanno")
+        ]
+
+        questions = []
+        selected_verbs = random.sample(verbs, min(count, len(verbs)))
+
+        for infinitive, english, gerund in selected_verbs:
+            subject, stare_form = random.choice(subjects)
+
+            questions.append({
+                "question": f"Form the progressive: {subject} + {infinitive} ({english})",
+                "answer": f"{stare_form} {gerund}",
+                "type": "fill_in",
+                "hint": f"Use: stare + gerund (-ando/-endo)",
+                "explanation": f"Progressive form: stare + gerund. '{infinitive}' → '{gerund}'"
+            })
+
+        return questions
+
+    def generate_causative_constructions(self, count: int = 10) -> List[Dict]:
+        """Generate causative construction practice (fare/lasciare + infinitive)."""
+        scenarios = [
+            ("fare", "riparare la macchina", "to have the car repaired", "fare riparare"),
+            ("fare", "tagliare i capelli", "to have hair cut", "fare tagliare"),
+            ("lasciare", "parlare i bambini", "to let the children speak", "lasciare parlare"),
+            ("fare", "vedere il documento", "to show the document", "fare vedere"),
+            ("lasciare", "uscire gli studenti", "to let the students leave", "lasciare uscire"),
+            ("fare", "sapere la verità", "to let (someone) know the truth", "fare sapere"),
+            ("fare", "entrare l'ospite", "to have the guest come in", "fare entrare"),
+            ("lasciare", "andare via il cane", "to let the dog go away", "lasciare andare"),
+            ("fare", "costruire una casa", "to have a house built", "fare costruire"),
+            ("lasciare", "decidere lui", "to let him decide", "lasciare decidere"),
+            ("fare", "aspettare tutti", "to make everyone wait", "fare aspettare"),
+            ("lasciare", "giocare i ragazzi", "to let the boys play", "lasciare giocare"),
+        ]
+
+        questions = []
+        selected = random.sample(scenarios, min(count, len(scenarios)))
+
+        for causative, action, english, answer in selected:
+            questions.append({
+                "question": f"Translate: {english}",
+                "answer": answer,
+                "type": "fill_in",
+                "hint": f"Use: {causative} + infinitive",
+                "explanation": f"Causative: {causative} + infinitive makes someone do something"
+            })
+
+        return questions
+
+    def generate_advanced_pronouns_ci_ne(self, count: int = 10) -> List[Dict]:
+        """Generate advanced pronoun practice for 'ci' and 'ne'."""
+        ci_examples = [
+            ("Vado a Roma domani", "Ci vado domani", "I'm going there tomorrow", "ci = there (a Roma)"),
+            ("Penso spesso a te", "Ci penso spesso", "I think about it often", "ci = about it"),
+            ("Credo in Dio", "Ci credo", "I believe in it", "ci = in it"),
+            ("Andiamo al cinema?", "Ci andiamo?", "Are we going there?", "ci = there (al cinema)"),
+            ("Riesco a farlo", "Ci riesco", "I manage to do it", "ci = to do it"),
+        ]
+
+        ne_examples = [
+            ("Voglio due panini", "Ne voglio due", "I want two of them", "ne = of them"),
+            ("Parliamo di politica", "Ne parliamo", "We talk about it", "ne = about it"),
+            ("Ho comprato tre libri", "Ne ho comprati tre", "I bought three of them", "ne = of them"),
+            ("Vengo da Milano", "Ne vengo", "I come from there", "ne = from there"),
+            ("Hai bisogno di aiuto?", "Ne hai bisogno?", "Do you need it?", "ne = of it"),
+        ]
+
+        questions = []
+        all_examples = ci_examples + ne_examples
+        selected = random.sample(all_examples, min(count, len(all_examples)))
+
+        for original, with_pronoun, english, explanation in selected:
+            pronoun_type = "ci" if "ci" in with_pronoun.lower().split()[0:2] else "ne"
+
+            questions.append({
+                "question": f"Replace with '{pronoun_type}': {original}",
+                "answer": with_pronoun,
+                "type": "fill_in",
+                "hint": f"Use the pronoun '{pronoun_type}' | {english}",
+                "explanation": explanation
             })
 
         return questions

@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}Advanced Pronouns (Ci & Ne){% endblock %}
+
+{% block content %}
+<div class="text-center mb-30">
+    <h2>Advanced Pronouns: Ci & Ne</h2>
+    <p>Master these tricky Italian pronouns</p>
+</div>
+
+<div class="question-card">
+    <h3>About This Exercise</h3>
+    <p>Practice using <strong>ci</strong> and <strong>ne</strong> pronouns.</p>
+    
+    <div style="margin: 20px 0;">
+        <h4 style="color: var(--green);">CI - Multiple uses:</h4>
+        <ul>
+            <li>Place: <em>Ci vado</em> (I'm going there)</li>
+            <li>About it: <em>Ci penso</em> (I think about it)</li>
+            <li>In it: <em>Ci credo</em> (I believe in it)</li>
+        </ul>
+
+        <h4 style="color: var(--green); margin-top: 15px;">NE - Multiple uses:</h4>
+        <ul>
+            <li>Of them: <em>Ne voglio due</em> (I want two of them)</li>
+            <li>About it: <em>Ne parliamo</em> (We talk about it)</li>
+            <li>From there: <em>Ne vengo</em> (I come from there)</li>
+        </ul>
+    </div>
+
+    <form method="POST">
+        <input type="hidden" name="level" value="{{ level }}">
+        
+        <div class="form-group">
+            <label for="count">Number of Questions:</label>
+            <input type="number" id="count" name="count" value="10" min="5" max="20" required>
+        </div>
+
+        <div class="button-group">
+            <button type="submit" class="btn btn-primary btn-large">Start Practice →</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

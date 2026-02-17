@@ -142,6 +142,9 @@ PRACTICE_ROUTES = {
     'relative_pronouns': ('relative_pronouns', ['level']),
     'comprehensive_subjunctives': ('comprehensive_subjunctives', ['level']),
     'unreal_past': ('unreal_past', ['level']),
+    'progressive_gerund': ('progressive_gerund', ['level']),
+    'causative': ('causative', ['level']),
+    'advanced_pronouns': ('advanced_pronouns', ['level']),
 }
 
 
@@ -1139,6 +1142,42 @@ def imperative():
         generator_method='generate_imperative_practice',
         setup_template='imperative_setup.html',
         menu_type='grammar_menu'
+    )()
+
+
+@app.route('/progressive-gerund', methods=['GET', 'POST'])
+def progressive_gerund():
+    """Progressive forms and gerund practice (B1 level)."""
+    return create_practice_route(
+        practice_type='progressive_gerund',
+        generator_method='generate_progressive_gerund',
+        setup_template='progressive_gerund_setup.html',
+        menu_type='grammar_menu',
+        requires_level=False
+    )()
+
+
+@app.route('/causative', methods=['GET', 'POST'])
+def causative():
+    """Causative constructions with fare/lasciare (B1 level)."""
+    return create_practice_route(
+        practice_type='causative',
+        generator_method='generate_causative_constructions',
+        setup_template='causative_setup.html',
+        menu_type='grammar_menu',
+        requires_level=False
+    )()
+
+
+@app.route('/advanced-pronouns', methods=['GET', 'POST'])
+def advanced_pronouns():
+    """Advanced pronouns ci and ne practice (B1 level)."""
+    return create_practice_route(
+        practice_type='advanced_pronouns',
+        generator_method='generate_advanced_pronouns_ci_ne',
+        setup_template='advanced_pronouns_setup.html',
+        menu_type='grammar_menu',
+        requires_level=False
     )()
 
 

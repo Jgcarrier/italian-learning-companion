@@ -63,6 +63,24 @@
     {% endif %}
 
     {% if level in ['B1', 'B2', 'GCSE'] %}
+    <a href="{{ url_for('progressive_gerund') }}?level={{ level }}" class="menu-item">
+        <div class="menu-icon">⏯️</div>
+        <h3>Progressive & Gerund</h3>
+        <p>sto mangiando, stava leggendo</p>
+    </a>
+
+    <a href="{{ url_for('causative') }}?level={{ level }}" class="menu-item">
+        <div class="menu-icon">▶️</div>
+        <h3>Causative (Fare/Lasciare)</h3>
+        <p>fare vedere, lasciare andare</p>
+    </a>
+
+    <a href="{{ url_for('advanced_pronouns') }}?level={{ level }}" class="menu-item">
+        <div class="menu-icon">🎯</div>
+        <h3>Advanced Pronouns (Ci/Ne)</h3>
+        <p>ci penso, ne ho due</p>
+    </a>
+
     <a href="{{ url_for('combined_pronouns') }}?level={{ level }}" class="menu-item">
         <div class="menu-icon">🔗</div>
         <h3>Combined Pronouns</h3>

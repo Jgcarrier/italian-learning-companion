@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}Causative Constructions{% endblock %}
+
+{% block content %}
+<div class="text-center mb-30">
+    <h2>Causative Constructions</h2>
+    <p>Practice: fare + infinitive, lasciare + infinitive</p>
+</div>
+
+<div class="question-card">
+    <h3>About This Exercise</h3>
+    <p>Practice causative constructions using <strong>fare</strong> and <strong>lasciare</strong> + infinitive.</p>
+    <ul>
+        <li><strong>Fare</strong> + infinitive: to have/make someone do something</li>
+        <li>Example: <em>fare vedere</em> (to show, lit. "make see")</li>
+        <li><strong>Lasciare</strong> + infinitive: to let/allow someone do something</li>
+        <li>Example: <em>lasciare andare</em> (to let go)</li>
+    </ul>
+
+    <form method="POST">
+        <input type="hidden" name="level" value="{{ level }}">
+        
+        <div class="form-group">
+            <label for="count">Number of Questions:</label>
+            <input type="number" id="count" name="count" value="10" min="5" max="20" required>
+        </div>
+
+        <div class="button-group">
+            <button type="submit" class="btn btn-primary btn-large">Start Practice →</button>
+        </div>
+    </form>
+</div>
+{% endblock %}
