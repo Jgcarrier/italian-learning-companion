@@ -9,15 +9,15 @@
 </div>
 
 <form method="POST" action="{{ url_for('ere_verb_present') }}">
-    <input type="hidden" name="level" value="{{ level or 'A2' }}">
+    <input type="hidden" name="level" value="{{ level or 'A1' }}">
     <div class="form-group">
         <label for="count">Number of Questions:</label>
         <input type="number" name="count" id="count" value="10" min="5" max="20">
     </div>
 
     <div class="button-group">
-        <button type="submit" class="btn btn-primary btn-large">Start Practice ({{ level or 'A2' }})</button>
-        <a href="{{ url_for('verbs_menu', level=level or 'A2') }}" class="btn btn-secondary">Back</a>
+        <button type="submit" class="btn btn-primary btn-large">Start Practice ({{ level or 'A1' }})</button>
+        <a href="{{ url_for('verbs_menu', level=level or 'A1') }}" class="btn btn-secondary">Back</a>
     </div>
 </form>
 
