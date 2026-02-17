@@ -24,7 +24,7 @@
     </a>
     {% endif %}
 
-    {% if level in ['A1', 'A2'] %}
+    {% if level in ['A1', 'A2', 'B1', 'B2', 'GCSE'] %}
     <a href="{{ url_for('regular_passato') }}?level={{ level }}" class="menu-item">
         <div class="menu-icon">📖</div>
         <h3>Passato Prossimo</h3>
@@ -50,17 +50,13 @@
         <h3>Imperfetto</h3>
         <p>Imperfect tense</p>
     </a>
-    {% endif %}
 
-    {% if level in ['A2', 'B1', 'B2', 'GCSE'] %}
     <a href="{{ url_for('futuro_semplice') }}?level={{ level }}" class="menu-item">
         <div class="menu-icon">🔮</div>
         <h3>Futuro Semplice</h3>
         <p>Future tense practice</p>
     </a>
-    {% endif %}
 
-    {% if level in ['A2', 'B1', 'B2', 'GCSE'] %}
     <a href="{{ url_for('reflexive_verbs') }}?level={{ level }}" class="menu-item">
         <div class="menu-icon">🪞</div>
         <h3>Reflexive Verbs</h3>
@@ -73,16 +69,16 @@
         <p>would, could, should</p>
     </a>
 
-    <a href="{{ url_for('subjunctive_present') }}?level={{ level }}" class="menu-item">
-        <div class="menu-icon">💭</div>
-        <h3>Subjunctive Present</h3>
-        <p>Doubt, wish, emotion</p>
-    </a>
-
     <a href="{{ url_for('pronominal_verbs') }}?level={{ level }}" class="menu-item">
         <div class="menu-icon">🔗</div>
         <h3>Pronominal Verbs</h3>
         <p>farcela, andarsene, volerci</p>
+    </a>
+
+    <a href="{{ url_for('subjunctive_present') }}?level={{ level }}" class="menu-item">
+        <div class="menu-icon">💭</div>
+        <h3>Subjunctive Present</h3>
+        <p>Doubt, wish, emotion</p>
     </a>
     {% endif %}
 
@@ -93,16 +89,16 @@
         <p>essere + past participle</p>
     </a>
 
-    <a href="{{ url_for('conditional_past') }}?level={{ level }}" class="menu-item">
-        <div class="menu-icon">⏮️</div>
-        <h3>Conditional Past</h3>
-        <p>would have, could have</p>
-    </a>
-
     <a href="{{ url_for('past_perfect') }}?level={{ level }}" class="menu-item">
         <div class="menu-icon">⏪</div>
         <h3>Past Perfect</h3>
         <p>Trapassato Prossimo</p>
+    </a>
+
+    <a href="{{ url_for('conditional_past') }}?level={{ level }}" class="menu-item">
+        <div class="menu-icon">⏮️</div>
+        <h3>Conditional Past</h3>
+        <p>would have, could have</p>
     </a>
 
     <a href="{{ url_for('subjunctive_past') }}?level={{ level }}" class="menu-item">
