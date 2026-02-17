@@ -1,0 +1,1538 @@
+[
+  {
+    "id": "a1_001",
+    "title": "La Mia Famiglia",
+    "text": "Mi chiamo Sofia e ho dodici anni. Abito a Roma con la mia famiglia. Mio padre si chiama Marco e lavora in un ufficio. Mia madre si chiama Laura e insegna in una scuola. Ho un fratello più piccolo. Si chiama Luca e ha otto anni. Abbiamo anche un cane. Il cane si chiama Bruno ed è molto simpatico. La mattina faccio colazione con la mia famiglia. Mangiamo pane, marmellata e beviamo latte. Dopo colazione, vado a scuola con mio fratello. La sera ceniamo tutti insieme e parliamo della nostra giornata. Mi piace molto la mia famiglia.",
+    "vocab_hints": {
+      "abito": "I live",
+      "insegna": "teaches",
+      "più piccolo": "younger",
+      "ceniamo": "we have dinner",
+      "giornata": "day"
+    },
+    "questions": [
+      {
+        "question": "How old is Sofia?",
+        "choices": [
+          "Ten years old",
+          "Twelve years old",
+          "Eight years old",
+          "Fifteen years old"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What does Sofia's mother do?",
+        "choices": [
+          "Works in an office",
+          "Is a teacher",
+          "Is a doctor",
+          "Works at home"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What is the name of Sofia's dog?",
+        "choices": [
+          "Luca",
+          "Marco",
+          "Bruno",
+          "Rosa"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "What does Sofia's family eat for breakfast?",
+        "choices": [
+          "Pizza and coffee",
+          "Bread, jam and milk",
+          "Pasta and cheese",
+          "Fruit and yogurt"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "When does the family talk about their day?",
+        "choices": [
+          "At breakfast",
+          "At lunch",
+          "At dinner",
+          "Before bed"
+        ],
+        "correct": 2
+      }
+    ]
+  },
+  {
+    "id": "a1_002",
+    "title": "La Mia Giornata",
+    "text": "Ogni giorno mi sveglio alle sette. Faccio la doccia e mi vesto. Alle sette e mezza faccio colazione. Mangio biscotti e bevo succo d'arancia. Alle otto esco di casa e vado a scuola a piedi. Le lezioni cominciano alle otto e trenta. A scuola studio italiano, matematica, inglese e scienze. A mezzogiorno mangio un panino con i miei amici. Le lezioni finiscono alle due del pomeriggio. Torno a casa e faccio i compiti. Alle cinque gioco a calcio con gli amici nel parco. La sera guardo la televisione con la mia famiglia. Alle dieci vado a dormire. Mi piace la mia routine quotidiana.",
+    "vocab_hints": {
+      "mi sveglio": "I wake up",
+      "a piedi": "on foot",
+      "cominciano": "begin",
+      "compiti": "homework",
+      "quotidiana": "daily"
+    },
+    "questions": [
+      {
+        "question": "What time does the narrator wake up?",
+        "choices": [
+          "Six o'clock",
+          "Seven o'clock",
+          "Eight o'clock",
+          "Nine o'clock"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "How does the narrator go to school?",
+        "choices": [
+          "By bus",
+          "By car",
+          "By bike",
+          "On foot"
+        ],
+        "correct": 3
+      },
+      {
+        "question": "What time do lessons start?",
+        "choices": [
+          "Eight o'clock",
+          "Eight thirty",
+          "Nine o'clock",
+          "Seven thirty"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What does the narrator do at five o'clock?",
+        "choices": [
+          "Does homework",
+          "Watches TV",
+          "Plays football",
+          "Eats dinner"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "What time does the narrator go to bed?",
+        "choices": [
+          "Nine o'clock",
+          "Ten o'clock",
+          "Eleven o'clock",
+          "Eight o'clock"
+        ],
+        "correct": 1
+      }
+    ]
+  },
+  {
+    "id": "a1_003",
+    "title": "Al Supermercato",
+    "text": "Oggi è sabato e vado al supermercato con mia madre. Il supermercato è grande e ha molti prodotti. Compriamo frutta e verdura. Prendiamo mele, banane, pomodori e insalata. Compriamo anche pane fresco, latte, formaggio e pasta. Mia madre compra carne e pesce. Io scelgo i biscotti al cioccolato che mi piacciono molto. Alla cassa paghiamo tutto. Mia madre usa la carta di credito. Poi torniamo a casa. Le borse sono pesanti ma io aiuto mia madre. A casa mettiamo tutto nel frigorifero e nella dispensa. Fare la spesa è importante ma è anche divertente.",
+    "vocab_hints": {
+      "compriamo": "we buy",
+      "scelgo": "I choose",
+      "cassa": "checkout",
+      "pesanti": "heavy",
+      "dispensa": "pantry"
+    },
+    "questions": [
+      {
+        "question": "What day is it?",
+        "choices": [
+          "Friday",
+          "Saturday",
+          "Sunday",
+          "Monday"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "Who does the narrator go shopping with?",
+        "choices": [
+          "Father",
+          "Mother",
+          "Brother",
+          "Friend"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What kind of biscuits does the narrator choose?",
+        "choices": [
+          "Vanilla",
+          "Chocolate",
+          "Strawberry",
+          "Lemon"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "How does the mother pay?",
+        "choices": [
+          "With cash",
+          "With a check",
+          "With a credit card",
+          "With coins"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "Where do they put the food at home?",
+        "choices": [
+          "On the table",
+          "In the bedroom",
+          "In the fridge and pantry",
+          "In the garage"
+        ],
+        "correct": 2
+      }
+    ]
+  },
+  {
+    "id": "a1_004",
+    "title": "Il Mio Gatto",
+    "text": "Ho un gatto che si chiama Micio. Micio ha tre anni ed è molto bello. È grigio con gli occhi verdi. Micio dorme molto durante il giorno. Il suo posto preferito è il divano in salotto. Gli piace anche dormire al sole vicino alla finestra. Micio mangia tre volte al giorno. Mangia cibo per gatti e beve acqua fresca. A volte gli do anche un po' di latte. Quando torno da scuola, Micio corre verso di me e fa le fusa. La sera giochiamo insieme con una pallina. Micio è il mio migliore amico. Lo adoro molto.",
+    "vocab_hints": {
+      "divano": "sofa",
+      "vicino": "near",
+      "corre": "runs",
+      "fa le fusa": "purrs",
+      "adoro": "I adore"
+    },
+    "questions": [
+      {
+        "question": "How old is Micio?",
+        "choices": [
+          "Two years old",
+          "Three years old",
+          "Four years old",
+          "Five years old"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What color is Micio?",
+        "choices": [
+          "Black",
+          "White",
+          "Grey",
+          "Orange"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "Where is Micio's favorite place to sleep?",
+        "choices": [
+          "On the bed",
+          "On the sofa",
+          "Under the table",
+          "In a box"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "How many times a day does Micio eat?",
+        "choices": [
+          "Once",
+          "Twice",
+          "Three times",
+          "Four times"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "What does Micio do when the narrator comes home from school?",
+        "choices": [
+          "Sleeps",
+          "Runs and purrs",
+          "Eats",
+          "Hides"
+        ],
+        "correct": 1
+      }
+    ]
+  },
+  {
+    "id": "a1_005",
+    "title": "La Scuola",
+    "text": "Mi piace andare a scuola. La mia scuola è vicino a casa mia. È un edificio grande con molte aule. Nella mia classe siamo venti studenti. La mia insegnante preferita si chiama signora Bianchi. Insegna italiano ed è molto gentile. Il mio compagno di banco si chiama Giuseppe. È simpatico e mi aiuta con la matematica. A scuola ho molte materie. Oltre a italiano e matematica, studio anche storia, geografia e educazione fisica. La mia materia preferita è arte. Mi piace disegnare e dipingere. Durante la ricreazione gioco a palla con i miei amici. La scuola finisce alle due e poi vado a casa.",
+    "vocab_hints": {
+      "aule": "classrooms",
+      "compagno di banco": "desk mate",
+      "materie": "subjects",
+      "ricreazione": "break/recess",
+      "dipingere": "to paint"
+    },
+    "questions": [
+      {
+        "question": "How many students are in the narrator's class?",
+        "choices": [
+          "Fifteen",
+          "Twenty",
+          "Twenty-five",
+          "Thirty"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What subject does Mrs. Bianchi teach?",
+        "choices": [
+          "Mathematics",
+          "Italian",
+          "History",
+          "Art"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "Who helps the narrator with mathematics?",
+        "choices": [
+          "Mrs. Bianchi",
+          "Giuseppe",
+          "The narrator's mother",
+          "The narrator's father"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What is the narrator's favorite subject?",
+        "choices": [
+          "Italian",
+          "Mathematics",
+          "Art",
+          "Geography"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "What time does school finish?",
+        "choices": [
+          "One o'clock",
+          "Two o'clock",
+          "Three o'clock",
+          "Four o'clock"
+        ],
+        "correct": 1
+      }
+    ]
+  },
+  {
+    "id": "a1_006",
+    "title": "La Domenica in Famiglia",
+    "text": "La domenica è il mio giorno preferito della settimana. Non vado a scuola e posso dormire fino a tardi. Mi sveglio alle nove e faccio una buona colazione. Mio padre prepara il caffè e mia madre fa le torte. Dopo colazione, andiamo tutti insieme al parco. Nel parco c'è un grande lago con le papere. Mio fratello e io diamo da mangiare alle papere. Poi giochiamo a nascondino tra gli alberi. A mezzogiorno torniamo a casa. La nonna viene a pranzo da noi. Mangiamo pasta al pomodoro e pollo arrosto. È tutto buonissimo. Dopo pranzo giochiamo a carte tutti insieme. La domenica è un giorno speciale.",
+    "vocab_hints": {
+      "fino a tardi": "late",
+      "papere": "ducks",
+      "nascondino": "hide and seek",
+      "arrosto": "roasted",
+      "speciale": "special"
+    },
+    "questions": [
+      {
+        "question": "What time does the narrator wake up on Sunday?",
+        "choices": [
+          "Seven o'clock",
+          "Eight o'clock",
+          "Nine o'clock",
+          "Ten o'clock"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "Who makes cakes for breakfast?",
+        "choices": [
+          "The father",
+          "The mother",
+          "The grandmother",
+          "The narrator"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What is in the park?",
+        "choices": [
+          "A swimming pool",
+          "A lake with ducks",
+          "A playground",
+          "A restaurant"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "Who comes for lunch?",
+        "choices": [
+          "The grandfather",
+          "The grandmother",
+          "An uncle",
+          "A friend"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What do they do after lunch?",
+        "choices": [
+          "Watch TV",
+          "Go to the cinema",
+          "Play cards",
+          "Go for a walk"
+        ],
+        "correct": 2
+      }
+    ]
+  },
+  {
+    "id": "a1_007",
+    "title": "Il Compleanno",
+    "text": "Oggi è il mio compleanno. Compio dieci anni. Sono molto felice e eccitato. La mattina mia madre mi prepara la mia colazione preferita: cioccolata calda e cornetti. Poi apro i regali. Ricevo molti regali belli. Mio padre mi regala una bicicletta nuova. È rossa, il mio colore preferito. Mia nonna mi dà un libro di avventure. Nel pomeriggio arrivano i miei amici per la festa. Giochiamo in giardino e facciamo molti giochi. Mia madre porta la torta con dieci candeline. Tutti cantano \"Tanti auguri a te\". Soffio le candeline e esprimo un desiderio. È il compleanno più bello della mia vita.",
+    "vocab_hints": {
+      "compio": "I turn (years old)",
+      "regali": "gifts",
+      "candeline": "candles",
+      "soffio": "I blow",
+      "desiderio": "wish"
+    },
+    "questions": [
+      {
+        "question": "How old is the narrator turning?",
+        "choices": [
+          "Eight years old",
+          "Nine years old",
+          "Ten years old",
+          "Eleven years old"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "What does the narrator have for breakfast?",
+        "choices": [
+          "Milk and biscuits",
+          "Hot chocolate and croissants",
+          "Bread and jam",
+          "Cereal and fruit"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What gift does the father give?",
+        "choices": [
+          "A book",
+          "A bicycle",
+          "A ball",
+          "A game"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What color is the bicycle?",
+        "choices": [
+          "Blue",
+          "Green",
+          "Red",
+          "Yellow"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "Where do the children play?",
+        "choices": [
+          "In the house",
+          "In the garden",
+          "At the park",
+          "At school"
+        ],
+        "correct": 1
+      }
+    ]
+  },
+  {
+    "id": "a1_008",
+    "title": "Al Parco Giochi",
+    "text": "Oggi pomeriggio vado al parco giochi con la mia sorellina. Il parco è vicino a casa nostra. Nel parco ci sono molti giochi divertenti. C'è lo scivolo, l'altalena, la giostra e le scale per arrampicarsi. Mia sorella ha quattro anni e le piace molto l'altalena. La spingo e lei ride felice. Poi vado sullo scivolo. Salgo le scale e scivolo giù veloce. È molto divertente. Incontro anche altri bambini. Giochiamo tutti insieme a rincorrerci. Dopo un po' abbiamo sete. Beviamo acqua dalla fontanella. È una bella giornata di sole. Ci divertiamo molto al parco giochi.",
+    "vocab_hints": {
+      "scivolo": "slide",
+      "altalena": "swing",
+      "arrampicarsi": "to climb",
+      "spingo": "I push",
+      "rincorrerci": "to chase each other"
+    },
+    "questions": [
+      {
+        "question": "How old is the narrator's little sister?",
+        "choices": [
+          "Three years old",
+          "Four years old",
+          "Five years old",
+          "Six years old"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What is the sister's favorite activity at the park?",
+        "choices": [
+          "The slide",
+          "The swing",
+          "The merry-go-round",
+          "Climbing"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What does the narrator do on the slide?",
+        "choices": [
+          "Climbs up and slides down",
+          "Just watches",
+          "Pushes others",
+          "Sits at the bottom"
+        ],
+        "correct": 0
+      },
+      {
+        "question": "What game do the children play together?",
+        "choices": [
+          "Hide and seek",
+          "Football",
+          "Chase",
+          "Hopscotch"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "What do they drink when they are thirsty?",
+        "choices": [
+          "Juice",
+          "Milk",
+          "Water from the fountain",
+          "Soda"
+        ],
+        "correct": 2
+      }
+    ]
+  },
+  {
+    "id": "a1_009",
+    "title": "La Pizza",
+    "text": "La pizza è il mio cibo preferito. In Italia la pizza è molto famosa. Ci sono tanti tipi di pizza diversi. La mia pizza preferita è la margherita. Ha pomodoro, mozzarella e basilico. I colori della pizza margherita sono come la bandiera italiana: rosso, bianco e verde. Il venerdì sera la mia famiglia va sempre in pizzeria. La pizzeria si chiama \"Da Mario\" ed è vicino a casa nostra. Il pizzaiolo Mario è molto bravo. Fa le pizze nel forno a legna. Le pizze sono grandi, calde e buonissime. Io mangio sempre una pizza margherita intera. Dopo la pizza mangio anche il gelato. Che bella serata.",
+    "vocab_hints": {
+      "basilico": "basil",
+      "bandiera": "flag",
+      "pizzaiolo": "pizza maker",
+      "forno a legna": "wood-fired oven",
+      "intera": "whole"
+    },
+    "questions": [
+      {
+        "question": "What is the narrator's favorite food?",
+        "choices": [
+          "Pasta",
+          "Pizza",
+          "Gelato",
+          "Bread"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What type of pizza does the narrator prefer?",
+        "choices": [
+          "Margherita",
+          "Quattro formaggi",
+          "Napoletana",
+          "Diavola"
+        ],
+        "correct": 0
+      },
+      {
+        "question": "What are the colors of pizza margherita?",
+        "choices": [
+          "Red, white and blue",
+          "Red, white and green",
+          "Yellow, red and green",
+          "White, green and blue"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "When does the family go to the pizzeria?",
+        "choices": [
+          "Thursday evening",
+          "Friday evening",
+          "Saturday evening",
+          "Sunday evening"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What does the narrator eat after pizza?",
+        "choices": [
+          "Cake",
+          "Fruit",
+          "Ice cream",
+          "Biscuits"
+        ],
+        "correct": 2
+      }
+    ]
+  },
+  {
+    "id": "a1_010",
+    "title": "I Miei Hobby",
+    "text": "Ho molti hobby interessanti. Mi piace leggere libri di avventura. Leggo ogni sera prima di dormire. Mi piace anche disegnare. Disegno animali, case e paesaggi. Uso matite colorate e pennarelli. Un altro mio hobby è ascoltare musica. La mia cantante preferita è italiana e canta canzoni belle. Mi piace anche ballare. Quando ascolto la musica, ballo nella mia camera. Il sabato mattina gioco a tennis. Ho un insegnante di tennis molto paziente. Il tennis è uno sport divertente e anche faticoso. La domenica vado in bicicletta con mio padre. Gli hobby mi rendono felice. È importante avere hobby.",
+    "vocab_hints": {
+      "paesaggi": "landscapes",
+      "pennarelli": "markers",
+      "cantante": "singer",
+      "faticoso": "tiring",
+      "mi rendono": "make me"
+    },
+    "questions": [
+      {
+        "question": "When does the narrator read?",
+        "choices": [
+          "In the morning",
+          "At lunch",
+          "Every evening before sleeping",
+          "At school"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "What does the narrator draw?",
+        "choices": [
+          "Only people",
+          "Animals, houses and landscapes",
+          "Only animals",
+          "Only geometric shapes"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What nationality is the narrator's favorite singer?",
+        "choices": [
+          "American",
+          "English",
+          "Italian",
+          "French"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "When does the narrator play tennis?",
+        "choices": [
+          "Saturday morning",
+          "Sunday morning",
+          "Friday afternoon",
+          "Every day"
+        ],
+        "correct": 0
+      },
+      {
+        "question": "Who does the narrator go cycling with?",
+        "choices": [
+          "Mother",
+          "Father",
+          "Friends",
+          "Brother"
+        ],
+        "correct": 1
+      }
+    ]
+  },
+  {
+    "id": "a1_011",
+    "title": "Il Mio Zaino",
+    "text": "Ogni mattina preparo il mio zaino per la scuola. Nel zaino metto i libri, i quaderni e le penne. Ho un libro di italiano e un libro di matematica. Metto anche un astuccio con le matite colorate. La mia bottiglia d'acqua è sempre nel zaino. A volte metto anche un panino per la merenda. Il mio zaino è blu e grande. Mi piace molto il mio zaino perché è comodo. Quando arrivo a scuola, metto lo zaino sotto il banco. Dopo la scuola, metto tutto nello zaino e torno a casa.",
+    "vocab_hints": {
+      "zaino": "backpack",
+      "quaderni": "notebooks",
+      "astuccio": "pencil case",
+      "merenda": "snack",
+      "comodo": "comfortable"
+    },
+    "questions": [
+      {
+        "question": "What colour is the narrator's backpack?",
+        "choices": [
+          "Red",
+          "Green",
+          "Blue",
+          "Black"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "Where does the narrator put their backpack at school?",
+        "choices": [
+          "On the desk",
+          "On the chair",
+          "Under the desk",
+          "On the shelf"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "What does the narrator sometimes put in their backpack?",
+        "choices": [
+          "A book",
+          "A sandwich",
+          "A pencil case",
+          "Water"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "How many books are mentioned?",
+        "choices": [
+          "One",
+          "Two",
+          "Three",
+          "Four"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What is always in the backpack?",
+        "choices": [
+          "Coloured pencils",
+          "A sandwich",
+          "A water bottle",
+          "A notebook"
+        ],
+        "correct": 2
+      }
+    ]
+  },
+  {
+    "id": "a1_012",
+    "title": "La Mia Camera",
+    "text": "La mia camera è piccola ma bella. Ho un letto grande con un cuscino morbido. Vicino al letto c'è un comodino con una lampada. Ho anche una scrivania dove faccio i compiti. Sulla scrivania ho il computer e i miei libri. Le pareti della mia camera sono gialle. Ho un armadio grande per i vestiti. Sulla finestra ho delle tende rosse. Ho molti poster di calcio e musica sulle pareti. La mia camera è il mio posto preferito in casa. Mi piace stare nella mia camera.",
+    "vocab_hints": {
+      "cuscino": "pillow",
+      "morbido": "soft",
+      "comodino": "bedside table",
+      "scrivania": "desk",
+      "armadio": "wardrobe"
+    },
+    "questions": [
+      {
+        "question": "What colour are the bedroom walls?",
+        "choices": [
+          "White",
+          "Blue",
+          "Yellow",
+          "Green"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "Where does the narrator do their homework?",
+        "choices": [
+          "In the living room",
+          "At the desk",
+          "On the bed",
+          "In the kitchen"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What colour are the curtains?",
+        "choices": [
+          "Yellow",
+          "Blue",
+          "Green",
+          "Red"
+        ],
+        "correct": 3
+      },
+      {
+        "question": "What is on the desk?",
+        "choices": [
+          "Books only",
+          "A lamp",
+          "Computer and books",
+          "Posters"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "What posters does the narrator have?",
+        "choices": [
+          "Animals and nature",
+          "Football and music",
+          "Cars and space",
+          "Art and science"
+        ],
+        "correct": 1
+      }
+    ]
+  },
+  {
+    "id": "a1_013",
+    "title": "Al Bar",
+    "text": "Ogni mattina vado al bar vicino a casa mia. Il bar si chiama Bar Roma. Il barista si chiama Giovanni. Giovanni è molto simpatico e sorride sempre. Ordino un cappuccino e un cornetto al cioccolato. Il cappuccino costa un euro e cinquanta. Il cornetto costa un euro. Pago al banco e poi mi siedo al tavolo. Nel bar ci sono molte persone. Alcune persone leggono il giornale. Altre persone parlano con gli amici. Dopo il caffè, saluto Giovanni e vado al lavoro. Il bar è un posto importante in Italia.",
+    "vocab_hints": {
+      "barista": "barman/barista",
+      "sorride": "smiles",
+      "cornetto": "croissant",
+      "banco": "counter",
+      "giornale": "newspaper"
+    },
+    "questions": [
+      {
+        "question": "What is the name of the bar?",
+        "choices": [
+          "Bar Milano",
+          "Bar Roma",
+          "Bar Napoli",
+          "Bar Firenze"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What does the narrator order?",
+        "choices": [
+          "Tea and biscuit",
+          "Coffee and toast",
+          "Cappuccino and croissant",
+          "Juice and cake"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "How much does the cappuccino cost?",
+        "choices": [
+          "€1.00",
+          "€1.50",
+          "€2.00",
+          "€2.50"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What do some people read in the bar?",
+        "choices": [
+          "Books",
+          "Magazines",
+          "Newspapers",
+          "Menus"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "What does the narrator do after coffee?",
+        "choices": [
+          "Goes home",
+          "Goes to school",
+          "Goes to work",
+          "Goes shopping"
+        ],
+        "correct": 2
+      }
+    ]
+  },
+  {
+    "id": "a1_014",
+    "title": "Il Tempo Libero",
+    "text": "Nel tempo libero mi piace fare molte cose. Il lunedì vado in piscina a nuotare. Il mercoledì suono la chitarra a casa. Amo la musica e voglio imparare molte canzoni. Il venerdì vado al cinema con i miei amici. Guardiamo film italiani e stranieri. Il sabato mattina faccio sport. Gioco a tennis con mio fratello. La domenica riposo e leggo libri. Mi piacciono molto i libri di avventura. Non guardo molto la televisione. Preferisco fare cose attive. Il tempo libero è importante per rilassarsi.",
+    "vocab_hints": {
+      "tempo libero": "free time",
+      "piscina": "swimming pool",
+      "suono": "I play (instrument)",
+      "canzoni": "songs",
+      "rilassarsi": "to relax"
+    },
+    "questions": [
+      {
+        "question": "On which day does the narrator go swimming?",
+        "choices": [
+          "Tuesday",
+          "Monday",
+          "Wednesday",
+          "Friday"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What instrument does the narrator play?",
+        "choices": [
+          "Piano",
+          "Violin",
+          "Guitar",
+          "Drums"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "Who does the narrator play tennis with?",
+        "choices": [
+          "A friend",
+          "Their sister",
+          "Their brother",
+          "Their father"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "What type of books does the narrator like?",
+        "choices": [
+          "Romance",
+          "Adventure",
+          "Science",
+          "History"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "When does the narrator go to the cinema?",
+        "choices": [
+          "Monday",
+          "Wednesday",
+          "Friday",
+          "Sunday"
+        ],
+        "correct": 2
+      }
+    ]
+  },
+  {
+    "id": "a1_015",
+    "title": "La Stagioni",
+    "text": "In Italia ci sono quattro stagioni. La primavera è bella e calda. I fiori sbocciano e gli alberi sono verdi. D'estate fa molto caldo. Le persone vanno al mare o in montagna. L'autunno è la mia stagione preferita. Le foglie diventano rosse, gialle e arancioni. Fa fresco e mi piace camminare nel parco. L'inverno è freddo. A volte nevica in montagna. Mi piace bere il cioccolato caldo in inverno. Ogni stagione ha qualcosa di bello. In primavera c'è Pasqua. In estate c'è il mare. In autunno c'è Halloween. In inverno c'è il Natale.",
+    "vocab_hints": {
+      "stagioni": "seasons",
+      "sbocciano": "bloom",
+      "foglie": "leaves",
+      "nevica": "it snows",
+      "Pasqua": "Easter"
+    },
+    "questions": [
+      {
+        "question": "Which is the narrator's favourite season?",
+        "choices": [
+          "Spring",
+          "Summer",
+          "Autumn",
+          "Winter"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "What do the leaves do in autumn?",
+        "choices": [
+          "Fall down only",
+          "Turn red, yellow and orange",
+          "Stay green",
+          "Turn blue"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "Where do people go in summer?",
+        "choices": [
+          "To the city",
+          "To the sea or mountains",
+          "To school",
+          "To the park"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What does the narrator like to drink in winter?",
+        "choices": [
+          "Tea",
+          "Orange juice",
+          "Hot chocolate",
+          "Coffee"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "Which holiday is in winter?",
+        "choices": [
+          "Easter",
+          "Halloween",
+          "Christmas",
+          "New Year only"
+        ],
+        "correct": 2
+      }
+    ]
+  },
+  {
+    "id": "a1_016",
+    "title": "Il Mio Cibo Preferito",
+    "text": "Mi chiamo Giulia e amo il cibo italiano. Il mio piatto preferito è la pasta al pomodoro. La preparo ogni domenica con mia nonna. Prima facciamo il sugo con i pomodori freschi. Poi cuociamo la pasta per dieci minuti. Aggiungiamo il basilico e l'olio d'oliva. È deliziosa! Mi piace anche la pizza margherita. La mangiamo al ristorante il venerdì sera. Non mi piace molto il pesce, ma amo la carne. A colazione mangio sempre yogurt e frutta. Il mio frutto preferito è la fragola. In estate mangiamo molto gelato. Il gelato italiano è il migliore del mondo!",
+    "vocab_hints": {
+      "sugo": "sauce",
+      "freschi": "fresh",
+      "basilico": "basil",
+      "fragola": "strawberry",
+      "migliore": "best"
+    },
+    "questions": [
+      {
+        "question": "Who does Giulia cook pasta with?",
+        "choices": [
+          "Her mother",
+          "Her grandmother",
+          "Her sister",
+          "Her friend"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What is Giulia's favourite dish?",
+        "choices": [
+          "Pizza",
+          "Pasta with tomato sauce",
+          "Fish",
+          "Meat"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What does Giulia eat for breakfast?",
+        "choices": [
+          "Pasta and coffee",
+          "Bread and jam",
+          "Yogurt and fruit",
+          "Eggs and toast"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "What is Giulia's favourite fruit?",
+        "choices": [
+          "Apple",
+          "Banana",
+          "Orange",
+          "Strawberry"
+        ],
+        "correct": 3
+      },
+      {
+        "question": "When do they eat pizza?",
+        "choices": [
+          "Saturday evening",
+          "Sunday lunchtime",
+          "Friday evening",
+          "Monday evening"
+        ],
+        "correct": 2
+      }
+    ]
+  },
+  {
+    "id": "a1_017",
+    "title": "I Colori e i Vestiti",
+    "text": "Mi chiamo Diego e mi piace vestirmi bene. Oggi indosso una maglietta blu e i jeans neri. Ho anche una giacca grigia perché fa freddo. Le mie scarpe sono bianche e nuove. Mi piace il colore blu perché è elegante. Mia sorella preferisce il rosa e il viola. Lei indossa sempre vestiti colorati. Mia madre lavora in ufficio e indossa sempre abiti formali. Mio padre indossa spesso pantaloni beige e camicia bianca. Quando fa caldo, indosso i pantaloncini e le infradito. Il fine settimana mi piace stare comodo con la tuta.",
+    "vocab_hints": {
+      "indosso": "I wear",
+      "giacca": "jacket",
+      "scarpe": "shoes",
+      "abiti": "clothes/dresses",
+      "tuta": "tracksuit"
+    },
+    "questions": [
+      {
+        "question": "What colour is Diego's t-shirt today?",
+        "choices": [
+          "Red",
+          "Blue",
+          "Green",
+          "Yellow"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "Why does Diego wear a jacket?",
+        "choices": [
+          "He likes it",
+          "It's cold",
+          "It's raining",
+          "It's his favourite"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What colours does Diego's sister prefer?",
+        "choices": [
+          "Blue and grey",
+          "Red and orange",
+          "Pink and purple",
+          "White and black"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "What does Diego's father wear?",
+        "choices": [
+          "Suit and tie",
+          "Jeans and t-shirt",
+          "Beige trousers and white shirt",
+          "Shorts and sandals"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "What does Diego wear at the weekend?",
+        "choices": [
+          "Smart clothes",
+          "A tracksuit",
+          "A jacket",
+          "Formal clothes"
+        ],
+        "correct": 1
+      }
+    ]
+  },
+  {
+    "id": "a1_018",
+    "title": "A Casa dei Nonni",
+    "text": "Ogni domenica andiamo a casa dei nonni. I miei nonni abitano in campagna. La loro casa è grande e vecchia. Ha un giardino bellissimo con molti fiori. Mia nonna si chiama Rosa e cucina benissimo. Prepara sempre il risotto e il pollo arrosto. Mio nonno si chiama Aldo e lavora nell'orto. Nell'orto ci sono pomodori, zucchine e insalata. Dopo pranzo facciamo una passeggiata nel campo. A volte raccogliamo le mele dal albero. I miei nonni hanno anche delle galline. Ci danno le uova fresche. Amo le domeniche dai nonni perché sono tranquille e felici.",
+    "vocab_hints": {
+      "campagna": "countryside",
+      "orto": "vegetable garden",
+      "zucchine": "courgettes",
+      "raccogliamo": "we pick/collect",
+      "galline": "hens"
+    },
+    "questions": [
+      {
+        "question": "Where do the grandparents live?",
+        "choices": [
+          "In the city",
+          "By the sea",
+          "In the countryside",
+          "In the mountains"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "What does Grandma Rosa always cook?",
+        "choices": [
+          "Pasta and fish",
+          "Risotto and roast chicken",
+          "Pizza and salad",
+          "Soup and bread"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What does Grandpa Aldo do?",
+        "choices": [
+          "Reads books",
+          "Watches TV",
+          "Works in the vegetable garden",
+          "Goes for walks"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "What do they sometimes collect from the tree?",
+        "choices": [
+          "Pears",
+          "Oranges",
+          "Lemons",
+          "Apples"
+        ],
+        "correct": 3
+      },
+      {
+        "question": "What do the grandparents' hens provide?",
+        "choices": [
+          "Fresh milk",
+          "Fresh eggs",
+          "Meat",
+          "Nothing"
+        ],
+        "correct": 1
+      }
+    ]
+  },
+  {
+    "id": "a1_019",
+    "title": "Il Mio Animale Preferito",
+    "text": "Il mio animale preferito è il cane. Ho un cane che si chiama Fido. Fido è un labrador giallo. Ha quattro anni e pesa trenta chili. È molto grande ma anche molto dolce. Ogni mattina Fido si sveglia presto e abbaia. Poi mangia la sua ciotola di cibo. Faccio una passeggiata con Fido ogni pomeriggio. Andiamo al parco vicino a casa nostra. Fido ama correre e giocare con gli altri cani. La sera Fido dorme sul suo tappeto in camera mia. Devo pulire Fido ogni settimana. Mi vuole molto bene e io gli voglio bene.",
+    "vocab_hints": {
+      "labrador": "Labrador",
+      "pesa": "weighs",
+      "abbaia": "barks",
+      "ciotola": "bowl",
+      "tappeto": "mat/rug"
+    },
+    "questions": [
+      {
+        "question": "What breed is Fido?",
+        "choices": [
+          "German Shepherd",
+          "Poodle",
+          "Labrador",
+          "Bulldog"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "How old is Fido?",
+        "choices": [
+          "Two years",
+          "Three years",
+          "Four years",
+          "Five years"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "When do they go for a walk?",
+        "choices": [
+          "Every morning",
+          "Every afternoon",
+          "Every evening",
+          "Every weekend"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "Where does Fido sleep?",
+        "choices": [
+          "In the garden",
+          "On the sofa",
+          "In the kitchen",
+          "On his mat in the bedroom"
+        ],
+        "correct": 3
+      },
+      {
+        "question": "What does Fido love doing at the park?",
+        "choices": [
+          "Swimming",
+          "Running and playing with other dogs",
+          "Sleeping",
+          "Eating"
+        ],
+        "correct": 1
+      }
+    ]
+  },
+  {
+    "id": "a1_020",
+    "title": "In Città",
+    "text": "Abito in una città grande. Nella mia città ci sono molte cose interessanti. C'è un museo con quadri bellissimi. C'è anche una biblioteca con molti libri. In centro c'è una grande piazza con una fontana. Il mercato è aperto il martedì e il sabato. Al mercato si vendono frutta, verdura e vestiti. Ci sono anche molti negozi e ristoranti. Il sabato vado in centro con i miei amici. Prendiamo l'autobus e poi camminiamo. Mi piace guardare le vetrine dei negozi. A volte compro qualcosa di bello. La mia città è bella soprattutto in estate.",
+    "vocab_hints": {
+      "quadri": "paintings",
+      "piazza": "square/plaza",
+      "fontana": "fountain",
+      "vetrine": "shop windows",
+      "soprattutto": "especially"
+    },
+    "questions": [
+      {
+        "question": "What is in the central square?",
+        "choices": [
+          "A statue",
+          "A fountain",
+          "A market",
+          "A museum"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "On which days is the market open?",
+        "choices": [
+          "Monday and Friday",
+          "Tuesday and Saturday",
+          "Wednesday and Sunday",
+          "Thursday and Saturday"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "How does the narrator get to the city centre?",
+        "choices": [
+          "By car",
+          "By bike",
+          "By bus then walking",
+          "On foot only"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "What does the narrator like doing in the shops?",
+        "choices": [
+          "Buying everything",
+          "Looking at the shop windows",
+          "Working there",
+          "Eating"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "When is the city especially beautiful?",
+        "choices": [
+          "In spring",
+          "In winter",
+          "In summer",
+          "In autumn"
+        ],
+        "correct": 2
+      }
+    ]
+  },
+  {
+    "id": "a1_021",
+    "title": "La Mia Maestra",
+    "text": "La mia maestra si chiama Signora Bianchi. È molto brava e gentile. Insegna italiano e storia. Le piace molto leggere e viaggiare. Ogni settimana ci racconta storie interessanti. La sua classe è sempre decorata con disegni colorati. Quando facciamo bene, ci dà gli adesivi. Gli adesivi sono stelle dorate. Tutti vogliamo guadagnare le stelle! La Signora Bianchi è alta e ha i capelli ricci. Porta sempre gli occhiali. Ha una voce dolce e tranquilla. Non urla mai. Quando abbiamo problemi, ci aiuta sempre. È la mia maestra preferita.",
+    "vocab_hints": {
+      "maestra": "teacher (primary)",
+      "ci racconta": "tells us",
+      "adesivi": "stickers",
+      "stelle dorate": "golden stars",
+      "urla": "shouts"
+    },
+    "questions": [
+      {
+        "question": "What subjects does Signora Bianchi teach?",
+        "choices": [
+          "Maths and science",
+          "Italian and history",
+          "English and art",
+          "Music and PE"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What reward does she give for good work?",
+        "choices": [
+          "Sweets",
+          "Stickers",
+          "Extra playtime",
+          "Books"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What do the stickers look like?",
+        "choices": [
+          "Red hearts",
+          "Blue circles",
+          "Golden stars",
+          "Green trees"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "What does Signora Bianchi look like?",
+        "choices": [
+          "Short with straight hair",
+          "Tall with curly hair",
+          "Small with long hair",
+          "Medium with short hair"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What does she do when students have problems?",
+        "choices": [
+          "Ignores them",
+          "Gets angry",
+          "Always helps them",
+          "Sends them home"
+        ],
+        "correct": 2
+      }
+    ]
+  },
+  {
+    "id": "a1_022",
+    "title": "Una Mattina di Pioggia",
+    "text": "Oggi piove molto. Il cielo è grigio e nuvoloso. Non posso uscire a giocare. Rimango a casa con mia sorella. Decidiamo di giocare ai giochi da tavolo. Giochiamo agli scacchi e alle carte. Mia sorella vince sempre agli scacchi! Poi guardiamo un film d'animazione. Il film è molto divertente e ridiamo molto. Mia madre ci prepara la cioccolata calda. È buonissima! Nel pomeriggio, disegno e coloro. Faccio un disegno di un arcobaleno. La pioggia finisce verso sera. Esce il sole e vedo un vero arcobaleno nel cielo. Che bella sorpresa!",
+    "vocab_hints": {
+      "nuvoloso": "cloudy",
+      "scacchi": "chess",
+      "carte": "cards",
+      "arcobaleno": "rainbow",
+      "ridiamo": "we laugh"
+    },
+    "questions": [
+      {
+        "question": "Why can't the narrator go outside?",
+        "choices": [
+          "It's too hot",
+          "It's raining",
+          "They are ill",
+          "The park is closed"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What board game does the narrator play?",
+        "choices": [
+          "Chess and cards",
+          "Ludo and snakes & ladders",
+          "Monopoly and chess",
+          "Cards only"
+        ],
+        "correct": 0
+      },
+      {
+        "question": "Who usually wins at chess?",
+        "choices": [
+          "The narrator",
+          "Their mother",
+          "Their sister",
+          "Their father"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "What does their mother prepare?",
+        "choices": [
+          "Tea and biscuits",
+          "Hot chocolate",
+          "A sandwich",
+          "Pizza"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What does the narrator see at the end of the day?",
+        "choices": [
+          "Snow",
+          "Stars",
+          "A real rainbow",
+          "The moon"
+        ],
+        "correct": 2
+      }
+    ]
+  },
+  {
+    "id": "a1_023",
+    "title": "Lo Sport",
+    "text": "Mi chiamo Andrea e amo lo sport. Il mio sport preferito è il calcio. Gioco a calcio due volte a settimana con la squadra della scuola. Siamo undici giocatori. Io gioco come portiere. La nostra squadra si chiama Stella Azzurra. Abbiamo una maglia blu e bianca. Questa settimana abbiamo vinto tre a uno. Sono molto felice! Guardo anche il calcio in televisione. La mia squadra preferita è la Juventus. Mi piace anche nuotare e andare in bicicletta. Lo sport è importante per la salute. Mi fa sentire forte e in forma.",
+    "vocab_hints": {
+      "squadra": "team",
+      "portiere": "goalkeeper",
+      "maglia": "shirt/jersey",
+      "abbiamo vinto": "we won",
+      "in forma": "fit"
+    },
+    "questions": [
+      {
+        "question": "What sport does Andrea love most?",
+        "choices": [
+          "Swimming",
+          "Basketball",
+          "Football",
+          "Tennis"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "What position does Andrea play?",
+        "choices": [
+          "Striker",
+          "Midfielder",
+          "Defender",
+          "Goalkeeper"
+        ],
+        "correct": 3
+      },
+      {
+        "question": "What is their team called?",
+        "choices": [
+          "Stella Rossa",
+          "Stella Azzurra",
+          "Stella Verde",
+          "Stella Bianca"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What was the score this week?",
+        "choices": [
+          "2-0",
+          "1-1",
+          "3-1",
+          "4-2"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "Which is Andrea's favourite professional team?",
+        "choices": [
+          "AC Milan",
+          "Inter",
+          "Roma",
+          "Juventus"
+        ],
+        "correct": 3
+      }
+    ]
+  },
+  {
+    "id": "a1_024",
+    "title": "Le Feste di Natale",
+    "text": "A dicembre la mia famiglia festeggia il Natale. Decoriamo la casa con le luci colorate. Mettiamo l'albero di Natale in salotto. Sull'albero ci sono palline, stelle e luci. Il ventiquattro dicembre è la Vigilia di Natale. La sera mangiamo insieme tutta la famiglia. Mangiamo il pesce perché è tradizione. Poi apriamo i regali sotto l'albero. Io regalo a mia sorella un libro. Lei mi regala una sciarpa rossa. Il giorno di Natale andiamo dai nonni. La nonna cucina molto e mangiamo tantissimo. È la mia festa preferita dell'anno. Mi piace stare con tutta la famiglia.",
+    "vocab_hints": {
+      "festeggia": "celebrates",
+      "palline": "baubles",
+      "Vigilia": "Christmas Eve",
+      "regali": "presents",
+      "sciarpa": "scarf"
+    },
+    "questions": [
+      {
+        "question": "Where do they put the Christmas tree?",
+        "choices": [
+          "In the kitchen",
+          "In the bedroom",
+          "In the living room",
+          "In the garden"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "When is Christmas Eve?",
+        "choices": [
+          "23rd December",
+          "24th December",
+          "25th December",
+          "26th December"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "Why do they eat fish on Christmas Eve?",
+        "choices": [
+          "They like it",
+          "It is tradition",
+          "It is cheaper",
+          "The grandmother cooks it"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What does the narrator give their sister?",
+        "choices": [
+          "A scarf",
+          "A toy",
+          "A book",
+          "A game"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "Where do they go on Christmas Day?",
+        "choices": [
+          "To the cinema",
+          "To church",
+          "To the grandparents",
+          "To a restaurant"
+        ],
+        "correct": 2
+      }
+    ]
+  }
+]

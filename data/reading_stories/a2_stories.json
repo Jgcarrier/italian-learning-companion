@@ -1,0 +1,1538 @@
+[
+  {
+    "id": "a2_001",
+    "title": "Il Weekend a Firenze",
+    "text": "Lo scorso weekend sono andato a Firenze con la mia famiglia. Siamo partiti sabato mattina presto in macchina. Il viaggio è durato tre ore. Quando siamo arrivati, abbiamo lasciato la macchina in un parcheggio e abbiamo camminato verso il centro storico. Firenze è una città bellissima e piena di arte. Abbiamo visitato il Duomo e siamo saliti sulla cupola. La vista era spettacolare. Dopo abbiamo attraversato il Ponte Vecchio e abbiamo visto molti negozi di gioielli. Nel pomeriggio siamo andati alla Galleria degli Uffizi. Ho visto quadri famosi di Botticelli e Leonardo da Vinci. La sera abbiamo cenato in una trattoria tipica. Ho mangiato bistecca alla fiorentina e era deliziosa. Domenica mattina, prima di tornare a casa, abbiamo comprato del gelato artigianale. È stato un weekend indimenticabile. Voglio tornare a Firenze presto.",
+    "vocab_hints": {
+      "è durato": "lasted",
+      "cupola": "dome",
+      "attraversato": "crossed",
+      "trattoria": "traditional restaurant",
+      "indimenticabile": "unforgettable"
+    },
+    "questions": [
+      {
+        "question": "How long did the journey to Florence take?",
+        "choices": [
+          "Two hours",
+          "Three hours",
+          "Four hours",
+          "Five hours"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What did they climb in Florence?",
+        "choices": [
+          "A tower",
+          "A hill",
+          "The dome",
+          "The bridge"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "What shops did they see on Ponte Vecchio?",
+        "choices": [
+          "Clothing shops",
+          "Jewelry shops",
+          "Book shops",
+          "Food shops"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What did the narrator eat for dinner?",
+        "choices": [
+          "Pizza",
+          "Pasta",
+          "Florentine steak",
+          "Fish"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "What did they buy on Sunday morning?",
+        "choices": [
+          "Souvenirs",
+          "Books",
+          "Artisan ice cream",
+          "Paintings"
+        ],
+        "correct": 2
+      }
+    ]
+  },
+  {
+    "id": "a2_002",
+    "title": "Una Brutta Esperienza",
+    "text": "La settimana scorsa ho avuto una brutta esperienza. Martedì mattina mi sono svegliato tardi perché la sveglia non ha suonato. Ero in ritardo per la scuola. Mi sono vestito velocemente e sono uscito di casa senza fare colazione. Mentre correvo verso la fermata dell'autobus, ho inciampato e sono caduto. Mi sono fatto male al ginocchio. L'autobus era già partito e ho dovuto aspettare il prossimo. Quando finalmente sono arrivato a scuola, la lezione era già cominciata. L'insegnante non era contenta. Nel pomeriggio avevo una verifica di matematica, ma non avevo studiato abbastanza. È stata difficilissima. Quando sono tornato a casa, ero stanco e triste. Però mia madre aveva preparato la mia cena preferita e mi sono sentito meglio. Domani sarà sicuramente un giorno migliore.",
+    "vocab_hints": {
+      "sveglia": "alarm clock",
+      "inciampato": "tripped",
+      "ginocchio": "knee",
+      "verifica": "test",
+      "migliore": "better"
+    },
+    "questions": [
+      {
+        "question": "Why did the narrator wake up late?",
+        "choices": [
+          "Stayed up late",
+          "The alarm didn't ring",
+          "Forgot to set alarm",
+          "Was sick"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What happened while running to the bus stop?",
+        "choices": [
+          "Lost the wallet",
+          "Met a friend",
+          "Tripped and fell",
+          "Caught the bus"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "How did the teacher react when the narrator arrived?",
+        "choices": [
+          "Was happy",
+          "Was not happy",
+          "Didn't notice",
+          "Gave a prize"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "Why was the maths test difficult?",
+        "choices": [
+          "The teacher was mean",
+          "Hadn't studied enough",
+          "Was too long",
+          "Questions were in English"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What made the narrator feel better?",
+        "choices": [
+          "Going to bed",
+          "Watching TV",
+          "Mother's favorite dinner",
+          "Talking to a friend"
+        ],
+        "correct": 2
+      }
+    ]
+  },
+  {
+    "id": "a2_003",
+    "title": "Le Vacanze Estive",
+    "text": "Quest'estate andrò in vacanza al mare con i miei genitori. Partiremo il primo agosto e staremo via per due settimane. Andremo in Sardegna, un'isola meravigliosa nel sud dell'Italia. Abbiamo prenotato un appartamento vicino alla spiaggia. Sono molto entusiasta perché non sono mai stato in Sardegna prima. Durante le vacanze voglio fare tante cose. Farò il bagno nel mare ogni giorno perché adoro nuotare. Mio padre dice che faremo anche delle gite in barca per vedere le grotte marine. Mia madre vuole visitare i paesini tipici e assaggiare la cucina locale. Ho sentito dire che il pane sardo è delizioso. Voglio anche provare lo snorkeling per vedere i pesci colorati. La sera passeggeremo sul lungomare e mangeremo il gelato. Non vedo l'ora di partire. Sarà un'estate fantastica.",
+    "vocab_hints": {
+      "staremo via": "we will be away",
+      "sono mai stato": "have ever been",
+      "grotte": "caves",
+      "paesini": "small villages",
+      "non vedo l'ora": "I can't wait"
+    },
+    "questions": [
+      {
+        "question": "When will they leave for vacation?",
+        "choices": [
+          "First of July",
+          "First of August",
+          "First of September",
+          "First of June"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "How long will the vacation last?",
+        "choices": [
+          "One week",
+          "Two weeks",
+          "Three weeks",
+          "One month"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "Has the narrator been to Sardinia before?",
+        "choices": [
+          "Yes, many times",
+          "Yes, once",
+          "No, never",
+          "Not mentioned"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "What does the father say they will do?",
+        "choices": [
+          "Go hiking",
+          "Take boat trips",
+          "Visit museums",
+          "Play golf"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What does the narrator want to try to see colorful fish?",
+        "choices": [
+          "Diving",
+          "Snorkeling",
+          "Fishing",
+          "Surfing"
+        ],
+        "correct": 1
+      }
+    ]
+  },
+  {
+    "id": "a2_004",
+    "title": "Il Nuovo Compagno di Classe",
+    "text": "Ieri è arrivato un nuovo compagno di classe nella nostra scuola. Si chiama Ahmed e viene dal Marocco. All'inizio era molto timido e non parlava con nessuno. Durante la ricreazione stava da solo in un angolo. Mi sono avvicinato e gli ho chiesto se voleva giocare a calcio con noi. All'inizio ha esitato, ma poi ha accettato. Abbiamo scoperto che Ahmed è bravissimo a giocare a calcio. Segna molti goal e passa la palla molto bene. Dopo la partita abbiamo parlato un po'. Ahmed mi ha raccontato che nel suo paese giocava nella squadra della scuola. Gli manca la sua città e i suoi vecchi amici, ma è contento di essere qui. Gli ho promesso che lo aiuterò con l'italiano. Adesso Ahmed sorride di più e ha già fatto amicizia con molti di noi. Sono felice di avere un nuovo amico.",
+    "vocab_hints": {
+      "timido": "shy",
+      "si è avvicinato": "approached",
+      "esitato": "hesitated",
+      "gli manca": "he misses",
+      "ha fatto amicizia": "has made friends"
+    },
+    "questions": [
+      {
+        "question": "Where does Ahmed come from?",
+        "choices": [
+          "Egypt",
+          "Morocco",
+          "Tunisia",
+          "Algeria"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "How was Ahmed at first?",
+        "choices": [
+          "Very talkative",
+          "Very shy",
+          "Angry",
+          "Happy"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What did the narrator invite Ahmed to do?",
+        "choices": [
+          "Study together",
+          "Play football",
+          "Eat lunch",
+          "Go home together"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What did they discover about Ahmed?",
+        "choices": [
+          "He can't play sports",
+          "He's very good at football",
+          "He doesn't like games",
+          "He only speaks French"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What did the narrator promise to help Ahmed with?",
+        "choices": [
+          "Mathematics",
+          "Italian",
+          "Football",
+          "Making pizza"
+        ],
+        "correct": 1
+      }
+    ]
+  },
+  {
+    "id": "a2_005",
+    "title": "La Festa di Compleanno Sorpresa",
+    "text": "Il mese scorso ho organizzato una festa di compleanno sorpresa per mia sorella. Lei avrebbe compiuto sedici anni il sabato. Ho iniziato a pianificare tutto tre settimane prima. Prima di tutto, ho parlato con i suoi migliori amici e li ho invitati alla festa. Poi ho decorato il salotto con palloncini e festoni colorati. Mia madre mi ha aiutato a preparare una torta grande al cioccolato, la preferita di mia sorella. Il giorno del compleanno, ho detto a mia sorella che andavamo al cinema. Quando siamo tornati a casa e lei ha aperto la porta, tutti hanno gridato \"Sorpresa!\" Mia sorella era completamente sorpresa e ha cominciato a piangere di gioia. Abbiamo ballato, cantato e mangiato tutta la sera. Ha ricevuto molti regali bellissimi. Mi ha abbracciato forte e mi ha ringraziato cento volte. È stata una festa perfetta.",
+    "vocab_hints": {
+      "avrebbe compiuto": "would have turned",
+      "palloncini": "balloons",
+      "festoni": "streamers",
+      "gridato": "shouted",
+      "abbracciato": "hugged"
+    },
+    "questions": [
+      {
+        "question": "How old would the sister turn?",
+        "choices": [
+          "Fourteen",
+          "Fifteen",
+          "Sixteen",
+          "Seventeen"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "When did the narrator start planning?",
+        "choices": [
+          "One week before",
+          "Two weeks before",
+          "Three weeks before",
+          "One month before"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "What kind of cake did they make?",
+        "choices": [
+          "Vanilla",
+          "Strawberry",
+          "Chocolate",
+          "Lemon"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "What excuse did the narrator use?",
+        "choices": [
+          "Going shopping",
+          "Going to the cinema",
+          "Visiting grandmother",
+          "Going to the park"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "How did the sister react?",
+        "choices": [
+          "Was angry",
+          "Was surprised and cried with joy",
+          "Wasn't surprised",
+          "Left immediately"
+        ],
+        "correct": 1
+      }
+    ]
+  },
+  {
+    "id": "a2_006",
+    "title": "Il Mercato del Sabato",
+    "text": "Ogni sabato mattina vado al mercato con mia nonna. Il mercato si trova nella piazza principale del nostro paese. È un mercato molto grande e vivace. Ci sono bancarelle che vendono frutta, verdura, formaggi, salumi e fiori. Mia nonna conosce tutti i venditori perché va al mercato da trent'anni. Loro la salutano sempre con un sorriso e le danno i prodotti migliori. La settimana scorsa abbiamo comprato pomodori rossissimi, zucchine fresche e basilico profumato. Il venditore ci ha regalato anche delle pesche dolcissime. Dopo aver fatto la spesa, andiamo sempre al bar per prendere un cappuccino. Mentre beviamo il caffè, mia nonna mi racconta storie della sua giovinezza. Mi piace molto passare il sabato mattina con lei. È una tradizione speciale che voglio continuare anche quando sarò più grande.",
+    "vocab_hints": {
+      "vivace": "lively",
+      "bancarelle": "stalls",
+      "salumi": "cold cuts",
+      "profumato": "fragrant",
+      "giovinezza": "youth"
+    },
+    "questions": [
+      {
+        "question": "How long has the grandmother been going to the market?",
+        "choices": [
+          "Ten years",
+          "Twenty years",
+          "Thirty years",
+          "Forty years"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "What did the seller give them as a gift?",
+        "choices": [
+          "Tomatoes",
+          "Zucchini",
+          "Basil",
+          "Peaches"
+        ],
+        "correct": 3
+      },
+      {
+        "question": "Where do they go after shopping?",
+        "choices": [
+          "Home",
+          "To a bar",
+          "To church",
+          "To the park"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What does the grandmother do while drinking coffee?",
+        "choices": [
+          "Reads the newspaper",
+          "Talks to other people",
+          "Tells stories about her youth",
+          "Plans next week's shopping"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "How does the narrator feel about this tradition?",
+        "choices": [
+          "Finds it boring",
+          "Wants to continue it when older",
+          "Only does it to help",
+          "Prefers to stay home"
+        ],
+        "correct": 1
+      }
+    ]
+  },
+  {
+    "id": "a2_007",
+    "title": "Il Concerto",
+    "text": "Due settimane fa sono andato al mio primo concerto dal vivo. Il mio gruppo musicale preferito suonava in una città vicina. Ho comprato i biglietti tre mesi prima perché sapevo che si sarebbero esauriti velocemente. Il giorno del concerto ero emozionatissimo. Sono andato con i miei due migliori amici. Siamo partiti nel pomeriggio e siamo arrivati al locale verso le sette. C'era già molta gente che aspettava. Quando le porte si sono aperte, siamo corsi per trovare un buon posto vicino al palco. Il concerto è iniziato alle nove. Le luci si sono spente e la folla ha iniziato a urlare. I musicisti sono saliti sul palco e hanno suonato per due ore. Cantavano tutte le mie canzoni preferite. Ho cantato e ballato per tutta la sera. L'atmosfera era incredibile. È stata un'esperienza che non dimenticherò mai.",
+    "vocab_hints": {
+      "dal vivo": "live",
+      "si sarebbero esauriti": "would sell out",
+      "palco": "stage",
+      "si sono spente": "went out/turned off",
+      "folla": "crowd"
+    },
+    "questions": [
+      {
+        "question": "When did the narrator buy the tickets?",
+        "choices": [
+          "One month before",
+          "Two months before",
+          "Three months before",
+          "One week before"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "Who did the narrator go with?",
+        "choices": [
+          "Parents",
+          "Sister",
+          "Two best friends",
+          "Alone"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "Why did they run when doors opened?",
+        "choices": [
+          "Were late",
+          "To find a good spot near stage",
+          "Were scared",
+          "To buy merchandise"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What time did the concert start?",
+        "choices": [
+          "Seven o'clock",
+          "Eight o'clock",
+          "Nine o'clock",
+          "Ten o'clock"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "How long did the musicians play?",
+        "choices": [
+          "One hour",
+          "Two hours",
+          "Three hours",
+          "Four hours"
+        ],
+        "correct": 1
+      }
+    ]
+  },
+  {
+    "id": "a2_008",
+    "title": "Imparare a Cucinare",
+    "text": "L'estate scorsa ho deciso di imparare a cucinare. Prima non sapevo preparare niente tranne toast e pasta in bianco. Mia madre era contenta della mia decisione e mi ha insegnato molte ricette. Abbiamo cominciato con piatti semplici. La prima cosa che ho imparato a fare è stata la pasta al pomodoro. All'inizio ho bruciato l'aglio e la salsa era troppo salata, ma con la pratica sono migliorato. Poi ho imparato a preparare il risotto, le lasagne e persino la pizza fatta in casa. Il piatto più difficile è stato il tiramisù. Dovevo separare i tuorli dagli albumi e montare tutto perfettamente. Ci ho provato tre volte prima di riuscirci. Adesso cucino almeno due volte alla settimana. I miei amici sono impressionati e a volte li invito a cena. Cucinare è diventato il mio hobby preferito. È rilassante e creativo.",
+    "vocab_hints": {
+      "tranne": "except",
+      "bruciato": "burned",
+      "tuorli": "yolks",
+      "albumi": "egg whites",
+      "rilassante": "relaxing"
+    },
+    "questions": [
+      {
+        "question": "What could the narrator cook before learning?",
+        "choices": [
+          "Nothing at all",
+          "Only toast and plain pasta",
+          "Many dishes",
+          "Only desserts"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What was the first dish the narrator learned?",
+        "choices": [
+          "Risotto",
+          "Pasta with tomato sauce",
+          "Lasagna",
+          "Pizza"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What went wrong when first making pasta sauce?",
+        "choices": [
+          "Burned garlic and too salty",
+          "Too sweet",
+          "Too spicy",
+          "Not cooked enough"
+        ],
+        "correct": 0
+      },
+      {
+        "question": "How many attempts did tiramisu take to succeed?",
+        "choices": [
+          "One",
+          "Two",
+          "Three",
+          "Four"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "How often does the narrator cook now?",
+        "choices": [
+          "Every day",
+          "At least twice a week",
+          "Once a month",
+          "Only on weekends"
+        ],
+        "correct": 1
+      }
+    ]
+  },
+  {
+    "id": "a2_009",
+    "title": "Il Cane Perduto",
+    "text": "Martedì scorso, mentre tornavo da scuola, ho trovato un cane per strada. Era un piccolo beagle e sembrava spaventato e confuso. Non aveva il collare con il nome del proprietario. Il cane mi ha guardato con occhi tristi e ho deciso di aiutarlo. L'ho portato a casa e gli ho dato acqua e cibo. Poi ho fatto delle foto e ho creato dei volantini con la scritta \"Cane trovato\". Li ho appesi in tutto il quartiere. Ho anche pubblicato un messaggio sui social media. Per tre giorni il cane è rimasto con noi. Mia madre all'inizio non era felice, ma poi si è affezionata al cane. Anche io stavo pensando di tenerlo. Giovedì sera, però, una signora anziana ha chiamato. Era la proprietaria e viveva nella strada accanto. Era disperata perché aveva perso il suo cane Rex. Quando è venuta a prenderlo, Rex era felicissimo. Anche se ero triste di salutarlo, ero contento di aver riunito Rex con la sua padrona.",
+    "vocab_hints": {
+      "spaventato": "scared",
+      "volantini": "flyers",
+      "si è affezionata": "became attached",
+      "disperata": "desperate",
+      "riunito": "reunited"
+    },
+    "questions": [
+      {
+        "question": "What kind of dog did the narrator find?",
+        "choices": [
+          "A poodle",
+          "A beagle",
+          "A labrador",
+          "A chihuahua"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What did the narrator do to find the owner?",
+        "choices": [
+          "Called the police",
+          "Made flyers and posted on social media",
+          "Did nothing",
+          "Asked neighbors only"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "How long did the dog stay with the narrator?",
+        "choices": [
+          "One day",
+          "Two days",
+          "Three days",
+          "One week"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "Where did the owner live?",
+        "choices": [
+          "In another city",
+          "On the next street",
+          "In the same building",
+          "Far away"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "How did the narrator feel when Rex left?",
+        "choices": [
+          "Happy to get rid of him",
+          "Sad but happy to reunite them",
+          "Angry",
+          "Indifferent"
+        ],
+        "correct": 1
+      }
+    ]
+  },
+  {
+    "id": "a2_010",
+    "title": "La Gita Scolastica",
+    "text": "Il mese prossimo la mia classe farà una gita scolastica a Pompei. Partiremo alle sei del mattina in pullman e torneremo la sera tardi. Sono molto emozionato perché ho sempre voluto visitare Pompei. Ho letto molti libri su questa antica città romana che fu distrutta dall'eruzione del Vesuvio nel 79 d.C. La nostra insegnante di storia ci ha spiegato che vedremo le rovine delle case, del foro, del teatro e delle terme romane. Potremo anche vedere i calchi delle persone che furono sepolte dalla cenere vulcanica. Sarà triste ma anche molto interessante dal punto di vista storico. Dopo la visita a Pompei, andremo a pranzo in un ristorante napoletano. Ho sentito dire che la pizza napoletana è la migliore d'Italia. Nel pomeriggio faremo una breve visita a Napoli e vedremo il lungomare. Sto preparando la mia macchina fotografica perché voglio fare tante foto. Non vedo l'ora che arrivi il giorno della gita.",
+    "vocab_hints": {
+      "pullman": "coach bus",
+      "fu distrutta": "was destroyed",
+      "eruzione": "eruption",
+      "rovine": "ruins",
+      "calchi": "casts"
+    },
+    "questions": [
+      {
+        "question": "Where will the class trip be?",
+        "choices": [
+          "Rome",
+          "Florence",
+          "Pompeii",
+          "Venice"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "What time will they leave?",
+        "choices": [
+          "Five in the morning",
+          "Six in the morning",
+          "Seven in the morning",
+          "Eight in the morning"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "When was Pompeii destroyed?",
+        "choices": [
+          "79 AD",
+          "179 AD",
+          "279 AD",
+          "379 AD"
+        ],
+        "correct": 0
+      },
+      {
+        "question": "What will they be able to see that is sad but historically interesting?",
+        "choices": [
+          "Paintings",
+          "Casts of people buried by ash",
+          "Ancient weapons",
+          "Gold treasures"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What will they do in the afternoon?",
+        "choices": [
+          "Return home",
+          "Visit Naples briefly",
+          "Go to the beach",
+          "Visit another museum"
+        ],
+        "correct": 1
+      }
+    ]
+  },
+  {
+    "id": "a2_011",
+    "title": "Il Primo Giorno di Lavoro",
+    "text": "Ieri è stato il mio primo giorno di lavoro in un ristorante. Ero molto nervoso la mattina. Ho messo la divisa e sono arrivato puntuale. Il mio capo si chiama Sergio. Mi ha mostrato tutto il ristorante e mi ha spiegato i miei compiti. Ho dovuto apparecchiare i tavoli e servire i clienti. All'inizio ho fatto degli errori. Ho portato il conto sbagliato a una coppia. Mi sono scusato e ho corretto l'errore. I colleghi sono stati molto gentili e mi hanno aiutato. Alla fine del turno, Sergio mi ha detto che avevo fatto bene. Sono tornato a casa stanco ma contento.",
+    "vocab_hints": {
+      "divisa": "uniform",
+      "puntuale": "on time",
+      "apparecchiare": "to set (tables)",
+      "conto": "bill",
+      "turno": "shift"
+    },
+    "questions": [
+      {
+        "question": "How did the narrator feel on their first day?",
+        "choices": [
+          "Excited and confident",
+          "Very nervous",
+          "Bored and tired",
+          "Angry"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What is the boss called?",
+        "choices": [
+          "Marco",
+          "Luca",
+          "Sergio",
+          "Paolo"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "What mistake did the narrator make?",
+        "choices": [
+          "Broke a plate",
+          "Arrived late",
+          "Gave the wrong bill to a couple",
+          "Forgot to serve a table"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "How were the colleagues?",
+        "choices": [
+          "Unfriendly",
+          "Helpful and kind",
+          "Busy and ignored them",
+          "Rude"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "How did the narrator feel going home?",
+        "choices": [
+          "Sad and disappointed",
+          "Angry with the boss",
+          "Tired but happy",
+          "Ill"
+        ],
+        "correct": 2
+      }
+    ]
+  },
+  {
+    "id": "a2_012",
+    "title": "Un Viaggio in Treno",
+    "text": "La settimana scorsa ho preso il treno per andare a Venezia. Ho comprato il biglietto online il giorno prima. Il treno partiva alle otto e trenta dalla stazione centrale. Sono arrivato in stazione con venti minuti di anticipo. Il treno era puntuale. Ho trovato il mio posto e ho messo la valigia sopra. Durante il viaggio ho guardato il paesaggio dal finestrino. Ho visto le montagne e i laghi. Dopo due ore siamo arrivati a Venezia. La stazione di Venezia è bellissima perché si affaccia sul Canal Grande. Venezia mi ha stupito molto. Non avevo mai visto una città sull'acqua.",
+    "vocab_hints": {
+      "biglietto": "ticket",
+      "di anticipo": "early",
+      "paesaggio": "landscape/scenery",
+      "finestrino": "window (train)",
+      "si affaccia": "overlooks"
+    },
+    "questions": [
+      {
+        "question": "How did the narrator buy their ticket?",
+        "choices": [
+          "At the station",
+          "By phone",
+          "Online",
+          "From a travel agent"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "What time did the train depart?",
+        "choices": [
+          "7:30",
+          "8:00",
+          "8:30",
+          "9:00"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "How early did the narrator arrive?",
+        "choices": [
+          "5 minutes",
+          "10 minutes",
+          "15 minutes",
+          "20 minutes"
+        ],
+        "correct": 3
+      },
+      {
+        "question": "What did the narrator see from the window?",
+        "choices": [
+          "Fields and farms",
+          "Mountains and lakes",
+          "Cities and motorways",
+          "Sea and beaches"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What surprised the narrator about Venice?",
+        "choices": [
+          "The food",
+          "The people",
+          "Being a city on water",
+          "The trains"
+        ],
+        "correct": 2
+      }
+    ]
+  },
+  {
+    "id": "a2_013",
+    "title": "La Mia Nuova Casa",
+    "text": "Due mesi fa ho cambiato casa. Ho lasciato l'appartamento in centro e mi sono trasferito in una casa in periferia. La nuova casa è più grande e ha un giardino. Ho dovuto portare tutti i mobili con un camion. Il primo giorno è stato caotico. Ho disimballato le scatole per tre giorni. Ho dipinto le pareti del salotto di verde chiaro. Ho comprato nuovi mobili per la cucina. I vicini sono venuti a salutarmi e mi hanno portato una torta. Si chiamano Mario e Giulia. Sono molto simpatici. Adesso mi piace molto la mia nuova casa. Il giardino è perfetto per i barbecue estivi.",
+    "vocab_hints": {
+      "periferia": "outskirts",
+      "camion": "lorry/truck",
+      "disimballato": "unpacked",
+      "scatole": "boxes",
+      "vicini": "neighbours"
+    },
+    "questions": [
+      {
+        "question": "Why did the narrator move?",
+        "choices": [
+          "For work",
+          "The text doesn't say",
+          "To be near family",
+          "It was cheaper"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "Where is the new house?",
+        "choices": [
+          "In the city centre",
+          "By the sea",
+          "On the outskirts",
+          "In the countryside"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "How long did unpacking take?",
+        "choices": [
+          "One day",
+          "Two days",
+          "Three days",
+          "A week"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "What colour did the narrator paint the living room?",
+        "choices": [
+          "White",
+          "Yellow",
+          "Blue",
+          "Light green"
+        ],
+        "correct": 3
+      },
+      {
+        "question": "What did the neighbours bring?",
+        "choices": [
+          "Flowers",
+          "A cake",
+          "Fruit",
+          "Wine"
+        ],
+        "correct": 1
+      }
+    ]
+  },
+  {
+    "id": "a2_014",
+    "title": "Il Campeggio",
+    "text": "Quest'estate siamo andati in campeggio per una settimana. Abbiamo montato la tenda vicino a un fiume. Il campeggio aveva i servizi igienici e le docce. La mattina ci svegliavamo con il canto degli uccelli. Facevamo colazione fuori con pane, marmellata e succo di frutta. Durante il giorno esploravamo i sentieri nel bosco. Abbiamo visto dei cervi e molti scoiattoli. La sera accendevamo il fuoco e cucinavamo la carne. Cantavamo canzoni e raccontavamo storie. Una notte ha piovuto molto e la tenda è diventata bagnata. Abbiamo riso molto! È stata un'avventura indimenticabile.",
+    "vocab_hints": {
+      "campeggio": "camping/campsite",
+      "tenda": "tent",
+      "sentieri": "paths/trails",
+      "cervi": "deer",
+      "scoiattoli": "squirrels"
+    },
+    "questions": [
+      {
+        "question": "Where did they set up the tent?",
+        "choices": [
+          "Near a lake",
+          "Near a river",
+          "In a forest",
+          "On a hillside"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What woke them up in the morning?",
+        "choices": [
+          "An alarm clock",
+          "Other campers",
+          "Birdsong",
+          "The sun"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "What animals did they see?",
+        "choices": [
+          "Foxes and rabbits",
+          "Bears and wolves",
+          "Deer and squirrels",
+          "Birds and fish"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "What happened one night?",
+        "choices": [
+          "They got lost",
+          "It rained heavily and the tent got wet",
+          "They saw a bear",
+          "The fire went out"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "How did they feel about the experience overall?",
+        "choices": [
+          "Disappointed",
+          "Scared",
+          "It was unforgettable",
+          "They were bored"
+        ],
+        "correct": 2
+      }
+    ]
+  },
+  {
+    "id": "a2_015",
+    "title": "Imparare l'Inglese",
+    "text": "Ho cominciato a studiare l'inglese due anni fa. All'inizio era molto difficile. Non capivo niente di quello che dicevano i professori. Ho comprato un dizionario e ho studiato molto. Ho anche guardato film in inglese con i sottotitoli. Piano piano ho migliorato. Poi ho trovato un corso online gratuito. Ogni giorno studiavo per mezz'ora. Ho fatto esercizi di grammatica e di pronuncia. L'anno scorso sono andato in Inghilterra per due settimane. Ho vissuto con una famiglia inglese. Parlavo inglese tutto il giorno. Quando sono tornato, il mio inglese era molto migliorato. Adesso posso parlare abbastanza bene.",
+    "vocab_hints": {
+      "sottotitoli": "subtitles",
+      "piano piano": "little by little",
+      "gratuito": "free",
+      "pronuncia": "pronunciation",
+      "abbastanza": "quite/enough"
+    },
+    "questions": [
+      {
+        "question": "How long ago did the narrator start learning English?",
+        "choices": [
+          "One year ago",
+          "Two years ago",
+          "Three years ago",
+          "Six months ago"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "How did they watch films?",
+        "choices": [
+          "Without sound",
+          "In English with subtitles",
+          "In Italian with English subtitles",
+          "With a friend"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "How long did they study online each day?",
+        "choices": [
+          "15 minutes",
+          "30 minutes",
+          "One hour",
+          "Two hours"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "Where did they go last year?",
+        "choices": [
+          "America",
+          "Australia",
+          "Ireland",
+          "England"
+        ],
+        "correct": 3
+      },
+      {
+        "question": "Who did they live with in England?",
+        "choices": [
+          "Friends",
+          "An English family",
+          "In a hotel",
+          "In a school"
+        ],
+        "correct": 1
+      }
+    ]
+  },
+  {
+    "id": "a2_016",
+    "title": "La Maratona",
+    "text": "Sei mesi fa ho deciso di correre una maratona. Non avevo mai corso più di cinque chilometri. Ho scaricato un piano di allenamento per principianti. Ho cominciato ad allenarmi tre volte a settimana. Il primo mese era faticoso. Avevo i muscoli doloranti ogni giorno. Con il tempo ho migliorato. Ho comprato delle scarpe da corsa professionali. Ho anche cambiato la mia dieta. Ho mangiato molta pasta e verdura. Il giorno della maratona ero emozionato e nervoso. Ho corso per quattro ore e mezza. All'ultimo chilometro volevo fermarmi, ma ho continuato. Quando ho tagliato il traguardo, ho pianto dalla gioia.",
+    "vocab_hints": {
+      "maratona": "marathon",
+      "allenamento": "training",
+      "faticoso": "tiring/exhausting",
+      "doloranti": "aching",
+      "traguardo": "finish line"
+    },
+    "questions": [
+      {
+        "question": "How far had the narrator run before?",
+        "choices": [
+          "No running at all",
+          "5km",
+          "10km",
+          "21km"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "How many times a week did they train?",
+        "choices": [
+          "Once",
+          "Twice",
+          "Three times",
+          "Every day"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "What did they buy for training?",
+        "choices": [
+          "A gym membership",
+          "A fitness tracker",
+          "Professional running shoes",
+          "Special clothing"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "How long did the marathon take?",
+        "choices": [
+          "3 hours",
+          "3.5 hours",
+          "4 hours",
+          "4.5 hours"
+        ],
+        "correct": 3
+      },
+      {
+        "question": "What happened when they crossed the finish line?",
+        "choices": [
+          "They fell down",
+          "They cried with joy",
+          "They felt nothing",
+          "They fainted"
+        ],
+        "correct": 1
+      }
+    ]
+  },
+  {
+    "id": "a2_017",
+    "title": "Il Ristorante Nuovo",
+    "text": "Venerdì sera siamo andati a provare un nuovo ristorante in centro. Si chiama 'La Pergola'. Abbiamo prenotato un tavolo per quattro persone. Quando siamo arrivati, il ristorante era molto elegante. Il cameriere ci ha portato il menù. Abbiamo ordinato degli antipasti, due primi e due secondi. Come antipasto ho preso i crostini con il pomodoro. Come primo ho ordinato le tagliatelle al ragù. Il cibo era eccellente. Il servizio era un po' lento perché il ristorante era pieno. Abbiamo aspettato venti minuti per il secondo. Alla fine abbiamo preso il tiramisù. Il conto era un po' caro, ma ne valeva la pena.",
+    "vocab_hints": {
+      "prenotato": "booked/reserved",
+      "antipasti": "starters",
+      "crostini": "toasted bread",
+      "ragù": "meat sauce",
+      "ne valeva la pena": "it was worth it"
+    },
+    "questions": [
+      {
+        "question": "For how many people did they book a table?",
+        "choices": [
+          "Two",
+          "Three",
+          "Four",
+          "Five"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "What did the narrator have as a starter?",
+        "choices": [
+          "Soup",
+          "Crostini with tomato",
+          "Salad",
+          "Bruschetta"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What pasta did the narrator order?",
+        "choices": [
+          "Spaghetti carbonara",
+          "Penne arrabbiata",
+          "Tagliatelle with ragù",
+          "Risotto"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "Why was the service slow?",
+        "choices": [
+          "The chef was ill",
+          "The restaurant was full",
+          "They were new staff",
+          "There was a problem"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What dessert did they have?",
+        "choices": [
+          "Gelato",
+          "Panna cotta",
+          "Tiramisù",
+          "Cannoli"
+        ],
+        "correct": 2
+      }
+    ]
+  },
+  {
+    "id": "a2_018",
+    "title": "Lo Scambio Culturale",
+    "text": "L'anno scorso ho partecipato a uno scambio culturale con una scuola francese. Ho ospitato uno studente francese che si chiamava Pierre. Pierre è rimasto a casa mia per due settimane. I primi giorni erano un po' imbarazzanti perché parlavamo lingue diverse. Pierre parlava un po' d'italiano e io parlavo un po' di francese. Abbiamo usato anche l'inglese come lingua comune. Gli ho mostrato la mia città e la mia scuola. Abbiamo visitato i musei e i monumenti. La sera mangiavamo insieme con la mia famiglia. Pierre ha assaggiato molti piatti italiani per la prima volta. Quando è partito, eravamo diventati buoni amici.",
+    "vocab_hints": {
+      "scambio culturale": "cultural exchange",
+      "ospitato": "hosted",
+      "imbarazzanti": "awkward/embarrassing",
+      "lingua comune": "common language",
+      "assaggiato": "tasted"
+    },
+    "questions": [
+      {
+        "question": "Where was Pierre from?",
+        "choices": [
+          "Spain",
+          "Germany",
+          "France",
+          "England"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "How long did Pierre stay?",
+        "choices": [
+          "One week",
+          "Two weeks",
+          "Three weeks",
+          "A month"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "Why were the first days awkward?",
+        "choices": [
+          "They didn't like each other",
+          "They spoke different languages",
+          "Pierre was ill",
+          "The weather was bad"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What language did they use together?",
+        "choices": [
+          "Only Italian",
+          "Only French",
+          "English as a common language",
+          "Sign language"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "What happened when Pierre left?",
+        "choices": [
+          "They never spoke again",
+          "They had become good friends",
+          "Pierre wanted to stay longer",
+          "The narrator was relieved"
+        ],
+        "correct": 1
+      }
+    ]
+  },
+  {
+    "id": "a2_019",
+    "title": "La Gara di Cucina",
+    "text": "Il mese scorso ho partecipato a una gara di cucina a scuola. Ogni studente doveva preparare un piatto tipico della propria regione. Io sono della Sicilia, quindi ho preparato la caponata. La caponata è un piatto di verdure con melanzane, pomodori, sedano e olive. Ho comprato gli ingredienti al mercato il giorno prima. La mattina della gara ero nervoso. Ho cucinato con molta attenzione. Quando i giudici hanno assaggiato il mio piatto, erano molto positivi. Alla fine ho vinto il secondo posto! Ero contentissimo. Il primo posto è andato a una ragazza che aveva fatto il risotto. Ma ero molto orgoglioso del mio risultato.",
+    "vocab_hints": {
+      "gara": "competition",
+      "propria": "own",
+      "melanzane": "aubergines/eggplants",
+      "sedano": "celery",
+      "orgoglioso": "proud"
+    },
+    "questions": [
+      {
+        "question": "What was the cooking competition theme?",
+        "choices": [
+          "International cuisine",
+          "A dish from your own region",
+          "A dessert",
+          "A vegetarian dish"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "Where is the narrator from?",
+        "choices": [
+          "Tuscany",
+          "Lombardy",
+          "Sicily",
+          "Sardinia"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "What is caponata?",
+        "choices": [
+          "A meat dish",
+          "A pasta dish",
+          "A vegetable dish",
+          "A dessert"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "What position did the narrator come?",
+        "choices": [
+          "First",
+          "Second",
+          "Third",
+          "Fourth"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "Who won first place?",
+        "choices": [
+          "A boy with pasta",
+          "A girl with risotto",
+          "The narrator",
+          "A teacher"
+        ],
+        "correct": 1
+      }
+    ]
+  },
+  {
+    "id": "a2_020",
+    "title": "Il Trasloco",
+    "text": "Mia cugina Valeria si è appena trasferita a Roma per lavoro. Ha trovato un piccolo appartamento in affitto vicino al centro. L'appartamento era vuoto quando è arrivata. Ha dovuto comprare tutto: il letto, il divano, la lavatrice e la cucina. Ha cercato i mobili su internet e ha trovato buone offerte. Alcune cose le ha comprate di seconda mano. Il giorno del trasloco siamo andati tutti ad aiutarla. Abbiamo portato i suoi scatoloni e l'abbiamo aiutata a mettere tutto in ordine. La sera abbiamo mangiato la pizza insieme nel nuovo appartamento. Era seduta sul pavimento perché non c'era ancora il tavolo!",
+    "vocab_hints": {
+      "trasloco": "house move",
+      "in affitto": "for rent",
+      "lavatrice": "washing machine",
+      "di seconda mano": "second-hand",
+      "scatoloni": "large boxes"
+    },
+    "questions": [
+      {
+        "question": "Why did Valeria move to Rome?",
+        "choices": [
+          "For university",
+          "For work",
+          "To be with family",
+          "For a relationship"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What was the apartment like when she arrived?",
+        "choices": [
+          "Fully furnished",
+          "Partly furnished",
+          "Empty",
+          "Run down"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "Where did she find some furniture?",
+        "choices": [
+          "Only in shops",
+          "Online and second-hand",
+          "From family",
+          "From her old home"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What did they eat on moving day evening?",
+        "choices": [
+          "Pasta",
+          "Soup",
+          "Pizza",
+          "Sandwiches"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "Why did they sit on the floor?",
+        "choices": [
+          "They preferred it",
+          "There was no table yet",
+          "The chairs were broken",
+          "It was a tradition"
+        ],
+        "correct": 1
+      }
+    ]
+  },
+  {
+    "id": "a2_021",
+    "title": "La Visita al Medico",
+    "text": "La settimana scorsa non mi sentivo bene. Avevo la febbre alta e il mal di gola. Ho chiamato il medico di base per un appuntamento. Il giorno dopo sono andato allo studio medico. Il medico mi ha visitato e mi ha fatto delle domande. Mi ha chiesto da quanto tempo mi sentivo male e se avevo altri sintomi. Mi ha misurato la pressione e ha controllato la gola. Ha detto che avevo un'infezione batterica. Mi ha prescritto degli antibiotici. Mi ha anche detto di bere molta acqua e riposare. Ho preso le medicine per una settimana. Dopo cinque giorni stavo già meglio. Ho chiamato il medico per dirgli che mi ero ripreso.",
+    "vocab_hints": {
+      "febbre": "fever/temperature",
+      "mal di gola": "sore throat",
+      "medico di base": "GP/family doctor",
+      "pressione": "blood pressure",
+      "antibiotici": "antibiotics"
+    },
+    "questions": [
+      {
+        "question": "What symptoms did the narrator have?",
+        "choices": [
+          "Headache and cough",
+          "High fever and sore throat",
+          "Stomach ache and tiredness",
+          "Rash and itching"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "When did they get an appointment?",
+        "choices": [
+          "Same day",
+          "Next day",
+          "Three days later",
+          "A week later"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What did the doctor diagnose?",
+        "choices": [
+          "A virus",
+          "A bacterial infection",
+          "Stress",
+          "Flu"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What did the doctor prescribe?",
+        "choices": [
+          "Vitamins",
+          "Painkillers",
+          "Antibiotics",
+          "Rest only"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "After how many days did the narrator feel better?",
+        "choices": [
+          "Two days",
+          "Three days",
+          "Five days",
+          "One week"
+        ],
+        "correct": 2
+      }
+    ]
+  },
+  {
+    "id": "a2_022",
+    "title": "Un Regalo Speciale",
+    "text": "Per il compleanno di mia madre ho voluto fare qualcosa di speciale. Non volevo comprare un regalo nei negozi. Ho deciso di fare qualcosa con le mie mani. Ho pensato a cosa le piaceva di più. Mia madre ama i fiori e la fotografia. Ho cercato le sue foto preferite e ne ho stampate venti. Poi ho comprato una cornice grande e ho creato un collage fotografico. Ho incollato le foto in modo artistico. Sotto ogni foto ho scritto una didascalia con il luogo e la data. Ho anche aggiunto una lettera dove le dicevo quanto la volevo bene. Quando ha visto il regalo, ha pianto dalla commozione. È stato il regalo più apprezzato che le abbia mai fatto.",
+    "vocab_hints": {
+      "stampate": "printed",
+      "cornice": "frame",
+      "collage": "collage",
+      "didascalia": "caption",
+      "commozione": "emotion/being moved"
+    },
+    "questions": [
+      {
+        "question": "Why didn't the narrator buy a shop present?",
+        "choices": [
+          "No money",
+          "Shops were closed",
+          "Wanted to make something personal",
+          "Didn't have time"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "What does the narrator's mother love?",
+        "choices": [
+          "Flowers and photography",
+          "Music and cooking",
+          "Reading and travel",
+          "Sport and nature"
+        ],
+        "correct": 0
+      },
+      {
+        "question": "How many photos did they print?",
+        "choices": [
+          "Ten",
+          "Fifteen",
+          "Twenty",
+          "Twenty-five"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "What did they write under each photo?",
+        "choices": [
+          "A poem",
+          "The place and date",
+          "A message",
+          "Nothing"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What was the mother's reaction?",
+        "choices": [
+          "She was disappointed",
+          "She laughed",
+          "She cried with emotion",
+          "She said nothing"
+        ],
+        "correct": 2
+      }
+    ]
+  },
+  {
+    "id": "a2_023",
+    "title": "La Settimana Bianca",
+    "text": "A febbraio siamo andati in montagna per una settimana bianca. Eravamo io, i miei genitori e mio fratello. Abbiamo soggiornato in un albergo a Cortina d'Ampezzo. Ogni mattina ci alzavamo alle sette per andare a sciare. Io sciavo già bene, ma mio fratello era alle prime armi. Ha preso delle lezioni con un maestro di sci. Il terzo giorno mio fratello è caduto e si è fatto male al ginocchio. Fortunatamente non era grave. Ha dovuto stare a riposo per due giorni. Io e miei genitori abbiamo continuato a sciare. La sera cenavamo nell'albergo e poi giocavamo a carte. È stata una vacanza bellissima nonostante l'incidente.",
+    "vocab_hints": {
+      "settimana bianca": "ski holiday",
+      "soggiornato": "stayed",
+      "alle prime armi": "a beginner",
+      "ginocchio": "knee",
+      "nonostante": "despite"
+    },
+    "questions": [
+      {
+        "question": "Where did they stay?",
+        "choices": [
+          "Courmayeur",
+          "Cortina d'Ampezzo",
+          "Livigno",
+          "Sestriere"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "Who was a beginner at skiing?",
+        "choices": [
+          "The narrator",
+          "Their father",
+          "Their brother",
+          "Their mother"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "What happened on the third day?",
+        "choices": [
+          "It snowed heavily",
+          "The narrator fell",
+          "The brother fell and hurt his knee",
+          "The lifts stopped"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "How long did the brother have to rest?",
+        "choices": [
+          "One day",
+          "Two days",
+          "Three days",
+          "The rest of the week"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What did they do in the evenings?",
+        "choices": [
+          "Went out to bars",
+          "Watched films",
+          "Had dinner and played cards",
+          "Went swimming"
+        ],
+        "correct": 2
+      }
+    ]
+  },
+  {
+    "id": "a2_024",
+    "title": "Il Colloquio di Lavoro",
+    "text": "La settimana scorsa ho avuto un colloquio di lavoro importante. Era per un posto come assistente in un negozio di abbigliamento. La sera prima ho preparato i vestiti e ho riletto il curriculum. Il giorno del colloquio ero emozionato. Sono arrivato cinque minuti prima. Il responsabile si chiamava Marco. Mi ha fatto molte domande sulla mia esperienza e sulle mie qualità. Mi ha chiesto perché volevo lavorare lì. Gli ho risposto che amavo la moda e il contatto con i clienti. Alla fine mi ha detto che avrei avuto una risposta entro una settimana. Tre giorni dopo mi hanno chiamato per dirmi che avevo ottenuto il lavoro. Ero felicissimo!",
+    "vocab_hints": {
+      "colloquio": "job interview",
+      "abbigliamento": "clothing",
+      "curriculum": "CV",
+      "responsabile": "manager",
+      "moda": "fashion"
+    },
+    "questions": [
+      {
+        "question": "What job was the interview for?",
+        "choices": [
+          "A café assistant",
+          "A clothing shop assistant",
+          "A bank clerk",
+          "A hotel receptionist"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What did the narrator do the evening before?",
+        "choices": [
+          "Practised answers",
+          "Prepared clothes and reread the CV",
+          "Went to sleep early",
+          "Called a friend"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "How early did the narrator arrive?",
+        "choices": [
+          "On time",
+          "5 minutes early",
+          "10 minutes early",
+          "15 minutes early"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "Why did the narrator want to work there?",
+        "choices": [
+          "Good salary",
+          "Close to home",
+          "Loved fashion and customer contact",
+          "Short hours"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "How long after the interview did they get a response?",
+        "choices": [
+          "Same day",
+          "The next day",
+          "Three days",
+          "One week"
+        ],
+        "correct": 2
+      }
+    ]
+  }
+]

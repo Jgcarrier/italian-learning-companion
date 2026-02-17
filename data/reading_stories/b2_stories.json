@@ -1,0 +1,1538 @@
+[
+  {
+    "id": "b2_001",
+    "title": "La Crisi di Mezza Età",
+    "text": "Compiere cinquant'anni è stato, per Massimo, non una celebrazione bensì una resa dei conti. Guardandosi allo specchio quella mattina, si era chiesto se la vita che conduceva fosse davvero la sua, o piuttosto quella che gli altri si aspettavano da lui. Aveva un mutuo quasi estinto, due figli all'università, una moglie con cui conviveva più per abitudine che per scelta. Il suo lavoro di dirigente, un tempo fonte di orgoglio, gli sembrava ormai una prigione dorata. Aveva tutto quello che la società considerava un successo, eppure sentiva un vuoto persistente che nessun acquisto, nessuna promozione riusciva a colmare. Non era la prima volta che questi pensieri lo visitavano, ma a cinquant'anni era difficile continuare ad accantonarli.",
+    "vocab_hints": {
+      "bensì": "but rather",
+      "resa dei conti": "reckoning",
+      "mutuo": "mortgage",
+      "prigione dorata": "golden cage",
+      "accantonarli": "to push them aside"
+    },
+    "questions": [
+      {
+        "question": "What triggered Massimo's crisis?",
+        "choices": [
+          "Losing his job",
+          "Turning fifty",
+          "His children leaving home",
+          "A health scare"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "Why does he stay with his wife?",
+        "choices": [
+          "He loves her deeply",
+          "For the children",
+          "Out of habit rather than choice",
+          "For financial reasons"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "How does he describe his managerial job?",
+        "choices": [
+          "A great adventure",
+          "A golden cage",
+          "A boring routine",
+          "A source of pride still"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What couldn't fill his emptiness?",
+        "choices": [
+          "Travel and holidays",
+          "Purchases and promotions",
+          "Friends and family",
+          "Hobbies and sport"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What is different about these thoughts at fifty?",
+        "choices": [
+          "They are new thoughts",
+          "They are the same but harder to push aside",
+          "He has decided to act on them",
+          "He is no longer bothered"
+        ],
+        "correct": 1
+      }
+    ]
+  },
+  {
+    "id": "b2_002",
+    "title": "L'Algoritmo dell'Amore",
+    "text": "Chiara si era iscritta all'app di incontri con scetticismo, cedendo alle pressioni delle amiche. L'algoritmo le aveva subito proposto profili compatibili al novantadue percento. Aveva cominciato a chiedersi cosa significasse quella percentuale. In base a cosa l'algoritmo decideva la compatibilità? Film guardati, libri letti, distanza geografica, età, titolo di studio? L'amore ridotto a un'equazione matematica le sembrava al tempo stesso affascinante e inquietante. Eppure eccola lì, dopo tre settimane, ad aspettare un uomo conosciuto tramite quell'app in un bar del centro. Si chiamava Edoardo, insegnava filosofia e aveva scritto nel profilo che diffidava delle app di incontri. Era la prima cosa che avevano in comune.",
+    "vocab_hints": {
+      "scetticismo": "scepticism",
+      "compatibili": "compatible",
+      "equazione": "equation",
+      "inquietante": "unsettling",
+      "diffidava": "was suspicious of"
+    },
+    "questions": [
+      {
+        "question": "Why did Chiara join the dating app?",
+        "choices": [
+          "She was lonely",
+          "Pressure from friends",
+          "She believed in it",
+          "A work colleague suggested it"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What did Chiara wonder about the compatibility percentage?",
+        "choices": [
+          "How accurate it was",
+          "What criteria the algorithm used",
+          "Whether Edoardo had seen it",
+          "Whether it was scientifically proven"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "How did love-as-an-equation make her feel?",
+        "choices": [
+          "Excited",
+          "Indifferent",
+          "Fascinated and unsettling at the same time",
+          "Completely opposed"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "What does Edoardo teach?",
+        "choices": [
+          "Mathematics",
+          "History",
+          "Philosophy",
+          "Literature"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "What was the first thing they had in common?",
+        "choices": [
+          "They both liked the same films",
+          "They both distrusted dating apps",
+          "They lived in the same area",
+          "They both taught"
+        ],
+        "correct": 1
+      }
+    ]
+  },
+  {
+    "id": "b2_003",
+    "title": "Il Peso dell'Eredità",
+    "text": "Quando mio nonno è morto, ci ha lasciato non solo la casa di campagna ma anche un archivio di lettere che nessuno aveva mai letto. Erano centinaia di buste ingiallite, scritte tra il 1940 e il 1960. Leggendole, ho scoperto un uomo completamente diverso da quello che credevo di conoscere. C'erano lettere d'amore appassionate a una donna che non era mia nonna. C'erano confessioni di scelte difficili fatte durante la guerra che la famiglia non aveva mai menzionato. C'erano sogni abbandonati, rimpianti mai espressi. Quella scoperta mi ha messo di fronte a una domanda scomoda: avevo il diritto di sapere tutto? E sapendo, avevo l'obbligo di condividere con gli altri della famiglia? Certe verità, se restano segrete, fanno meno male?",
+    "vocab_hints": {
+      "eredità": "inheritance",
+      "buste ingiallite": "yellowed envelopes",
+      "rimpianti": "regrets",
+      "obbligo": "obligation",
+      "scomoda": "uncomfortable"
+    },
+    "questions": [
+      {
+        "question": "What did the grandfather leave besides the house?",
+        "choices": [
+          "Money and jewellery",
+          "Hundreds of letters",
+          "A diary",
+          "Old photographs"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What period do the letters cover?",
+        "choices": [
+          "1920-1940",
+          "1940-1960",
+          "1945-1970",
+          "1950-1980"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What did the letters reveal about the grandfather?",
+        "choices": [
+          "He was a war hero",
+          "A completely different man with secrets including a love affair",
+          "He was a writer",
+          "He had been very poor"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What moral dilemma does the narrator face?",
+        "choices": [
+          "Whether to publish the letters",
+          "Whether they had the right to know and the duty to share the truth",
+          "Whether to destroy the letters",
+          "Whether to visit the woman"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What question does the narrator end with?",
+        "choices": [
+          "Who the woman was",
+          "Whether secrets cause less harm if kept",
+          "What to do with the letters",
+          "Whether the grandfather was a good person"
+        ],
+        "correct": 1
+      }
+    ]
+  },
+  {
+    "id": "b2_004",
+    "title": "Intelligenza Artificiale in Classe",
+    "text": "Quest'anno ho dovuto affrontare una questione che fino a poco tempo fa sembrava fantascienza: molti miei studenti usano l'intelligenza artificiale per scrivere i compiti. Il problema non è semplicemente la copiatura in senso tradizionale. È qualcosa di più sottile. I testi prodotti dall'IA sono spesso formalmente corretti, privi di errori, ma anche stranamente vuoti di pensiero personale. Ho dovuto ridefinire cosa significhi per me valutare uno studente. Se l'IA scrive per loro, cosa sto misurando esattamente? Ho deciso di non bandire semplicemente la tecnologia, ma di integrarla consapevolmente. Ho cominciato ad assegnare compiti che richiedono riflessione personale verificabile in classe, dialogo critico, esperienza vissuta. L'IA non può sostituire il pensiero, ma può sicuramente simularlo abbastanza bene da ingannare chi non è attento.",
+    "vocab_hints": {
+      "fantascienza": "science fiction",
+      "copiatura": "copying/cheating",
+      "privi": "devoid/lacking",
+      "bandire": "to ban",
+      "consapevolmente": "consciously/thoughtfully"
+    },
+    "questions": [
+      {
+        "question": "What problem does the teacher face?",
+        "choices": [
+          "Students don't attend class",
+          "Students use AI to write their work",
+          "Students have poor grammar",
+          "Students are distracted by phones"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What is the problem with AI-written texts?",
+        "choices": [
+          "They have many grammatical errors",
+          "They are too long",
+          "They are formally correct but empty of personal thought",
+          "They are obviously fake"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "What question does this raise for the teacher?",
+        "choices": [
+          "How to catch cheaters",
+          "What exactly they are measuring when assessing students",
+          "Whether to quit teaching",
+          "How AI works"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What did the teacher decide to do?",
+        "choices": [
+          "Ban AI completely",
+          "Ignore the problem",
+          "Integrate AI thoughtfully with tasks requiring verifiable personal reflection",
+          "Report students to the headteacher"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "What does the teacher say AI cannot do?",
+        "choices": [
+          "Write correctly",
+          "Translate languages",
+          "Replace thought, though it can simulate it",
+          "Understand Italian"
+        ],
+        "correct": 2
+      }
+    ]
+  },
+  {
+    "id": "b2_005",
+    "title": "La Città Invisibile",
+    "text": "Roma ha due facce. C'è quella che i turisti conoscono: il Colosseo, il Vaticano, le fontane barocche, i ristoranti con i menu plastificati davanti. E poi c'è l'altra Roma, quella dei romani veri, che sempre più spesso se ne stanno andando verso la periferia o verso altre città. I prezzi degli affitti nel centro storico hanno raggiunto livelli insostenibili. I negozi di quartiere chiudono uno dopo l'altro, sostituiti da gelaterie per turisti e negozi di souvenir. I mercati rionali spariscono. Quello che resta è una scena, non una città. Un museo abitabile, perfetto per le fotografie ma sempre meno adatto alla vita quotidiana. I romani lo sanno e ne parlano con una mescolanza di orgoglio ferito e rassegnazione.",
+    "vocab_hints": {
+      "barocche": "baroque",
+      "insostenibili": "unsustainable",
+      "rionali": "local/neighbourhood",
+      "mescolanza": "mixture",
+      "rassegnazione": "resignation"
+    },
+    "questions": [
+      {
+        "question": "What are the two faces of Rome described?",
+        "choices": [
+          "Ancient and modern",
+          "Tourist Rome and real Roman Rome",
+          "North and south",
+          "Rich and poor"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "Where are real Romans moving to?",
+        "choices": [
+          "Abroad",
+          "To the outskirts or other cities",
+          "To the coast",
+          "To the countryside"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What is happening to neighbourhood shops?",
+        "choices": [
+          "They are expanding",
+          "They are being renovated",
+          "Closing and replaced by tourist-oriented businesses",
+          "Becoming supermarkets"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "How does the narrator describe what Rome is becoming?",
+        "choices": [
+          "A ghost town",
+          "A liveable museum, perfect for photos but not daily life",
+          "A chaotic city",
+          "An international capital"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "How do real Romans feel about this?",
+        "choices": [
+          "Proud and happy",
+          "Indifferent",
+          "With hurt pride and resignation",
+          "Angry and protesting"
+        ],
+        "correct": 2
+      }
+    ]
+  },
+  {
+    "id": "b2_006",
+    "title": "Il Ritorno del Lupo",
+    "text": "Da qualche anno i lupi sono tornati a popolare le Alpi italiane, migrando spontaneamente dalla penisola appenninica. Per gli ambientalisti è una vittoria straordinaria: il ritorno di un predatore apicale riequilibra gli ecosistemi, controlla le popolazioni di ungulati, favorisce la biodiversità. Per i pastori e gli allevatori delle zone montane, la storia è molto diversa. Ogni attacco al gregge rappresenta un danno economico reale e una fonte di stress psicologico. Il dibattito è acceso e spesso i toni diventano aggressivi. Quello che rende la questione complessa è che entrambe le parti hanno ragione nei propri termini. Non si tratta di scegliere tra natura e economia, ma di trovare modalità di coesistenza che rispettino entrambe.",
+    "vocab_hints": {
+      "predatore apicale": "apex predator",
+      "ungulati": "ungulates/hooved animals",
+      "gregge": "flock",
+      "allevatori": "livestock farmers",
+      "coesistenza": "coexistence"
+    },
+    "questions": [
+      {
+        "question": "Where did the wolves migrate from?",
+        "choices": [
+          "Eastern Europe",
+          "France",
+          "The Apennine peninsula",
+          "Switzerland"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "What do environmentalists say about wolves returning?",
+        "choices": [
+          "It is dangerous",
+          "It is a worrying sign",
+          "It is an extraordinary victory for ecosystems",
+          "It is unpredictable"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "What is the impact on farmers?",
+        "choices": [
+          "No impact at all",
+          "Real economic damage and psychological stress from attacks on flocks",
+          "They benefit from tourists",
+          "The government compensates fully"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What does the narrator say about the debate?",
+        "choices": [
+          "Environmentalists are right",
+          "Farmers are right",
+          "Both sides are right in their own terms",
+          "Neither side is rational"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "What is the real challenge?",
+        "choices": [
+          "Choosing between nature and economy",
+          "Finding ways to coexist that respect both",
+          "Relocating the wolves",
+          "Paying farmers more"
+        ],
+        "correct": 1
+      }
+    ]
+  },
+  {
+    "id": "b2_007",
+    "title": "La Scrittrice e il suo Personaggio",
+    "text": "Dopo cinque anni di lavoro, Elena aveva finalmente terminato il suo romanzo. Ma la notte prima di consegnarlo all'editore, aveva riletto l'ultimo capitolo e si era sentita mancare la terra sotto i piedi. Il personaggio principale, una donna che abbandonava tutto per ricominciare altrove, le sembrava improvvisamente non più il veicolo di un messaggio, ma il riflesso scomodo di un desiderio che lei stessa non aveva mai osato ammettere. Aveva scritto duecento pagine che in realtà parlavano di lei. Si chiese se fosse coraggio o codardia consegnare quelle pagine al mondo senza esplicitare che ogni parola era autobiografica. Alla fine le consegnò. La narrativa, si disse, offre la libertà di dire la verità nascondendosi dietro la finzione.",
+    "vocab_hints": {
+      "editore": "publisher",
+      "veicolo": "vehicle/means",
+      "codardia": "cowardice",
+      "autobiografica": "autobiographical",
+      "finzione": "fiction"
+    },
+    "questions": [
+      {
+        "question": "How long did it take Elena to write her novel?",
+        "choices": [
+          "Three years",
+          "Four years",
+          "Five years",
+          "Six years"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "What disturbed her when she reread the last chapter?",
+        "choices": [
+          "The writing quality",
+          "The plot didn't work",
+          "The main character reflected her own unexpressed desire",
+          "It was too long"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "What did Elena realise about her novel?",
+        "choices": [
+          "It was poorly written",
+          "It was actually about herself",
+          "It was too personal for publication",
+          "The character was unconvincing"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What was her dilemma before submitting?",
+        "choices": [
+          "Whether to publish at all",
+          "Whether it was courage or cowardice to publish without admitting it was autobiographical",
+          "Whether to change the ending",
+          "Whether to tell the publisher"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What conclusion does she reach about fiction?",
+        "choices": [
+          "Fiction is dishonest",
+          "Fiction lets you tell the truth while hiding behind it",
+          "Fiction is better than autobiography",
+          "Fiction cannot be personal"
+        ],
+        "correct": 1
+      }
+    ]
+  },
+  {
+    "id": "b2_008",
+    "title": "La Medicina Tradizionale",
+    "text": "Mia madre ha sempre diffidato dei medici. Non per ignoranza, ma per una fiducia profonda nei rimedi della tradizione popolare calabrese che sua madre le aveva trasmesso. Tisane di erbe raccolte nei campi, cataplasmi di argilla, rituali scaramantici. Per anni ho guardato queste pratiche con condiscendenza scientifica. Poi ho studiato farmacognosia all'università e ho scoperto che molte piante medicinali tradizionali hanno principi attivi scientificamente validati. Non tutto è superstizione. Il problema, però, è il confine: quando la medicina tradizionale complementa quella ufficiale e quando la sostituisce pericolosamente? Mia madre ha ritardato la diagnosi di un tumore di sei mesi affidandosi solo alle erbe. Sopravvissuta, ma per poco. La tradizione merita rispetto, ma non può essere immune dalla critica.",
+    "vocab_hints": {
+      "tisane": "herbal teas",
+      "cataplasmi": "poultices",
+      "condiscendenza": "condescension",
+      "farmacognosia": "pharmacognosy",
+      "principi attivi": "active ingredients"
+    },
+    "questions": [
+      {
+        "question": "Why did the narrator's mother distrust doctors?",
+        "choices": [
+          "She had a bad experience",
+          "Deep trust in traditional remedies passed down from her mother",
+          "She couldn't afford them",
+          "She didn't believe in medicine"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What did the narrator study at university?",
+        "choices": [
+          "Medicine",
+          "Biology",
+          "Pharmacognosy",
+          "Chemistry"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "What did the narrator discover about traditional plants?",
+        "choices": [
+          "They are all useless",
+          "Many have scientifically validated active ingredients",
+          "They are dangerous",
+          "Only some are real herbs"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What is the key question raised?",
+        "choices": [
+          "Whether traditional medicine should be banned",
+          "When traditional medicine complements versus dangerously replaces official medicine",
+          "Whether doctors know about herbs",
+          "How to study pharmacognosy"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What happened to the narrator's mother?",
+        "choices": [
+          "She died from the cancer",
+          "She recovered fully with no problems",
+          "She delayed cancer diagnosis 6 months and barely survived",
+          "She refused treatment"
+        ],
+        "correct": 2
+      }
+    ]
+  },
+  {
+    "id": "b2_009",
+    "title": "Il Silenzio dell'Artista",
+    "text": "Giorgio Morandi è vissuto quasi tutta la vita a Bologna, nella stessa casa, nello stesso studio. Ha dipinto quasi esclusivamente bottiglie, vasi, scatole, oggetti quotidiani disposti in composizioni silenziose e meditative. La critica d'arte ha a lungo dibattuto sul significato di questa scelta ossessiva. Alcuni lo vedevano come una limitazione, altri come la massima espressione di una ricerca ascetica sulla luce, lo spazio e il tempo. Quello che colpisce, guardando le sue opere, è come oggetti così comuni riescano a trasmettere una profondità emotiva inaspettata. Forse la grandezza dell'arte non sta nel soggetto, ma nella qualità dell'attenzione che l'artista porta su di esso. Morandi ci insegna che il mondo ordinario, guardato con sufficiente intensità, diventa straordinario.",
+    "vocab_hints": {
+      "ascetica": "ascetic",
+      "ossessiva": "obsessive",
+      "colpisce": "strikes/impresses",
+      "attenzione": "attention",
+      "ordinario": "ordinary"
+    },
+    "questions": [
+      {
+        "question": "Where did Giorgio Morandi spend most of his life?",
+        "choices": [
+          "Rome",
+          "Milan",
+          "Bologna",
+          "Florence"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "What did Morandi mainly paint?",
+        "choices": [
+          "Landscapes and seascapes",
+          "People and portraits",
+          "Bottles, vases, boxes and everyday objects",
+          "Historical scenes"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "How did critics view his obsessive choice of subject?",
+        "choices": [
+          "All agreed it was a limitation",
+          "All agreed it was brilliant",
+          "Some saw limitation, others saw ascetic research on light and space",
+          "They ignored him"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "What surprises viewers of his work?",
+        "choices": [
+          "The bright colours",
+          "How common objects transmit unexpected emotional depth",
+          "The large scale of the paintings",
+          "His technical virtuosity"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What lesson does the narrator draw from Morandi?",
+        "choices": [
+          "Art must be complex to be great",
+          "Subject matter is everything",
+          "The ordinary world, looked at with enough intensity, becomes extraordinary",
+          "Artists should travel widely"
+        ],
+        "correct": 2
+      }
+    ]
+  },
+  {
+    "id": "b2_010",
+    "title": "Il Costo del Progresso",
+    "text": "Il piccolo comune di Sovana, in Toscana, ha perso in trent'anni il sessanta percento della sua popolazione. Non per calamità naturali o crisi economiche acute, ma per la lenta emorragia del spopolamento rurale che affligge molti territori interni italiani. I giovani vanno nelle città, attratti da opportunità di lavoro, vita sociale, servizi. Quelli che restano sono spesso anziani, con difficoltà di accesso ai servizi sanitari, ai trasporti, all'istruzione. I borghi medievali che i turisti ammirano durante le vacanze estive sono spesso gusci vuoti per dieci mesi all'anno. Il paradosso è stridente: mentre i centri urbani soffocano per eccesso di popolazione, i territori rurali muoiono per carenza. Nessuna politica finora ha trovato un equilibrio soddisfacente.",
+    "vocab_hints": {
+      "comune": "municipality",
+      "emorragia": "haemorrhage",
+      "spopolamento": "depopulation",
+      "borghi": "medieval villages",
+      "stridente": "glaring/jarring"
+    },
+    "questions": [
+      {
+        "question": "How much population has Sovana lost in 30 years?",
+        "choices": [
+          "30%",
+          "40%",
+          "60%",
+          "80%"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "What causes the population loss?",
+        "choices": [
+          "Natural disasters",
+          "Economic collapse",
+          "The slow drain of rural depopulation",
+          "Political decisions"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "Who tends to remain in these villages?",
+        "choices": [
+          "Young families",
+          "Tourists",
+          "Elderly people with limited access to services",
+          "Artists and creatives"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "What is the paradox described?",
+        "choices": [
+          "Villages are beautiful but neglected",
+          "Cities are overcrowded while rural areas die from underpopulation",
+          "Tourists love but don't understand Italy",
+          "Old buildings need expensive restoration"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What does the narrator say about policies?",
+        "choices": [
+          "They have worked well",
+          "No policy has found a satisfactory balance",
+          "The government ignores the problem",
+          "European funds have helped"
+        ],
+        "correct": 1
+      }
+    ]
+  },
+  {
+    "id": "b2_011",
+    "title": "La Traduttrice di Sogni",
+    "text": "Mia zia Rosaria ha sempre detto che i sogni si possono leggere come testi. Da bambina, ogni mattina le raccontavo i miei sogni e lei li interpretava con una serietà quasi scientifica, ma attraverso una simbologia personalissima che aveva sviluppato nel tempo. Una scala significava ambizione, un fiume ostacoli, un uccello la libertà desiderata e non ancora raggiunta. Diventata adulta, ho studiato psicologia e ho imparato le interpretazioni freudiane e junghiane. Sembravano più rigorose ma non necessariamente più vere. Ogni sistema simbolico è in fondo una proiezione culturale. Quello che mi ha insegnato mia zia non era tanto la simbologia, ma l'abitudine di prestare attenzione ai propri stati interiori. In questo, aveva intuito qualcosa che la psicoterapia moderna riscopre continuamente.",
+    "vocab_hints": {
+      "simbologia": "system of symbols",
+      "ambizione": "ambition",
+      "freudiane": "Freudian",
+      "junghiane": "Jungian",
+      "psicoterapia": "psychotherapy"
+    },
+    "questions": [
+      {
+        "question": "How did Aunt Rosaria treat dream interpretation?",
+        "choices": [
+          "As entertainment",
+          "With almost scientific seriousness",
+          "With religious conviction",
+          "As a game for children"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "In Rosaria's system, what did a staircase symbolise?",
+        "choices": [
+          "Fear",
+          "Progress",
+          "Ambition",
+          "Travel"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "What did the narrator study at university?",
+        "choices": [
+          "Literature",
+          "Philosophy",
+          "Psychology",
+          "History"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "What does the narrator say about symbolic systems?",
+        "choices": [
+          "Freudian is the best",
+          "Rosaria's was the most accurate",
+          "Each system is ultimately a cultural projection",
+          "Science has disproved them all"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "What was the real lesson Rosaria taught?",
+        "choices": [
+          "Dream symbols are universal",
+          "The habit of paying attention to one's inner states",
+          "How to sleep better",
+          "How to remember dreams"
+        ],
+        "correct": 1
+      }
+    ]
+  },
+  {
+    "id": "b2_012",
+    "title": "Il Sindaco della Domenica",
+    "text": "Nel paesino calabrese dove trascorro ogni estate, c'è un uomo di nome Rocco che gli abitanti chiamano scherzosamente 'il sindaco della domenica'. Non è un politico. È un pensionato che ogni domenica mattina apre la piazza, spazza la fontana, sistema le panchine, accoglie i villeggianti e i turisti con una cordialità che nessun dépliant turistico potrebbe imitare. Sa tutto del paese: la storia di ogni pietra, ogni famiglia, ogni vicolo. Il vero sindaco esiste, naturalmente, ma è raro vederlo. Rocco invece è sempre lì. Ho riflettuto spesso su questa figura: l'uomo che non ha il titolo ma esercita una forma di cura per il luogo pubblico che sarebbe impossibile istituzionalizzare. La comunità ha bisogno di Rocco più di quanto abbia bisogno della burocrazia.",
+    "vocab_hints": {
+      "paesino": "small village",
+      "villeggianti": "holidaymakers",
+      "cordialità": "warmth/friendliness",
+      "dépliant": "brochure",
+      "vicolo": "alley"
+    },
+    "questions": [
+      {
+        "question": "Why is Rocco called 'the Sunday mayor'?",
+        "choices": [
+          "He won a local election",
+          "He is a retired politician",
+          "He informally cares for the public space every Sunday",
+          "He organises Sunday markets"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "What does Rocco do on Sunday mornings?",
+        "choices": [
+          "Opens the church",
+          "Sweeps the fountain, fixes benches, welcomes visitors",
+          "Gives tours of the village",
+          "Organises events"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What does Rocco know about the village?",
+        "choices": [
+          "Only recent history",
+          "Everything: history of every stone, family, alley",
+          "Only the tourist attractions",
+          "The political history"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "How does the narrator describe what Rocco does?",
+        "choices": [
+          "A civic duty",
+          "An impossible job",
+          "A form of care for public space that couldn't be institutionalised",
+          "A political act"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "What does the narrator conclude?",
+        "choices": [
+          "Rocco should be paid",
+          "The real mayor should be replaced",
+          "The community needs Rocco more than bureaucracy",
+          "Rocco should run for mayor"
+        ],
+        "correct": 2
+      }
+    ]
+  },
+  {
+    "id": "b2_013",
+    "title": "Il Linguaggio del Corpo",
+    "text": "Ho trascorso tre anni a studiare danza contemporanea, e quella esperienza ha cambiato per sempre il mio rapporto con il corpo. Prima, il corpo era uno strumento funzionale: portava il mio cervello da un posto all'altro, mangiava, dormiva. Non ci pensavo quasi mai se non quando faceva male. La danza mi ha insegnato che il corpo ha una sua intelligenza, una sua memoria, un suo modo di elaborare le emozioni che la mente razionale non riesce a raggiungere. Ho imparato a stare nel presente attraverso il movimento. Ho capito che certi traumi si depositano nei muscoli e nelle posture, non solo nei pensieri. I terapeuti che usano approcci corporei stanno riscoprendo quello che le tradizioni orientali sapevano da millenni: mente e corpo non sono separabili.",
+    "vocab_hints": {
+      "strumento": "instrument/tool",
+      "elaborare": "to process",
+      "traumi": "traumas",
+      "posture": "postures",
+      "separabili": "separable"
+    },
+    "questions": [
+      {
+        "question": "How long did the narrator study contemporary dance?",
+        "choices": [
+          "One year",
+          "Two years",
+          "Three years",
+          "Four years"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "How did the narrator think of the body before dance?",
+        "choices": [
+          "As something beautiful",
+          "As a functional instrument that carried their brain around",
+          "As something to keep fit",
+          "As a source of pleasure"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What did dance teach about the body?",
+        "choices": [
+          "That it needs exercise",
+          "That it has its own intelligence, memory and way to process emotions",
+          "That diet is important",
+          "That flexibility is key"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "Where does the narrator say traumas can be stored?",
+        "choices": [
+          "Only in the mind",
+          "In muscles and postures, not just in thoughts",
+          "In the nervous system only",
+          "In the brain"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What have Eastern traditions always known?",
+        "choices": [
+          "Dance is healing",
+          "The body needs rest",
+          "Mind and body are not separable",
+          "Meditation cures all illness"
+        ],
+        "correct": 2
+      }
+    ]
+  },
+  {
+    "id": "b2_014",
+    "title": "La Conversazione con il Padre",
+    "text": "Mio padre ed io non abbiamo mai parlato molto. Era un uomo della sua generazione: lavoro, silenzio, sacrificio. L'affetto lo dimostrava riparando le cose rotte in casa, assicurandosi che non mancasse niente, presentandosi sempre. Ma le parole erano rare e quando c'erano, erano pratiche. Quando aveva quasi ottant'anni e cominciava a perdere la memoria, qualcosa è cambiato. Forse perché i filtri sociali si erano allentati, o forse perché sapeva che il tempo stringeva, ha cominciato a parlarmi come non aveva mai fatto prima. Mi ha raccontato della sua infanzia povera, dei suoi rimpianti, di quanto si era sentito inadeguato come padre. Quelle conversazioni, negli ultimi due anni della sua vita, hanno riparato qualcosa tra noi che nessuno strumento fisico avrebbe potuto aggiustare.",
+    "vocab_hints": {
+      "sacrificio": "sacrifice",
+      "si erano allentati": "had loosened",
+      "stringeva": "was pressing/running out",
+      "rimpianti": "regrets",
+      "inadeguato": "inadequate"
+    },
+    "questions": [
+      {
+        "question": "How did the father typically show affection?",
+        "choices": [
+          "With words and hugs",
+          "By repairing things, ensuring nothing was missing, always being present",
+          "With gifts",
+          "Through letters"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What happened when the father was nearly eighty?",
+        "choices": [
+          "He moved abroad",
+          "He became ill and withdrawn",
+          "He began talking as he never had before",
+          "He wrote his memoirs"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "What might explain the father opening up?",
+        "choices": [
+          "A therapist's advice",
+          "Social filters loosening and awareness of limited time",
+          "The narrator asking him directly",
+          "A family reunion"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What did the father confide about himself as a parent?",
+        "choices": [
+          "That he was proud of his parenting",
+          "That he was not interested",
+          "That he had felt inadequate as a father",
+          "That he wished for more children"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "What did those late conversations achieve?",
+        "choices": [
+          "They resolved financial disputes",
+          "They repaired something between them no physical tool could fix",
+          "They explained past conflicts",
+          "They brought the whole family together"
+        ],
+        "correct": 1
+      }
+    ]
+  },
+  {
+    "id": "b2_015",
+    "title": "La Piccola Grande Rivolta",
+    "text": "Nel 2019, gli studenti delle scuole medie di un piccolo comune pugliese si sono rifiutati di consegnare i telefoni cellulari al momento dell'ingresso a scuola, come aveva stabilito il nuovo regolamento. La protesta non era violenta: i ragazzi sono rimasti seduti in silenzio davanti all'ingresso per un'ora, poi sono entrati regolarmente. La preside, invece di applicare sanzioni, ha convocato un'assemblea. Ha chiesto ai ragazzi di spiegare le loro ragioni. Ne è nato un dibattito sorprendentemente maturo. I ragazzi non difendevano semplicemente il diritto al telefono. Discutevano di autonomia, di fiducia, di come sentirsi trattati da soggetti pensanti e non da oggetti da gestire. La preside ha modificato il regolamento includendo alcune delle loro proposte. Era una piccola vittoria, ma di quelle che contano.",
+    "vocab_hints": {
+      "regolamento": "regulations/rules",
+      "sanzioni": "sanctions/penalties",
+      "assemblea": "assembly/meeting",
+      "autonomia": "autonomy",
+      "soggetti pensanti": "thinking subjects"
+    },
+    "questions": [
+      {
+        "question": "What was the new school rule?",
+        "choices": [
+          "No talking in corridors",
+          "Hand in mobile phones on arrival",
+          "No food in classrooms",
+          "Wear a uniform"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "How did the students protest?",
+        "choices": [
+          "Violently",
+          "By writing a letter",
+          "By sitting silently outside for an hour then entering normally",
+          "By going home"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "What did the headteacher do instead of applying sanctions?",
+        "choices": [
+          "Called the police",
+          "Expelled the students",
+          "Convened an assembly and asked them to explain",
+          "Ignored them"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "What were the students really arguing about?",
+        "choices": [
+          "The right to their phones",
+          "Autonomy, trust, and being treated as thinking subjects",
+          "The quality of teaching",
+          "The school building"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What was the outcome?",
+        "choices": [
+          "The rule was abolished completely",
+          "Students were punished",
+          "The regulation was modified including some of their proposals",
+          "Nothing changed"
+        ],
+        "correct": 2
+      }
+    ]
+  },
+  {
+    "id": "b2_016",
+    "title": "Il Museo delle Storie",
+    "text": "A Napoli esiste un progetto chiamato 'Il Museo delle Storie'. Non espone opere d'arte o reperti storici, ma storie personali. Chiunque può donare un oggetto e la storia che lo accompagna: una lettera, una fotografia, un utensile da cucina, un giocattolo. L'oggetto in sé ha spesso un valore materiale prossimo a zero. Il valore è nella narrazione. C'è la storia di una donna che ha portato dall'Ucraina un cucchiaio di legno di sua nonna, l'unica cosa che aveva potuto prendere. C'è quella di un ragazzo che ha donato la prima pagella con tutti sette, il momento in cui aveva creduto per la prima volta di valere qualcosa. Visitare quel museo è un'esperienza che ribalta la concezione convenzionale di cosa meriti di essere conservato.",
+    "vocab_hints": {
+      "reperti": "artefacts/finds",
+      "utensile": "utensil",
+      "narrazione": "narration/narrative",
+      "pagella": "school report",
+      "ribalta": "overturns"
+    },
+    "questions": [
+      {
+        "question": "What does Il Museo delle Storie display?",
+        "choices": [
+          "Famous artworks",
+          "Historical artefacts",
+          "Personal objects and the stories attached to them",
+          "Local craft"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "What gives the objects their value?",
+        "choices": [
+          "Their age",
+          "Their material value",
+          "The narrative that accompanies them",
+          "Their beauty"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "What did the Ukrainian woman bring?",
+        "choices": [
+          "A photograph",
+          "A letter",
+          "A wooden spoon from her grandmother",
+          "A child's toy"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "What did the boy donate?",
+        "choices": [
+          "A sports trophy",
+          "His first school report with all sevens",
+          "A drawing",
+          "A letter from a friend"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What does the museum overturn?",
+        "choices": [
+          "The idea that museums should be free",
+          "Conventional ideas about what deserves to be preserved",
+          "The city's cultural policy",
+          "The importance of history"
+        ],
+        "correct": 1
+      }
+    ]
+  },
+  {
+    "id": "b2_017",
+    "title": "Vivere Senza Orologio",
+    "text": "Ho condotto un esperimento radicale: per un mese intero ho rimosso tutti gli orologi dalla mia vita. Niente orologio al polso, niente telefono, niente orario affisso alle pareti. Ovviamente questo era possibile solo perché lavoravo da casa e potevo gestire i miei impegni in modo flessibile. Le prime settimane sono state disorientanti. Non sapevo mai che ora fosse e questa incertezza generava un'ansia sottile ma persistente. Poi, lentamente, ho cominciato a regolarmi in modo diverso: la luce, la fame, la stanchezza. Ho scoperto che il mio corpo ha un orologio interno sorprendentemente preciso. Ho anche notato che senza l'ansia del tempo, le attività duravano esattamente quanto richiedevano, né di più né di meno. Il tempo, privato della sua misurazione, si era rivelato elastico.",
+    "vocab_hints": {
+      "polso": "wrist",
+      "affisso": "affixed/posted",
+      "disorientanti": "disorienting",
+      "regolarmi": "to regulate myself",
+      "elastico": "elastic/flexible"
+    },
+    "questions": [
+      {
+        "question": "What did the narrator remove from their life for a month?",
+        "choices": [
+          "Social media",
+          "All clocks",
+          "Television",
+          "The internet"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "Why was this experiment possible?",
+        "choices": [
+          "They were retired",
+          "They worked from home with flexible commitments",
+          "They were on holiday",
+          "Their family supported them"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What replaced clocks as time guides?",
+        "choices": [
+          "Radio announcements",
+          "Neighbours' routines",
+          "Light, hunger and tiredness",
+          "Alarm sounds"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "What did they discover about their body?",
+        "choices": [
+          "It was completely disorganised",
+          "It has a surprisingly precise internal clock",
+          "It needed more sleep",
+          "It was healthier without time pressure"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What happened to time without measurement?",
+        "choices": [
+          "It felt shorter",
+          "It felt endless",
+          "It revealed itself as elastic",
+          "It became stressful"
+        ],
+        "correct": 2
+      }
+    ]
+  },
+  {
+    "id": "b2_018",
+    "title": "Il Confine tra Cura e Controllo",
+    "text": "Quando mia figlia ha avuto quattordici anni, ho installato sul suo telefono un'app che mi permetteva di vedere la sua posizione in tempo reale e di monitorare le sue conversazioni. L'ho fatto, mi dicevo, per proteggerla. Per alcuni mesi non l'ho detto a lei. Quando l'ha scoperto per caso, la sua reazione ha superato qualsiasi cosa mi aspettassi. Non era solo arrabbiata, era ferita nel profondo. Mi ha detto che la peggior cosa non era il controllo in sé, ma il segreto: le avevo dimostrato che non si fidava di lei abbastanza da dirmelo. Quella conversazione è stata tra le più difficili della mia vita. Ho disinstallato l'app. Ho capito che il confine tra cura e controllo è sottilissimo, e che varcarlo in segreto è sempre una violazione.",
+    "vocab_hints": {
+      "monitorare": "to monitor",
+      "superato": "exceeded/surpassed",
+      "varcarlo": "to cross it",
+      "violazione": "violation",
+      "sottilissimo": "extremely thin/fine"
+    },
+    "questions": [
+      {
+        "question": "What did the narrator install on their daughter's phone?",
+        "choices": [
+          "An educational app",
+          "An app to see her location and monitor conversations",
+          "A parental control for content",
+          "A timer"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "Why didn't they tell their daughter at first?",
+        "choices": [
+          "They forgot",
+          "They feared her reaction",
+          "The text says they told themselves it was for protection but kept it secret",
+          "They thought she wouldn't notice"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "What was the worst thing about the situation, according to the daughter?",
+        "choices": [
+          "The invasion of privacy",
+          "The control itself",
+          "The secrecy — it showed the parent didn't trust her",
+          "Being monitored at school"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "What did the narrator do after the conversation?",
+        "choices": [
+          "Explained their reasoning",
+          "Kept the app but told her",
+          "Uninstalled the app",
+          "Asked the daughter to understand"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "What lesson did the narrator draw?",
+        "choices": [
+          "Children need more monitoring",
+          "The line between care and control is very fine and crossing it secretly is a violation",
+          "Teenagers cannot be trusted",
+          "Technology should not be used for parenting"
+        ],
+        "correct": 1
+      }
+    ]
+  },
+  {
+    "id": "b2_019",
+    "title": "L'Arte della Conversazione",
+    "text": "Viviamo nell'era della comunicazione di massa, eppure molti studiosi sostengono che abbiamo dimenticato l'arte della conversazione vera. Parliamo molto, ma ascoltiamo poco. Interrompiamo, attendiamo il nostro turno per parlare anziché elaborare ciò che l'altro sta dicendo. I social media hanno accelerato questo processo: siamo abituati a formulare risposta prima ancora di aver finito di leggere. La conversazione intesa come incontro tra due intelligenze che si modificano reciprocamente è diventata rara. Eppure è quello che distingue il dialogo dal monologo alternato. Ho cominciato a praticare deliberatamente il silenzio attivo nelle conversazioni: aspettare qualche secondo dopo che l'altro finisce, non per pensare a cosa dire, ma per far decantare quello che ha detto. Il cambiamento nei rapporti è stato notevole.",
+    "vocab_hints": {
+      "elaborare": "to process",
+      "reciprocamente": "reciprocally/mutually",
+      "monologo alternato": "alternating monologue",
+      "decantare": "to settle/decant",
+      "notevole": "remarkable"
+    },
+    "questions": [
+      {
+        "question": "What do scholars say about modern communication?",
+        "choices": [
+          "We communicate too little",
+          "We have forgotten the art of real conversation",
+          "Technology has improved communication",
+          "Social media has helped us listen"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What are we used to doing on social media?",
+        "choices": [
+          "Reading carefully before responding",
+          "Formulating a response before finishing reading",
+          "Having long thoughtful conversations",
+          "Ignoring others"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "How is true dialogue defined?",
+        "choices": [
+          "Talking at the same time",
+          "An alternating monologue",
+          "A meeting of two intelligences that mutually modify each other",
+          "Agreeing with each other"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "What practice did the narrator adopt?",
+        "choices": [
+          "Speaking less overall",
+          "Active silence — waiting a few seconds after the other finishes",
+          "Writing instead of speaking",
+          "Asking more questions"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What was the result of this practice?",
+        "choices": [
+          "People found them annoying",
+          "No change at all",
+          "A remarkable change in relationships",
+          "They started speaking more"
+        ],
+        "correct": 2
+      }
+    ]
+  },
+  {
+    "id": "b2_020",
+    "title": "Il Figlio Prodigo Digitale",
+    "text": "Mio figlio di trent'anni ha vissuto tutta la sua vita adulta a Londra. Lo vedo tre o quattro volte l'anno. Eppure, paradossalmente, lo conosco meglio di quanto non conosca mio fratello che vive a dieci minuti da casa mia. Con mio figlio ci scriviamo ogni giorno, condividiamo video, articoli, foto. So cosa sta leggendo, cosa lo fa ridere, come sta affrontando le difficoltà del lavoro. Con mio fratello ci sentiamo per telefono una volta al mese e ci vediamo a Natale. La prossimità fisica non garantisce la vicinanza affettiva. La tecnologia, se usata con intenzione, può mantenere vivi legami che la distanza geografica avrebbe altrimenti eroso. Non è un sostituto della presenza, ma non è nemmeno nulla.",
+    "vocab_hints": {
+      "prodigo": "prodigal",
+      "paradossalmente": "paradoxically",
+      "prossimità": "proximity",
+      "legami": "bonds/ties",
+      "eroso": "eroded"
+    },
+    "questions": [
+      {
+        "question": "Where does the narrator's son live?",
+        "choices": [
+          "Paris",
+          "Berlin",
+          "London",
+          "New York"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "How often do they see each other?",
+        "choices": [
+          "Once a year",
+          "Twice a year",
+          "Three or four times a year",
+          "Every month"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "Why does the narrator know their son better than their brother?",
+        "choices": [
+          "The son is more interesting",
+          "They communicate daily sharing content and thoughts",
+          "The brother is unfriendly",
+          "They have more in common with the son"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "How often do narrator and brother communicate?",
+        "choices": [
+          "Every day",
+          "Once a week",
+          "Once a month by phone, Christmas in person",
+          "Twice a year"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "What conclusion does the narrator draw?",
+        "choices": [
+          "Physical proximity guarantees closeness",
+          "Technology is always a poor substitute",
+          "Physical proximity doesn't guarantee emotional closeness; technology can maintain bonds",
+          "Everyone should live near family"
+        ],
+        "correct": 2
+      }
+    ]
+  },
+  {
+    "id": "b2_021",
+    "title": "La Poetessa del Quartiere",
+    "text": "In un palazzo di edilizia popolare nella periferia di Milano vive Adaeze, una donna nigeriana di sessantadue anni che scrive poesia in italiano. È arrivata in Italia trent'anni fa senza conoscere la lingua. L'ha imparata per sopravvivere, poi per lavorare, poi per capire, e infine per esprimersi artisticamente. Le sue poesie parlano di migrazione, di identità duplice, di nostalgia per ciò che si è lasciato e di meraviglia per ciò che si è trovato. Sono state pubblicate da una piccola casa editrice milanese e hanno vinto un premio letterario regionale. La critica le ha definite 'una voce nuova nella letteratura italiana'. Adaeze ride quando sente questa definizione. 'Italiana', dice, 'è una parola che mi è costata trent'anni di lavoro.'",
+    "vocab_hints": {
+      "edilizia popolare": "social housing",
+      "duplice": "dual/double",
+      "nostalgia": "nostalgia",
+      "casa editrice": "publishing house",
+      "mi è costata": "cost me"
+    },
+    "questions": [
+      {
+        "question": "Where is Adaeze from?",
+        "choices": [
+          "Ghana",
+          "Nigeria",
+          "Senegal",
+          "Ethiopia"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "How long ago did she arrive in Italy?",
+        "choices": [
+          "Ten years",
+          "Twenty years",
+          "Thirty years",
+          "Forty years"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "What are her poems about?",
+        "choices": [
+          "Italian history and culture",
+          "Migration, dual identity, nostalgia, and wonder",
+          "Nigerian traditions",
+          "Love and nature"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What did the critics call her?",
+        "choices": [
+          "A great Italian writer",
+          "A foreign voice in Italian literature",
+          "A new voice in Italian literature",
+          "An important immigrant poet"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "Why does Adaeze laugh at being called 'Italian'?",
+        "choices": [
+          "She doesn't consider herself Italian",
+          "It is a word that cost her thirty years of work",
+          "She finds the label inaccurate",
+          "She prefers 'Nigerian-Italian'"
+        ],
+        "correct": 1
+      }
+    ]
+  },
+  {
+    "id": "b2_022",
+    "title": "Il Confessionale Laico",
+    "text": "In una piccola città umbra esiste da cinque anni un'iniziativa chiamata 'Il Confessionale Laico'. Non ha nulla di religioso. È un servizio gratuito gestito da volontari formati all'ascolto attivo: chiunque può entrare, sedersi, e parlare per un'ora di quello che vuole, sapendo che non riceverà consigli, giudizi o soluzioni. Solo ascolto. L'ispirazione è venuta dalla consapevolezza che molte persone non hanno nessuno a cui parlare davvero. I terapeuti costano, gli amici giudicano, la famiglia si preoccupa. Il confessionale laico offre uno spazio neutro. I volontari riferiscono che i temi più frequenti sono: solitudine, decisioni difficili, rimpianti, paure del futuro. Non guariscono nessuno, ma restituiscono a ciascuno la sensazione di essere stato ascoltato. E spesso, dice chi lo ha usato, è già abbastanza.",
+    "vocab_hints": {
+      "umbra": "from Umbria",
+      "laico": "secular/lay",
+      "ascolto attivo": "active listening",
+      "giudicano": "judge",
+      "restituiscono": "give back/restore"
+    },
+    "questions": [
+      {
+        "question": "What is 'Il Confessionale Laico'?",
+        "choices": [
+          "A religious service",
+          "A free secular listening service run by volunteers",
+          "A therapy centre",
+          "A community meeting"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What do volunteers NOT provide?",
+        "choices": [
+          "Their time",
+          "Listening",
+          "Advice, judgement or solutions",
+          "A safe space"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "Why was the initiative started?",
+        "choices": [
+          "Lack of churches",
+          "Many people have no one to really talk to",
+          "Mental health crisis in the area",
+          "A government programme"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What are the most frequent topics?",
+        "choices": [
+          "Relationship problems and money",
+          "Loneliness, difficult decisions, regrets, fear of the future",
+          "Work problems and health",
+          "Family conflicts and politics"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What do users often say about the experience?",
+        "choices": [
+          "They wished they had received advice",
+          "Just being listened to is already enough",
+          "They want to meet the volunteers again",
+          "They recommend professional therapy instead"
+        ],
+        "correct": 1
+      }
+    ]
+  },
+  {
+    "id": "b2_023",
+    "title": "Il Paesaggio Sonoro",
+    "text": "Lo studioso canadese R. Murray Schafer ha coniato il termine 'paesaggio sonoro' per indicare l'ambiente acustico che ci circonda. Viviamo immersi nei suoni senza quasi mai ascoltarli consapevolmente. Il rombo del traffico, il trillo di un uccello, il crepitio di un falò, il silenzio di una biblioteca: ognuno di questi suoni porta informazioni, emozioni, memorie. Schafer distingueva tra hi-fi e lo-fi landscape: nel primo i suoni si distinguono chiaramente gli uni dagli altri, nel secondo si sovrappongono in un unico rumore di fondo. Le città moderne sono quasi sempre lo-fi. Ho cominciato a camminare con le cuffie non per ascoltare musica, ma per registrare i suoni della città. Questo ha cambiato il mio rapporto con gli spazi che attraverso ogni giorno.",
+    "vocab_hints": {
+      "coniato": "coined",
+      "acustico": "acoustic",
+      "crepitio": "crackling",
+      "falò": "bonfire",
+      "si sovrappongono": "overlap"
+    },
+    "questions": [
+      {
+        "question": "Who coined the term 'soundscape'?",
+        "choices": [
+          "An Italian scholar",
+          "R. Murray Schafer, a Canadian",
+          "A French philosopher",
+          "An American musician"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What is a hi-fi soundscape?",
+        "choices": [
+          "A recording studio",
+          "One where sounds clearly distinguish themselves from each other",
+          "A place with very loud sounds",
+          "A natural environment only"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What are modern cities according to this classification?",
+        "choices": [
+          "Hi-fi",
+          "Lo-fi",
+          "Silent",
+          "Variable"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "Why does the narrator now walk with headphones?",
+        "choices": [
+          "To listen to music",
+          "To avoid noise",
+          "To record the sounds of the city",
+          "To make phone calls"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "What effect did this have?",
+        "choices": [
+          "They noticed more pollution",
+          "It changed their relationship with the spaces they pass through daily",
+          "They found the city noisier than expected",
+          "They started avoiding certain streets"
+        ],
+        "correct": 1
+      }
+    ]
+  },
+  {
+    "id": "b2_024",
+    "title": "La Scelta di Non Avere Figli",
+    "text": "Ho trentotto anni e ho scelto consapevolmente di non avere figli. Questa scelta, che considero personale e meditata, suscita nelle persone reazioni sorprendentemente forti. Alcuni si preoccupano per me, convinti che me ne pentirò. Altri interpretano la mia scelta come un giudizio implicito delle loro vite con figli. Pochi mi chiedono semplicemente perché. Le ragioni sono molteplici e complesse: il cambiamento climatico, le mie priorità personali, la consapevolezza dei miei limiti. Ma la ragione più difficile da spiegare è più semplice: non ho mai sentito quel desiderio viscerale che molti descrivono. Non posso costruire una famiglia su un desiderio che non ho. Quello che mi sorprende non è che la mia scelta venga interrogata, ma che una scelta così intima debba ancora essere giustificata davanti agli altri.",
+    "vocab_hints": {
+      "consapevolmente": "consciously",
+      "meditata": "considered/deliberate",
+      "suscita": "arouses/provokes",
+      "pentirò": "will regret",
+      "viscerale": "visceral/gut-level"
+    },
+    "questions": [
+      {
+        "question": "How do most people react to the narrator's choice?",
+        "choices": [
+          "With acceptance",
+          "With surprisingly strong reactions",
+          "Indifferently",
+          "With curiosity"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What do some people fear for the narrator?",
+        "choices": [
+          "That they will be lonely",
+          "That they will regret it",
+          "That they will change their mind too late",
+          "That they will be judged"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What is the simplest reason for the choice?",
+        "choices": [
+          "Financial concerns",
+          "Environmental concerns",
+          "Never having felt the visceral desire others describe",
+          "Preferring freedom"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "What surprises the narrator most?",
+        "choices": [
+          "How many people agree with them",
+          "That such an intimate choice still needs to be justified to others",
+          "That no one asks for reasons",
+          "That people accept it so easily"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What is the narrator's view on building a family?",
+        "choices": [
+          "Everyone should try",
+          "It should be a financial decision",
+          "You cannot build one on a desire you don't have",
+          "It depends on circumstances"
+        ],
+        "correct": 2
+      }
+    ]
+  }
+]

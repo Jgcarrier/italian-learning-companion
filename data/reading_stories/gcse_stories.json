@@ -1,0 +1,1538 @@
+[
+  {
+    "id": "gcse_001",
+    "title": "La Mia Scuola Ideale",
+    "text": "La mia scuola si chiama Liceo Dante Alighieri. Ha circa ottocento studenti e si trova in centro città. L'edificio è moderno con aule luminose e un grande cortile. Abbiamo un laboratorio di scienze, una palestra e una biblioteca con migliaia di libri. Mi piace la mia scuola perché i professori sono bravi e le lezioni sono interessanti. La mia materia preferita è l'italiano perché il professore ci fa leggere romanzi contemporanei e discutiamo sempre in classe. La cosa che non mi piace è la mensa: il cibo non è molto buono. Vorrei che la mia scuola avesse anche un cinema e uno studio di musica. Credo che una scuola ideale debba stimolare la creatività degli studenti.",
+    "vocab_hints": {
+      "aule": "classrooms",
+      "luminose": "bright",
+      "cortile": "courtyard",
+      "stimolare": "to stimulate",
+      "contemporanei": "contemporary"
+    },
+    "questions": [
+      {
+        "question": "How many students does the school have?",
+        "choices": [
+          "About 500",
+          "About 700",
+          "About 800",
+          "About 1000"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "What is the narrator's favourite subject?",
+        "choices": [
+          "Science",
+          "Maths",
+          "Italian",
+          "History"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "What does the Italian teacher do that the narrator likes?",
+        "choices": [
+          "Shows films",
+          "Gives easy tests",
+          "Teaches grammar only",
+          "Makes them read contemporary novels and discuss"
+        ],
+        "correct": 3
+      },
+      {
+        "question": "What does the narrator dislike about school?",
+        "choices": [
+          "The teachers",
+          "The canteen food",
+          "The building",
+          "The homework"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What facilities does the narrator wish the school had?",
+        "choices": [
+          "A swimming pool and gym",
+          "A cinema and music studio",
+          "A bigger library",
+          "More sports fields"
+        ],
+        "correct": 1
+      }
+    ]
+  },
+  {
+    "id": "gcse_002",
+    "title": "Le Vacanze in Famiglia",
+    "text": "L'estate scorsa siamo andati in vacanza in Puglia per due settimane. Era la prima volta che visitavamo quella regione. Abbiamo soggiornato in un agriturismo vicino a Alberobello, la città dei trulli. I trulli sono case tradizionali con il tetto conico, tipiche di quella zona. Durante le vacanze abbiamo visitato molti posti interessanti. Siamo andati a Lecce, che ha una bellissima architettura barocca. Abbiamo anche passato molti giorni in spiaggia nel mare cristallino del Salento. Il cibo pugliese è meraviglioso: abbiamo mangiato le orecchiette, i panzerotti e tantissima burrata. Torneremmo sicuramente in Puglia. Era una regione che non conoscevamo ma che ci ha conquistato completamente.",
+    "vocab_hints": {
+      "agriturismo": "farm holiday",
+      "trulli": "traditional cone-roofed Puglian houses",
+      "conico": "conical",
+      "orecchiette": "ear-shaped pasta",
+      "burrata": "soft cheese"
+    },
+    "questions": [
+      {
+        "question": "How long was the holiday?",
+        "choices": [
+          "One week",
+          "Ten days",
+          "Two weeks",
+          "Three weeks"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "What are trulli?",
+        "choices": [
+          "A type of food",
+          "Traditional houses with conical roofs",
+          "A local festival",
+          "A type of boat"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What is Lecce famous for?",
+        "choices": [
+          "Its beach",
+          "Its baroque architecture",
+          "Its food market",
+          "Its modern art"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What local food did they try?",
+        "choices": [
+          "Pizza and pasta",
+          "Orecchiette, panzerotti and burrata",
+          "Risotto and polenta",
+          "Seafood and chips"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What is their overall opinion of Puglia?",
+        "choices": [
+          "They were disappointed",
+          "It was fine but not special",
+          "It completely won them over",
+          "They would not return"
+        ],
+        "correct": 2
+      }
+    ]
+  },
+  {
+    "id": "gcse_003",
+    "title": "Il Lavoro Part-time",
+    "text": "Ho cominciato a lavorare part-time in una libreria il sabato mattina. Lavoro dalle nove alle tredici. Il mio capo si chiama Davide ed è molto bravo. Il mio compito principale è aiutare i clienti a trovare i libri che cercano e sistemare gli scaffali. Mi piace molto questo lavoro perché amo i libri e posso parlare con persone interessanti. Guadagno otto euro l'ora. Con i soldi guadagnati ho comprato una chitarra nuova. Lavorare mi ha insegnato il valore dei soldi. Prima li spendevo senza pensarci troppo, adesso so quanto lavoro ci vuole per guadagnarli. Il prossimo mese comincerò a mettere da parte i soldi per un viaggio a Londra l'estate prossima.",
+    "vocab_hints": {
+      "libreria": "bookshop",
+      "scaffali": "shelves",
+      "guadagno": "I earn",
+      "mettere da parte": "to save up",
+      "valore": "value"
+    },
+    "questions": [
+      {
+        "question": "What are the narrator's working hours?",
+        "choices": [
+          "8am to 12pm",
+          "9am to 1pm",
+          "10am to 2pm",
+          "9am to 3pm"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What is the narrator's main task?",
+        "choices": [
+          "Serving coffee",
+          "Helping customers find books and stacking shelves",
+          "Managing the till",
+          "Ordering new stock"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "How much does the narrator earn per hour?",
+        "choices": [
+          "€6",
+          "€7",
+          "€8",
+          "€9"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "What did the narrator buy with their earnings?",
+        "choices": [
+          "New clothes",
+          "A mobile phone",
+          "A new guitar",
+          "Books"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "What is the narrator saving for?",
+        "choices": [
+          "A car",
+          "University fees",
+          "A trip to London",
+          "A laptop"
+        ],
+        "correct": 2
+      }
+    ]
+  },
+  {
+    "id": "gcse_004",
+    "title": "La Tecnologia e i Giovani",
+    "text": "Uso il telefono circa cinque ore al giorno. So che è tanto, ma è difficile staccarsene. Lo uso per parlare con gli amici, guardare video, fare ricerche per la scuola e ascoltare musica. I miei genitori pensano che uso il telefono troppo e hanno ragione. A cena abbiamo una regola: nessun telefono a tavola. All'inizio era difficile rispettarla, adesso mi sembra normale. Penso che i social media abbiano aspetti positivi e negativi. Da un lato mi permettono di restare in contatto con gli amici e di informarmi. Dall'altro lato, a volte mi fanno sentire inadeguato quando vedo le vite perfette degli altri. Ho imparato a usare i social in modo più consapevole, limitando il tempo che ci passo.",
+    "vocab_hints": {
+      "staccarsene": "to detach from it",
+      "rispettarla": "to respect/follow it",
+      "inadeguato": "inadequate",
+      "consapevole": "aware/mindful",
+      "limitando": "limiting"
+    },
+    "questions": [
+      {
+        "question": "How many hours a day does the narrator use their phone?",
+        "choices": [
+          "About 3 hours",
+          "About 4 hours",
+          "About 5 hours",
+          "About 7 hours"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "What is the family rule at dinner?",
+        "choices": [
+          "No talking",
+          "No phones at the table",
+          "Everyone takes turns speaking",
+          "No TV"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What is a positive aspect of social media for the narrator?",
+        "choices": [
+          "Entertainment only",
+          "Staying in contact with friends and staying informed",
+          "Playing games",
+          "Finding jobs"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What negative effect does social media sometimes have?",
+        "choices": [
+          "It wastes time",
+          "It causes arguments",
+          "It makes the narrator feel inadequate seeing others' perfect lives",
+          "It is expensive"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "What has the narrator learnt?",
+        "choices": [
+          "To delete all apps",
+          "To use social media more mindfully and limit time spent on it",
+          "That phones are harmful",
+          "To ignore social media completely"
+        ],
+        "correct": 1
+      }
+    ]
+  },
+  {
+    "id": "gcse_005",
+    "title": "L'Ambiente e Noi",
+    "text": "Nella mia famiglia cerchiamo di vivere in modo sostenibile. Facciamo la raccolta differenziata, usiamo borse di tela invece dei sacchetti di plastica e compriamo prodotti locali al mercato. Ho anche convinto i miei genitori a installare i pannelli solari sul tetto di casa. Ho letto molti articoli sul cambiamento climatico e mi preoccupo per il futuro del pianeta. A scuola abbiamo un gruppo ambientalista. Ogni mese organizziamo attività come pulire il parco comunale o piantare alberi. Penso che ogni piccola azione conti. Non è necessario cambiare tutto dall'oggi al domani, ma è importante cominciare. I giovani di oggi dovranno affrontare le conseguenze delle scelte fatte dalle generazioni precedenti.",
+    "vocab_hints": {
+      "raccolta differenziata": "recycling/waste sorting",
+      "borse di tela": "canvas bags",
+      "pannelli solari": "solar panels",
+      "ambientalista": "environmentalist",
+      "conseguenze": "consequences"
+    },
+    "questions": [
+      {
+        "question": "What sustainable habits does the family have?",
+        "choices": [
+          "They don't use a car",
+          "Recycling, canvas bags instead of plastic, buying local produce",
+          "They only eat vegetables",
+          "They don't use electricity"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What did the narrator convince their parents to install?",
+        "choices": [
+          "A wind turbine",
+          "An electric car",
+          "Solar panels",
+          "A water recycling system"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "What does the school environmental group do monthly?",
+        "choices": [
+          "Write letters to the government",
+          "Clean the park or plant trees",
+          "Organise protests",
+          "Visit factories"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What is the narrator's view on environmental action?",
+        "choices": [
+          "Only governments can help",
+          "Every small action counts",
+          "Young people cannot make a difference",
+          "It is too late to change anything"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What will young people today have to face?",
+        "choices": [
+          "Better technology",
+          "The consequences of choices made by previous generations",
+          "More job opportunities",
+          "A cleaner planet"
+        ],
+        "correct": 1
+      }
+    ]
+  },
+  {
+    "id": "gcse_006",
+    "title": "La Mia Città Preferita",
+    "text": "La mia città preferita in Italia è Bologna. Ci sono stato due volte e voglio assolutamente tornarci. Bologna è famosa per la sua università, che è una delle più antiche del mondo, fondata nel 1088. È anche conosciuta come 'La Grassa' per la sua tradizione gastronomica: i tortellini, la mortadella, il ragù bolognese. Il centro storico ha i portici, lunghi corridoi coperti che proteggono i pedoni dalla pioggia e dal sole. Ho camminato per ore sotto i portici. Bologna ha anche una scena musicale e culturale vivace: ci sono molti teatri, cinema e concerti. Mi piace l'atmosfera giovane e vivace della città, animata dagli studenti universitari.",
+    "vocab_hints": {
+      "portici": "porticos/covered walkways",
+      "pedoni": "pedestrians",
+      "gastronomica": "gastronomic/food",
+      "vivace": "lively/vibrant",
+      "animata": "animated/lively"
+    },
+    "questions": [
+      {
+        "question": "When was Bologna's university founded?",
+        "choices": [
+          "988",
+          "1088",
+          "1188",
+          "1288"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What is Bologna nicknamed?",
+        "choices": [
+          "La Bella",
+          "La Rossa",
+          "La Grassa",
+          "La Grande"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "What are the porticos?",
+        "choices": [
+          "Famous restaurants",
+          "Long covered corridors protecting pedestrians",
+          "Beautiful fountains",
+          "Medieval towers"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What famous food is NOT from Bologna?",
+        "choices": [
+          "Tortellini",
+          "Mortadella",
+          "Ragù bolognese",
+          "Pizza napoletana"
+        ],
+        "correct": 3
+      },
+      {
+        "question": "What makes the city feel young and lively?",
+        "choices": [
+          "Many tourists",
+          "University students",
+          "New buildings",
+          "Music festivals only"
+        ],
+        "correct": 1
+      }
+    ]
+  },
+  {
+    "id": "gcse_007",
+    "title": "Un Progetto di Scambio",
+    "text": "Quest'anno la nostra scuola ha organizzato uno scambio con una scuola italiana di Torino. Per due settimane, venti studenti torinesi sono venuti nella nostra città. Ogni studente italiano ha soggiornato con una famiglia inglese. Io ho ospitato Matteo, un ragazzo di sedici anni. All'inizio la comunicazione era difficile perché il suo inglese era limitato e il mio italiano era scolastico. Però ci siamo capiti abbastanza bene usando le mani e i dizionari! Matteo mi ha insegnato alcune parole in dialetto piemontese. Io gli ho insegnato a giocare a cricket, cosa che lo ha fatto ridere molto. Alla fine dello scambio eravamo diventati buoni amici. Siamo ancora in contatto su Instagram e ho intenzione di visitarlo a Torino.",
+    "vocab_hints": {
+      "scambio": "exchange",
+      "soggiornato": "stayed",
+      "scolastico": "school-level",
+      "piemontese": "from Piedmont",
+      "in contatto": "in contact"
+    },
+    "questions": [
+      {
+        "question": "Where is the Italian school from?",
+        "choices": [
+          "Milan",
+          "Rome",
+          "Turin",
+          "Venice"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "How old is Matteo?",
+        "choices": [
+          "14",
+          "15",
+          "16",
+          "17"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "How did they communicate at first?",
+        "choices": [
+          "Only in English",
+          "Only in Italian",
+          "With hands and dictionaries",
+          "Through a translator"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "What did the narrator teach Matteo?",
+        "choices": [
+          "Football",
+          "Tennis",
+          "Cricket",
+          "Rugby"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "How do they stay in touch now?",
+        "choices": [
+          "By email",
+          "By phone calls",
+          "On Instagram",
+          "Through the school"
+        ],
+        "correct": 2
+      }
+    ]
+  },
+  {
+    "id": "gcse_008",
+    "title": "Lavorare nel Turismo",
+    "text": "D'estate lavoro come guida turistica nella mia città. Ho cominciato due anni fa quando avevo sedici anni. Ho fatto un corso di formazione e ho imparato a parlare della storia e dell'arte locale. Guido gruppi di turisti stranieri, principalmente inglesi, tedeschi e americani. Le visite durano due ore. Il momento che preferisco è quando i turisti fanno domande interessanti o quando bambini piccoli si emozionano davanti ai monumenti. Le parti difficili sono quando fa molto caldo o quando i turisti non ascoltano o parlano sempre al telefono! Ho imparato molto sull'arte e sulla storia, ma ho imparato anche come comunicare con persone diverse e come gestire situazioni difficili. Questa esperienza mi ha aiutato molto nella mia crescita personale.",
+    "vocab_hints": {
+      "formazione": "training",
+      "guido": "I guide",
+      "si emozionano": "get excited",
+      "crescita personale": "personal growth",
+      "gestire": "to manage"
+    },
+    "questions": [
+      {
+        "question": "How old was the narrator when they started?",
+        "choices": [
+          "15",
+          "16",
+          "17",
+          "18"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "How long do the tours last?",
+        "choices": [
+          "One hour",
+          "One and a half hours",
+          "Two hours",
+          "Three hours"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "What does the narrator enjoy most?",
+        "choices": [
+          "The payment",
+          "Interesting questions from tourists and children's excitement",
+          "Working outdoors",
+          "Meeting famous people"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What makes the job difficult?",
+        "choices": [
+          "The language barriers",
+          "Heat and tourists on their phones or not listening",
+          "Too many tourists",
+          "Long distances"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What has the narrator learnt beyond history and art?",
+        "choices": [
+          "A new language",
+          "How to use social media for tourism",
+          "How to communicate with different people and manage difficult situations",
+          "How to organise tours"
+        ],
+        "correct": 2
+      }
+    ]
+  },
+  {
+    "id": "gcse_009",
+    "title": "Il Cibo Come Cultura",
+    "text": "In Italia il cibo è molto più di un semplice nutrimento. È cultura, identità, tradizione e modo di stare insieme. Ogni regione ha le sue specialità e i suoi prodotti tipici. In Sicilia ci sono le arancine e i cannoli. In Veneto il risotto e la pasta e fagioli. In Campania la pizza napoletana e la mozzarella di bufala. Mangiare insieme è un rito sociale importantissimo. Un pasto italiano non si consuma in fretta: si comincia con l'antipasto, poi il primo, il secondo, il contorno e il dolce. Una cena in famiglia può durare tre ore. I nonni trasmettono le ricette ai nipoti come si trasmette un patrimonio culturale. Perdere queste tradizioni culinarie significherebbe perdere una parte fondamentale dell'identità italiana.",
+    "vocab_hints": {
+      "nutrimento": "nourishment/food",
+      "arancine": "fried rice balls",
+      "rito": "ritual",
+      "contorno": "side dish",
+      "culinarie": "culinary"
+    },
+    "questions": [
+      {
+        "question": "What does food represent in Italy beyond nourishment?",
+        "choices": [
+          "Just tradition",
+          "Culture, identity, tradition and togetherness",
+          "Economic activity",
+          "Regional politics"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "Which dish is associated with Campania?",
+        "choices": [
+          "Risotto",
+          "Arancine",
+          "Neapolitan pizza and buffalo mozzarella",
+          "Pasta and beans"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "What is the typical order of an Italian meal?",
+        "choices": [
+          "Starter, main, dessert",
+          "Antipasto, primo, secondo, contorno, dolce",
+          "Soup, main, cheese, dessert",
+          "Just one course"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "How long can an Italian family dinner last?",
+        "choices": [
+          "One hour",
+          "Two hours",
+          "Three hours",
+          "Four hours"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "How are recipes traditionally passed on?",
+        "choices": [
+          "Through cookbooks",
+          "At school",
+          "From grandparents to grandchildren",
+          "On television"
+        ],
+        "correct": 2
+      }
+    ]
+  },
+  {
+    "id": "gcse_010",
+    "title": "Il Volontario Sportivo",
+    "text": "Faccio parte di un'associazione sportiva che organizza attività per ragazzi disabili. Ogni sabato aiuto i bambini a praticare nuoto adattato. Ho cominciato perché il mio fratellino ha la sindrome di Down e volevo capire meglio come aiutarlo. Lavorare con questi bambini mi ha insegnato molto più di qualsiasi libro. Ho imparato la pazienza, la creatività e soprattutto ho capito cosa significa davvero il coraggio. Vedere un bambino che supera le sue paure e riesce a fare qualcosa che credeva impossibile è la cosa più emozionante che abbia mai vissuto. L'associazione cerca sempre nuovi volontari. Se sei interessato, puoi venire a vedere una sessione senza impegno. Ti garantisco che non te ne pentirai.",
+    "vocab_hints": {
+      "disabili": "disabled",
+      "adattato": "adapted",
+      "sindrome di Down": "Down's syndrome",
+      "pazienza": "patience",
+      "impegno": "commitment"
+    },
+    "questions": [
+      {
+        "question": "What does the association organise?",
+        "choices": [
+          "Football training",
+          "Swimming for disabled children",
+          "Adapted sport activities for disabled young people",
+          "Charity fundraising"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "Why did the narrator start volunteering?",
+        "choices": [
+          "For their CV",
+          "Their younger sibling has Down's syndrome and they wanted to understand better",
+          "A friend invited them",
+          "School required it"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What has the narrator learnt from the children?",
+        "choices": [
+          "Swimming techniques",
+          "Patience, creativity and the meaning of courage",
+          "Sign language",
+          "Specialist medical knowledge"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What does the narrator find most emotional?",
+        "choices": [
+          "The swimming sessions",
+          "Seeing a child overcome fears and achieve something they thought impossible",
+          "Meeting the parents",
+          "Working with the team"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What does the narrator promise to anyone who joins?",
+        "choices": [
+          "Payment",
+          "A certificate",
+          "They won't regret it",
+          "A permanent position"
+        ],
+        "correct": 2
+      }
+    ]
+  },
+  {
+    "id": "gcse_011",
+    "title": "La Casa dei Sogni",
+    "text": "Un giorno vorrei comprare una casa in campagna in Italia. Non una villa lussuosa, ma una piccola casa di pietra da restaurare. Ho già trovato alcune case online nelle colline toscane. Costano molto meno di quanto pensassi. Il problema è che hanno bisogno di grandi lavori di ristrutturazione. Dovrei imparare alcune competenze pratiche, come la muratura e l'idraulica, o assumere degli artigiani locali. Ho fatto ricerche sul processo burocratico per uno straniero che vuole comprare casa in Italia. Non è semplice ma è possibile. Viverei lì d'estate e il resto dell'anno la affitterei ai turisti per coprire i costi. È un sogno lontano ma preciso. A volte avere un sogno concreto aiuta ad andare avanti.",
+    "vocab_hints": {
+      "di pietra": "stone",
+      "ristrutturazione": "renovation",
+      "muratura": "masonry/bricklaying",
+      "idraulica": "plumbing",
+      "artigiani": "craftsmen/artisans"
+    },
+    "questions": [
+      {
+        "question": "What kind of house does the narrator dream of?",
+        "choices": [
+          "A luxury villa",
+          "A small stone house to renovate",
+          "A modern apartment",
+          "A farmhouse with land"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "Where are the houses they have found?",
+        "choices": [
+          "Sicilian coast",
+          "Tuscan hills",
+          "Venetian countryside",
+          "Umbrian villages"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What is the main problem with the houses?",
+        "choices": [
+          "They are too expensive",
+          "They need major renovation work",
+          "They are in remote areas",
+          "They are too large"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "How would the narrator cover costs?",
+        "choices": [
+          "Selling their current home",
+          "Working in Italy",
+          "Renting to tourists when not there",
+          "Getting a bank loan"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "Why does the narrator value having this dream?",
+        "choices": [
+          "To impress others",
+          "Having a concrete dream helps them to keep going",
+          "To plan their finances",
+          "To learn Italian"
+        ],
+        "correct": 1
+      }
+    ]
+  },
+  {
+    "id": "gcse_012",
+    "title": "Musica e Identità",
+    "text": "Suono il violino da quando avevo cinque anni. È stato mio padre a insegnarmi i primi accordi. Poi ho frequentato la scuola di musica per dieci anni. Il violino è diventato parte fondamentale della mia identità. Quando suono, mi dimentico di tutto il resto. La musica classica mi ha aperto una finestra su un mondo culturale enorme: Bach, Vivaldi, Mozart, Beethoven. Ma amo anche la musica pop e folk. A volte mescolo stili diversi e creo qualcosa di originale. L'anno scorso ho partecipato a un concorso musicale regionale e ho vinto il secondo posto. La cosa che mi ha sorpreso di più è stata l'emozione nel suonare davanti al pubblico: non ho avuto paura, solo gioia pura. Voglio continuare a suonare tutta la vita.",
+    "vocab_hints": {
+      "accordi": "chords",
+      "mescolo": "I mix/blend",
+      "concorso": "competition",
+      "pubblico": "audience",
+      "gioia pura": "pure joy"
+    },
+    "questions": [
+      {
+        "question": "How old was the narrator when they started playing violin?",
+        "choices": [
+          "Three",
+          "Four",
+          "Five",
+          "Six"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "Who taught them their first chords?",
+        "choices": [
+          "A music teacher",
+          "Their mother",
+          "Their father",
+          "A friend"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "What do they do with different musical styles?",
+        "choices": [
+          "Keep them completely separate",
+          "Only play classical",
+          "Mix them to create original music",
+          "Teach others"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "What position did they win at the regional competition?",
+        "choices": [
+          "First",
+          "Second",
+          "Third",
+          "They didn't win"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "How did they feel performing in front of an audience?",
+        "choices": [
+          "Terrified",
+          "Nervous but calm",
+          "Only joy, no fear",
+          "Proud but stressed"
+        ],
+        "correct": 2
+      }
+    ]
+  },
+  {
+    "id": "gcse_013",
+    "title": "L'Italiano All'estero",
+    "text": "Mia sorella vive a Berlino da cinque anni. Lavora come designer in un'agenzia internazionale. Prima di partire, non parlava quasi per niente il tedesco. Ha dovuto imparare la lingua velocemente. Mi ha detto che all'inizio era molto faticoso e si sentiva spesso sola. Con il tempo ha fatto amicizia con persone di tante nazionalità diverse. Adesso parla tedesco abbastanza bene e inglese perfettamente. Dice che vivere all'estero ti cambia: diventi più flessibile, più aperto, più indipendente. La cosa più difficile è la lontananza dalla famiglia, soprattutto a Natale. Ogni anno viene a casa per le feste. Quando torna, portiamo sempre ore a raccontarci quello che è successo. Sono molto orgoglioso di lei.",
+    "vocab_hints": {
+      "designer": "designer",
+      "nazionalità": "nationalities",
+      "flessibile": "flexible",
+      "lontananza": "distance/being far away",
+      "orgoglioso": "proud"
+    },
+    "questions": [
+      {
+        "question": "How long has the sister lived in Berlin?",
+        "choices": [
+          "Three years",
+          "Four years",
+          "Five years",
+          "Six years"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "What was the hardest thing about moving?",
+        "choices": [
+          "Learning German",
+          "Finding work",
+          "Making friends",
+          "The loneliness and learning the language quickly"
+        ],
+        "correct": 3
+      },
+      {
+        "question": "What does living abroad do to a person, according to the sister?",
+        "choices": [
+          "Makes them homesick forever",
+          "Makes them more flexible, open and independent",
+          "Makes them forget their culture",
+          "Makes them lonely"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What is the most difficult thing now?",
+        "choices": [
+          "The language barrier",
+          "Work pressure",
+          "Being far from family, especially at Christmas",
+          "The cost of living"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "How does the narrator feel about their sister?",
+        "choices": [
+          "Jealous",
+          "Worried",
+          "Very proud",
+          "Indifferent"
+        ],
+        "correct": 2
+      }
+    ]
+  },
+  {
+    "id": "gcse_014",
+    "title": "La Nonna Moderna",
+    "text": "Mia nonna ha settantasei anni ma è più moderna di molti miei coetanei. Ha imparato a usare lo smartphone da sola guardando video su YouTube. Adesso usa WhatsApp per chiamarci in video ogni giorno. Ha anche un profilo Instagram dove posta le sue creazioni: maglia, cucito e decorazioni floreali. Ha centocinquanta follower! Quando le chiedo come fa, dice che 'è come imparare una nuova ricetta: ci vuole pazienza ma poi ci si prende la mano'. Ha preso anche un corso di yoga per anziani e ogni martedì fa pilates. Dice che il segreto per rimanere giovani è non smettere mai di imparare cose nuove. Spero di assomigliarle quando avrò la sua età.",
+    "vocab_hints": {
+      "coetanei": "peers (same age)",
+      "maglia": "knitting",
+      "cucito": "sewing",
+      "ci si prende la mano": "you get the hang of it",
+      "assomigliarle": "to be like her"
+    },
+    "questions": [
+      {
+        "question": "How old is the grandmother?",
+        "choices": [
+          "66",
+          "70",
+          "76",
+          "80"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "How did she learn to use a smartphone?",
+        "choices": [
+          "From her grandchildren",
+          "At a course",
+          "By watching YouTube videos alone",
+          "From a book"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "What does she post on Instagram?",
+        "choices": [
+          "Family photos",
+          "Recipes",
+          "Knitting, sewing and floral decorations",
+          "Travel photos"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "How does she describe learning new technology?",
+        "choices": [
+          "Very difficult",
+          "Like learning a new recipe — patience and then you get the hang of it",
+          "Impossible without help",
+          "Fun but pointless"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What is the grandmother's secret to staying young?",
+        "choices": [
+          "Good food and rest",
+          "Exercise only",
+          "Never stopping learning new things",
+          "Having a positive attitude"
+        ],
+        "correct": 2
+      }
+    ]
+  },
+  {
+    "id": "gcse_015",
+    "title": "Il Progetto di Gemellaggio",
+    "text": "La mia scuola ha un gemellaggio con una scuola di Napoli da dieci anni. Ogni due anni un gruppo di studenti va a Napoli e l'anno successivo i napoletani vengono da noi. Quest'anno siamo andati noi a Napoli per cinque giorni. Abbiamo alloggiato nelle famiglie degli studenti napoletani. La famiglia che mi ha ospitato era molto gentile e calorosa. Mi hanno fatto mangiare tantissimo! Abbiamo visitato Pompei, il Vesuvio e il centro storico di Napoli. Ho capito perché Napoli è considerata una delle città più affascinanti d'Italia. La sua energia è unica: rumorosa, caotica ma piena di vita. Il momento più emozionante è stato vedere il tramonto sul golfo di Napoli. Tornerò sicuramente.",
+    "vocab_hints": {
+      "gemellaggio": "twinning/partnership",
+      "alloggiato": "stayed",
+      "calorosa": "warm/welcoming",
+      "affascinanti": "fascinating",
+      "golfo": "gulf/bay"
+    },
+    "questions": [
+      {
+        "question": "How long has the school twinning existed?",
+        "choices": [
+          "Five years",
+          "Eight years",
+          "Ten years",
+          "Fifteen years"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "How long did the visit to Naples last?",
+        "choices": [
+          "Three days",
+          "Four days",
+          "Five days",
+          "A week"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "Which of these did they NOT visit?",
+        "choices": [
+          "Pompeii",
+          "Vesuvius",
+          "The Amalfi Coast",
+          "Naples historic centre"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "How does the narrator describe Naples?",
+        "choices": [
+          "Quiet and elegant",
+          "Noisy and chaotic but full of life",
+          "Modern and well-organised",
+          "Small and friendly"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What was the most emotional moment?",
+        "choices": [
+          "Seeing Pompeii",
+          "Eating Neapolitan pizza",
+          "The sunset over the Gulf of Naples",
+          "Meeting the host family"
+        ],
+        "correct": 2
+      }
+    ]
+  },
+  {
+    "id": "gcse_016",
+    "title": "Salute e Benessere",
+    "text": "L'anno scorso ho deciso di cambiare il mio stile di vita. Mangiavo troppo cibo spazzatura e non facevo quasi mai sport. Mi sentivo sempre stanco e di cattivo umore. Ho cominciato con piccoli cambiamenti: ho smesso di bere bibite gasate e ho sostituito le patatine con la frutta. Ho iniziato a camminare trenta minuti ogni giorno. Dopo un mese, mi sentivo già meglio. Ho poi aggiunto due allenamenti in palestra a settimana. Ho anche migliorato il sonno: mi corico alle undici invece che all'una. In sei mesi ho perso sette chili e ho guadagnato molta più energia. La cosa che mi ha sorpreso di più è che il cambiamento fisico ha migliorato anche il mio umore e la mia concentrazione a scuola. Mente e corpo sono davvero collegati.",
+    "vocab_hints": {
+      "cibo spazzatura": "junk food",
+      "bibite gasate": "fizzy drinks",
+      "mi corico": "I go to bed",
+      "concentrazione": "concentration",
+      "collegati": "connected"
+    },
+    "questions": [
+      {
+        "question": "What was the narrator's lifestyle like before?",
+        "choices": [
+          "Very healthy",
+          "Too much junk food and almost no sport",
+          "Slightly unhealthy",
+          "Active but with a bad diet"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What were the first small changes?",
+        "choices": [
+          "Joining a gym immediately",
+          "Stopping fizzy drinks and replacing crisps with fruit",
+          "Running every day",
+          "Cutting all sugar"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What time does the narrator now go to bed?",
+        "choices": [
+          "9pm",
+          "10pm",
+          "11pm",
+          "Midnight"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "How much weight did they lose in six months?",
+        "choices": [
+          "Four kilos",
+          "Five kilos",
+          "Seven kilos",
+          "Ten kilos"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "What unexpected benefit did they notice?",
+        "choices": [
+          "They needed less sleep",
+          "Their social life improved",
+          "Their mood and school concentration improved",
+          "They made new friends"
+        ],
+        "correct": 2
+      }
+    ]
+  },
+  {
+    "id": "gcse_017",
+    "title": "Un'Esperienza di Lavoro",
+    "text": "Durante le vacanze di Pasqua ho fatto un'esperienza di lavoro in un ospedale locale. Volevo capire se la medicina fosse il percorso giusto per me. Ho trascorso una settimana nel reparto di pediatria. Non potevo ovviamente fare nulla di medico, ma potevo osservare, aiutare con attività non cliniche e parlare con il personale. Ho capito che il lavoro del medico non è solo diagnosticare e prescrivere medicine. C'è un aspetto umano fondamentale: ascoltare i pazienti, rassicurare le famiglie, prendere decisioni difficili sotto pressione. Ho visto medici che lavoravano per dodici ore senza fermarsi. Alla fine della settimana avevo ancora più rispetto per questa professione. E la mia vocazione per la medicina si era rafforzata, non indebolita.",
+    "vocab_hints": {
+      "percorso": "path/route",
+      "reparto": "ward/department",
+      "pediatria": "paediatrics",
+      "prescrivere": "to prescribe",
+      "rafforzata": "strengthened"
+    },
+    "questions": [
+      {
+        "question": "When did the work experience take place?",
+        "choices": [
+          "Summer holidays",
+          "Christmas holidays",
+          "Easter holidays",
+          "Half term"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "In which hospital ward did they work?",
+        "choices": [
+          "Accident and Emergency",
+          "Surgery",
+          "Paediatrics",
+          "Geriatrics"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "What could the narrator do?",
+        "choices": [
+          "Assist in operations",
+          "Observe and help with non-clinical activities",
+          "Take blood samples",
+          "Prescribe medicines"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What important aspect of medicine did they learn about?",
+        "choices": [
+          "Diagnostic technology",
+          "The human aspect: listening, reassuring, deciding under pressure",
+          "Medical research",
+          "Hospital administration"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What was the effect on their career ambition?",
+        "choices": [
+          "They decided against medicine",
+          "They were unsure",
+          "Their vocation for medicine was strengthened",
+          "They chose nursing instead"
+        ],
+        "correct": 2
+      }
+    ]
+  },
+  {
+    "id": "gcse_018",
+    "title": "Le Tradizioni di Carnevale",
+    "text": "A febbraio in Italia si festeggia il Carnevale. Le celebrazioni più famose sono quelle di Venezia e Viareggio. Io abito vicino a Viareggio e ogni anno vado a vedere le sfilate dei carri allegorici. I carri sono enormi costruzioni di cartapesta che rappresentano personaggi politici e dello spettacolo in modo satirico e spesso comico. Ci vogliono mesi per costruirli. Durante il Carnevale, le persone si mascherano e si lanciano i coriandoli. I bambini vanno in giro con costumi coloratissimi. C'è musica e danza ovunque. La tradizione del Carnevale è molto antica: risale al Medioevo. Era un periodo in cui le regole sociali venivano temporaneamente sospese e tutti potevano festeggiare insieme. Adesso è soprattutto un evento turistico ma conserva ancora il suo spirito originale.",
+    "vocab_hints": {
+      "sfilate": "processions/parades",
+      "carri allegorici": "allegorical floats",
+      "cartapesta": "papier-mâché",
+      "coriandoli": "confetti",
+      "sospese": "suspended"
+    },
+    "questions": [
+      {
+        "question": "Which two cities have the most famous carnivals?",
+        "choices": [
+          "Rome and Naples",
+          "Florence and Turin",
+          "Venice and Viareggio",
+          "Milan and Bologna"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "What do the allegorical floats depict?",
+        "choices": [
+          "Historical events",
+          "Famous landmarks",
+          "Political and entertainment figures in a satirical way",
+          "Religious scenes"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "What are the floats made of?",
+        "choices": [
+          "Metal and wood",
+          "Papier-mâché",
+          "Fibreglass",
+          "Cardboard"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "How old is the Carnival tradition?",
+        "choices": [
+          "About 200 years",
+          "About 500 years",
+          "It dates from the Middle Ages",
+          "It dates from Ancient Rome"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "What was Carnival's original social function?",
+        "choices": [
+          "To celebrate the harvest",
+          "To honour the king",
+          "To temporarily suspend social rules so everyone could celebrate together",
+          "A religious festival only"
+        ],
+        "correct": 2
+      }
+    ]
+  },
+  {
+    "id": "gcse_019",
+    "title": "Il Mio Futuro",
+    "text": "Quando le persone mi chiedono cosa voglio fare da grande, non ho ancora una risposta precisa. So alcune cose che voglio dalla mia vita: voglio fare un lavoro che mi appassioni, non solo che paghi bene. Voglio viaggiare e conoscere culture diverse. Voglio contribuire a qualcosa di significativo. Mi interessano molto la scienza e le questioni ambientali, quindi forse studierò ingegneria ambientale. Ma mi piace anche scrivere e comunicare. A volte penso che il futuro sia spaventoso perché ci sono troppe scelte. Poi mi ricordo che avere troppe scelte è comunque meglio di averne nessuna. La cosa più importante è rimanere curiosi e aperti. I piani possono cambiare, ma il carattere che ci porta avanti rimane.",
+    "vocab_hints": {
+      "appassioni": "that I am passionate about",
+      "significativo": "meaningful/significant",
+      "ingegneria ambientale": "environmental engineering",
+      "spaventoso": "frightening",
+      "curiosi": "curious"
+    },
+    "questions": [
+      {
+        "question": "What does the narrator want from their work?",
+        "choices": [
+          "High salary above all",
+          "To be passionate about it, not just well paid",
+          "To work close to home",
+          "To have flexible hours"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What subjects interest the narrator most?",
+        "choices": [
+          "Arts and languages",
+          "History and philosophy",
+          "Science and environmental issues",
+          "Maths and economics"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "What career might the narrator pursue?",
+        "choices": [
+          "Teaching",
+          "Environmental engineering",
+          "Journalism",
+          "Medicine"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "Why does the narrator sometimes find the future frightening?",
+        "choices": [
+          "Too many responsibilities",
+          "Not enough opportunities",
+          "Too many choices",
+          "Not knowing their talents"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "What does the narrator say is most important?",
+        "choices": [
+          "Having a clear plan",
+          "Remaining curious and open",
+          "Choosing the right career early",
+          "Working hard from a young age"
+        ],
+        "correct": 1
+      }
+    ]
+  },
+  {
+    "id": "gcse_020",
+    "title": "Lo Sport e l'Inclusione",
+    "text": "Nella mia squadra di calcio ci sono ragazzi di otto nazionalità diverse. Abbiamo un capitano somalo, un portiere polacco, un centrocampista egiziano. Quando siamo sul campo, queste differenze non contano. Conta solo la squadra. Il calcio è diventato per noi un linguaggio comune che va oltre le parole. Ho imparato parole in polacco, arabo e somalo grazie ai miei compagni di squadra. Loro hanno imparato l'italiano. Il nostro allenatore dice sempre: 'Sulla pista non ci sono nazionalità, ci sono giocatori'. Penso che lo sport abbia un potere unico di abbattere le barriere. Non risolve i problemi del mondo, ma crea momenti in cui le persone diverse si vedono come compagni, non come stranieri.",
+    "vocab_hints": {
+      "nazionalità": "nationalities",
+      "capitano": "captain",
+      "centrocampista": "midfielder",
+      "allenatore": "coach/trainer",
+      "abbattere": "to break down"
+    },
+    "questions": [
+      {
+        "question": "How many nationalities are there in the team?",
+        "choices": [
+          "Five",
+          "Six",
+          "Eight",
+          "Ten"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "What does the narrator call their common language?",
+        "choices": [
+          "English",
+          "Italian",
+          "Football itself",
+          "Sign language"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "What has the narrator learnt from teammates?",
+        "choices": [
+          "Their home countries' histories",
+          "Words in Polish, Arabic and Somali",
+          "Different cooking traditions",
+          "Different sports"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What does the coach always say?",
+        "choices": [
+          "Winning is everything",
+          "On the pitch there are no nationalities, only players",
+          "Work harder than your opponents",
+          "Respect the referee"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What unique power does the narrator attribute to sport?",
+        "choices": [
+          "Solving world problems",
+          "Making people rich",
+          "Breaking down barriers and making people see each other as teammates not strangers",
+          "Teaching discipline"
+        ],
+        "correct": 2
+      }
+    ]
+  },
+  {
+    "id": "gcse_021",
+    "title": "Una Città in Miniatura",
+    "text": "San Marino è il paese più piccolo d'Europa dopo il Vaticano e Monaco. È completamente circondato dall'Italia. Ha circa trentatremila abitanti e una superficie di sessantun chilometri quadrati. Nonostante le sue dimensioni, San Marino ha una storia lunga e affascinante. È considerato il paese più antico del mondo ancora esistente, fondato nel 301 d.C. Ha il proprio governo, la propria moneta storica e le proprie leggi. Il centro storico è situato su una montagna rocciosa e offre vedute spettacolari. Ogni anno riceve più di tre milioni di turisti, un numero cento volte superiore alla sua popolazione. La maggior parte dei turisti viene per la storia, ma anche per fare shopping, perché le tasse sono più basse che in Italia.",
+    "vocab_hints": {
+      "circondato": "surrounded",
+      "superficie": "area/surface",
+      "esistente": "existing",
+      "vedute": "views",
+      "tasse": "taxes"
+    },
+    "questions": [
+      {
+        "question": "After which two countries is San Marino the smallest in Europe?",
+        "choices": [
+          "Liechtenstein and Andorra",
+          "Vatican and Monaco",
+          "Luxembourg and Malta",
+          "Andorra and Vatican"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "When was San Marino founded?",
+        "choices": [
+          "101 BC",
+          "301 AD",
+          "501 AD",
+          "1001 AD"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "How many tourists visit each year?",
+        "choices": [
+          "About one million",
+          "About two million",
+          "More than three million",
+          "About five million"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "Where is the historic centre located?",
+        "choices": [
+          "In a valley",
+          "By the sea",
+          "On a rocky mountain",
+          "On a flat plain"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "Why do many tourists go there besides history?",
+        "choices": [
+          "For the beaches",
+          "For the food",
+          "For shopping, as taxes are lower than Italy",
+          "For the nightlife"
+        ],
+        "correct": 2
+      }
+    ]
+  },
+  {
+    "id": "gcse_022",
+    "title": "Diventare Bilingue",
+    "text": "Mia madre è italiana e mio padre è irlandese. Sono cresciuta con due lingue in casa. Da bambina passavo da una lingua all'altra senza pensarci, come se avessi due modalità diverse nel cervello. A scuola ho sempre avuto vantaggi nelle lingue straniere perché capivo intuitivamente come funzionano le grammatiche diverse. Ma essere bilingue non è sempre facile. Alle volte mescolo le due lingue senza accorgermene, specialmente quando sono stanca. In italiano ho un accento che non è completamente italiano. In inglese c'è qualcosa che suona leggermente straniero. Mi sento a casa in entrambe le lingue ma completamente a casa in nessuna. È una sensazione strana ma anche ricca. Appartengo a due mondi, il che significa che il mio mondo è doppio.",
+    "vocab_hints": {
+      "modalità": "modes/modes of operation",
+      "intuitivamente": "intuitively",
+      "mescolo": "I mix",
+      "accorgermene": "noticing it",
+      "appartengo": "I belong"
+    },
+    "questions": [
+      {
+        "question": "What nationalities are the narrator's parents?",
+        "choices": [
+          "Italian and British",
+          "Italian and Irish",
+          "Italian and American",
+          "Italian and Australian"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What advantage does bilingualism give at school?",
+        "choices": [
+          "Better grades in all subjects",
+          "An intuitive understanding of how different grammars work",
+          "Perfect accents in all languages",
+          "Easier memory"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "When does the narrator mix languages?",
+        "choices": [
+          "Always",
+          "Never intentionally",
+          "Especially when tired",
+          "When speaking to friends"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "How does the narrator feel about their accent?",
+        "choices": [
+          "Perfectly Italian in Italian and perfectly English in English",
+          "Not quite native in either language",
+          "Only Italian sounding",
+          "Only English sounding"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "How does the narrator view their dual identity?",
+        "choices": [
+          "As a disadvantage",
+          "As confusing and difficult",
+          "As strange but rich — belonging to two worlds makes the world double",
+          "As something to overcome"
+        ],
+        "correct": 2
+      }
+    ]
+  },
+  {
+    "id": "gcse_023",
+    "title": "La Squadra Vincente",
+    "text": "Quest'anno la nostra squadra scolastica di pallavolo ha vinto il campionato regionale. È stato il risultato di un anno di allenamenti intensi. Ci allenavamo tre volte a settimana dalle cinque alle sette di sera. Il nostro allenatore si chiama Professor Ferretti. È severo ma giusto. Ci ha insegnato che la cosa più importante non è la forza fisica ma la comunicazione in campo. Una squadra che comunica bene batte sempre una squadra di individui più forti. La finale è stata durissima. Eravamo sotto di due set. Abbiamo vinto i successivi tre. L'ultimo punto è stato un ace del nostro servizio. Quando abbiamo capito che avevamo vinto, ci siamo abbracciati e alcuni di noi hanno pianto. Era più di una vittoria sportiva: era la prova che insieme si può superare qualsiasi ostacolo.",
+    "vocab_hints": {
+      "pallavolo": "volleyball",
+      "campionato": "championship",
+      "severo": "strict",
+      "ace": "ace (in volleyball/tennis)",
+      "ostacolo": "obstacle"
+    },
+    "questions": [
+      {
+        "question": "What sport does the team play?",
+        "choices": [
+          "Basketball",
+          "Tennis",
+          "Volleyball",
+          "Handball"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "How often did they train?",
+        "choices": [
+          "Once a week",
+          "Twice a week",
+          "Three times a week",
+          "Every day"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "What did the coach say was most important?",
+        "choices": [
+          "Physical strength",
+          "Speed",
+          "Communication on the court",
+          "Individual talent"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "What was the final score in sets?",
+        "choices": [
+          "3-0",
+          "3-1",
+          "3-2",
+          "2-1"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "What did the victory represent beyond sport?",
+        "choices": [
+          "A ticket to national competition",
+          "Proof that together you can overcome any obstacle",
+          "Recognition for the school",
+          "A scholarship for the players"
+        ],
+        "correct": 1
+      }
+    ]
+  },
+  {
+    "id": "gcse_024",
+    "title": "Il Ristorante della Nonna",
+    "text": "Mia nonna ha aperto il suo ristorante quarant'anni fa. Si chiama 'Da Rosetta' ed è ancora il posto più amato del quartiere. Non è un ristorante elegante. Ha una dozzina di tavoli, tovaglie a quadri e menu scritto a mano ogni giorno. Il menu cambia in base a quello che si trova al mercato quella mattina. Mia nonna dice: 'Cucino quello che la stagione mi offre'. Non usa ingredienti fuori stagione. In primavera ci sono i carciofi e le fave. In estate i pomodori e le melanzane. In autunno i funghi e la zucca. In inverno i legumi e le radici. I clienti di 'Da Rosetta' sono fedeli da generazioni. Alcuni portano adesso i propri figli, che portano i nipoti. Mia nonna li conosce tutti per nome. Questo, dice, è il vero lusso.",
+    "vocab_hints": {
+      "tovaglie": "tablecloths",
+      "a quadri": "checked/chequered",
+      "carciofi": "artichokes",
+      "fave": "broad beans",
+      "fedeli": "loyal"
+    },
+    "questions": [
+      {
+        "question": "How long ago did the grandmother open her restaurant?",
+        "choices": [
+          "Twenty years ago",
+          "Thirty years ago",
+          "Forty years ago",
+          "Fifty years ago"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "How is the menu decided?",
+        "choices": [
+          "It never changes",
+          "Based on what is found at the market that morning",
+          "From a fixed seasonal menu",
+          "Customers choose in advance"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What vegetable does the grandmother use in spring?",
+        "choices": [
+          "Courgettes and peppers",
+          "Mushrooms and pumpkin",
+          "Artichokes and broad beans",
+          "Leeks and carrots"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "How loyal are the customers?",
+        "choices": [
+          "They change often",
+          "Some are loyal for years",
+          "Families have been loyal for generations",
+          "Only tourists visit"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "What does the grandmother consider 'true luxury'?",
+        "choices": [
+          "Expensive ingredients",
+          "A famous chef",
+          "Knowing all her customers by name",
+          "Having a Michelin star"
+        ],
+        "correct": 2
+      }
+    ]
+  }
+]
