@@ -1296,6 +1296,54 @@ def impersonal_si():
     return redirect(url_for('practice_question'))
 
 
+@app.route('/unreal-past', methods=['GET', 'POST'])
+def unreal_past():
+    """Unreal past conditionals (B2 level)."""
+    level = request.args.get('level') or request.form.get('level') or session.get('level', 'B2')
+
+    if request.method == 'GET':
+        session['level'] = level
+        return render_template('unreal_past_setup.html', level=level)
+
+    count = int(request.form.get('count', 10))
+    generator = get_generator()
+    questions = generator.generate_unreal_past(count)
+
+    session['practice_type'] = 'unreal_past'
+    session['questions'] = questions
+    session['current_question'] = 0
+    session['correct_count'] = 0
+    session['answers'] = []
+    session['start_time'] = time.time()
+    session['level'] = level
+
+    return redirect(url_for('practice_question'))
+
+
+@app.route('/comprehensive-subjunctives', methods=['GET', 'POST'])
+def comprehensive_subjunctives():
+    """Comprehensive subjunctives review (B2 level)."""
+    level = request.args.get('level') or request.form.get('level') or session.get('level', 'B2')
+
+    if request.method == 'GET':
+        session['level'] = level
+        return render_template('comprehensive_subjunctives_setup.html', level=level)
+
+    count = int(request.form.get('count', 10))
+    generator = get_generator()
+    questions = generator.generate_comprehensive_subjunctives(count)
+
+    session['practice_type'] = 'comprehensive_subjunctives'
+    session['questions'] = questions
+    session['current_question'] = 0
+    session['correct_count'] = 0
+    session['answers'] = []
+    session['start_time'] = time.time()
+    session['level'] = level
+
+    return redirect(url_for('practice_question'))
+
+
 @app.route('/present-tense', methods=['GET', 'POST'])
 def present_tense():
     """Present tense conjugation practice (A1 level)."""

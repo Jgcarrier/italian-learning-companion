@@ -3199,6 +3199,234 @@ class PracticeGenerator:
 
         return questions
 
+    def generate_unreal_past(self, count: int = 10) -> List[Dict]:
+        """
+        Generate unreal past conditionals for B2 level.
+        Third conditional: If X had happened, Y would have happened.
+        Structure: Se + subjunctive past perfect, conditional past
+        """
+
+        examples = [
+            {
+                "italian": "Se _____ studiato, avresti passato l'esame.",
+                "english": "If you had studied, you would have passed the exam.",
+                "answer": "avessi",
+                "full": "avessi studiato",
+                "explanation": "Unreal past: Se + subjunctive past perfect + conditional past. 'Se avessi studiato' = if you had studied (but you didn't)."
+            },
+            {
+                "italian": "Se _____ stato lì, ti avrei aiutato.",
+                "english": "If I had been there, I would have helped you.",
+                "answer": "fossi",
+                "full": "fossi stato",
+                "explanation": "Unreal past: 'Se fossi stato' = if I had been. Hypothetical past situation that didn't happen."
+            },
+            {
+                "italian": "Se lei _____ venuta, si sarebbe divertita.",
+                "english": "If she had come, she would have had fun.",
+                "answer": "fosse",
+                "full": "fosse venuta",
+                "explanation": "Unreal past: 'Se fosse venuta' = if she had come (but she didn't come)."
+            },
+            {
+                "italian": "Se noi _____ saputo, avremmo fatto diversamente.",
+                "english": "If we had known, we would have done differently.",
+                "answer": "avessimo",
+                "full": "avessimo saputo",
+                "explanation": "Unreal past: 'Se avessimo saputo' = if we had known. Contrary to fact in the past."
+            },
+            {
+                "italian": "Se voi _____ arrivati prima, avreste visto tutto.",
+                "english": "If you had arrived earlier, you would have seen everything.",
+                "answer": "foste",
+                "full": "foste arrivati",
+                "explanation": "Unreal past: 'Se foste arrivati' = if you had arrived (voi form)."
+            },
+            {
+                "italian": "Se loro _____ detto la verità, tutto sarebbe diverso.",
+                "english": "If they had told the truth, everything would be different.",
+                "answer": "avessero",
+                "full": "avessero detto",
+                "explanation": "Unreal past: 'Se avessero detto' = if they had told. Result affects present: 'sarebbe diverso'."
+            },
+            {
+                "italian": "Se tu _____ andato, ti saresti annoiato.",
+                "english": "If you had gone, you would have been bored.",
+                "answer": "fossi",
+                "full": "fossi andato",
+                "explanation": "Unreal past: 'Se fossi andato' = if you had gone (but you didn't)."
+            },
+            {
+                "italian": "Se io _____ visto il film, te lo avrei detto.",
+                "english": "If I had seen the film, I would have told you.",
+                "answer": "avessi",
+                "full": "avessi visto",
+                "explanation": "Unreal past: 'Se avessi visto' = if I had seen (but I didn't see it)."
+            },
+            {
+                "italian": "Se lei _____ partita prima, sarebbe arrivata in tempo.",
+                "english": "If she had left earlier, she would have arrived on time.",
+                "answer": "fosse",
+                "full": "fosse partita",
+                "explanation": "Unreal past: 'Se fosse partita' = if she had left (feminine)."
+            },
+            {
+                "italian": "Se noi _____ comprato quella casa, saremmo felici.",
+                "english": "If we had bought that house, we would be happy.",
+                "answer": "avessimo",
+                "full": "avessimo comprato",
+                "explanation": "Unreal past with present result: past action affects present state."
+            }
+        ]
+
+        selected = random.sample(examples, min(count, len(examples)))
+        questions = []
+
+        for item in selected:
+            forms = ["avessi", "avesse", "avessero", "avessimo", "aveste",
+                    "fossi", "fosse", "fossero", "fossimo", "foste"]
+
+            choices = [item["answer"]]
+            wrong_choices = [f for f in forms if f != item["answer"]]
+            choices.extend(random.sample(wrong_choices, min(3, len(wrong_choices))))
+            random.shuffle(choices)
+
+            questions.append({
+                "question": item["italian"],
+                "answer": item["answer"],
+                "type": "multiple_choice",
+                "choices": choices,
+                "hint": f"{item['english']} | Full: {item['full']}",
+                "explanation": item["explanation"]
+            })
+
+        return questions
+
+    def generate_comprehensive_subjunctives(self, count: int = 10) -> List[Dict]:
+        """
+        Generate comprehensive subjunctive review for B2 level.
+        Mixed practice of all four subjunctive tenses.
+        Tests ability to choose correct tense based on context.
+        """
+
+        examples = [
+            # Present subjunctive
+            {
+                "italian": "Penso che lui _____ italiano.",
+                "english": "I think that he is Italian.",
+                "answer": "sia",
+                "tense": "present",
+                "explanation": "Present subjunctive after 'penso che' for present/general fact. 'Sia' = is (subjunctive)."
+            },
+            {
+                "italian": "Spero che tu _____ bene.",
+                "english": "I hope that you're well.",
+                "answer": "stia",
+                "tense": "present",
+                "explanation": "Present subjunctive: 'spero che tu stia' = I hope you are. Stare → stia."
+            },
+            # Past subjunctive
+            {
+                "italian": "Credo che loro _____ già partiti.",
+                "english": "I believe that they have already left.",
+                "answer": "siano",
+                "tense": "past",
+                "explanation": "Past subjunctive (congiuntivo passato): 'siano partiti' = have left. Present trigger + past action."
+            },
+            {
+                "italian": "Dubito che lei _____ capito tutto.",
+                "english": "I doubt that she understood everything.",
+                "answer": "abbia",
+                "tense": "past",
+                "explanation": "Past subjunctive: 'abbia capito' = understood/has understood. Completed action."
+            },
+            # Imperfect subjunctive
+            {
+                "italian": "Vorrei che tu _____ con me.",
+                "english": "I would like you to come with me.",
+                "answer": "venissi",
+                "tense": "imperfect",
+                "explanation": "Imperfect subjunctive after 'vorrei che' (conditional). Venire → venissi."
+            },
+            {
+                "italian": "Se io _____ ricco, viaggerei molto.",
+                "english": "If I were rich, I would travel a lot.",
+                "answer": "fossi",
+                "tense": "imperfect",
+                "explanation": "Imperfect subjunctive in hypothetical 'if' clause. 'Se fossi' = if I were."
+            },
+            {
+                "italian": "Pensavo che lei _____ qui.",
+                "english": "I thought that she was here.",
+                "answer": "fosse",
+                "tense": "imperfect",
+                "explanation": "Imperfect subjunctive after past tense main verb (pensavo). 'Fosse' = was."
+            },
+            # Past perfect subjunctive
+            {
+                "italian": "Credevo che tu _____ già mangiato.",
+                "english": "I believed that you had already eaten.",
+                "answer": "avessi",
+                "tense": "past perfect",
+                "explanation": "Past perfect subjunctive: 'avessi mangiato' = had eaten. Past main verb + earlier past action."
+            },
+            {
+                "italian": "Se noi _____ saputo, saremmo venuti.",
+                "english": "If we had known, we would have come.",
+                "answer": "avessimo",
+                "tense": "past perfect",
+                "explanation": "Past perfect subjunctive in unreal past: 'se avessimo saputo' = if we had known."
+            },
+            {
+                "italian": "Speravo che voi _____ arrivati in tempo.",
+                "english": "I hoped that you had arrived on time.",
+                "answer": "foste",
+                "tense": "past perfect",
+                "explanation": "Past perfect subjunctive: 'foste arrivati' = had arrived (voi)."
+            },
+            # More mixed examples
+            {
+                "italian": "È possibile che _____ domani.",
+                "english": "It's possible that it will rain tomorrow.",
+                "answer": "piova",
+                "tense": "present",
+                "explanation": "Present subjunctive for future possibility. Piovere → piova."
+            },
+            {
+                "italian": "Non credo che _____ la verità ieri.",
+                "english": "I don't think they told the truth yesterday.",
+                "answer": "abbiano detto",
+                "tense": "past",
+                "explanation": "Past subjunctive: 'abbiano detto' = told (completed past action)."
+            }
+        ]
+
+        selected = random.sample(examples, min(count, len(examples)))
+        questions = []
+
+        for item in selected:
+            # Mix of subjunctive forms across all tenses
+            all_forms = ["sia", "abbia", "siano", "abbiano", "stia",
+                        "fossi", "avessi", "fosse", "avesse", "venissi",
+                        "avessimo", "fossero", "avessero", "foste",
+                        "piova", "abbiano detto"]
+
+            choices = [item["answer"]]
+            wrong_choices = [f for f in all_forms if f != item["answer"]]
+            choices.extend(random.sample(wrong_choices, min(3, len(wrong_choices))))
+            random.shuffle(choices)
+
+            questions.append({
+                "question": item["italian"],
+                "answer": item["answer"],
+                "type": "multiple_choice",
+                "choices": choices,
+                "hint": f"{item['english']} | Tense: {item['tense']} subjunctive",
+                "explanation": item["explanation"]
+            })
+
+        return questions
+
 
 if __name__ == "__main__":
     # Test the practice generator

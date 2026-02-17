@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block title %}Unreal Past Setup{% endblock %}
+
+{% block content %}
+<div class="text-center mb-30">
+    <h2>🔮 Periodo Ipotetico del Passato (Unreal Past)</h2>
+    <p>Third conditional: If X had happened, Y would have happened</p>
+</div>
+
+<form method="POST" action="{{ url_for('unreal_past') }}">
+    <input type="hidden" name="level" value="{{ level or 'B2' }}">
+    <div class="form-group">
+        <label for="count">Number of Questions:</label>
+        <input type="number" name="count" id="count" value="10" min="5" max="20">
+    </div>
+
+    <div class="button-group">
+        <button type="submit" class="btn btn-primary btn-large">Start Practice ({{ level or 'B2' }})</button>
+        <a href="{{ url_for('verbs_menu', level=level or 'B2') }}" class="btn btn-secondary">Back</a>
+    </div>
+</form>
+
+<div style="margin-top: 30px; padding: 20px; background: var(--light-gray); border-radius: 8px;">
+    <h3 style="font-size: 1.1rem; margin-bottom: 10px;">💡 Structure:</h3>
+    <p style="color: #666; margin-bottom: 15px;">
+        <strong>Se + subjunctive past perfect, conditional past</strong>
+    </p>
+
+    <div style="margin-bottom: 15px;">
+        <h4 style="font-size: 1rem; color: #333; margin-bottom: 8px;">Formula:</h4>
+        <p style="color: #666; margin-left: 15px;">
+            <strong>If clause:</strong> Se + avessi/fossi + past participle
+            <br><strong>Main clause:</strong> avrei/sarei + past participle
+        </p>
+    </div>
+
+    <div style="margin-bottom: 15px;">
+        <h4 style="font-size: 1rem; color: #333; margin-bottom: 8px;">Examples:</h4>
+        <ul style="margin-left: 20px; color: #666;">
+            <li><strong>Se avessi studiato</strong>, avresti passato l'esame<br>
+                <em style="font-size: 0.85rem;">(If you had studied, you would have passed the exam)</em>
+            </li>
+            <li><strong>Se fossi venuto</strong>, ti saresti divertito<br>
+                <em style="font-size: 0.85rem;">(If you had come, you would have had fun)</em>
+            </li>
+            <li><strong>Se avessimo saputo</strong>, saremmo partiti prima<br>
+                <em style="font-size: 0.85rem;">(If we had known, we would have left earlier)</em>
+            </li>
+        </ul>
+    </div>
+
+    <p style="color: #666; margin-top: 15px; font-style: italic;">
+        <strong>Use:</strong> Hypothetical situations in the past that didn't happen (contrary to fact).
+    </p>
+</div>
+{% endblock %}

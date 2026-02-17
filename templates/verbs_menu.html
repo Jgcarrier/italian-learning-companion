@@ -130,6 +130,18 @@
         <h3>Passato Remoto</h3>
         <p>Historical/literary past</p>
     </a>
+
+    <a href="{{ url_for('unreal_past') }}?level={{ level }}" class="menu-item">
+        <div class="menu-icon">🔮</div>
+        <h3>Unreal Past</h3>
+        <p>If I had known...</p>
+    </a>
+
+    <a href="{{ url_for('comprehensive_subjunctives') }}?level={{ level }}" class="menu-item">
+        <div class="menu-icon">🎯</div>
+        <h3>Subjunctives Review</h3>
+        <p>All 4 subjunctive tenses</p>
+    </a>
     {% endif %}
 </div>
 {% endblock %}

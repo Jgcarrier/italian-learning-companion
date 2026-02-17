@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block title %}Comprehensive Subjunctives Setup{% endblock %}
+
+{% block content %}
+<div class="text-center mb-30">
+    <h2>🎯 Congiuntivo Completo (All Subjunctives)</h2>
+    <p>Comprehensive review of all 4 subjunctive tenses</p>
+</div>
+
+<form method="POST" action="{{ url_for('comprehensive_subjunctives') }}">
+    <input type="hidden" name="level" value="{{ level or 'B2' }}">
+    <div class="form-group">
+        <label for="count">Number of Questions:</label>
+        <input type="number" name="count" id="count" value="10" min="5" max="20">
+    </div>
+
+    <div class="button-group">
+        <button type="submit" class="btn btn-primary btn-large">Start Practice ({{ level or 'B2' }})</button>
+        <a href="{{ url_for('verbs_menu', level=level or 'B2') }}" class="btn btn-secondary">Back</a>
+    </div>
+</form>
+
+<div style="margin-top: 30px; padding: 20px; background: var(--light-gray); border-radius: 8px;">
+    <h3 style="font-size: 1.1rem; margin-bottom: 10px;">💡 All 4 Subjunctive Tenses:</h3>
+
+    <div style="margin-bottom: 15px;">
+        <h4 style="font-size: 1rem; color: #333; margin-bottom: 8px;">1. Present (Congiuntivo Presente):</h4>
+        <p style="color: #666; margin-left: 15px;">
+            Penso che <strong>sia</strong> italiano | Spero che <strong>venga</strong>
+        </p>
+    </div>
+
+    <div style="margin-bottom: 15px;">
+        <h4 style="font-size: 1rem; color: #333; margin-bottom: 8px;">2. Past (Congiuntivo Passato):</h4>
+        <p style="color: #666; margin-left: 15px;">
+            Credo che <strong>sia partito</strong> | Penso che <strong>abbia capito</strong>
+        </p>
+    </div>
+
+    <div style="margin-bottom: 15px;">
+        <h4 style="font-size: 1rem; color: #333; margin-bottom: 8px;">3. Imperfect (Congiuntivo Imperfetto):</h4>
+        <p style="color: #666; margin-left: 15px;">
+            Vorrei che tu <strong>venissi</strong> | Se io <strong>fossi</strong> ricco
+        </p>
+    </div>
+
+    <div style="margin-bottom: 15px;">
+        <h4 style="font-size: 1rem; color: #333; margin-bottom: 8px;">4. Past Perfect (Congiuntivo Trapassato):</h4>
+        <p style="color: #666; margin-left: 15px;">
+            Pensavo che <strong>fosse partito</strong> | Se <strong>avessi saputo</strong>
+        </p>
+    </div>
+
+    <p style="color: #666; margin-top: 15px; font-style: italic;">
+        <strong>This practice:</strong> Tests your ability to choose the correct subjunctive tense based on context.
+    </p>
+</div>
+{% endblock %}
