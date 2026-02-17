@@ -10,11 +10,21 @@ from database import ItalianDatabase
 class PracticeGenerator:
     def __init__(self, db: ItalianDatabase):
         self.db = db
-    
+
+    def _get_verb_level(self, level: str) -> str:
+        """Get the appropriate level for verb queries, with GCSE fallback to B2."""
+        # GCSE uses B2 verbs as they are similar difficulty
+        if level == 'GCSE':
+            return 'B2'
+        return level
+
     def generate_verb_conjugation_drill(self, level: str = "A1", count: int = 10) -> List[Dict]:
         """Generate verb conjugation practice questions."""
         cursor = self.db.conn.cursor()
-        
+
+        # Get the appropriate level (GCSE → B2)
+        query_level = self._get_verb_level(level)
+
         # Get random verbs from the specified level
         cursor.execute("""
             SELECT DISTINCT infinitive, english, verb_type, tense
@@ -22,7 +32,7 @@ class PracticeGenerator:
             WHERE level = ?
             ORDER BY RANDOM()
             LIMIT ?
-        """, (level, count))
+        """, (query_level, count))
         
         verbs = cursor.fetchall()
         questions = []

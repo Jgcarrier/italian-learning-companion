@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}Error - Italian Learning Companion{% endblock %}
+
+{% block content %}
+<div class="feedback incorrect">
+    <div class="feedback-icon">⚠️</div>
+    <h2>Oops! Something went wrong</h2>
+
+    {% if error_message %}
+    <div class="answer-display">
+        <p>{{ error_message }}</p>
+    </div>
+    {% else %}
+    <div class="answer-display">
+        <p>We encountered an unexpected error. Please try again.</p>
+    </div>
+    {% endif %}
+</div>
+
+<div class="button-group">
+    {% if back_link %}
+    <a href="{{ back_link }}" class="btn btn-primary">← Go Back</a>
+    {% else %}
+    <a href="{{ url_for('home') }}" class="btn btn-primary">🏠 Return Home</a>
+    {% endif %}
+</div>
+{% endblock %}

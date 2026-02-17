@@ -31,6 +31,14 @@ if (current_dir / 'data' / 'curriculum.db').exists():
 else:
     DB_PATH = str(current_dir.parent / 'data' / 'curriculum.db')
 
+# Simple in-memory cache for static data (vocabulary lists, verb lists)
+# Cache expires when app restarts - perfect for static database content
+_CACHE = {
+    'vocab_by_level': {},
+    'verbs_by_level': {},
+    'cache_time': None
+}
+
 
 def get_db():
     """Get a database connection for the current request, reusing if available."""
@@ -42,6 +50,31 @@ def get_db():
 def get_generator():
     """Get a practice generator with the current request's database connection."""
     return PracticeGenerator(get_db())
+
+
+def get_cached_vocab_count(level: str) -> int:
+    """Get vocabulary count for a level from cache or database."""
+    if level not in _CACHE['vocab_by_level']:
+        db = get_db()
+        cursor = db.conn.cursor()
+        cursor.execute('SELECT COUNT(*) FROM vocabulary WHERE level = ?', (level,))
+        count = cursor.fetchone()[0]
+        _CACHE['vocab_by_level'][level] = count
+    return _CACHE['vocab_by_level'][level]
+
+
+def get_cached_verb_count(level: str) -> int:
+    """Get verb count for a level from cache or database."""
+    # GCSE uses B2 verbs
+    query_level = 'B2' if level == 'GCSE' else level
+
+    if query_level not in _CACHE['verbs_by_level']:
+        db = get_db()
+        cursor = db.conn.cursor()
+        cursor.execute('SELECT COUNT(DISTINCT infinitive) FROM verb_conjugations WHERE level = ?', (query_level,))
+        count = cursor.fetchone()[0]
+        _CACHE['verbs_by_level'][query_level] = count
+    return _CACHE['verbs_by_level'][query_level]
 
 
 @app.teardown_appcontext
@@ -982,289 +1015,133 @@ def conditional_past():
 @app.route('/past-perfect', methods=['GET', 'POST'])
 def past_perfect():
     """Past perfect (trapassato prossimo) practice (B1 level)."""
-    level = request.args.get('level') or request.form.get('level') or session.get('level', 'B1')
-
-    if request.method == 'GET':
-        session['level'] = level
-        return render_template('past_perfect_setup.html', level=level)
-
-    count = validate_count(request.form.get('count', 10))
-    generator = get_generator()
-    questions = generator.generate_past_perfect(count)
-
-    session['practice_type'] = 'past_perfect'
-    session['questions'] = questions
-    session['current_question'] = 0
-    session['correct_count'] = 0
-    session['answers'] = []
-    session['start_time'] = time.time()
-    session['level'] = level
-
-    return redirect(url_for('practice_question'))
+    return create_practice_route(
+        practice_type='past_perfect',
+        generator_method='generate_past_perfect',
+        setup_template='past_perfect_setup.html',
+        menu_type='verbs_menu'
+    )()
 
 
 @app.route('/passive-voice', methods=['GET', 'POST'])
 def passive_voice():
     """Passive voice (forma passiva) practice (B1 level)."""
-    level = request.args.get('level') or request.form.get('level') or session.get('level', 'B1')
-
-    if request.method == 'GET':
-        session['level'] = level
-        return render_template('passive_voice_setup.html', level=level)
-
-    count = validate_count(request.form.get('count', 10))
-    generator = get_generator()
-    questions = generator.generate_passive_voice(count)
-
-    session['practice_type'] = 'passive_voice'
-    session['questions'] = questions
-    session['current_question'] = 0
-    session['correct_count'] = 0
-    session['answers'] = []
-    session['start_time'] = time.time()
-    session['level'] = level  # Store level for navigation
-
-    return redirect(url_for('practice_question'))
+    return create_practice_route(
+        practice_type='passive_voice',
+        generator_method='generate_passive_voice',
+        setup_template='passive_voice_setup.html',
+        menu_type='verbs_menu'
+    )()
 
 
 @app.route('/pronominal-verbs', methods=['GET', 'POST'])
 def pronominal_verbs():
     """Pronominal verbs practice (A2 level)."""
-    level = validate_level(request.args.get('level') or request.form.get('level') or session.get('level', 'A2'))
-
-    if request.method == 'GET':
-        session['level'] = level
-        return render_template('pronominal_verbs_setup.html', level=level)
-
-    count = validate_count(request.form.get('count', 10))
-    generator = get_generator()
-    questions = generator.generate_pronominal_verbs(count)
-
-    session['practice_type'] = 'pronominal_verbs'
-    session['questions'] = questions
-    session['current_question'] = 0
-    session['correct_count'] = 0
-    session['answers'] = []
-    session['start_time'] = time.time()
-    session['level'] = level  # Store level for navigation
-
-    return redirect(url_for('practice_question'))
+    return create_practice_route(
+        practice_type='pronominal_verbs',
+        generator_method='generate_pronominal_verbs',
+        setup_template='pronominal_verbs_setup.html',
+        menu_type='verbs_menu'
+    )()
 
 
 @app.route('/subjunctive-present', methods=['GET', 'POST'])
 def subjunctive_present():
     """Subjunctive present (congiuntivo presente) practice (A2 level)."""
-    level = validate_level(request.args.get('level') or request.form.get('level') or session.get('level', 'A2'))
-
-    if request.method == 'GET':
-        session['level'] = level
-        return render_template('subjunctive_present_setup.html', level=level)
-
-    count = validate_count(request.form.get('count', 10))
-    generator = get_generator()
-    questions = generator.generate_subjunctive_present(count)
-
-    session['practice_type'] = 'subjunctive_present'
-    session['questions'] = questions
-    session['current_question'] = 0
-    session['correct_count'] = 0
-    session['answers'] = []
-    session['start_time'] = time.time()
-    session['level'] = level  # Store level for navigation
-
-    return redirect(url_for('practice_question'))
+    return create_practice_route(
+        practice_type='subjunctive_present',
+        generator_method='generate_subjunctive_present',
+        setup_template='subjunctive_present_setup.html',
+        menu_type='verbs_menu'
+    )()
 
 
 @app.route('/subjunctive-past', methods=['GET', 'POST'])
 def subjunctive_past():
     """Subjunctive past (congiuntivo passato) practice (B1 level)."""
-    level = request.args.get('level') or request.form.get('level') or session.get('level', 'B1')
-
-    if request.method == 'GET':
-        session['level'] = level
-        return render_template('subjunctive_past_setup.html', level=level)
-
-    count = validate_count(request.form.get('count', 10))
-    generator = get_generator()
-    questions = generator.generate_subjunctive_past(count)
-
-    session['practice_type'] = 'subjunctive_past'
-    session['questions'] = questions
-    session['current_question'] = 0
-    session['correct_count'] = 0
-    session['answers'] = []
-    session['start_time'] = time.time()
-    session['level'] = level
-
-    return redirect(url_for('practice_question'))
+    return create_practice_route(
+        practice_type='subjunctive_past',
+        generator_method='generate_subjunctive_past',
+        setup_template='subjunctive_past_setup.html',
+        menu_type='verbs_menu'
+    )()
 
 
 @app.route('/subjunctive-imperfect', methods=['GET', 'POST'])
 def subjunctive_imperfect():
     """Subjunctive imperfect (congiuntivo imperfetto) practice (B1 level)."""
-    level = request.args.get('level') or request.form.get('level') or session.get('level', 'B1')
-
-    if request.method == 'GET':
-        session['level'] = level
-        return render_template('subjunctive_imperfect_setup.html', level=level)
-
-    count = validate_count(request.form.get('count', 10))
-    generator = get_generator()
-    questions = generator.generate_subjunctive_imperfect(count)
-
-    session['practice_type'] = 'subjunctive_imperfect'
-    session['questions'] = questions
-    session['current_question'] = 0
-    session['correct_count'] = 0
-    session['answers'] = []
-    session['start_time'] = time.time()
-    session['level'] = level
-
-    return redirect(url_for('practice_question'))
+    return create_practice_route(
+        practice_type='subjunctive_imperfect',
+        generator_method='generate_subjunctive_imperfect',
+        setup_template='subjunctive_imperfect_setup.html',
+        menu_type='verbs_menu'
+    )()
 
 
 @app.route('/subjunctive-past-perfect', methods=['GET', 'POST'])
 def subjunctive_past_perfect():
     """Subjunctive past perfect (congiuntivo trapassato) practice (B1 level)."""
-    level = request.args.get('level') or request.form.get('level') or session.get('level', 'B1')
-
-    if request.method == 'GET':
-        session['level'] = level
-        return render_template('subjunctive_past_perfect_setup.html', level=level)
-
-    count = validate_count(request.form.get('count', 10))
-    generator = get_generator()
-    questions = generator.generate_subjunctive_past_perfect(count)
-
-    session['practice_type'] = 'subjunctive_past_perfect'
-    session['questions'] = questions
-    session['current_question'] = 0
-    session['correct_count'] = 0
-    session['answers'] = []
-    session['start_time'] = time.time()
-    session['level'] = level
-
-    return redirect(url_for('practice_question'))
+    return create_practice_route(
+        practice_type='subjunctive_past_perfect',
+        generator_method='generate_subjunctive_past_perfect',
+        setup_template='subjunctive_past_perfect_setup.html',
+        menu_type='verbs_menu'
+    )()
 
 
 @app.route('/passato-remoto', methods=['GET', 'POST'])
 def passato_remoto():
     """Passato remoto practice (B2 level)."""
-    level = request.args.get('level') or request.form.get('level') or session.get('level', 'B2')
-
-    if request.method == 'GET':
-        session['level'] = level
-        return render_template('passato_remoto_setup.html', level=level)
-
-    count = validate_count(request.form.get('count', 10))
-    generator = get_generator()
-    questions = generator.generate_passato_remoto(count)
-
-    session['practice_type'] = 'passato_remoto'
-    session['questions'] = questions
-    session['current_question'] = 0
-    session['correct_count'] = 0
-    session['answers'] = []
-    session['start_time'] = time.time()
-    session['level'] = level
-
-    return redirect(url_for('practice_question'))
+    return create_practice_route(
+        practice_type='passato_remoto',
+        generator_method='generate_passato_remoto',
+        setup_template='passato_remoto_setup.html',
+        menu_type='verbs_menu'
+    )()
 
 
 @app.route('/relative-pronouns', methods=['GET', 'POST'])
 def relative_pronouns():
     """Relative pronouns practice (B2 level)."""
-    level = request.args.get('level') or request.form.get('level') or session.get('level', 'B2')
-
-    if request.method == 'GET':
-        session['level'] = level
-        return render_template('relative_pronouns_setup.html', level=level)
-
-    count = validate_count(request.form.get('count', 10))
-    generator = get_generator()
-    questions = generator.generate_relative_pronouns(count)
-
-    session['practice_type'] = 'relative_pronouns'
-    session['questions'] = questions
-    session['current_question'] = 0
-    session['correct_count'] = 0
-    session['answers'] = []
-    session['start_time'] = time.time()
-    session['level'] = level
-
-    return redirect(url_for('practice_question'))
+    return create_practice_route(
+        practice_type='relative_pronouns',
+        generator_method='generate_relative_pronouns',
+        setup_template='relative_pronouns_setup.html',
+        menu_type='grammar_menu'
+    )()
 
 
 @app.route('/impersonal-si', methods=['GET', 'POST'])
 def impersonal_si():
     """Impersonal si practice (B2 level)."""
-    level = request.args.get('level') or request.form.get('level') or session.get('level', 'B2')
-
-    if request.method == 'GET':
-        session['level'] = level
-        return render_template('impersonal_si_setup.html', level=level)
-
-    count = validate_count(request.form.get('count', 10))
-    generator = get_generator()
-    questions = generator.generate_impersonal_si(count)
-
-    session['practice_type'] = 'impersonal_si'
-    session['questions'] = questions
-    session['current_question'] = 0
-    session['correct_count'] = 0
-    session['answers'] = []
-    session['start_time'] = time.time()
-    session['level'] = level
-
-    return redirect(url_for('practice_question'))
+    return create_practice_route(
+        practice_type='impersonal_si',
+        generator_method='generate_impersonal_si',
+        setup_template='impersonal_si_setup.html',
+        menu_type='grammar_menu'
+    )()
 
 
 @app.route('/unreal-past', methods=['GET', 'POST'])
 def unreal_past():
     """Unreal past conditionals (B2 level)."""
-    level = request.args.get('level') or request.form.get('level') or session.get('level', 'B2')
-
-    if request.method == 'GET':
-        session['level'] = level
-        return render_template('unreal_past_setup.html', level=level)
-
-    count = validate_count(request.form.get('count', 10))
-    generator = get_generator()
-    questions = generator.generate_unreal_past(count)
-
-    session['practice_type'] = 'unreal_past'
-    session['questions'] = questions
-    session['current_question'] = 0
-    session['correct_count'] = 0
-    session['answers'] = []
-    session['start_time'] = time.time()
-    session['level'] = level
-
-    return redirect(url_for('practice_question'))
+    return create_practice_route(
+        practice_type='unreal_past',
+        generator_method='generate_unreal_past',
+        setup_template='unreal_past_setup.html',
+        menu_type='verbs_menu'
+    )()
 
 
 @app.route('/comprehensive-subjunctives', methods=['GET', 'POST'])
 def comprehensive_subjunctives():
     """Comprehensive subjunctives review (B2 level)."""
-    level = request.args.get('level') or request.form.get('level') or session.get('level', 'B2')
-
-    if request.method == 'GET':
-        session['level'] = level
-        return render_template('comprehensive_subjunctives_setup.html', level=level)
-
-    count = validate_count(request.form.get('count', 10))
-    generator = get_generator()
-    questions = generator.generate_comprehensive_subjunctives(count)
-
-    session['practice_type'] = 'comprehensive_subjunctives'
-    session['questions'] = questions
-    session['current_question'] = 0
-    session['correct_count'] = 0
-    session['answers'] = []
-    session['start_time'] = time.time()
-    session['level'] = level
-
-    return redirect(url_for('practice_question'))
+    return create_practice_route(
+        practice_type='comprehensive_subjunctives',
+        generator_method='generate_comprehensive_subjunctives',
+        setup_template='comprehensive_subjunctives_setup.html',
+        menu_type='verbs_menu'
+    )()
 
 
 @app.route('/present-tense', methods=['GET', 'POST'])
@@ -1294,169 +1171,78 @@ def present_tense():
 @app.route('/noun-gender-number', methods=['GET', 'POST'])
 def noun_gender_number():
     """Noun gender and number identification practice."""
-    level = request.args.get('level') or request.form.get('level') or session.get('level', 'A1')
-
-    if request.method == 'GET':
-        session['level'] = level
-        return render_template('noun_gender_number_setup.html', level=level)
-
-    count = validate_count(request.form.get('count', 10))
-    generator = get_generator()
-    questions = generator.generate_noun_gender_number(count)
-
-    session['practice_type'] = 'noun_gender_number'
-    session['questions'] = questions
-    session['current_question'] = 0
-    session['correct_count'] = 0
-    session['answers'] = []
-    session['start_time'] = time.time()
-    session['level'] = level  # Store level for navigation
-
-    return redirect(url_for('practice_question'))
+    return create_practice_route(
+        practice_type='noun_gender_number',
+        generator_method='generate_noun_gender_number',
+        setup_template='noun_gender_number_setup.html',
+        menu_type='grammar_menu'
+    )()
 
 
 @app.route('/articulated-prepositions', methods=['GET', 'POST'])
 def articulated_prepositions():
     """Articulated prepositions practice."""
-    level = validate_level(request.args.get('level') or request.form.get('level') or session.get('level', 'A2'))
-
-    if request.method == 'GET':
-        session['level'] = level
-        return render_template('articulated_prepositions_setup.html', level=level)
-
-    count = validate_count(request.form.get('count', 10))
-    generator = get_generator()
-    questions = generator.generate_articulated_prepositions(count)
-
-    session['practice_type'] = 'articulated_prepositions'
-    session['questions'] = questions
-    session['current_question'] = 0
-    session['correct_count'] = 0
-    session['answers'] = []
-    session['start_time'] = time.time()
-    session['level'] = level  # Store level for navigation
-
-    return redirect(url_for('practice_question'))
+    return create_practice_route(
+        practice_type='articulated_prepositions',
+        generator_method='generate_articulated_prepositions',
+        setup_template='articulated_prepositions_setup.html',
+        menu_type='grammar_menu'
+    )()
 
 
 @app.route('/time-prepositions', methods=['GET', 'POST'])
 def time_prepositions():
     """Time prepositions practice."""
-    level = validate_level(request.args.get('level') or request.form.get('level') or session.get('level', 'A2'))
-
-    if request.method == 'GET':
-        session['level'] = level
-        return render_template('time_prepositions_setup.html', level=level)
-
-    count = validate_count(request.form.get('count', 10))
-    generator = get_generator()
-    questions = generator.generate_time_prepositions(count)
-
-    session['practice_type'] = 'time_prepositions'
-    session['questions'] = questions
-    session['current_question'] = 0
-    session['correct_count'] = 0
-    session['answers'] = []
-    session['start_time'] = time.time()
-    session['level'] = level  # Store level for navigation
-
-    return redirect(url_for('practice_question'))
+    return create_practice_route(
+        practice_type='time_prepositions',
+        generator_method='generate_time_prepositions',
+        setup_template='time_prepositions_setup.html',
+        menu_type='grammar_menu'
+    )()
 
 
 @app.route('/negations', methods=['GET', 'POST'])
 def negations():
     """Negations practice."""
-    level = validate_level(request.args.get('level') or request.form.get('level') or session.get('level', 'A2'))
-
-    if request.method == 'GET':
-        session['level'] = level
-        return render_template('negations_setup.html', level=level)
-
-    count = validate_count(request.form.get('count', 10))
-    generator = get_generator()
-    questions = generator.generate_negation_practice(count)
-
-    session['practice_type'] = 'negations'
-    session['questions'] = questions
-    session['current_question'] = 0
-    session['correct_count'] = 0
-    session['answers'] = []
-    session['start_time'] = time.time()
-    session['level'] = level  # Store level for navigation
-
-    return redirect(url_for('practice_question'))
+    return create_practice_route(
+        practice_type='negations',
+        generator_method='generate_negation_practice',
+        setup_template='negations_setup.html',
+        menu_type='grammar_menu'
+    )()
 
 
 @app.route('/pronouns', methods=['GET', 'POST'])
 def pronouns():
     """Direct and indirect pronouns practice."""
-    level = request.args.get('level') or request.form.get('level') or session.get('level', 'A1')
-
-    if request.method == 'GET':
-        session['level'] = level
-        return render_template('pronouns_setup.html', level=level)
-
-    count = validate_count(request.form.get('count', 10))
-    generator = get_generator()
-    questions = generator.generate_pronouns_practice(count)
-
-    session['practice_type'] = 'pronouns'
-    session['questions'] = questions
-    session['current_question'] = 0
-    session['correct_count'] = 0
-    session['answers'] = []
-    session['start_time'] = time.time()
-    session['level'] = level  # Store level for navigation
-
-    return redirect(url_for('practice_question'))
+    return create_practice_route(
+        practice_type='pronouns',
+        generator_method='generate_pronouns_practice',
+        setup_template='pronouns_setup.html',
+        menu_type='grammar_menu'
+    )()
 
 
 @app.route('/combined-pronouns', methods=['GET', 'POST'])
 def combined_pronouns():
     """Combined pronouns practice (B1 level)."""
-    level = request.args.get('level') or request.form.get('level') or session.get('level', 'B1')
-
-    if request.method == 'GET':
-        session['level'] = level
-        return render_template('combined_pronouns_setup.html', level=level)
-
-    count = validate_count(request.form.get('count', 10))
-    generator = get_generator()
-    questions = generator.generate_combined_pronouns(count)
-
-    session['practice_type'] = 'combined_pronouns'
-    session['questions'] = questions
-    session['current_question'] = 0
-    session['correct_count'] = 0
-    session['answers'] = []
-    session['start_time'] = time.time()
-    session['level'] = level
-
-    return redirect(url_for('practice_question'))
+    return create_practice_route(
+        practice_type='combined_pronouns',
+        generator_method='generate_combined_pronouns',
+        setup_template='combined_pronouns_setup.html',
+        menu_type='grammar_menu'
+    )()
 
 
 @app.route('/adverbs', methods=['GET', 'POST'])
 def adverbs():
     """Adverbs practice."""
-    level = request.args.get('level') or request.form.get('level') or session.get('level', 'A1')
-
-    if request.method == 'GET':
-        session['level'] = level
-        return render_template('adverbs_setup.html', level=level)
-
-    count = validate_count(request.form.get('count', 10))
-    generator = get_generator()
-    questions = generator.generate_adverbs_practice(count)
-
-    session['practice_type'] = 'adverbs'
-    session['questions'] = questions
-    session['current_question'] = 0
-    session['correct_count'] = 0
-    session['answers'] = []
-    session['start_time'] = time.time()
-    session['level'] = level  # Store level for navigation
-
-    return redirect(url_for('practice_question'))
+    return create_practice_route(
+        practice_type='adverbs',
+        generator_method='generate_adverbs_practice',
+        setup_template='adverbs_setup.html',
+        menu_type='grammar_menu'
+    )()
 
 
 @app.route('/fill-in-blank', methods=['GET', 'POST'])
