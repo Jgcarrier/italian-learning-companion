@@ -1032,6 +1032,30 @@ def imperative():
     return redirect(url_for('practice_question'))
 
 
+@app.route('/passive-voice', methods=['GET', 'POST'])
+def passive_voice():
+    """Passive voice (forma passiva) practice (B1 level)."""
+    level = request.args.get('level') or request.form.get('level') or session.get('level', 'B1')
+
+    if request.method == 'GET':
+        session['level'] = level
+        return render_template('passive_voice_setup.html', level=level)
+
+    count = int(request.form.get('count', 10))
+    generator = get_generator()
+    questions = generator.generate_passive_voice(count)
+
+    session['practice_type'] = 'passive_voice'
+    session['questions'] = questions
+    session['current_question'] = 0
+    session['correct_count'] = 0
+    session['answers'] = []
+    session['start_time'] = time.time()
+    session['level'] = level  # Store level for navigation
+
+    return redirect(url_for('practice_question'))
+
+
 @app.route('/pronominal-verbs', methods=['GET', 'POST'])
 def pronominal_verbs():
     """Pronominal verbs practice (A2 level)."""

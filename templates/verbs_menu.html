@@ -85,5 +85,13 @@
         <p>farcela, andarsene, volerci</p>
     </a>
     {% endif %}
+
+    {% if level in ['B1', 'B2', 'GCSE'] %}
+    <a href="{{ url_for('passive_voice') }}?level={{ level }}" class="menu-item">
+        <div class="menu-icon">🔁</div>
+        <h3>Passive Voice</h3>
+        <p>essere + past participle</p>
+    </a>
+    {% endif %}
 </div>
 {% endblock %}

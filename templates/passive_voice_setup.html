@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+
+{% block title %}Passive Voice Setup{% endblock %}
+
+{% block content %}
+<div class="text-center mb-30">
+    <h2>🔁 Forma Passiva (Passive Voice)</h2>
+    <p>Transform actions: from "who does" to "what is done"</p>
+</div>
+
+<form method="POST" action="{{ url_for('passive_voice') }}">
+    <input type="hidden" name="level" value="{{ level or 'B1' }}">
+    <div class="form-group">
+        <label for="count">Number of Questions:</label>
+        <input type="number" name="count" id="count" value="10" min="5" max="20">
+    </div>
+
+    <div class="button-group">
+        <button type="submit" class="btn btn-primary btn-large">Start Practice ({{ level or 'B1' }})</button>
+        <a href="{{ url_for('verbs_menu', level=level or 'B1') }}" class="btn btn-secondary">Back</a>
+    </div>
+</form>
+
+<div style="margin-top: 30px; padding: 20px; background: var(--light-gray); border-radius: 8px;">
+    <h3 style="font-size: 1.1rem; margin-bottom: 10px;">💡 How the Passive Voice Works:</h3>
+
+    <p style="color: #666; margin-bottom: 15px;">
+        The passive voice shifts focus from <strong>who does the action</strong> to <strong>what is done</strong>.
+    </p>
+
+    <div style="margin-bottom: 15px;">
+        <h4 style="font-size: 1rem; color: #333; margin-bottom: 8px;">Basic Structure:</h4>
+        <p style="color: #666; margin-left: 15px;">
+            <strong>essere (conjugated) + past participle</strong>
+            <br>• The past participle agrees with the subject in gender and number
+            <br>• The agent (who does the action) is introduced by "<strong>da</strong>"
+        </p>
+    </div>
+
+    <div style="margin-bottom: 15px;">
+        <h4 style="font-size: 1rem; color: #333; margin-bottom: 8px;">Examples by Tense:</h4>
+
+        <div style="margin-bottom: 10px;">
+            <p style="color: #444; margin-bottom: 5px;"><strong>Present:</strong></p>
+            <p style="color: #666; margin-left: 15px; font-size: 0.9rem;">
+                • La lettera <strong>è scritta</strong> da Marco (The letter is written by Marco)
+                <br>• I libri <strong>sono letti</strong> dagli studenti (The books are read by the students)
+            </p>
+        </div>
+
+        <div style="margin-bottom: 10px;">
+            <p style="color: #444; margin-bottom: 5px;"><strong>Past (Passato Prossimo):</strong></p>
+            <p style="color: #666; margin-left: 15px; font-size: 0.9rem;">
+                • La casa <strong>è stata venduta</strong> (The house was sold)
+                <br>• I documenti <strong>sono stati firmati</strong> (The documents were signed)
+            </p>
+        </div>
+
+        <div style="margin-bottom: 10px;">
+            <p style="color: #444; margin-bottom: 5px;"><strong>Imperfect:</strong></p>
+            <p style="color: #666; margin-left: 15px; font-size: 0.9rem;">
+                • Il pane <strong>era fatto</strong> in casa (The bread was made at home)
+                <br>• Le strade <strong>erano pulite</strong> ogni mattina (The streets were cleaned every morning)
+            </p>
+        </div>
+
+        <div style="margin-bottom: 10px;">
+            <p style="color: #444; margin-bottom: 5px;"><strong>Future:</strong></p>
+            <p style="color: #666; margin-left: 15px; font-size: 0.9rem;">
+                • Il progetto <strong>sarà finito</strong> domani (The project will be finished tomorrow)
+                <br>• Le email <strong>saranno inviate</strong> stasera (The emails will be sent tonight)
+            </p>
+        </div>
+    </div>
+
+    <div style="margin-bottom: 15px;">
+        <h4 style="font-size: 1rem; color: #333; margin-bottom: 8px;">Alternative Passive Forms:</h4>
+
+        <div style="margin-bottom: 10px;">
+            <p style="color: #444; margin-bottom: 5px;"><strong>Venire + past participle</strong> (present/imperfect only):</p>
+            <p style="color: #666; margin-left: 15px; font-size: 0.9rem;">
+                • La pizza <strong>viene preparata</strong> al momento (The pizza is prepared right away)
+                <br>• I documenti <strong>vengono controllati</strong> ogni settimana (The documents are checked weekly)
+            </p>
+        </div>
+
+        <div style="margin-bottom: 10px;">
+            <p style="color: #444; margin-bottom: 5px;"><strong>Si passivante</strong> (passive si):</p>
+            <p style="color: #666; margin-left: 15px; font-size: 0.9rem;">
+                • In Italia <strong>si parla</strong> italiano (In Italy, Italian is spoken)
+                <br>• Qui <strong>si vendono</strong> libri usati (Used books are sold here)
+                <br>• <em>Very common for general statements!</em>
+            </p>
+        </div>
+    </div>
+
+    <div style="padding: 15px; background: #fff3cd; border-radius: 5px; margin-top: 15px;">
+        <h4 style="font-size: 1rem; color: #856404; margin-bottom: 8px;">⚠️ Important Agreement Rules:</h4>
+        <ul style="margin-left: 20px; color: #856404;">
+            <li><strong>Masculine singular:</strong> Il libro è letto / è stato letto</li>
+            <li><strong>Feminine singular:</strong> La casa è venduta / è stata venduta</li>
+            <li><strong>Masculine plural:</strong> I libri sono letti / sono stati letti</li>
+            <li><strong>Feminine plural:</strong> Le case sono vendute / sono state vendute</li>
+        </ul>
+    </div>
+</div>
+{% endblock %}

@@ -2049,6 +2049,200 @@ class PracticeGenerator:
 
         return questions
 
+    def generate_passive_voice(self, count: int = 10) -> List[Dict]:
+        """
+        Generate passive voice (forma passiva) practice for B1 level.
+        The passive transforms "Subject does action" to "Action is done by subject".
+        Italian passive: essere + past participle (agrees with subject)
+        """
+
+        # Passive voice examples with transformations
+        examples = [
+            # Present tense passives
+            {
+                "italian": "La lettera è scritta da Marco.",
+                "english": "The letter is written by Marco.",
+                "answer": "è scritta",
+                "active": "Marco scrive la lettera",
+                "explanation": "Passive present: essere (present) + past participle. 'Scritta' agrees with feminine 'lettera'. Active: Marco scrive la lettera."
+            },
+            {
+                "italian": "I libri sono letti dagli studenti.",
+                "english": "The books are read by the students.",
+                "answer": "sono letti",
+                "active": "Gli studenti leggono i libri",
+                "explanation": "Passive present: essere (sono) + past participle. 'Letti' agrees with masculine plural 'libri'. Active: Gli studenti leggono i libri."
+            },
+            {
+                "italian": "La pizza è mangiata dai bambini.",
+                "english": "The pizza is eaten by the children.",
+                "answer": "è mangiata",
+                "active": "I bambini mangiano la pizza",
+                "explanation": "Passive: essere + past participle. 'Mangiata' agrees with feminine singular 'pizza'."
+            },
+            {
+                "italian": "Le case sono costruite dai muratori.",
+                "english": "The houses are built by the builders.",
+                "answer": "sono costruite",
+                "active": "I muratori costruiscono le case",
+                "explanation": "Passive: 'sono costruite' agrees with feminine plural 'case'."
+            },
+            # Past tense passives (passato prossimo)
+            {
+                "italian": "Il film è stato visto da milioni di persone.",
+                "english": "The film was seen by millions of people.",
+                "answer": "è stato visto",
+                "active": "Milioni di persone hanno visto il film",
+                "explanation": "Passive past: essere (passato prossimo) + past participle. 'È stato visto' = was seen (masculine singular)."
+            },
+            {
+                "italian": "La casa è stata venduta l'anno scorso.",
+                "english": "The house was sold last year.",
+                "answer": "è stata venduta",
+                "active": "Hanno venduto la casa l'anno scorso",
+                "explanation": "Passive past: 'è stata venduta' agrees with feminine 'casa'. Was sold = è stata + past participle."
+            },
+            {
+                "italian": "Le lettere sono state spedite ieri.",
+                "english": "The letters were sent yesterday.",
+                "answer": "sono state spedite",
+                "active": "Hanno spedito le lettere ieri",
+                "explanation": "Passive past: 'sono state spedite' agrees with feminine plural 'lettere'."
+            },
+            {
+                "italian": "I documenti sono stati firmati dal direttore.",
+                "english": "The documents were signed by the director.",
+                "answer": "sono stati firmati",
+                "active": "Il direttore ha firmato i documenti",
+                "explanation": "Passive past: 'sono stati firmati' agrees with masculine plural 'documenti'."
+            },
+            # Future tense passives
+            {
+                "italian": "Il progetto sarà finito entro domani.",
+                "english": "The project will be finished by tomorrow.",
+                "answer": "sarà finito",
+                "active": "Finiranno il progetto entro domani",
+                "explanation": "Passive future: essere (future) + past participle. 'Sarà finito' = will be finished."
+            },
+            {
+                "italian": "Le email saranno inviate questa sera.",
+                "english": "The emails will be sent this evening.",
+                "answer": "saranno inviate",
+                "active": "Invieranno le email questa sera",
+                "explanation": "Passive future: 'saranno inviate' agrees with feminine plural 'email'."
+            },
+            # Imperfect passive
+            {
+                "italian": "Il pane era fatto in casa ogni giorno.",
+                "english": "The bread was made at home every day.",
+                "answer": "era fatto",
+                "active": "Facevano il pane in casa ogni giorno",
+                "explanation": "Passive imperfect: essere (imperfect) + past participle. 'Era fatto' = was made (habitual)."
+            },
+            {
+                "italian": "Le strade erano pulite ogni mattina.",
+                "english": "The streets were cleaned every morning.",
+                "answer": "erano pulite",
+                "active": "Pulivano le strade ogni mattina",
+                "explanation": "Passive imperfect: 'erano pulite' agrees with feminine plural 'strade'."
+            },
+            # Venire passive (alternative to essere)
+            {
+                "italian": "La pizza viene preparata al momento.",
+                "english": "The pizza is prepared right away.",
+                "answer": "viene preparata",
+                "active": "Preparano la pizza al momento",
+                "explanation": "Alternative passive with 'venire' instead of 'essere'. 'Viene preparata' = is prepared. Only for present/imperfect, NOT passato prossimo."
+            },
+            {
+                "italian": "I documenti vengono controllati ogni settimana.",
+                "english": "The documents are checked every week.",
+                "answer": "vengono controllati",
+                "active": "Controllano i documenti ogni settimana",
+                "explanation": "Passive with 'venire': 'vengono controllati' agrees with masculine plural 'documenti'."
+            },
+            # Si passivante (passive with si)
+            {
+                "italian": "In Italia si parla italiano.",
+                "english": "In Italy, Italian is spoken.",
+                "answer": "si parla",
+                "active": "In Italia parlano italiano",
+                "explanation": "Si passivante: si + third person verb. 'Si parla' = is spoken. Common for general statements."
+            },
+            {
+                "italian": "In questo ristorante si mangiano piatti tipici.",
+                "english": "In this restaurant, typical dishes are eaten.",
+                "answer": "si mangiano",
+                "active": "In questo ristorante mangiano piatti tipici",
+                "explanation": "Si passivante: si + third person plural. 'Si mangiano' agrees with plural 'piatti'."
+            },
+            {
+                "italian": "Qui si vendono libri usati.",
+                "english": "Used books are sold here.",
+                "answer": "si vendono",
+                "active": "Qui vendono libri usati",
+                "explanation": "Si passivante: 'si vendono' agrees with plural 'libri'. Very common construction."
+            },
+            {
+                "italian": "In estate si beve molta acqua.",
+                "english": "In summer, a lot of water is drunk.",
+                "answer": "si beve",
+                "active": "In estate bevono molta acqua",
+                "explanation": "Si passivante: 'si beve' with singular 'acqua'."
+            },
+            # Da + agent
+            {
+                "italian": "La canzone è cantata da Pavarotti.",
+                "english": "The song is sung by Pavarotti.",
+                "answer": "è cantata",
+                "active": "Pavarotti canta la canzone",
+                "explanation": "Passive: 'è cantata da Pavarotti'. 'Da' introduces the agent (who does the action)."
+            },
+            {
+                "italian": "Romeo e Giulietta fu scritto da Shakespeare.",
+                "english": "Romeo and Juliet was written by Shakespeare.",
+                "answer": "fu scritto",
+                "active": "Shakespeare scrisse Romeo e Giulietta",
+                "explanation": "Passive with passato remoto: 'fu scritto da'. Used in literary/historical contexts."
+            }
+        ]
+
+        # Randomly select questions
+        selected = random.sample(examples, min(count, len(examples)))
+        questions = []
+
+        for item in selected:
+            # Passive forms for choices
+            passive_forms = [
+                "è scritto", "è scritta", "sono scritti", "sono scritte",
+                "è fatto", "è fatta", "sono fatti", "sono fatte",
+                "è stato visto", "è stata vista", "sono stati visti", "sono state viste",
+                "viene preparato", "viene preparata", "vengono preparati", "vengono preparate",
+                "si parla", "si parlano", "si mangia", "si mangiano",
+                "sarà finito", "sarà finita", "saranno finiti", "saranno finite",
+                "era fatto", "era fatta", "erano fatti", "erano fatte"
+            ]
+
+            # Build choices
+            correct_answer = item["answer"]
+            choices = [correct_answer]
+
+            # Add similar passive forms
+            wrong_choices = [p for p in passive_forms if p != correct_answer]
+            choices.extend(random.sample(wrong_choices, min(3, len(wrong_choices))))
+            random.shuffle(choices)
+
+            questions.append({
+                "question": f"Identify the passive form: {item['italian']}",
+                "answer": correct_answer,
+                "type": "multiple_choice",
+                "choices": choices,
+                "hint": f"{item['english']} | Active: {item['active']}",
+                "explanation": item["explanation"]
+            })
+
+        return questions
+
 
 if __name__ == "__main__":
     # Test the practice generator
