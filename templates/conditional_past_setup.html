@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block title %}Conditional Past Setup{% endblock %}
+
+{% block content %}
+<div class="text-center mb-30">
+    <h2>⏮️ Condizionale Passato (Conditional Past)</h2>
+    <p>Express what would have, could have, or should have happened</p>
+</div>
+
+<form method="POST" action="{{ url_for('conditional_past') }}">
+    <input type="hidden" name="level" value="{{ level or 'B1' }}">
+    <div class="form-group">
+        <label for="count">Number of Questions:</label>
+        <input type="number" name="count" id="count" value="10" min="5" max="20">
+    </div>
+
+    <div class="button-group">
+        <button type="submit" class="btn btn-primary btn-large">Start Practice ({{ level or 'B1' }})</button>
+        <a href="{{ url_for('verbs_menu', level=level or 'B1') }}" class="btn btn-secondary">Back</a>
+    </div>
+</form>
+
+<div style="margin-top: 30px; padding: 20px; background: var(--light-gray); border-radius: 8px;">
+    <h3 style="font-size: 1.1rem; margin-bottom: 10px;">💡 Conditional Past Structure:</h3>
+    <p style="color: #666; margin-bottom: 15px;">
+        <strong>avere/essere (conditional) + past participle</strong>
+    </p>
+
+    <div style="margin-bottom: 15px;">
+        <h4 style="font-size: 1rem; color: #333; margin-bottom: 8px;">With AVERE:</h4>
+        <ul style="margin-left: 20px; color: #666;">
+            <li><strong>avrei mangiato</strong> = I would have eaten</li>
+            <li><strong>avresti comprato</strong> = you would have bought</li>
+            <li><strong>avrebbe fatto</strong> = he/she would have done</li>
+            <li><strong>avremmo parlato</strong> = we would have spoken</li>
+            <li><strong>avreste visto</strong> = you (pl) would have seen</li>
+            <li><strong>avrebbero detto</strong> = they would have said</li>
+        </ul>
+    </div>
+
+    <div style="margin-bottom: 15px;">
+        <h4 style="font-size: 1rem; color: #333; margin-bottom: 8px;">With ESSERE:</h4>
+        <ul style="margin-left: 20px; color: #666;">
+            <li><strong>sarei andato/a</strong> = I would have gone</li>
+            <li><strong>saresti venuto/a</strong> = you would have come</li>
+            <li><strong>sarebbe partito/a</strong> = he/she would have left</li>
+            <li><strong>saremmo stati/e</strong> = we would have been</li>
+            <li><strong>sareste arrivati/e</strong> = you (pl) would have arrived</li>
+            <li><strong>sarebbero usciti/e</strong> = they would have gone out</li>
+        </ul>
+    </div>
+
+    <div style="margin-bottom: 15px;">
+        <h4 style="font-size: 1rem; color: #333; margin-bottom: 8px;">Modal Verbs (Should have, Could have):</h4>
+        <ul style="margin-left: 20px; color: #666;">
+            <li><strong>avresti dovuto</strong> studiare = you should have studied</li>
+            <li><strong>avrebbe potuto</strong> aiutare = he/she could have helped</li>
+            <li><strong>avrebbero voluto</strong> venire = they would have wanted to come</li>
+        </ul>
+    </div>
+
+    <p style="color: #666; margin-top: 15px; font-style: italic;">
+        <strong>Common use:</strong> Expressing regret, hypothetical past situations, or polite past requests.
+    </p>
+</div>
+{% endblock %}

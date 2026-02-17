@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block title %}Past Perfect Setup{% endblock %}
+
+{% block content %}
+<div class="text-center mb-30">
+    <h2>⏪ Trapassato Prossimo (Past Perfect)</h2>
+    <p>Actions that happened before another past action</p>
+</div>
+
+<form method="POST" action="{{ url_for('past_perfect') }}">
+    <input type="hidden" name="level" value="{{ level or 'B1' }}">
+    <div class="form-group">
+        <label for="count">Number of Questions:</label>
+        <input type="number" name="count" id="count" value="10" min="5" max="20">
+    </div>
+
+    <div class="button-group">
+        <button type="submit" class="btn btn-primary btn-large">Start Practice ({{ level or 'B1' }})</button>
+        <a href="{{ url_for('verbs_menu', level=level or 'B1') }}" class="btn btn-secondary">Back</a>
+    </div>
+</form>
+
+<div style="margin-top: 30px; padding: 20px; background: var(--light-gray); border-radius: 8px;">
+    <h3 style="font-size: 1.1rem; margin-bottom: 10px;">💡 Past Perfect Structure:</h3>
+    <p style="color: #666; margin-bottom: 15px;">
+        <strong>avere/essere (imperfect) + past participle</strong>
+    </p>
+
+    <div style="margin-bottom: 15px;">
+        <h4 style="font-size: 1rem; color: #333; margin-bottom: 8px;">With AVERE (Imperfect):</h4>
+        <ul style="margin-left: 20px; color: #666;">
+            <li><strong>avevo mangiato</strong> = I had eaten</li>
+            <li><strong>avevi comprato</strong> = you had bought</li>
+            <li><strong>aveva fatto</strong> = he/she had done</li>
+            <li><strong>avevamo parlato</strong> = we had spoken</li>
+            <li><strong>avevate visto</strong> = you (pl) had seen</li>
+            <li><strong>avevano detto</strong> = they had said</li>
+        </ul>
+    </div>
+
+    <div style="margin-bottom: 15px;">
+        <h4 style="font-size: 1rem; color: #333; margin-bottom: 8px;">With ESSERE (Imperfect):</h4>
+        <ul style="margin-left: 20px; color: #666;">
+            <li><strong>ero andato/a</strong> = I had gone</li>
+            <li><strong>eri venuto/a</strong> = you had come</li>
+            <li><strong>era partito/a</strong> = he/she had left</li>
+            <li><strong>eravamo stati/e</strong> = we had been</li>
+            <li><strong>eravate arrivati/e</strong> = you (pl) had arrived</li>
+            <li><strong>erano usciti/e</strong> = they had gone out</li>
+        </ul>
+    </div>
+
+    <div style="margin-bottom: 15px;">
+        <h4 style="font-size: 1rem; color: #333; margin-bottom: 8px;">When to Use:</h4>
+        <p style="color: #666; margin-left: 15px;">
+            The past perfect describes an action that occurred <strong>before</strong> another past action.
+        </p>
+        <ul style="margin-left: 35px; color: #666; margin-top: 10px;">
+            <li>Quando sono arrivato, lui <strong>era già partito</strong><br>
+                <em style="font-size: 0.85rem;">(When I arrived, he had already left)</em>
+            </li>
+            <li>Non ho mangiato perché <strong>avevo già mangiato</strong><br>
+                <em style="font-size: 0.85rem;">(I didn't eat because I had already eaten)</em>
+            </li>
+            <li>Era stanca perché <strong>aveva lavorato</strong> tutta la notte<br>
+                <em style="font-size: 0.85rem;">(She was tired because she had worked all night)</em>
+            </li>
+        </ul>
+    </div>
+
+    <p style="color: #666; margin-top: 15px; font-style: italic;">
+        <strong>Timeline:</strong> Action 1 (past perfect) happened before Action 2 (passato prossimo/imperfect).
+    </p>
+</div>
+{% endblock %}

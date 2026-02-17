@@ -92,6 +92,18 @@
         <h3>Passive Voice</h3>
         <p>essere + past participle</p>
     </a>
+
+    <a href="{{ url_for('conditional_past') }}?level={{ level }}" class="menu-item">
+        <div class="menu-icon">⏮️</div>
+        <h3>Conditional Past</h3>
+        <p>would have, could have</p>
+    </a>
+
+    <a href="{{ url_for('past_perfect') }}?level={{ level }}" class="menu-item">
+        <div class="menu-icon">⏪</div>
+        <h3>Past Perfect</h3>
+        <p>Trapassato Prossimo</p>
+    </a>
     {% endif %}
 </div>
 {% endblock %}

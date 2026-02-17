@@ -1032,6 +1032,54 @@ def imperative():
     return redirect(url_for('practice_question'))
 
 
+@app.route('/conditional-past', methods=['GET', 'POST'])
+def conditional_past():
+    """Conditional past (condizionale passato) practice (B1 level)."""
+    level = request.args.get('level') or request.form.get('level') or session.get('level', 'B1')
+
+    if request.method == 'GET':
+        session['level'] = level
+        return render_template('conditional_past_setup.html', level=level)
+
+    count = int(request.form.get('count', 10))
+    generator = get_generator()
+    questions = generator.generate_conditional_past(count)
+
+    session['practice_type'] = 'conditional_past'
+    session['questions'] = questions
+    session['current_question'] = 0
+    session['correct_count'] = 0
+    session['answers'] = []
+    session['start_time'] = time.time()
+    session['level'] = level
+
+    return redirect(url_for('practice_question'))
+
+
+@app.route('/past-perfect', methods=['GET', 'POST'])
+def past_perfect():
+    """Past perfect (trapassato prossimo) practice (B1 level)."""
+    level = request.args.get('level') or request.form.get('level') or session.get('level', 'B1')
+
+    if request.method == 'GET':
+        session['level'] = level
+        return render_template('past_perfect_setup.html', level=level)
+
+    count = int(request.form.get('count', 10))
+    generator = get_generator()
+    questions = generator.generate_past_perfect(count)
+
+    session['practice_type'] = 'past_perfect'
+    session['questions'] = questions
+    session['current_question'] = 0
+    session['correct_count'] = 0
+    session['answers'] = []
+    session['start_time'] = time.time()
+    session['level'] = level
+
+    return redirect(url_for('practice_question'))
+
+
 @app.route('/passive-voice', methods=['GET', 'POST'])
 def passive_voice():
     """Passive voice (forma passiva) practice (B1 level)."""

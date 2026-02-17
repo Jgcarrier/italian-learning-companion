@@ -2243,6 +2243,223 @@ class PracticeGenerator:
 
         return questions
 
+    def generate_conditional_past(self, count: int = 10) -> List[Dict]:
+        """
+        Generate conditional past (condizionale passato) practice for B1 level.
+        Used to express what would have happened: avrei fatto = I would have done.
+        Structure: avere/essere (conditional) + past participle
+        """
+
+        examples = [
+            {
+                "italian": "Io _____ venuto, ma ero malato.",
+                "english": "I would have come, but I was sick.",
+                "answer": "sarei",
+                "infinitive": "venire",
+                "explanation": "Conditional past: essere (conditional) + past participle. 'Sarei venuto' = would have come. Venire uses essere."
+            },
+            {
+                "italian": "Loro _____ mangiato di più, ma erano già pieni.",
+                "english": "They would have eaten more, but they were already full.",
+                "answer": "avrebbero",
+                "infinitive": "mangiare",
+                "explanation": "Conditional past: 'avrebbero mangiato' = would have eaten. Regular verbs with avere."
+            },
+            {
+                "italian": "Tu _____ dovuto studiare di più.",
+                "english": "You should have studied more.",
+                "answer": "avresti",
+                "infinitive": "dovere",
+                "explanation": "Conditional past with modal verbs: 'avresti dovuto' = should have. Dovere uses avere."
+            },
+            {
+                "italian": "Noi _____ andati al cinema, ma pioveva.",
+                "english": "We would have gone to the cinema, but it was raining.",
+                "answer": "saremmo",
+                "infinitive": "andare",
+                "explanation": "Conditional past: 'saremmo andati' = would have gone. Andare uses essere."
+            },
+            {
+                "italian": "Lei _____ partita prima, ma ha perso il treno.",
+                "english": "She would have left earlier, but she missed the train.",
+                "answer": "sarebbe",
+                "infinitive": "partire",
+                "explanation": "Conditional past: 'sarebbe partita' = would have left. Partire uses essere."
+            },
+            {
+                "italian": "Voi _____ comprato quella casa?",
+                "english": "Would you have bought that house?",
+                "answer": "avreste",
+                "infinitive": "comprare",
+                "explanation": "Conditional past question: 'avreste comprato' = would have bought."
+            },
+            {
+                "italian": "Lui _____ potuto aiutarti, ma non c'era.",
+                "english": "He could have helped you, but he wasn't there.",
+                "answer": "avrebbe",
+                "infinitive": "potere",
+                "explanation": "Conditional past with modal: 'avrebbe potuto' = could have. Potere uses avere."
+            },
+            {
+                "italian": "Io non _____ fatto così.",
+                "english": "I wouldn't have done that.",
+                "answer": "avrei",
+                "infinitive": "fare",
+                "explanation": "Negative conditional past: 'non avrei fatto' = wouldn't have done."
+            },
+            {
+                "italian": "Tu _____ stata più felice lì.",
+                "english": "You would have been happier there.",
+                "answer": "saresti",
+                "infinitive": "essere",
+                "explanation": "Conditional past of essere: 'saresti stata' = would have been (feminine)."
+            },
+            {
+                "italian": "Loro _____ voluto venire con noi.",
+                "english": "They would have wanted to come with us.",
+                "answer": "avrebbero",
+                "infinitive": "volere",
+                "explanation": "Conditional past with volere: 'avrebbero voluto' = would have wanted."
+            }
+        ]
+
+        selected = random.sample(examples, min(count, len(examples)))
+        questions = []
+
+        for item in selected:
+            conditional_forms = ["avrei", "avresti", "avrebbe", "avremmo", "avreste", "avrebbero",
+                                "sarei", "saresti", "sarebbe", "saremmo", "sareste", "sarebbero"]
+
+            choices = [item["answer"]]
+            wrong_choices = [f for f in conditional_forms if f != item["answer"]]
+            choices.extend(random.sample(wrong_choices, min(3, len(wrong_choices))))
+            random.shuffle(choices)
+
+            questions.append({
+                "question": item["italian"],
+                "answer": item["answer"],
+                "type": "multiple_choice",
+                "choices": choices,
+                "hint": item["english"],
+                "explanation": item["explanation"]
+            })
+
+        return questions
+
+    def generate_past_perfect(self, count: int = 10) -> List[Dict]:
+        """
+        Generate past perfect (trapassato prossimo) practice for B1 level.
+        Used to express an action that happened before another past action.
+        Structure: avere/essere (imperfect) + past participle
+        """
+
+        examples = [
+            {
+                "italian": "Quando sono arrivato, lui era già _____.",
+                "english": "When I arrived, he had already left.",
+                "answer": "partito",
+                "full_form": "era partito",
+                "infinitive": "partire",
+                "explanation": "Past perfect (trapassato prossimo): imperfect of essere/avere + past participle. 'Era partito' = had left."
+            },
+            {
+                "italian": "Non ho mangiato perché avevo già _____.",
+                "english": "I didn't eat because I had already eaten.",
+                "answer": "mangiato",
+                "full_form": "avevo mangiato",
+                "infinitive": "mangiare",
+                "explanation": "Past perfect: 'avevo mangiato' = had eaten. Action before another past action."
+            },
+            {
+                "italian": "Lei era stanca perché aveva _____ tutta la notte.",
+                "english": "She was tired because she had worked all night.",
+                "answer": "lavorato",
+                "full_form": "aveva lavorato",
+                "infinitive": "lavorare",
+                "explanation": "Past perfect: 'aveva lavorato' = had worked. Explains why she was tired."
+            },
+            {
+                "italian": "Eravamo tristi perché il nostro amico se n'era _____.",
+                "english": "We were sad because our friend had gone away.",
+                "answer": "andato",
+                "full_form": "se n'era andato",
+                "infinitive": "andarsene",
+                "explanation": "Past perfect with pronominal verb: 'se n'era andato' = had gone away."
+            },
+            {
+                "italian": "Quando siamo arrivati, lo spettacolo era già _____.",
+                "english": "When we arrived, the show had already started.",
+                "answer": "cominciato",
+                "full_form": "era cominciato",
+                "infinitive": "cominciare",
+                "explanation": "Past perfect: 'era cominciato' = had started. The show started before we arrived."
+            },
+            {
+                "italian": "Non sapevo che tu avevi già _____ quel libro.",
+                "english": "I didn't know you had already read that book.",
+                "answer": "letto",
+                "full_form": "avevi letto",
+                "infinitive": "leggere",
+                "explanation": "Past perfect with irregular past participle: 'avevi letto' = had read."
+            },
+            {
+                "italian": "Loro erano felici perché avevano _____ l'esame.",
+                "english": "They were happy because they had passed the exam.",
+                "answer": "superato",
+                "full_form": "avevano superato",
+                "infinitive": "superare",
+                "explanation": "Past perfect: 'avevano superato' = had passed. Explains their happiness."
+            },
+            {
+                "italian": "Mi sono reso conto che avevo _____ un errore.",
+                "english": "I realized that I had made a mistake.",
+                "answer": "fatto",
+                "full_form": "avevo fatto",
+                "infinitive": "fare",
+                "explanation": "Past perfect with irregular verb: 'avevo fatto' = had made."
+            },
+            {
+                "italian": "Quando siamo tornati, i bambini si erano già _____.",
+                "english": "When we returned, the children had already gone to bed.",
+                "answer": "addormentati",
+                "full_form": "si erano addormentati",
+                "infinitive": "addormentarsi",
+                "explanation": "Past perfect reflexive: 'si erano addormentati' = had fallen asleep."
+            },
+            {
+                "italian": "Non ho comprato il libro perché l'avevo già _____.",
+                "english": "I didn't buy the book because I had already bought it.",
+                "answer": "comprato",
+                "full_form": "avevo comprato",
+                "infinitive": "comprare",
+                "explanation": "Past perfect: 'avevo comprato' = had bought. Action completed before deciding not to buy."
+            }
+        ]
+
+        selected = random.sample(examples, min(count, len(examples)))
+        questions = []
+
+        for item in selected:
+            participles = ["fatto", "detto", "letto", "scritto", "visto", "mangiato", "parlato",
+                          "partito", "andato", "venuto", "stato", "avuto", "comprato", "lavorato",
+                          "cominciato", "finito", "capito", "superato", "camminato", "addormentati"]
+
+            choices = [item["answer"]]
+            wrong_choices = [p for p in participles if p != item["answer"]]
+            choices.extend(random.sample(wrong_choices, min(3, len(wrong_choices))))
+            random.shuffle(choices)
+
+            questions.append({
+                "question": item["italian"],
+                "answer": item["answer"],
+                "type": "multiple_choice",
+                "choices": choices,
+                "hint": f"{item['english']} | Full form: {item['full_form']}",
+                "explanation": item["explanation"]
+            })
+
+        return questions
+
 
 if __name__ == "__main__":
     # Test the practice generator
