@@ -16,6 +16,14 @@
         <p>All tenses and persons</p>
     </a>
 
+    {% if level == 'A1' %}
+    <a href="{{ url_for('present_tense') }}?level={{ level }}" class="menu-item">
+        <div class="menu-icon">✨</div>
+        <h3>Present Tense</h3>
+        <p>Basic present conjugations</p>
+    </a>
+    {% endif %}
+
     {% if level in ['A1', 'A2'] %}
     <a href="{{ url_for('regular_passato') }}?level={{ level }}" class="menu-item">
         <div class="menu-icon">📖</div>
@@ -63,6 +71,18 @@
         <div class="menu-icon">🤔</div>
         <h3>Conditional Present</h3>
         <p>would, could, should</p>
+    </a>
+
+    <a href="{{ url_for('subjunctive_present') }}?level={{ level }}" class="menu-item">
+        <div class="menu-icon">💭</div>
+        <h3>Subjunctive Present</h3>
+        <p>Doubt, wish, emotion</p>
+    </a>
+
+    <a href="{{ url_for('pronominal_verbs') }}?level={{ level }}" class="menu-item">
+        <div class="menu-icon">🔗</div>
+        <h3>Pronominal Verbs</h3>
+        <p>farcela, andarsene, volerci</p>
     </a>
     {% endif %}
 </div>

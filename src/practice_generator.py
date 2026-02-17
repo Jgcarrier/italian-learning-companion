@@ -1506,6 +1506,549 @@ class PracticeGenerator:
 
         return questions
 
+    def generate_present_tense_conjugation(self, count: int = 10) -> List[Dict]:
+        """
+        Generate present tense conjugation practice for A1 level.
+        Tests users on conjugating verbs in the present tense.
+        Includes both regular and irregular verbs.
+        """
+        cursor = self.db.conn.cursor()
+
+        questions = []
+
+        # Get all present tense A1 verbs
+        cursor.execute("""
+            SELECT DISTINCT infinitive, english, verb_type
+            FROM verb_conjugations
+            WHERE tense = 'presente' AND level = 'A1'
+        """)
+
+        verbs = cursor.fetchall()
+
+        if not verbs:
+            return []
+
+        # Generate questions
+        for _ in range(count):
+            # Pick a random verb
+            infinitive, english, verb_type = random.choice(verbs)
+
+            # Pick a random person
+            persons = ["io", "tu", "lui_lei", "noi", "voi", "loro"]
+            person = random.choice(persons)
+
+            # Get the correct conjugation
+            cursor.execute("""
+                SELECT conjugated_form
+                FROM verb_conjugations
+                WHERE infinitive = ? AND tense = 'presente' AND person = ?
+            """, (infinitive, person))
+
+            result = cursor.fetchone()
+            if not result:
+                continue
+
+            correct_form = result[0]
+
+            # Person display names
+            person_display = {
+                "io": "io",
+                "tu": "tu",
+                "lui_lei": "lui/lei",
+                "noi": "noi",
+                "voi": "voi",
+                "loro": "loro"
+            }
+
+            # Create question
+            question_text = f"Conjugate '{infinitive}' ({english}) in the present tense for '{person_display[person]}'"
+
+            # Determine if verb is regular or irregular
+            regularity = "irregular" if verb_type == "irregular" else "regular"
+
+            # Create explanation based on verb type
+            if verb_type == "irregular":
+                explanation = f"'{infinitive}' is an irregular verb. The present tense conjugation for {person_display[person]} is '{correct_form}'."
+            elif verb_type == "regular_are":
+                explanation = f"'{infinitive}' is a regular -are verb. For {person_display[person]}, remove -are and add the appropriate ending: {correct_form}."
+            elif verb_type == "regular_ere":
+                explanation = f"'{infinitive}' is a regular -ere verb. For {person_display[person]}, remove -ere and add the appropriate ending: {correct_form}."
+            elif verb_type == "regular_ire":
+                explanation = f"'{infinitive}' is a regular -ire verb. For {person_display[person]}, remove -ire and add the appropriate ending: {correct_form}."
+            elif verb_type == "regular_isc":
+                explanation = f"'{infinitive}' is a -ire verb that takes -isc- in some forms. For {person_display[person]}, the conjugation is: {correct_form}."
+            else:
+                explanation = f"The present tense conjugation of '{infinitive}' for {person_display[person]} is '{correct_form}'."
+
+            # Get other conjugations of the same verb for multiple choice options
+            cursor.execute("""
+                SELECT conjugated_form
+                FROM verb_conjugations
+                WHERE infinitive = ? AND tense = 'presente' AND person != ?
+                ORDER BY RANDOM()
+                LIMIT 3
+            """, (infinitive, person))
+
+            other_forms = [row[0] for row in cursor.fetchall()]
+
+            # Build choices
+            choices = [correct_form] + other_forms
+            random.shuffle(choices)
+
+            # Ensure we have at least 4 choices
+            if len(choices) < 4:
+                # Add some other verb conjugations
+                cursor.execute("""
+                    SELECT conjugated_form
+                    FROM verb_conjugations
+                    WHERE infinitive != ? AND tense = 'presente' AND person = ?
+                    ORDER BY RANDOM()
+                    LIMIT ?
+                """, (infinitive, person, 4 - len(choices)))
+
+                extra_forms = [row[0] for row in cursor.fetchall()]
+                choices.extend(extra_forms)
+                random.shuffle(choices)
+
+            questions.append({
+                "question": question_text,
+                "answer": correct_form,
+                "type": "multiple_choice",
+                "choices": choices[:4],
+                "hint": f"{english} - {person_display[person]} ({regularity} verb)",
+                "explanation": explanation
+            })
+
+        return questions
+
+    def generate_subjunctive_present(self, count: int = 10) -> List[Dict]:
+        """
+        Generate subjunctive present (congiuntivo presente) practice for A2 level.
+        The subjunctive is used to express doubt, possibility, desire, or emotion.
+        """
+
+        # Common subjunctive expressions and example sentences
+        examples = [
+            # With "che" clauses - doubt/uncertainty
+            {
+                "italian": "Penso che tu _____ ragione.",
+                "english": "I think that you are right.",
+                "answer": "abbia",
+                "infinitive": "avere",
+                "person": "tu",
+                "trigger": "Penso che (I think that)",
+                "explanation": "After 'penso che' (I think that), we use the subjunctive. Avere → abbia (tu form)."
+            },
+            {
+                "italian": "Credo che lei _____ italiana.",
+                "english": "I believe that she is Italian.",
+                "answer": "sia",
+                "infinitive": "essere",
+                "person": "lei",
+                "trigger": "Credo che (I believe that)",
+                "explanation": "After 'credo che' (I believe that), we use the subjunctive. Essere → sia (lei form)."
+            },
+            {
+                "italian": "Dubito che loro _____ la verità.",
+                "english": "I doubt that they know the truth.",
+                "answer": "sappiano",
+                "infinitive": "sapere",
+                "person": "loro",
+                "trigger": "Dubito che (I doubt that)",
+                "explanation": "After 'dubito che' (I doubt that), we use the subjunctive. Sapere → sappiano (loro form)."
+            },
+            {
+                "italian": "Non penso che Marco _____ bene l'italiano.",
+                "english": "I don't think that Marco speaks Italian well.",
+                "answer": "parli",
+                "infinitive": "parlare",
+                "person": "lui",
+                "trigger": "Non penso che (I don't think that)",
+                "explanation": "After 'non penso che' (I don't think that), we use the subjunctive. Parlare → parli (lui form)."
+            },
+            # Desire/wish
+            {
+                "italian": "Voglio che tu _____ felice.",
+                "english": "I want you to be happy.",
+                "answer": "sia",
+                "infinitive": "essere",
+                "person": "tu",
+                "trigger": "Voglio che (I want that)",
+                "explanation": "After 'voglio che' (I want that), we use the subjunctive. Essere → sia (tu form)."
+            },
+            {
+                "italian": "Spero che voi _____ presto.",
+                "english": "I hope that you arrive soon.",
+                "answer": "arriviate",
+                "infinitive": "arrivare",
+                "person": "voi",
+                "trigger": "Spero che (I hope that)",
+                "explanation": "After 'spero che' (I hope that), we use the subjunctive. Arrivare → arriviate (voi form)."
+            },
+            {
+                "italian": "Desidero che lui mi _____ aiutare.",
+                "english": "I wish that he would help me.",
+                "answer": "possa",
+                "infinitive": "potere",
+                "person": "lui",
+                "trigger": "Desidero che (I wish that)",
+                "explanation": "After 'desidero che' (I wish that), we use the subjunctive. Potere → possa (lui form)."
+            },
+            # Emotion
+            {
+                "italian": "Sono contento che lei _____ qui.",
+                "english": "I am happy that she is here.",
+                "answer": "sia",
+                "infinitive": "essere",
+                "person": "lei",
+                "trigger": "Sono contento che (I am happy that)",
+                "explanation": "After expressions of emotion like 'sono contento che', we use the subjunctive. Essere → sia (lei form)."
+            },
+            {
+                "italian": "Mi dispiace che tu non _____ venire.",
+                "english": "I'm sorry that you can't come.",
+                "answer": "possa",
+                "infinitive": "potere",
+                "person": "tu",
+                "trigger": "Mi dispiace che (I'm sorry that)",
+                "explanation": "After 'mi dispiace che' (I'm sorry that), we use the subjunctive. Potere → possa (tu form)."
+            },
+            {
+                "italian": "Ho paura che loro non _____ in tempo.",
+                "english": "I'm afraid that they won't arrive in time.",
+                "answer": "arrivino",
+                "infinitive": "arrivare",
+                "person": "loro",
+                "trigger": "Ho paura che (I'm afraid that)",
+                "explanation": "After 'ho paura che' (I'm afraid that), we use the subjunctive. Arrivare → arrivino (loro form)."
+            },
+            # Necessity
+            {
+                "italian": "È necessario che noi _____ subito.",
+                "english": "It's necessary that we leave immediately.",
+                "answer": "partiamo",
+                "infinitive": "partire",
+                "person": "noi",
+                "trigger": "È necessario che (It's necessary that)",
+                "explanation": "After 'è necessario che' (it's necessary that), we use the subjunctive. Partire → partiamo (noi form)."
+            },
+            {
+                "italian": "Bisogna che tu _____ la verità.",
+                "english": "You must tell the truth.",
+                "answer": "dica",
+                "infinitive": "dire",
+                "person": "tu",
+                "trigger": "Bisogna che (It's necessary that)",
+                "explanation": "After 'bisogna che' (it's necessary that), we use the subjunctive. Dire → dica (tu form)."
+            },
+            {
+                "italian": "È importante che voi _____ attenzione.",
+                "english": "It's important that you pay attention.",
+                "answer": "facciate",
+                "infinitive": "fare",
+                "person": "voi",
+                "trigger": "È importante che (It's important that)",
+                "explanation": "After 'è importante che' (it's important that), we use the subjunctive. Fare → facciate (voi form)."
+            },
+            # Possibility
+            {
+                "italian": "È possibile che lui _____ in ritardo.",
+                "english": "It's possible that he is late.",
+                "answer": "sia",
+                "infinitive": "essere",
+                "person": "lui",
+                "trigger": "È possibile che (It's possible that)",
+                "explanation": "After 'è possibile che' (it's possible that), we use the subjunctive. Essere → sia (lui form)."
+            },
+            {
+                "italian": "Può darsi che loro _____ già partiti.",
+                "english": "It may be that they have already left.",
+                "answer": "siano",
+                "infinitive": "essere",
+                "person": "loro",
+                "trigger": "Può darsi che (It may be that)",
+                "explanation": "After 'può darsi che' (it may be that), we use the subjunctive. Essere → siano (loro form)."
+            },
+            # More examples with common verbs
+            {
+                "italian": "Penso che Maria _____ molto bene.",
+                "english": "I think that Maria cooks very well.",
+                "answer": "cucini",
+                "infinitive": "cucinare",
+                "person": "lei",
+                "trigger": "Penso che (I think that)",
+                "explanation": "After 'penso che', we use the subjunctive. Cucinare → cucini (lei form)."
+            },
+            {
+                "italian": "Spero che il tempo _____ bello domani.",
+                "english": "I hope that the weather is nice tomorrow.",
+                "answer": "sia",
+                "infinitive": "essere",
+                "person": "il tempo",
+                "trigger": "Spero che (I hope that)",
+                "explanation": "After 'spero che', we use the subjunctive. Essere → sia (third person singular)."
+            },
+            {
+                "italian": "Non credo che lui _____ già finito.",
+                "english": "I don't believe that he has already finished.",
+                "answer": "abbia",
+                "infinitive": "avere",
+                "person": "lui",
+                "trigger": "Non credo che (I don't believe that)",
+                "explanation": "After 'non credo che', we use the subjunctive. Avere → abbia (lui form) + finito."
+            },
+            {
+                "italian": "Voglio che tutti _____ questa lezione.",
+                "english": "I want everyone to understand this lesson.",
+                "answer": "capiscano",
+                "infinitive": "capire",
+                "person": "tutti",
+                "trigger": "Voglio che (I want that)",
+                "explanation": "After 'voglio che', we use the subjunctive. Capire → capiscano (loro form)."
+            },
+            {
+                "italian": "È meglio che noi _____ a casa.",
+                "english": "It's better that we stay at home.",
+                "answer": "restiamo",
+                "infinitive": "restare",
+                "person": "noi",
+                "trigger": "È meglio che (It's better that)",
+                "explanation": "After 'è meglio che' (it's better that), we use the subjunctive. Restare → restiamo (noi form)."
+            },
+            {
+                "italian": "Temo che il treno _____ in ritardo.",
+                "english": "I fear that the train is late.",
+                "answer": "sia",
+                "infinitive": "essere",
+                "person": "il treno",
+                "trigger": "Temo che (I fear that)",
+                "explanation": "After 'temo che' (I fear that), we use the subjunctive. Essere → sia (third person singular)."
+            }
+        ]
+
+        # Randomly select questions
+        selected = random.sample(examples, min(count, len(examples)))
+        questions = []
+
+        for item in selected:
+            # Create multiple choice options
+            correct_answer = item["answer"]
+
+            # Common subjunctive forms for wrong answers
+            all_subjunctive_forms = {
+                "essere": ["sia", "siano", "siamo", "siate"],
+                "avere": ["abbia", "abbiano", "abbiamo", "abbiate"],
+                "fare": ["faccia", "facciano", "facciamo", "facciate"],
+                "andare": ["vada", "vadano", "andiamo", "andiate"],
+                "potere": ["possa", "possano", "possiamo", "possiate"],
+                "sapere": ["sappia", "sappiano", "sappiamo", "sappiate"],
+                "dire": ["dica", "dicano", "diciamo", "diciate"],
+                "venire": ["venga", "vengano", "veniamo", "veniate"],
+                "parlare": ["parli", "parlino", "parliamo", "parliate"],
+                "arrivare": ["arrivi", "arrivino", "arriviamo", "arriviate"],
+                "capire": ["capisca", "capiscano", "capiamo", "capiate"],
+                "partire": ["parta", "partano", "partiamo", "partiate"],
+                "cucinare": ["cucini", "cucinino", "cuciniamo", "cuciniate"],
+                "restare": ["resti", "restino", "restiamo", "restiate"]
+            }
+
+            # Get wrong answers from the same verb if possible
+            if item["infinitive"] in all_subjunctive_forms:
+                possible_wrong = [f for f in all_subjunctive_forms[item["infinitive"]] if f != correct_answer]
+            else:
+                # Use random subjunctive forms
+                possible_wrong = ["sia", "abbia", "faccia", "vada", "possa", "sappia", "parli", "arrivi"]
+                possible_wrong = [f for f in possible_wrong if f != correct_answer]
+
+            # Build choices
+            wrong_answers = random.sample(possible_wrong, min(3, len(possible_wrong)))
+            choices = [correct_answer] + wrong_answers
+            random.shuffle(choices)
+
+            questions.append({
+                "question": item["italian"],
+                "answer": correct_answer,
+                "type": "multiple_choice",
+                "choices": choices,
+                "hint": f"{item['english']} | Trigger: {item['trigger']}",
+                "explanation": item["explanation"]
+            })
+
+        return questions
+
+    def generate_pronominal_verbs(self, count: int = 10) -> List[Dict]:
+        """
+        Generate pronominal verbs practice for A2 level.
+        Pronominal verbs use particles like ci, ne, si attached to verbs.
+        Examples: farcela (to manage), andarsene (to go away), volerci (to take time).
+        """
+
+        # Common pronominal verb constructions with examples
+        examples = [
+            # FARCELA - to manage/make it
+            {
+                "italian": "Non ce la faccio a finire tutto oggi!",
+                "english": "I can't manage to finish everything today!",
+                "answer": "farcela",
+                "explanation": "'Farcela' means 'to manage/make it'. The pronoun 'ce la' is attached to 'fare'. Example: Ce la faccio! (I can do it!)"
+            },
+            {
+                "italian": "Pensi di ____ a arrivare in tempo?",
+                "english": "Do you think you can make it on time?",
+                "answer": "farcela",
+                "explanation": "'Farcela' = to manage/succeed. The 'ce la' particles combine with the verb fare."
+            },
+            # ANDARSENE - to go away/leave
+            {
+                "italian": "Me ne vado subito!",
+                "english": "I'm leaving right now!",
+                "answer": "andarsene",
+                "explanation": "'Andarsene' means 'to go away/leave'. The 'ne' is attached to andare. Example: Te ne vai? (Are you leaving?)"
+            },
+            {
+                "italian": "Dopo la discussione, lui se n'è andato arrabbiato.",
+                "english": "After the argument, he left angry.",
+                "answer": "andarsene",
+                "explanation": "'Andarsene' = to go away/leave. In passato prossimo: me ne sono andato/a, te ne sei andato/a, etc."
+            },
+            # VOLERCI - to take/require (time/ingredients)
+            {
+                "italian": "Ci vogliono tre ore per arrivare a Roma.",
+                "english": "It takes three hours to get to Rome.",
+                "answer": "volerci",
+                "explanation": "'Volerci' means 'to take/require' (for time/things needed). Always use 'ci': ci vuole (singular), ci vogliono (plural)."
+            },
+            {
+                "italian": "Quanto tempo ci vuole per imparare l'italiano?",
+                "english": "How long does it take to learn Italian?",
+                "answer": "volerci",
+                "explanation": "'Volerci' = to take (time). 'Ci vuole' for singular, 'ci vogliono' for plural. Example: Ci vuole pazienza (It takes patience)."
+            },
+            # METTERCI - to take (time, by someone)
+            {
+                "italian": "Ci metto due ore per arrivare al lavoro.",
+                "english": "It takes me two hours to get to work.",
+                "answer": "metterci",
+                "explanation": "'Metterci' means 'to take (time)' for a specific person. Ci metto, ci metti, ci mette, etc. Different from volerci!"
+            },
+            {
+                "italian": "Quanto tempo ci hai messo per fare questo lavoro?",
+                "english": "How long did it take you to do this work?",
+                "answer": "metterci",
+                "explanation": "'Metterci' = to take (time) with a subject. 'Ci metto 10 minuti' (I take 10 minutes)."
+            },
+            # CAVARSELA - to manage/get by
+            {
+                "italian": "Me la cavo abbastanza bene con l'italiano.",
+                "english": "I get by pretty well with Italian.",
+                "answer": "cavarsela",
+                "explanation": "'Cavarsela' means 'to manage/get by/cope'. Uses 'se la': me la cavo, te la cavi, se la cava, etc."
+            },
+            {
+                "italian": "Come te la cavi con il nuovo lavoro?",
+                "english": "How are you managing with the new job?",
+                "answer": "cavarsela",
+                "explanation": "'Cavarsela' = to get by/manage. 'Se la cava bene' = He/she is doing well/managing well."
+            },
+            # PRENDERSELA - to take it badly/get upset
+            {
+                "italian": "Non te la prendere! Era solo uno scherzo.",
+                "english": "Don't take it badly! It was just a joke.",
+                "answer": "prendersela",
+                "explanation": "'Prendersela' means 'to take it badly/get upset/offended'. Uses 'se la': me la prendo, te la prendi, etc."
+            },
+            {
+                "italian": "Lei se l'è presa molto quando ha sentito la notizia.",
+                "english": "She got very upset when she heard the news.",
+                "answer": "prendersela",
+                "explanation": "'Prendersela' = to take offense/get upset. 'Prendersela con qualcuno' = to take it out on someone."
+            },
+            # FREGARSENE - to not care (colloquial)
+            {
+                "italian": "Me ne frego di quello che dicono!",
+                "english": "I don't care what they say!",
+                "answer": "fregarsene",
+                "explanation": "'Fregarsene' means 'to not care' (informal). Uses 'ne': me ne frego, te ne freghi, se ne frega, etc."
+            },
+            # SENTIRSELA - to feel up to
+            {
+                "italian": "Non me la sento di uscire stasera.",
+                "english": "I don't feel up to going out tonight.",
+                "answer": "sentirsela",
+                "explanation": "'Sentirsela' means 'to feel up to doing something'. Often used in negative: Non me la sento = I don't feel like it."
+            },
+            # ACCORGERSENE - to realize/notice
+            {
+                "italian": "Ti sei accorto dell'errore?",
+                "english": "Did you notice the mistake?",
+                "answer": "accorgersene",
+                "explanation": "'Accorgersene' means 'to realize/notice'. Reflexive + 'ne': me ne accorgo, te ne accorgi, se ne accorge, etc."
+            },
+            {
+                "italian": "Non me ne sono accorto subito.",
+                "english": "I didn't realize it right away.",
+                "answer": "accorgersene",
+                "explanation": "'Accorgersene' = to notice/realize. Passato prossimo: me ne sono accorto/a, te ne sei accorto/a, etc."
+            },
+            # ASPETTARSELO - to expect it
+            {
+                "italian": "Non me l'aspettavo affatto!",
+                "english": "I wasn't expecting it at all!",
+                "answer": "aspettarselo",
+                "explanation": "'Aspettarselo' means 'to expect it'. Uses 'se lo/la': me lo aspetto, te lo aspetti, se lo aspetta, etc."
+            },
+            # PASSARSELA - to get along/fare
+            {
+                "italian": "Come te la passi ultimamente?",
+                "english": "How are you doing lately?",
+                "answer": "passarsela",
+                "explanation": "'Passarsela' means 'to get along/fare' (how you're doing). Se la passa bene = he/she is doing well."
+            },
+            # GODERSELA - to enjoy oneself
+            {
+                "italian": "Mi sono goduto la vacanza al mare.",
+                "english": "I enjoyed my vacation at the beach.",
+                "answer": "godersela",
+                "explanation": "'Godersela' means 'to enjoy oneself/have a good time'. Uses 'se la': me la godo, te la godi, se la gode, etc."
+            },
+            # SBRIGARSELA - to hurry up/get it done quickly
+            {
+                "italian": "Sbrigati, altrimenti facciamo tardi!",
+                "english": "Hurry up, otherwise we'll be late!",
+                "answer": "sbrigarsi",
+                "explanation": "'Sbrigarsi' means 'to hurry up'. Sbrigati! = Hurry up! Can also use 'sbrigarsela' to mean 'get it done quickly'."
+            }
+        ]
+
+        # Randomly select questions
+        selected = random.sample(examples, min(count, len(examples)))
+        questions = []
+
+        for item in selected:
+            # Common pronominal verbs for choices
+            all_verbs = [
+                "farcela", "andarsene", "volerci", "metterci", "cavarsela",
+                "prendersela", "fregarsene", "sentirsela", "accorgersene",
+                "aspettarselo", "passarsela", "godersela", "sbrigarsi"
+            ]
+
+            # Build choices - include correct answer and 3 random others
+            choices = [item["answer"]]
+            wrong_choices = [v for v in all_verbs if v != item["answer"]]
+            choices.extend(random.sample(wrong_choices, min(3, len(wrong_choices))))
+            random.shuffle(choices)
+
+            questions.append({
+                "question": item["italian"],
+                "answer": item["answer"],
+                "type": "multiple_choice",
+                "choices": choices,
+                "hint": item["english"],
+                "explanation": item["explanation"]
+            })
+
+        return questions
+
 
 if __name__ == "__main__":
     # Test the practice generator

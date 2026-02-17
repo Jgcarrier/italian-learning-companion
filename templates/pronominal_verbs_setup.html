@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+{% block title %}Pronominal Verbs Setup{% endblock %}
+
+{% block content %}
+<div class="text-center mb-30">
+    <h2>🔗 Verbi Pronominali (Pronominal Verbs)</h2>
+    <p>Master Italian verbs with attached pronouns</p>
+</div>
+
+<form method="POST" action="{{ url_for('pronominal_verbs') }}">
+    <input type="hidden" name="level" value="{{ level or 'A2' }}">
+    <div class="form-group">
+        <label for="count">Number of Questions:</label>
+        <input type="number" name="count" id="count" value="10" min="5" max="20">
+    </div>
+
+    <div class="button-group">
+        <button type="submit" class="btn btn-primary btn-large">Start Practice ({{ level or 'A2' }})</button>
+        <a href="{{ url_for('verbs_menu', level=level or 'A2') }}" class="btn btn-secondary">Back</a>
+    </div>
+</form>
+
+<div style="margin-top: 30px; padding: 20px; background: var(--light-gray); border-radius: 8px;">
+    <h3 style="font-size: 1.1rem; margin-bottom: 10px;">💡 What are Pronominal Verbs?</h3>
+    <p style="color: #666; margin-bottom: 15px;">
+        Pronominal verbs are verbs that use particles like <strong>ci, ne, la, lo</strong> attached to create idiomatic expressions.
+        They often have meanings different from the base verb!
+    </p>
+
+    <div style="margin-bottom: 15px;">
+        <h4 style="font-size: 1rem; color: #333; margin-bottom: 8px;">Common Pronominal Verbs:</h4>
+
+        <div style="margin-bottom: 10px;">
+            <p style="color: #444; margin-bottom: 5px;"><strong>farcela</strong> - to manage/make it</p>
+            <p style="color: #666; margin-left: 15px; font-size: 0.9rem;">• Ce la faccio! (I can do it!)</p>
+        </div>
+
+        <div style="margin-bottom: 10px;">
+            <p style="color: #444; margin-bottom: 5px;"><strong>andarsene</strong> - to go away/leave</p>
+            <p style="color: #666; margin-left: 15px; font-size: 0.9rem;">• Me ne vado! (I'm leaving!)</p>
+        </div>
+
+        <div style="margin-bottom: 10px;">
+            <p style="color: #444; margin-bottom: 5px;"><strong>volerci</strong> - to take/require (time/things)</p>
+            <p style="color: #666; margin-left: 15px; font-size: 0.9rem;">• Ci vogliono due ore (It takes two hours)</p>
+        </div>
+
+        <div style="margin-bottom: 10px;">
+            <p style="color: #444; margin-bottom: 5px;"><strong>metterci</strong> - to take (time, by someone)</p>
+            <p style="color: #666; margin-left: 15px; font-size: 0.9rem;">• Ci metto 10 minuti (I take 10 minutes)</p>
+        </div>
+
+        <div style="margin-bottom: 10px;">
+            <p style="color: #444; margin-bottom: 5px;"><strong>cavarsela</strong> - to manage/get by</p>
+            <p style="color: #666; margin-left: 15px; font-size: 0.9rem;">• Me la cavo con l'italiano (I get by with Italian)</p>
+        </div>
+
+        <div style="margin-bottom: 10px;">
+            <p style="color: #444; margin-bottom: 5px;"><strong>prendersela</strong> - to take it badly/get upset</p>
+            <p style="color: #666; margin-left: 15px; font-size: 0.9rem;">• Non te la prendere! (Don't take it badly!)</p>
+        </div>
+
+        <div style="margin-bottom: 10px;">
+            <p style="color: #444; margin-bottom: 5px;"><strong>accorgersene</strong> - to realize/notice</p>
+            <p style="color: #666; margin-left: 15px; font-size: 0.9rem;">• Me ne sono accorto (I realized it)</p>
+        </div>
+
+        <div style="margin-bottom: 10px;">
+            <p style="color: #444; margin-bottom: 5px;"><strong>sentirsela</strong> - to feel up to</p>
+            <p style="color: #666; margin-left: 15px; font-size: 0.9rem;">• Non me la sento (I don't feel up to it)</p>
+        </div>
+    </div>
+
+    <p style="color: #666; margin-top: 15px; font-style: italic;">
+        <strong>Key Difference:</strong> Volerci vs Metterci
+        <br>• <strong>Volerci</strong> = impersonal (it takes): Ci vogliono 3 ore
+        <br>• <strong>Metterci</strong> = with subject (I/you/he takes): Ci metto 3 ore
+    </p>
+</div>
+{% endblock %}

@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block title %}Subjunctive Present Setup{% endblock %}
+
+{% block content %}
+<div class="text-center mb-30">
+    <h2>💭 Congiuntivo Presente (Subjunctive Present)</h2>
+    <p>Express doubt, desire, emotion, and possibility</p>
+</div>
+
+<form method="POST" action="{{ url_for('subjunctive_present') }}">
+    <input type="hidden" name="level" value="{{ level or 'A2' }}">
+    <div class="form-group">
+        <label for="count">Number of Questions:</label>
+        <input type="number" name="count" id="count" value="10" min="5" max="20">
+    </div>
+
+    <div class="button-group">
+        <button type="submit" class="btn btn-primary btn-large">Start Practice ({{ level or 'A2' }})</button>
+        <a href="{{ url_for('verbs_menu', level=level or 'A2') }}" class="btn btn-secondary">Back</a>
+    </div>
+</form>
+
+<div style="margin-top: 30px; padding: 20px; background: var(--light-gray); border-radius: 8px;">
+    <h3 style="font-size: 1.1rem; margin-bottom: 10px;">💡 When to Use the Subjunctive:</h3>
+
+    <div style="margin-bottom: 15px;">
+        <h4 style="font-size: 1rem; color: #333; margin-bottom: 8px;">1. Doubt & Uncertainty:</h4>
+        <ul style="margin-left: 20px; color: #666;">
+            <li><strong>Penso che</strong> lui <strong>sia</strong> italiano (I think he is Italian)</li>
+            <li><strong>Dubito che</strong> loro <strong>sappiano</strong> la verità (I doubt they know the truth)</li>
+            <li><strong>Non credo che</strong> Maria <strong>venga</strong> (I don't believe Maria is coming)</li>
+        </ul>
+    </div>
+
+    <div style="margin-bottom: 15px;">
+        <h4 style="font-size: 1rem; color: #333; margin-bottom: 8px;">2. Desire & Hope:</h4>
+        <ul style="margin-left: 20px; color: #666;">
+            <li><strong>Voglio che</strong> tu <strong>sia</strong> felice (I want you to be happy)</li>
+            <li><strong>Spero che</strong> voi <strong>arriviate</strong> presto (I hope you arrive soon)</li>
+            <li><strong>Desidero che</strong> lui mi <strong>aiuti</strong> (I wish he would help me)</li>
+        </ul>
+    </div>
+
+    <div style="margin-bottom: 15px;">
+        <h4 style="font-size: 1rem; color: #333; margin-bottom: 8px;">3. Emotion:</h4>
+        <ul style="margin-left: 20px; color: #666;">
+            <li><strong>Sono contento che</strong> lei <strong>sia</strong> qui (I'm happy she is here)</li>
+            <li><strong>Mi dispiace che</strong> tu non <strong>possa</strong> venire (I'm sorry you can't come)</li>
+            <li><strong>Ho paura che</strong> loro <strong>partano</strong> (I'm afraid they're leaving)</li>
+        </ul>
+    </div>
+
+    <div style="margin-bottom: 15px;">
+        <h4 style="font-size: 1rem; color: #333; margin-bottom: 8px;">4. Necessity & Possibility:</h4>
+        <ul style="margin-left: 20px; color: #666;">
+            <li><strong>È necessario che</strong> noi <strong>partiamo</strong> (It's necessary that we leave)</li>
+            <li><strong>Bisogna che</strong> tu <strong>studi</strong> (You must study)</li>
+            <li><strong>È possibile che</strong> lui <strong>sia</strong> malato (It's possible he is sick)</li>
+        </ul>
+    </div>
+
+    <div style="margin-bottom: 15px;">
+        <h4 style="font-size: 1rem; color: #333; margin-bottom: 8px;">Common Irregular Forms:</h4>
+        <ul style="margin-left: 20px; color: #666;">
+            <li><strong>essere:</strong> sia, sia, sia, siamo, siate, siano</li>
+            <li><strong>avere:</strong> abbia, abbia, abbia, abbiamo, abbiate, abbiano</li>
+            <li><strong>fare:</strong> faccia, faccia, faccia, facciamo, facciate, facciano</li>
+            <li><strong>andare:</strong> vada, vada, vada, andiamo, andiate, vadano</li>
+        </ul>
+    </div>
+
+    <p style="color: #666; margin-top: 15px; font-style: italic;">
+        <strong>Key Pattern:</strong> Subjunctive is typically introduced by "che" after expressions of doubt, desire, emotion, or necessity.
+    </p>
+</div>
+{% endblock %}

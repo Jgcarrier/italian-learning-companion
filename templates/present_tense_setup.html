@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block title %}Present Tense Conjugation Setup{% endblock %}
+
+{% block content %}
+<div class="text-center mb-30">
+    <h2>✨ Present Tense Conjugations</h2>
+    <p>Master the basics of Italian present tense verbs</p>
+</div>
+
+<form method="POST" action="{{ url_for('present_tense') }}">
+    <input type="hidden" name="level" value="{{ level or 'A1' }}">
+    <div class="form-group">
+        <label for="count">Number of Questions:</label>
+        <input type="number" name="count" id="count" value="10" min="5" max="20">
+    </div>
+
+    <div class="button-group">
+        <button type="submit" class="btn btn-primary btn-large">Start Practice ({{ level or 'A1' }})</button>
+        <a href="{{ url_for('verbs_menu', level=level or 'A1') }}" class="btn btn-secondary">Back</a>
+    </div>
+</form>
+
+<div style="margin-top: 30px; padding: 20px; background: var(--light-gray); border-radius: 8px;">
+    <h3 style="font-size: 1.1rem; margin-bottom: 10px;">💡 What You'll Practice:</h3>
+    <p style="color: #666; margin-bottom: 15px;">Present tense conjugations for essential verbs:</p>
+
+    <div style="margin-bottom: 15px;">
+        <h4 style="font-size: 1rem; color: #333; margin-bottom: 8px;">Regular Verbs:</h4>
+        <ul style="margin-left: 20px; color: #666;">
+            <li><strong>-are verbs:</strong> parlare → parlo, parli, parla, parliamo, parlate, parlano</li>
+            <li><strong>-ere verbs:</strong> vedere → vedo, vedi, vede, vediamo, vedete, vedono</li>
+            <li><strong>-ire verbs:</strong> dormire → dormo, dormi, dorme, dormiamo, dormite, dormono</li>
+            <li><strong>-ire (-isc) verbs:</strong> capire → capisco, capisci, capisce, capiamo, capite, capiscono</li>
+        </ul>
+    </div>
+
+    <div>
+        <h4 style="font-size: 1rem; color: #333; margin-bottom: 8px;">Irregular Verbs:</h4>
+        <ul style="margin-left: 20px; color: #666;">
+            <li><strong>essere</strong> (to be): sono, sei, è, siamo, siete, sono</li>
+            <li><strong>avere</strong> (to have): ho, hai, ha, abbiamo, avete, hanno</li>
+            <li><strong>fare</strong> (to do/make): faccio, fai, fa, facciamo, fate, fanno</li>
+            <li><strong>andare</strong> (to go): vado, vai, va, andiamo, andate, vanno</li>
+        </ul>
+    </div>
+
+    <p style="color: #666; margin-top: 15px; font-style: italic;">
+        <strong>Note:</strong> The present tense in Italian is used to describe current actions, habits, and general truths.
+    </p>
+</div>
+{% endblock %}

@@ -1032,6 +1032,78 @@ def imperative():
     return redirect(url_for('practice_question'))
 
 
+@app.route('/pronominal-verbs', methods=['GET', 'POST'])
+def pronominal_verbs():
+    """Pronominal verbs practice (A2 level)."""
+    level = request.args.get('level') or request.form.get('level') or session.get('level', 'A2')
+
+    if request.method == 'GET':
+        session['level'] = level
+        return render_template('pronominal_verbs_setup.html', level=level)
+
+    count = int(request.form.get('count', 10))
+    generator = get_generator()
+    questions = generator.generate_pronominal_verbs(count)
+
+    session['practice_type'] = 'pronominal_verbs'
+    session['questions'] = questions
+    session['current_question'] = 0
+    session['correct_count'] = 0
+    session['answers'] = []
+    session['start_time'] = time.time()
+    session['level'] = level  # Store level for navigation
+
+    return redirect(url_for('practice_question'))
+
+
+@app.route('/subjunctive-present', methods=['GET', 'POST'])
+def subjunctive_present():
+    """Subjunctive present (congiuntivo presente) practice (A2 level)."""
+    level = request.args.get('level') or request.form.get('level') or session.get('level', 'A2')
+
+    if request.method == 'GET':
+        session['level'] = level
+        return render_template('subjunctive_present_setup.html', level=level)
+
+    count = int(request.form.get('count', 10))
+    generator = get_generator()
+    questions = generator.generate_subjunctive_present(count)
+
+    session['practice_type'] = 'subjunctive_present'
+    session['questions'] = questions
+    session['current_question'] = 0
+    session['correct_count'] = 0
+    session['answers'] = []
+    session['start_time'] = time.time()
+    session['level'] = level  # Store level for navigation
+
+    return redirect(url_for('practice_question'))
+
+
+@app.route('/present-tense', methods=['GET', 'POST'])
+def present_tense():
+    """Present tense conjugation practice (A1 level)."""
+    level = request.args.get('level') or request.form.get('level') or session.get('level', 'A1')
+
+    if request.method == 'GET':
+        session['level'] = level
+        return render_template('present_tense_setup.html', level=level)
+
+    count = int(request.form.get('count', 10))
+    generator = get_generator()
+    questions = generator.generate_present_tense_conjugation(count)
+
+    session['practice_type'] = 'present_tense'
+    session['questions'] = questions
+    session['current_question'] = 0
+    session['correct_count'] = 0
+    session['answers'] = []
+    session['start_time'] = time.time()
+    session['level'] = level  # Store level for navigation
+
+    return redirect(url_for('practice_question'))
+
+
 @app.route('/noun-gender-number', methods=['GET', 'POST'])
 def noun_gender_number():
     """Noun gender and number identification practice."""
