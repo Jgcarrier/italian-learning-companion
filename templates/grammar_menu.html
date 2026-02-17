@@ -69,5 +69,19 @@
         <p>me lo, te la, glielo</p>
     </a>
     {% endif %}
+
+    {% if level in ['B2', 'GCSE'] %}
+    <a href="{{ url_for('relative_pronouns') }}?level={{ level }}" class="menu-item">
+        <div class="menu-icon">🔗</div>
+        <h3>Relative Pronouns</h3>
+        <p>che, cui, il quale</p>
+    </a>
+
+    <a href="{{ url_for('impersonal_si') }}?level={{ level }}" class="menu-item">
+        <div class="menu-icon">👥</div>
+        <h3>Impersonal Si</h3>
+        <p>si dice, si fa, si mangia</p>
+    </a>
+    {% endif %}
 </div>
 {% endblock %}

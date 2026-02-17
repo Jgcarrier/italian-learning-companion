@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}Passato Remoto Setup{% endblock %}
+
+{% block content %}
+<div class="text-center mb-30">
+    <h2>📜 Passato Remoto (Historical Past)</h2>
+    <p>Literary and historical past tense</p>
+</div>
+
+<form method="POST" action="{{ url_for('passato_remoto') }}">
+    <input type="hidden" name="level" value="{{ level or 'B2' }}">
+    <div class="form-group">
+        <label for="count">Number of Questions:</label>
+        <input type="number" name="count" id="count" value="10" min="5" max="20">
+    </div>
+
+    <div class="button-group">
+        <button type="submit" class="btn btn-primary btn-large">Start Practice ({{ level or 'B2' }})</button>
+        <a href="{{ url_for('verbs_menu', level=level or 'B2') }}" class="btn btn-secondary">Back</a>
+    </div>
+</form>
+
+<div style="margin-top: 30px; padding: 20px; background: var(--light-gray); border-radius: 8px;">
+    <h3 style="font-size: 1.1rem; margin-bottom: 10px;">💡 When to Use:</h3>
+    <p style="color: #666; margin-bottom: 15px;">
+        Passato remoto is used for <strong>distant historical events</strong>, in <strong>literature</strong>, and <strong>formal writing</strong>.
+        Rarely used in conversation (except Southern Italy).
+    </p>
+
+    <div style="margin-bottom: 15px;">
+        <h4 style="font-size: 1rem; color: #333; margin-bottom: 8px;">Regular Endings:</h4>
+        <ul style="margin-left: 20px; color: #666;">
+            <li><strong>-are verbs:</strong> -ai, -asti, -ò, -ammo, -aste, -arono</li>
+            <li><strong>-ere verbs:</strong> -ei/-etti, -esti, -é/-ette, -emmo, -este, -erono/-ettero</li>
+            <li><strong>-ire verbs:</strong> -ii, -isti, -ì, -immo, -iste, -irono</li>
+        </ul>
+    </div>
+
+    <p style="color: #666; margin-top: 15px; font-style: italic;">
+        <strong>Examples:</strong> Dante scrisse la Divina Commedia | Colombo arrivò in America nel 1492
+    </p>
+</div>
+{% endblock %}

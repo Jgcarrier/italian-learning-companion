@@ -2915,6 +2915,290 @@ class PracticeGenerator:
 
         return questions
 
+    def generate_passato_remoto(self, count: int = 10) -> List[Dict]:
+        """
+        Generate passato remoto practice for B2 level.
+        Historical/literary past tense, rarely used in conversation.
+        Common in written Italian, literature, and formal contexts.
+        """
+
+        examples = [
+            {
+                "italian": "Dante _____ la Divina Commedia nel 1300.",
+                "english": "Dante wrote the Divine Comedy in 1300.",
+                "answer": "scrisse",
+                "infinitive": "scrivere",
+                "explanation": "Passato remoto: 'scrisse' = wrote. Used for distant historical events. Scrivere is irregular."
+            },
+            {
+                "italian": "Cristoforo Colombo _____ in America nel 1492.",
+                "english": "Christopher Columbus arrived in America in 1492.",
+                "answer": "arrivò",
+                "infinitive": "arrivare",
+                "explanation": "Passato remoto: 'arrivò' = arrived. Regular -are verb ending: -ò (lui/lei)."
+            },
+            {
+                "italian": "I Romani _____ un grande impero.",
+                "english": "The Romans built a great empire.",
+                "answer": "costruirono",
+                "infinitive": "costruire",
+                "explanation": "Passato remoto: 'costruirono' = built (they). Regular -ire verb: -irono (loro)."
+            },
+            {
+                "italian": "Leonardo da Vinci _____ nel 1519.",
+                "english": "Leonardo da Vinci died in 1519.",
+                "answer": "morì",
+                "infinitive": "morire",
+                "explanation": "Passato remoto: 'morì' = died. Used for biographical/historical facts."
+            },
+            {
+                "italian": "I soldati _____ coraggiosamente.",
+                "english": "The soldiers fought courageously.",
+                "answer": "combatterono",
+                "infinitive": "combattere",
+                "explanation": "Passato remoto: 'combatterono' = fought. Regular -ere verb: -erono (loro)."
+            },
+            {
+                "italian": "Giuseppe Verdi _____ molte opere famose.",
+                "english": "Giuseppe Verdi composed many famous operas.",
+                "answer": "compose",
+                "infinitive": "comporre",
+                "explanation": "Passato remoto irregular: 'compose' = composed. Comporre has irregular passato remoto."
+            },
+            {
+                "italian": "Il re _____ la guerra.",
+                "english": "The king declared war.",
+                "answer": "dichiarò",
+                "infinitive": "dichiarare",
+                "explanation": "Passato remoto: 'dichiarò' = declared. Regular -are verb."
+            },
+            {
+                "italian": "Gli esploratori _____ nuove terre.",
+                "english": "The explorers discovered new lands.",
+                "answer": "scoprirono",
+                "infinitive": "scoprire",
+                "explanation": "Passato remoto: 'scoprirono' = discovered (they)."
+            },
+            {
+                "italian": "Giulio Cesare _____ 'Veni, vidi, vici'.",
+                "english": "Julius Caesar said 'I came, I saw, I conquered'.",
+                "answer": "disse",
+                "infinitive": "dire",
+                "explanation": "Passato remoto irregular: 'disse' = said. Dire has irregular forms."
+            },
+            {
+                "italian": "La regina _____ per molti anni.",
+                "english": "The queen reigned for many years.",
+                "answer": "regnò",
+                "infinitive": "regnare",
+                "explanation": "Passato remoto: 'regnò' = reigned. Regular -are verb."
+            }
+        ]
+
+        selected = random.sample(examples, min(count, len(examples)))
+        questions = []
+
+        for item in selected:
+            # Passato remoto forms for choices
+            forms = ["scrisse", "arrivò", "costruirono", "morì", "combatterono",
+                    "compose", "dichiarò", "scoprirono", "disse", "regnò",
+                    "fu", "fece", "vide", "venne", "nacque"]
+
+            choices = [item["answer"]]
+            wrong_choices = [f for f in forms if f != item["answer"]]
+            choices.extend(random.sample(wrong_choices, min(3, len(wrong_choices))))
+            random.shuffle(choices)
+
+            questions.append({
+                "question": item["italian"],
+                "answer": item["answer"],
+                "type": "multiple_choice",
+                "choices": choices,
+                "hint": f"{item['english']} | {item['infinitive']}",
+                "explanation": item["explanation"]
+            })
+
+        return questions
+
+    def generate_relative_pronouns(self, count: int = 10) -> List[Dict]:
+        """
+        Generate relative pronouns practice for B2 level.
+        che, cui, il quale/la quale/i quali/le quali
+        """
+
+        examples = [
+            {
+                "italian": "La ragazza _____ ho incontrato è molto gentile.",
+                "english": "The girl that I met is very kind.",
+                "answer": "che",
+                "explanation": "'Che' is the most common relative pronoun (that/who/which). Used for subjects and direct objects."
+            },
+            {
+                "italian": "Il libro di _____ ti ho parlato è interessante.",
+                "english": "The book that I told you about is interesting.",
+                "answer": "cui",
+                "explanation": "'Di cui' = about which/whom. 'Cui' is used after prepositions (di, a, con, per, etc.)."
+            },
+            {
+                "italian": "La persona a _____ ho scritto non ha risposto.",
+                "english": "The person to whom I wrote didn't respond.",
+                "answer": "cui",
+                "explanation": "'A cui' = to whom/which. Always use 'cui' after prepositions."
+            },
+            {
+                "italian": "Il film _____ abbiamo visto era bellissimo.",
+                "english": "The film that we saw was beautiful.",
+                "answer": "che",
+                "explanation": "'Che' for direct objects. The film (that) we saw."
+            },
+            {
+                "italian": "La casa nella _____ abito è antica.",
+                "english": "The house in which I live is old.",
+                "answer": "quale",
+                "explanation": "'Nella quale' = in which. Can use 'quale' after prepositions for emphasis. Also: 'in cui' works."
+            },
+            {
+                "italian": "Gli amici con _____ esco sono simpatici.",
+                "english": "The friends with whom I go out are nice.",
+                "answer": "cui",
+                "explanation": "'Con cui' = with whom. 'Cui' after all prepositions."
+            },
+            {
+                "italian": "_____ studia molto, impara di più.",
+                "english": "Those who study a lot, learn more.",
+                "answer": "Chi",
+                "explanation": "'Chi' = he/she who, those who. Refers to people in general statements."
+            },
+            {
+                "italian": "Il ragazzo _____ padre è medico studia medicina.",
+                "english": "The boy whose father is a doctor studies medicine.",
+                "answer": "il cui",
+                "explanation": "'Il cui' = whose (masculine). Agreement: il cui padre, la cui madre, i cui genitori, le cui sorelle."
+            },
+            {
+                "italian": "Prendi tutto _____ vuoi.",
+                "english": "Take everything that you want.",
+                "answer": "quello che",
+                "explanation": "'Quello che' or 'ciò che' = what/that which. For abstract things."
+            },
+            {
+                "italian": "La città per _____ passo ogni giorno è Roma.",
+                "english": "The city through which I pass every day is Rome.",
+                "answer": "cui",
+                "explanation": "'Per cui' = through which/for which. Cui after prepositions."
+            }
+        ]
+
+        selected = random.sample(examples, min(count, len(examples)))
+        questions = []
+
+        for item in selected:
+            choices_pool = ["che", "cui", "quale", "Chi", "il cui", "quello che", "la quale", "i quali"]
+
+            choices = [item["answer"]]
+            wrong_choices = [c for c in choices_pool if c != item["answer"]]
+            choices.extend(random.sample(wrong_choices, min(3, len(wrong_choices))))
+            random.shuffle(choices)
+
+            questions.append({
+                "question": item["italian"],
+                "answer": item["answer"],
+                "type": "multiple_choice",
+                "choices": choices,
+                "hint": item["english"],
+                "explanation": item["explanation"]
+            })
+
+        return questions
+
+    def generate_impersonal_si(self, count: int = 10) -> List[Dict]:
+        """
+        Generate impersonal si practice for B2 level.
+        Si + verb for general statements: si dice = one says/it is said
+        Different from si passivante.
+        """
+
+        examples = [
+            {
+                "italian": "In Italia _____ parla italiano.",
+                "english": "In Italy, one speaks Italian / Italian is spoken.",
+                "answer": "si",
+                "explanation": "Impersonal 'si' + third person singular verb. 'Si parla' = one speaks/people speak."
+            },
+            {
+                "italian": "_____ dice che Roma è bellissima.",
+                "english": "They say that Rome is beautiful.",
+                "answer": "Si",
+                "explanation": "'Si dice' = it is said/people say/they say. Common impersonal construction."
+            },
+            {
+                "italian": "Come _____ fa a cucinare la pasta?",
+                "english": "How does one cook pasta?",
+                "answer": "si",
+                "explanation": "'Come si fa' = how does one do/make. Impersonal instruction question."
+            },
+            {
+                "italian": "Non _____ può fumare qui.",
+                "english": "One cannot smoke here.",
+                "answer": "si",
+                "explanation": "'Non si può' = one cannot/you cannot. Impersonal si with modal verbs."
+            },
+            {
+                "italian": "_____ mangia bene in questo ristorante.",
+                "english": "One eats well in this restaurant.",
+                "answer": "Si",
+                "explanation": "'Si mangia' = one eats/people eat. General statement."
+            },
+            {
+                "italian": "_____ deve sempre essere cortesi.",
+                "english": "One must always be polite.",
+                "answer": "Si",
+                "explanation": "'Si deve' = one must. With dovere, essere becomes plural: 'essere cortesi'."
+            },
+            {
+                "italian": "_____ sa che Dante era italiano.",
+                "english": "Everyone knows that Dante was Italian.",
+                "answer": "Si",
+                "explanation": "'Si sa' = everyone knows/it is known. Common expression."
+            },
+            {
+                "italian": "_____ vive meglio in campagna.",
+                "english": "One lives better in the countryside.",
+                "answer": "Si",
+                "explanation": "'Si vive' = one lives. Impersonal statement about general experience."
+            },
+            {
+                "italian": "Come _____ scrive questa parola?",
+                "english": "How does one write this word?",
+                "answer": "si",
+                "explanation": "'Come si scrive' = how is it written/how do you write. Common question."
+            },
+            {
+                "italian": "_____ pensa che sia vero.",
+                "english": "One thinks that it's true.",
+                "answer": "Si",
+                "explanation": "'Si pensa' = one thinks/it is thought. Often followed by subjunctive."
+            }
+        ]
+
+        selected = random.sample(examples, min(count, len(examples)))
+        questions = []
+
+        for item in selected:
+            choices = [item["answer"], "ci", "ne", "lo", "la"]
+            random.shuffle(choices)
+
+            questions.append({
+                "question": item["italian"],
+                "answer": item["answer"],
+                "type": "multiple_choice",
+                "choices": choices,
+                "hint": item["english"],
+                "explanation": item["explanation"]
+            })
+
+        return questions
+
 
 if __name__ == "__main__":
     # Test the practice generator

@@ -1224,6 +1224,78 @@ def subjunctive_past_perfect():
     return redirect(url_for('practice_question'))
 
 
+@app.route('/passato-remoto', methods=['GET', 'POST'])
+def passato_remoto():
+    """Passato remoto practice (B2 level)."""
+    level = request.args.get('level') or request.form.get('level') or session.get('level', 'B2')
+
+    if request.method == 'GET':
+        session['level'] = level
+        return render_template('passato_remoto_setup.html', level=level)
+
+    count = int(request.form.get('count', 10))
+    generator = get_generator()
+    questions = generator.generate_passato_remoto(count)
+
+    session['practice_type'] = 'passato_remoto'
+    session['questions'] = questions
+    session['current_question'] = 0
+    session['correct_count'] = 0
+    session['answers'] = []
+    session['start_time'] = time.time()
+    session['level'] = level
+
+    return redirect(url_for('practice_question'))
+
+
+@app.route('/relative-pronouns', methods=['GET', 'POST'])
+def relative_pronouns():
+    """Relative pronouns practice (B2 level)."""
+    level = request.args.get('level') or request.form.get('level') or session.get('level', 'B2')
+
+    if request.method == 'GET':
+        session['level'] = level
+        return render_template('relative_pronouns_setup.html', level=level)
+
+    count = int(request.form.get('count', 10))
+    generator = get_generator()
+    questions = generator.generate_relative_pronouns(count)
+
+    session['practice_type'] = 'relative_pronouns'
+    session['questions'] = questions
+    session['current_question'] = 0
+    session['correct_count'] = 0
+    session['answers'] = []
+    session['start_time'] = time.time()
+    session['level'] = level
+
+    return redirect(url_for('practice_question'))
+
+
+@app.route('/impersonal-si', methods=['GET', 'POST'])
+def impersonal_si():
+    """Impersonal si practice (B2 level)."""
+    level = request.args.get('level') or request.form.get('level') or session.get('level', 'B2')
+
+    if request.method == 'GET':
+        session['level'] = level
+        return render_template('impersonal_si_setup.html', level=level)
+
+    count = int(request.form.get('count', 10))
+    generator = get_generator()
+    questions = generator.generate_impersonal_si(count)
+
+    session['practice_type'] = 'impersonal_si'
+    session['questions'] = questions
+    session['current_question'] = 0
+    session['correct_count'] = 0
+    session['answers'] = []
+    session['start_time'] = time.time()
+    session['level'] = level
+
+    return redirect(url_for('practice_question'))
+
+
 @app.route('/present-tense', methods=['GET', 'POST'])
 def present_tense():
     """Present tense conjugation practice (A1 level)."""

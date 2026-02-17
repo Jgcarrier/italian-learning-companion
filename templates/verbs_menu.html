@@ -123,5 +123,13 @@
         <p>avessi fatto, fossi andato</p>
     </a>
     {% endif %}
+
+    {% if level in ['B2', 'GCSE'] %}
+    <a href="{{ url_for('passato_remoto') }}?level={{ level }}" class="menu-item">
+        <div class="menu-icon">📜</div>
+        <h3>Passato Remoto</h3>
+        <p>Historical/literary past</p>
+    </a>
+    {% endif %}
 </div>
 {% endblock %}

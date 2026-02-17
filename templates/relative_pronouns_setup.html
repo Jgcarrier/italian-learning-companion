@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block title %}Relative Pronouns Setup{% endblock %}
+
+{% block content %}
+<div class="text-center mb-30">
+    <h2>🔗 Pronomi Relativi (Relative Pronouns)</h2>
+    <p>Connect clauses: che, cui, il quale, chi</p>
+</div>
+
+<form method="POST" action="{{ url_for('relative_pronouns') }}">
+    <input type="hidden" name="level" value="{{ level or 'B2' }}">
+    <div class="form-group">
+        <label for="count">Number of Questions:</label>
+        <input type="number" name="count" id="count" value="10" min="5" max="20">
+    </div>
+
+    <div class="button-group">
+        <button type="submit" class="btn btn-primary btn-large">Start Practice ({{ level or 'B2' }})</button>
+        <a href="{{ url_for('grammar_menu', level=level or 'B2') }}" class="btn btn-secondary">Back</a>
+    </div>
+</form>
+
+<div style="margin-top: 30px; padding: 20px; background: var(--light-gray); border-radius: 8px;">
+    <h3 style="font-size: 1.1rem; margin-bottom: 10px;">💡 Main Relative Pronouns:</h3>
+
+    <div style="margin-bottom: 15px;">
+        <p style="color: #444; margin-bottom: 5px;"><strong>che</strong> - that, who, which</p>
+        <p style="color: #666; margin-left: 15px; font-size: 0.9rem;">
+            Most common. For subjects and direct objects.
+            <br>• Il libro <strong>che</strong> leggo (The book that I'm reading)
+        </p>
+    </div>
+
+    <div style="margin-bottom: 15px;">
+        <p style="color: #444; margin-bottom: 5px;"><strong>cui</strong> - whom, which (after prepositions)</p>
+        <p style="color: #666; margin-left: 15px; font-size: 0.9rem;">
+            Always after prepositions: di, a, con, per, da, in, su
+            <br>• La persona a <strong>cui</strong> scrivo (The person to whom I write)
+            <br>• Il libro di <strong>cui</strong> parlo (The book about which I speak)
+        </p>
+    </div>
+
+    <div style="margin-bottom: 15px;">
+        <p style="color: #444; margin-bottom: 5px;"><strong>il quale / la quale / i quali / le quali</strong></p>
+        <p style="color: #666; margin-left: 15px; font-size: 0.9rem;">
+            Formal alternative to che/cui. Agrees in gender/number.
+            <br>• La casa nella <strong>quale</strong> abito (The house in which I live)
+        </p>
+    </div>
+
+    <div style="margin-bottom: 15px;">
+        <p style="color: #444; margin-bottom: 5px;"><strong>il cui / la cui / i cui / le cui</strong> - whose</p>
+        <p style="color: #666; margin-left: 15px; font-size: 0.9rem;">
+            Possession. Agrees with the thing possessed, not the possessor.
+            <br>• Il ragazzo <strong>il cui</strong> padre è medico (The boy whose father is a doctor)
+        </p>
+    </div>
+
+    <div style="margin-bottom: 15px;">
+        <p style="color: #444; margin-bottom: 5px;"><strong>chi</strong> - he/she who, those who</p>
+        <p style="color: #666; margin-left: 15px; font-size: 0.9rem;">
+            For general statements about people.
+            <br>• <strong>Chi</strong> studia, impara (Those who study, learn)
+        </p>
+    </div>
+</div>
+{% endblock %}
