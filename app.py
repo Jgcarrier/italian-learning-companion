@@ -1296,6 +1296,30 @@ def pronouns():
     return redirect(url_for('practice_question'))
 
 
+@app.route('/combined-pronouns', methods=['GET', 'POST'])
+def combined_pronouns():
+    """Combined pronouns practice (B1 level)."""
+    level = request.args.get('level') or request.form.get('level') or session.get('level', 'B1')
+
+    if request.method == 'GET':
+        session['level'] = level
+        return render_template('combined_pronouns_setup.html', level=level)
+
+    count = int(request.form.get('count', 10))
+    generator = get_generator()
+    questions = generator.generate_combined_pronouns(count)
+
+    session['practice_type'] = 'combined_pronouns'
+    session['questions'] = questions
+    session['current_question'] = 0
+    session['correct_count'] = 0
+    session['answers'] = []
+    session['start_time'] = time.time()
+    session['level'] = level
+
+    return redirect(url_for('practice_question'))
+
+
 @app.route('/adverbs', methods=['GET', 'POST'])
 def adverbs():
     """Adverbs practice."""

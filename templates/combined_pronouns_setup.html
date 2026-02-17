@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+{% block title %}Combined Pronouns Setup{% endblock %}
+
+{% block content %}
+<div class="text-center mb-30">
+    <h2>🔗 Pronomi Combinati (Combined Pronouns)</h2>
+    <p>Master double pronouns: indirect + direct together</p>
+</div>
+
+<form method="POST" action="{{ url_for('combined_pronouns') }}">
+    <input type="hidden" name="level" value="{{ level or 'B1' }}">
+    <div class="form-group">
+        <label for="count">Number of Questions:</label>
+        <input type="number" name="count" id="count" value="10" min="5" max="20">
+    </div>
+
+    <div class="button-group">
+        <button type="submit" class="btn btn-primary btn-large">Start Practice ({{ level or 'B1' }})</button>
+        <a href="{{ url_for('grammar_menu', level=level or 'B1') }}" class="btn btn-secondary">Back</a>
+    </div>
+</form>
+
+<div style="margin-top: 30px; padding: 20px; background: var(--light-gray); border-radius: 8px;">
+    <h3 style="font-size: 1.1rem; margin-bottom: 10px;">💡 How Combined Pronouns Work:</h3>
+    <p style="color: #666; margin-bottom: 15px;">
+        When using both <strong>indirect</strong> and <strong>direct</strong> object pronouns together:
+        <br><strong>Order: Indirect + Direct</strong>
+    </p>
+
+    <div style="margin-bottom: 15px;">
+        <h4 style="font-size: 1rem; color: #333; margin-bottom: 8px;">Key Changes:</h4>
+        <ul style="margin-left: 20px; color: #666;">
+            <li><strong>mi, ti, ci, vi</strong> → <strong>me, te, ce, ve</strong> (before lo/la/li/le)</li>
+            <li><strong>gli, le</strong> → <strong>glie</strong> (combines with lo/la/li/le into ONE WORD)</li>
+        </ul>
+    </div>
+
+    <div style="margin-bottom: 15px;">
+        <h4 style="font-size: 1rem; color: #333; margin-bottom: 8px;">With mi/ti/ci/vi:</h4>
+        <ul style="margin-left: 20px; color: #666;">
+            <li><strong>me lo</strong> = it to me (masc)</li>
+            <li><strong>te la</strong> = it to you (fem)</li>
+            <li><strong>ce li</strong> = them to us (masc)</li>
+            <li><strong>ve le</strong> = them to you pl (fem)</li>
+        </ul>
+        <p style="color: #666; margin-left: 20px; margin-top: 8px; font-style: italic;">
+            Example: Mi dai il libro? → Te lo do (I give it to you)
+        </p>
+    </div>
+
+    <div style="margin-bottom: 15px;">
+        <h4 style="font-size: 1rem; color: #333; margin-bottom: 8px;">With gli/le (to him/her/them):</h4>
+        <ul style="margin-left: 20px; color: #666;">
+            <li><strong>glielo</strong> = it to him/her/them (masc) - ONE WORD</li>
+            <li><strong>gliela</strong> = it to him/her/them (fem) - ONE WORD</li>
+            <li><strong>glieli</strong> = them to him/her/them (masc) - ONE WORD</li>
+            <li><strong>gliele</strong> = them to him/her/them (fem) - ONE WORD</li>
+        </ul>
+        <p style="color: #666; margin-left: 20px; margin-top: 8px; font-style: italic;">
+            Example: Dai il regalo a Marco? → Glielo do (I give it to him)
+        </p>
+    </div>
+
+    <div style="padding: 15px; background: #fff3cd; border-radius: 5px; margin-top: 15px;">
+        <h4 style="font-size: 1rem; color: #856404; margin-bottom: 8px;">⚠️ Important:</h4>
+        <ul style="margin-left: 20px; color: #856404;">
+            <li><strong>glielo/gliela/glieli/gliele</strong> work for BOTH singular (lui/lei) AND plural (loro)</li>
+            <li>Always attach to infinitives/gerunds: <strong>Devo darglielo</strong> (I must give it to him)</li>
+            <li>With imperatives: <strong>Daglielo!</strong> (Give it to him!)</li>
+        </ul>
+    </div>
+
+    <p style="color: #666; margin-top: 15px; font-style: italic;">
+        <strong>Quick Test:</strong> "I give the book to her" → Glielo do (glie + lo)
+    </p>
+</div>
+{% endblock %}

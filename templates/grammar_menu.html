@@ -61,5 +61,13 @@
         <p>Apri!, Parli!, Andiamo!</p>
     </a>
     {% endif %}
+
+    {% if level in ['B1', 'B2', 'GCSE'] %}
+    <a href="{{ url_for('combined_pronouns') }}?level={{ level }}" class="menu-item">
+        <div class="menu-icon">🔗</div>
+        <h3>Combined Pronouns</h3>
+        <p>me lo, te la, glielo</p>
+    </a>
+    {% endif %}
 </div>
 {% endblock %}

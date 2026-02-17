@@ -2460,6 +2460,153 @@ class PracticeGenerator:
 
         return questions
 
+    def generate_combined_pronouns(self, count: int = 10) -> List[Dict]:
+        """
+        Generate combined pronouns practice for B1 level.
+        When direct and indirect pronouns combine: me lo, te la, glielo, ce li, etc.
+        Rules: Indirect + Direct, some forms change (mi/ti/ci/vi → me/te/ce/ve before lo/la/li/le)
+        """
+
+        examples = [
+            # Me + lo/la/li/le
+            {
+                "italian": "Puoi prestarmi il libro? Sì, _____ presto.",
+                "english": "Can you lend me the book? Yes, I'll lend it to you.",
+                "answer": "te lo",
+                "breakdown": "te (to you) + lo (it)",
+                "explanation": "'Te lo presto' = I lend it to you. Indirect 'ti' becomes 'te' before 'lo'. Order: indirect + direct."
+            },
+            {
+                "italian": "Mi dai la penna? Sì, _____ do subito.",
+                "english": "Will you give me the pen? Yes, I'll give it to you right away.",
+                "answer": "te la",
+                "breakdown": "te (to you) + la (it)",
+                "explanation": "'Te la do' = I give it to you. 'Ti' becomes 'te' before 'la'."
+            },
+            {
+                "italian": "Chi ti ha dato le chiavi? _____ ha date Marco.",
+                "english": "Who gave you the keys? Marco gave them to me.",
+                "answer": "Me le",
+                "breakdown": "me (to me) + le (them)",
+                "explanation": "'Me le ha date' = gave them to me. 'Mi' becomes 'me' before 'le'."
+            },
+            # Gli + lo/la/li/le → glielo/gliela/glieli/gliele
+            {
+                "italian": "Hai spiegato la lezione a Maria? Sì, _____ ho spiegata.",
+                "english": "Did you explain the lesson to Maria? Yes, I explained it to her.",
+                "answer": "gliela",
+                "breakdown": "glie (to her) + la (it)",
+                "explanation": "'Gliela ho spiegata' = I explained it to her. 'Gli/le' + 'la' = gliela. One word!"
+            },
+            {
+                "italian": "Hai dato il regalo a tuo fratello? Sì, _____ ho dato ieri.",
+                "english": "Did you give the gift to your brother? Yes, I gave it to him yesterday.",
+                "answer": "glielo",
+                "breakdown": "glie (to him) + lo (it)",
+                "explanation": "'Glielo ho dato' = I gave it to him. 'Gli' + 'lo' = glielo (one word)."
+            },
+            {
+                "italian": "Hai mostrato le foto ai tuoi amici? Sì, _____ ho mostrate.",
+                "english": "Did you show the photos to your friends? Yes, I showed them to them.",
+                "answer": "gliele",
+                "breakdown": "glie (to them) + le (them)",
+                "explanation": "'Gliele ho mostrate' = I showed them to them. 'Gli' + 'le' = gliele."
+            },
+            # Ce + lo/la/li/le
+            {
+                "italian": "Chi vi ha portato i regali? _____ ha portati Babbo Natale.",
+                "english": "Who brought you the gifts? Santa Claus brought them to us.",
+                "answer": "Ce li",
+                "breakdown": "ce (to us) + li (them)",
+                "explanation": "'Ce li ha portati' = brought them to us. 'Ci' becomes 'ce' before 'li'."
+            },
+            {
+                "italian": "Vi hanno spiegato la regola? Sì, _____ hanno spiegata.",
+                "english": "Did they explain the rule to you? Yes, they explained it to us.",
+                "answer": "ce la",
+                "breakdown": "ce (to us) + la (it)",
+                "explanation": "'Ce la hanno spiegata' = they explained it to us. 'Ci' → 'ce' before 'la'."
+            },
+            # Ve + lo/la/li/le
+            {
+                "italian": "Chi vi ha dato i biglietti? _____ ha dati il direttore.",
+                "english": "Who gave you the tickets? The director gave them to you.",
+                "answer": "Ve li",
+                "breakdown": "ve (to you pl) + li (them)",
+                "explanation": "'Ve li ha dati' = gave them to you. 'Vi' becomes 've' before 'li'."
+            },
+            {
+                "italian": "Ti hanno portato la torta? Sì, _____ hanno portata.",
+                "english": "Did they bring you the cake? Yes, they brought it to me.",
+                "answer": "me la",
+                "breakdown": "me (to me) + la (it)",
+                "explanation": "'Me la hanno portata' = they brought it to me. 'Mi' → 'me' before 'la'."
+            },
+            # More glielo examples
+            {
+                "italian": "Hai raccontato la storia ai bambini? Sì, _____ ho raccontata.",
+                "english": "Did you tell the story to the children? Yes, I told it to them.",
+                "answer": "gliela",
+                "breakdown": "glie (to them) + la (it)",
+                "explanation": "'Gliela ho raccontata' = I told it to them. Works for both singular and plural."
+            },
+            {
+                "italian": "Puoi prestare i libri a Luca? Sì, _____ posso prestare.",
+                "english": "Can you lend the books to Luca? Yes, I can lend them to him.",
+                "answer": "glieli",
+                "breakdown": "glie (to him) + li (them)",
+                "explanation": "'Glieli posso prestare' = I can lend them to him. 'Gli' + 'li' = glieli."
+            },
+            # Reflexive + lo/la/li/le
+            {
+                "italian": "Mi metto il cappotto? Sì, _____ metti!",
+                "english": "Should I put on my coat? Yes, put it on!",
+                "answer": "mettitelo",
+                "breakdown": "metti + te (yourself) + lo (it)",
+                "explanation": "Reflexive with pronoun: 'mettitelo' = put it on yourself. Te + lo attached to infinitive/imperative."
+            },
+            {
+                "italian": "Dovrei lavarmi le mani? Sì, _____ devi lavare!",
+                "english": "Should I wash my hands? Yes, you must wash them!",
+                "answer": "te le",
+                "breakdown": "te (yourself) + le (them)",
+                "explanation": "'Te le devi lavare' = you must wash them (your hands). Reflexive 'ti' → 'te' before 'le'."
+            },
+            # With imperatives
+            {
+                "italian": "Devo dare il messaggio a Laura?",
+                "english": "Should I give the message to Laura?",
+                "answer": "Daglielo",
+                "breakdown": "da' (give) + glie (to her) + lo (it)",
+                "explanation": "'Daglielo!' = Give it to her! With imperative, pronouns attach: da' + glielo = daglielo."
+            }
+        ]
+
+        selected = random.sample(examples, min(count, len(examples)))
+        questions = []
+
+        for item in selected:
+            # Combined pronoun forms for choices
+            combined = ["me lo", "te la", "glielo", "gliela", "glieli", "gliele",
+                       "ce li", "ce la", "ve li", "ve la", "me la", "te lo",
+                       "Me le", "Ce la", "Ve li", "mettitelo", "te le", "Daglielo"]
+
+            choices = [item["answer"]]
+            wrong_choices = [c for c in combined if c.lower() != item["answer"].lower()]
+            choices.extend(random.sample(wrong_choices, min(3, len(wrong_choices))))
+            random.shuffle(choices)
+
+            questions.append({
+                "question": item["italian"],
+                "answer": item["answer"],
+                "type": "multiple_choice",
+                "choices": choices,
+                "hint": f"{item['english']} | {item['breakdown']}",
+                "explanation": item["explanation"]
+            })
+
+        return questions
+
 
 if __name__ == "__main__":
     # Test the practice generator
