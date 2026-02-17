@@ -905,177 +905,78 @@ def regular_passato():
 @app.route('/imperfect-tense', methods=['GET', 'POST'])
 def imperfect_tense():
     """Imperfect tense (imperfetto) practice."""
-    level = validate_level(request.args.get('level') or request.form.get('level') or session.get('level', 'A2'))
-
-    if request.method == 'GET':
-        session['level'] = level
-        return render_template('imperfect_tense_setup.html', level=level)
-
-    # POST: Start new practice
-    count = validate_count(request.form.get('count', 10))
-    generator = get_generator()
-    questions = generator.generate_imperfect_tense(count)
-
-    session['practice_type'] = 'imperfect_tense'
-    session['questions'] = questions
-    session['current_question'] = 0
-    session['correct_count'] = 0
-    session['answers'] = []
-    session['start_time'] = time.time()
-    session['level'] = level  # Store level for navigation
-
-    return redirect(url_for('practice_question'))
+    return create_practice_route(
+        practice_type='imperfect_tense',
+        generator_method='generate_imperfect_tense',
+        setup_template='imperfect_tense_setup.html',
+        menu_type='verbs_menu'
+    )()
 
 
 @app.route('/auxiliary-choice', methods=['GET', 'POST'])
 def auxiliary_choice():
     """Avere vs Essere auxiliary choice practice."""
-    level = validate_level(request.args.get('level') or request.form.get('level') or session.get('level', 'A2'))
-
-    if request.method == 'GET':
-        session['level'] = level
-        return render_template('auxiliary_choice_setup.html', level=level)
-
-    count = validate_count(request.form.get('count', 10))
-    generator = get_generator()
-    questions = generator.generate_auxiliary_choice(count)
-
-    # Check if questions were generated
-    if not questions or len(questions) == 0:
-        session['level'] = level
-        return render_template('error.html',
-                             error_message=f"No auxiliary verb exercises available for {level}. Please try a different level.",
-                             back_link=url_for('verbs_menu', level=level))
-
-    session['practice_type'] = 'auxiliary_choice'
-    session['questions'] = questions
-    session['current_question'] = 0
-    session['correct_count'] = 0
-    session['answers'] = []
-    session['start_time'] = time.time()
-    session['level'] = level  # Store level for navigation
-
-    return redirect(url_for('practice_question'))
+    return create_practice_route(
+        practice_type='auxiliary_choice',
+        generator_method='generate_auxiliary_choice',
+        setup_template='auxiliary_choice_setup.html',
+        menu_type='verbs_menu'
+    )()
 
 
 @app.route('/futuro-semplice', methods=['GET', 'POST'])
 def futuro_semplice():
     """Futuro semplice practice."""
-    level = validate_level(request.args.get('level') or request.form.get('level') or session.get('level', 'A2'))
-
-    if request.method == 'GET':
-        session['level'] = level
-        return render_template('futuro_semplice_setup.html', level=level)
-
-    count = validate_count(request.form.get('count', 10))
-    generator = get_generator()
-    questions = generator.generate_futuro_semplice(count)
-
-    session['practice_type'] = 'futuro_semplice'
-    session['questions'] = questions
-    session['current_question'] = 0
-    session['correct_count'] = 0
-    session['answers'] = []
-    session['start_time'] = time.time()
-    session['level'] = level  # Store level for navigation
-
-    return redirect(url_for('practice_question'))
+    return create_practice_route(
+        practice_type='futuro_semplice',
+        generator_method='generate_futuro_semplice',
+        setup_template='futuro_semplice_setup.html',
+        menu_type='verbs_menu'
+    )()
 
 
 @app.route('/reflexive-verbs', methods=['GET', 'POST'])
 def reflexive_verbs():
     """Reflexive verbs practice."""
-    level = validate_level(request.args.get('level') or request.form.get('level') or session.get('level', 'A2'))
-
-    if request.method == 'GET':
-        session['level'] = level
-        return render_template('reflexive_verbs_setup.html', level=level)
-
-    count = validate_count(request.form.get('count', 10))
-    generator = get_generator()
-    questions = generator.generate_reflexive_verbs(count)
-
-    session['practice_type'] = 'reflexive_verbs'
-    session['questions'] = questions
-    session['current_question'] = 0
-    session['correct_count'] = 0
-    session['answers'] = []
-    session['start_time'] = time.time()
-    session['level'] = level  # Store level for navigation
-
-    return redirect(url_for('practice_question'))
+    return create_practice_route(
+        practice_type='reflexive_verbs',
+        generator_method='generate_reflexive_verbs',
+        setup_template='reflexive_verbs_setup.html',
+        menu_type='verbs_menu'
+    )()
 
 
 @app.route('/conditional-present', methods=['GET', 'POST'])
 def conditional_present():
     """Conditional present tense practice."""
-    level = validate_level(request.args.get('level') or request.form.get('level') or session.get('level', 'A2'))
-
-    if request.method == 'GET':
-        session['level'] = level
-        return render_template('conditional_present_setup.html', level=level)
-
-    count = validate_count(request.form.get('count', 10))
-    generator = get_generator()
-    questions = generator.generate_conditional_present(count)
-
-    session['practice_type'] = 'conditional_present'
-    session['questions'] = questions
-    session['current_question'] = 0
-    session['correct_count'] = 0
-    session['answers'] = []
-    session['start_time'] = time.time()
-    session['level'] = level  # Store level for navigation
-
-    return redirect(url_for('practice_question'))
+    return create_practice_route(
+        practice_type='conditional_present',
+        generator_method='generate_conditional_present',
+        setup_template='conditional_present_setup.html',
+        menu_type='verbs_menu'
+    )()
 
 
 @app.route('/imperative', methods=['GET', 'POST'])
 def imperative():
     """Imperative (command) tense practice."""
-    level = validate_level(request.args.get('level') or request.form.get('level') or session.get('level', 'A2'))
-
-    if request.method == 'GET':
-        session['level'] = level
-        return render_template('imperative_setup.html', level=level)
-
-    count = validate_count(request.form.get('count', 10))
-    generator = get_generator()
-    questions = generator.generate_imperative_practice(count)
-
-    session['practice_type'] = 'imperative'
-    session['questions'] = questions
-    session['current_question'] = 0
-    session['correct_count'] = 0
-    session['answers'] = []
-    session['start_time'] = time.time()
-    session['level'] = level  # Store level for navigation
-
-    return redirect(url_for('practice_question'))
+    return create_practice_route(
+        practice_type='imperative',
+        generator_method='generate_imperative_practice',
+        setup_template='imperative_setup.html',
+        menu_type='grammar_menu'
+    )()
 
 
 @app.route('/conditional-past', methods=['GET', 'POST'])
 def conditional_past():
     """Conditional past (condizionale passato) practice (B1 level)."""
-    level = request.args.get('level') or request.form.get('level') or session.get('level', 'B1')
-
-    if request.method == 'GET':
-        session['level'] = level
-        return render_template('conditional_past_setup.html', level=level)
-
-    count = validate_count(request.form.get('count', 10))
-    generator = get_generator()
-    questions = generator.generate_conditional_past(count)
-
-    session['practice_type'] = 'conditional_past'
-    session['questions'] = questions
-    session['current_question'] = 0
-    session['correct_count'] = 0
-    session['answers'] = []
-    session['start_time'] = time.time()
-    session['level'] = level
-
-    return redirect(url_for('practice_question'))
+    return create_practice_route(
+        practice_type='conditional_past',
+        generator_method='generate_conditional_past',
+        setup_template='conditional_past_setup.html',
+        menu_type='verbs_menu'
+    )()
 
 
 @app.route('/past-perfect', methods=['GET', 'POST'])
