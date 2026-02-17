@@ -539,6 +539,40 @@ body {
     }
 }
 
+/* Breadcrumb Navigation */
+.breadcrumb {
+    margin-bottom: 20px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--medium-gray);
+}
+
+.breadcrumb p {
+    margin: 0;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.breadcrumb a {
+    color: var(--green);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.breadcrumb a:hover {
+    color: #007a38;
+    text-decoration: underline;
+}
+
+.breadcrumb-separator {
+    margin: 0 8px;
+    color: #999;
+}
+
+.breadcrumb-current {
+    color: var(--dark-gray);
+    font-weight: 600;
+}
+
 /* Utility Classes */
 .text-center {
     text-align: center;

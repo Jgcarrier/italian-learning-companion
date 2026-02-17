@@ -4,6 +4,7 @@ Italian Learning Companion - Flask Web Application
 
 import sys
 import os
+import logging
 from pathlib import Path
 from flask import Flask, render_template, request, session, redirect, url_for, jsonify, g
 import time
@@ -23,6 +24,19 @@ from practice_generator import PracticeGenerator
 app = Flask(__name__)
 # Use environment variable in production, fallback to development key
 app.secret_key = os.environ.get('SECRET_KEY', 'italian-learning-companion-secret-key-2024')
+
+# Configure logging
+if not app.debug:
+    # Production logging
+    handler = logging.StreamHandler()
+    handler.setLevel(logging.ERROR)
+    formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+    handler.setFormatter(formatter)
+    app.logger.addHandler(handler)
+    app.logger.setLevel(logging.ERROR)
+else:
+    # Development logging
+    app.logger.setLevel(logging.INFO)
 
 # Database path - use absolute path to avoid path resolution issues
 # Try local data/ first (deployment), then parent (development)
@@ -90,6 +104,45 @@ VALID_LEVELS = ['A1', 'A2', 'B1', 'B2', 'GCSE']
 DEFAULT_QUESTION_COUNT = 10
 MIN_QUESTION_COUNT = 1
 MAX_QUESTION_COUNT = 50
+
+# Practice type to route mapping for summary page
+# Format: practice_type -> (route_name, required_params)
+PRACTICE_ROUTES = {
+    'vocabulary_quiz': ('vocabulary_quiz', ['level', 'direction']),
+    'verb_conjugation': ('verb_conjugation', ['level']),
+    'regular_passato': ('regular_passato', ['level']),
+    'irregular_passato': ('irregular_passato', ['level']),
+    'imperfect_tense': ('imperfect_tense', ['level']),
+    'auxiliary_choice': ('auxiliary_choice', ['level']),
+    'futuro_semplice': ('futuro_semplice', ['level']),
+    'reflexive_verbs': ('reflexive_verbs', ['level']),
+    'noun_gender_number': ('noun_gender_number', ['level']),
+    'articulated_prepositions': ('articulated_prepositions', ['level']),
+    'time_prepositions': ('time_prepositions', ['level']),
+    'negations': ('negations', ['level']),
+    'fill_in_blank': ('fill_in_blank', ['level']),
+    'multiple_choice': ('multiple_choice', ['level']),
+    'sentence_translation': ('sentence_translator', ['level', 'direction']),
+    'present_tense': ('present_tense', ['level']),
+    'pronouns': ('pronouns', ['level']),
+    'conditional_present': ('conditional_present', ['level']),
+    'imperative': ('imperative', ['level']),
+    'adverbs': ('adverbs', ['level']),
+    'subjunctive_present': ('subjunctive_present', ['level']),
+    'pronominal_verbs': ('pronominal_verbs', ['level']),
+    'passive_voice': ('passive_voice', ['level']),
+    'combined_pronouns': ('combined_pronouns', ['level']),
+    'conditional_past': ('conditional_past', ['level']),
+    'past_perfect': ('past_perfect', ['level']),
+    'subjunctive_past': ('subjunctive_past', ['level']),
+    'subjunctive_imperfect': ('subjunctive_imperfect', ['level']),
+    'subjunctive_past_perfect': ('subjunctive_past_perfect', ['level']),
+    'passato_remoto': ('passato_remoto', ['level']),
+    'impersonal_si': ('impersonal_si', ['level']),
+    'relative_pronouns': ('relative_pronouns', ['level']),
+    'comprehensive_subjunctives': ('comprehensive_subjunctives', ['level']),
+    'unreal_past': ('unreal_past', ['level']),
+}
 
 
 def validate_level(level: str) -> str:
@@ -428,6 +481,61 @@ def check_answer(user_answer: str, correct_answer: str, question_type: str = Non
     return is_correct, display_answer
 
 
+# ============================================================================
+# ERROR HANDLERS
+# ============================================================================
+
+@app.errorhandler(404)
+def page_not_found(error):
+    """Handle 404 errors with user-friendly message."""
+    return render_template('error.html',
+                          error_message="Page not found. The page you're looking for doesn't exist.",
+                          back_link=url_for('home')), 404
+
+
+@app.errorhandler(500)
+def internal_error(error):
+    """Handle 500 errors with user-friendly message."""
+    # Log the actual error for debugging
+    app.logger.error(f'Internal error: {error}')
+
+    # Close any open database connections
+    db = g.pop('db', None)
+    if db is not None:
+        try:
+            db.close()
+        except:
+            pass
+
+    return render_template('error.html',
+                          error_message="Something went wrong on our end. Please try again.",
+                          back_link=url_for('home')), 500
+
+
+@app.errorhandler(Exception)
+def handle_exception(error):
+    """Catch-all handler for unexpected exceptions."""
+    # Log the actual error for debugging
+    app.logger.error(f'Unhandled exception: {error}', exc_info=True)
+
+    # Close any open database connections
+    db = g.pop('db', None)
+    if db is not None:
+        try:
+            db.close()
+        except:
+            pass
+
+    # Return 500 error page
+    return render_template('error.html',
+                          error_message="An unexpected error occurred. Please try again.",
+                          back_link=url_for('home')), 500
+
+
+# ============================================================================
+# ROUTES
+# ============================================================================
+
 @app.route('/')
 def home():
     """Home page - level selection."""
@@ -729,42 +837,65 @@ def vocabulary_quiz():
 @app.route('/practice/question')
 def practice_question():
     """Show current question."""
-    if 'questions' not in session or 'current_question' not in session:
-        return redirect(url_for('home'))
+    try:
+        if 'questions' not in session or 'current_question' not in session:
+            return redirect(url_for('home'))
 
-    questions = session['questions']
-    current_idx = session['current_question']
+        questions = session.get('questions', [])
+        current_idx = session.get('current_question', 0)
 
-    # Check if quiz is complete
-    if current_idx >= len(questions):
-        return redirect(url_for('practice_summary'))
+        # Check if quiz is complete
+        if current_idx >= len(questions):
+            return redirect(url_for('practice_summary'))
 
-    question = questions[current_idx]
-    total_questions = len(questions)
+        if not questions:
+            return render_template('error.html',
+                                  error_message="No questions available. Please start a new practice session.",
+                                  back_link=url_for('home'))
 
-    # Get the appropriate menu for the back button
-    practice_type = session.get('practice_type', '')
-    menu_route = get_menu_for_practice_type(practice_type)
-    level = session.get('level', 'A2')
+        question = questions[current_idx]
+        total_questions = len(questions)
 
-    return render_template('question.html',
-                          question=question,
-                          question_num=current_idx + 1,
-                          total_questions=total_questions,
-                          menu_route=menu_route,
-                          level=level)
+        # Get the appropriate menu for the back button
+        practice_type = session.get('practice_type', '')
+        menu_route = get_menu_for_practice_type(practice_type)
+        level = session.get('level', 'A2')
+
+        return render_template('question.html',
+                              question=question,
+                              question_num=current_idx + 1,
+                              total_questions=total_questions,
+                              menu_route=menu_route,
+                              level=level)
+    except (KeyError, IndexError, TypeError) as e:
+        app.logger.error(f'Error in practice_question: {e}')
+        return render_template('error.html',
+                              error_message="Session error. Please start a new practice session.",
+                              back_link=url_for('home'))
 
 
 @app.route('/practice/submit', methods=['POST'])
 def submit_answer():
     """Process submitted answer."""
-    if 'questions' not in session:
-        return redirect(url_for('home'))
+    try:
+        if 'questions' not in session:
+            return redirect(url_for('home'))
 
-    user_answer = request.form.get('answer', '').strip()
-    questions = session['questions']
-    current_idx = session['current_question']
-    question = questions[current_idx]
+        user_answer = request.form.get('answer', '').strip()
+        questions = session.get('questions', [])
+        current_idx = session.get('current_question', 0)
+
+        if not questions or current_idx >= len(questions):
+            return render_template('error.html',
+                                  error_message="Session expired. Please start a new practice session.",
+                                  back_link=url_for('home'))
+
+        question = questions[current_idx]
+    except (KeyError, IndexError, TypeError) as e:
+        app.logger.error(f'Error in submit_answer: {e}')
+        return render_template('error.html',
+                              error_message="Session error. Please start a new practice session.",
+                              back_link=url_for('home'))
 
     # Check answer with flexible matching, passing question type for special handling
     question_type = question.get('type', None)
@@ -884,6 +1015,15 @@ def practice_summary():
     practice_type = session.get('practice_type', 'vocabulary_quiz')
     direction = session.get('direction', None)  # For vocabulary quiz
 
+    # Build practice_again_url using PRACTICE_ROUTES mapping
+    practice_again_url = url_for('category_menu', level=level)  # Default fallback
+    if practice_type in PRACTICE_ROUTES:
+        route_name, required_params = PRACTICE_ROUTES[practice_type]
+        params = {'level': level}
+        if 'direction' in required_params and direction:
+            params['direction'] = direction
+        practice_again_url = url_for(route_name, **params)
+
     # Clear session
     session.pop('questions', None)
     session.pop('current_question', None)
@@ -898,7 +1038,8 @@ def practice_summary():
                           summary=summary,
                           level=level,
                           practice_type=practice_type,
-                          direction=direction)
+                          direction=direction,
+                          practice_again_url=practice_again_url)
 
 
 @app.route('/verb-conjugation', methods=['GET', 'POST'])

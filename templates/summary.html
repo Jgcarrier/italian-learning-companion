@@ -27,7 +27,7 @@
     </div>
 
     <div style="margin-top: 30px; padding-top: 20px; border-top: 2px solid var(--medium-gray);">
-        <p style="color: #666; font-size: 0.9rem;">Session saved to database (ID: {{ summary.session_id }})</p>
+        <p style="color: #666; font-size: 0.9rem;">✓ Progress saved to your learning history</p>
     </div>
 </div>
 
@@ -50,41 +50,8 @@
 </div>
 
 <div class="button-group">
-    {% if practice_type == 'vocabulary_quiz' and direction %}
-        <a href="{{ url_for('vocabulary_quiz', level=level, direction=direction) }}" class="btn btn-primary" style="background: var(--green);">🔄 Practice Again</a>
-    {% elif practice_type == 'verb_conjugation' %}
-        <a href="{{ url_for('verb_conjugation', level=level) }}" class="btn btn-primary" style="background: var(--green);">🔄 Practice Again</a>
-    {% elif practice_type == 'regular_passato' %}
-        <a href="{{ url_for('regular_passato', level=level) }}" class="btn btn-primary" style="background: var(--green);">🔄 Practice Again</a>
-    {% elif practice_type == 'irregular_passato' %}
-        <a href="{{ url_for('irregular_passato', level=level) }}" class="btn btn-primary" style="background: var(--green);">🔄 Practice Again</a>
-    {% elif practice_type == 'imperfect_tense' %}
-        <a href="{{ url_for('imperfect_tense', level=level) }}" class="btn btn-primary" style="background: var(--green);">🔄 Practice Again</a>
-    {% elif practice_type == 'auxiliary_choice' %}
-        <a href="{{ url_for('auxiliary_choice', level=level) }}" class="btn btn-primary" style="background: var(--green);">🔄 Practice Again</a>
-    {% elif practice_type == 'futuro_semplice' %}
-        <a href="{{ url_for('futuro_semplice', level=level) }}" class="btn btn-primary" style="background: var(--green);">🔄 Practice Again</a>
-    {% elif practice_type == 'reflexive_verbs' %}
-        <a href="{{ url_for('reflexive_verbs', level=level) }}" class="btn btn-primary" style="background: var(--green);">🔄 Practice Again</a>
-    {% elif practice_type == 'noun_gender_number' %}
-        <a href="{{ url_for('noun_gender_number', level=level) }}" class="btn btn-primary" style="background: var(--green);">🔄 Practice Again</a>
-    {% elif practice_type == 'articulated_prepositions' %}
-        <a href="{{ url_for('articulated_prepositions', level=level) }}" class="btn btn-primary" style="background: var(--green);">🔄 Practice Again</a>
-    {% elif practice_type == 'time_prepositions' %}
-        <a href="{{ url_for('time_prepositions', level=level) }}" class="btn btn-primary" style="background: var(--green);">🔄 Practice Again</a>
-    {% elif practice_type == 'negations' %}
-        <a href="{{ url_for('negations', level=level) }}" class="btn btn-primary" style="background: var(--green);">🔄 Practice Again</a>
-    {% elif practice_type == 'fill_in_blank' %}
-        <a href="{{ url_for('fill_in_blank', level=level) }}" class="btn btn-primary" style="background: var(--green);">🔄 Practice Again</a>
-    {% elif practice_type == 'multiple_choice' %}
-        <a href="{{ url_for('multiple_choice', level=level) }}" class="btn btn-primary" style="background: var(--green);">🔄 Practice Again</a>
-    {% elif practice_type == 'sentence_translation' %}
-        <a href="{{ url_for('sentence_translator', level=level, direction=direction) }}" class="btn btn-primary" style="background: var(--green);">🔄 Practice Again</a>
-    {% else %}
-        <a href="{{ url_for('category_menu', level=level) }}" class="btn btn-primary" style="background: var(--green);">🔄 Practice Again ({{ level }})</a>
-    {% endif %}
-
+    <a href="{{ practice_again_url }}" class="btn btn-primary" style="background: var(--green);">🔄 Practice Again</a>
     <a href="{{ url_for('category_menu', level=level) }}" class="btn btn-secondary">🔙 Back to {{ level }} Menu</a>
-    <a href="{{ url_for('home') }}" class="btn btn-secondary">🏠 Home (Choose Level)</a>
+    <a href="{{ url_for('home') }}" class="btn btn-secondary">🏠 Home</a>
 </div>
 {% endblock %}
