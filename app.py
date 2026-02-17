@@ -79,6 +79,60 @@ def validate_count(count_str: str) -> int:
         return DEFAULT_QUESTION_COUNT
 
 
+def create_practice_route(practice_type: str, generator_method: str, setup_template: str,
+                          menu_type: str = 'verbs_menu', requires_level: bool = False):
+    """
+    Factory function to create standardized practice route handlers.
+
+    Args:
+        practice_type: Type identifier for the practice (e.g., 'verb_conjugation')
+        generator_method: Name of the method on PracticeGenerator (e.g., 'generate_verb_conjugation_drill')
+        setup_template: Template name for the setup page (e.g., 'verb_conjugation_setup.html')
+        menu_type: The menu to return to on error (default: 'verbs_menu')
+        requires_level: Whether the generator method takes level as first param (default: False)
+
+    Returns:
+        A Flask route handler function
+    """
+    def route_handler():
+        level = validate_level(request.args.get('level') or request.form.get('level') or session.get('level', 'A2'))
+
+        if request.method == 'GET':
+            session['level'] = level
+            return render_template(setup_template, level=level)
+
+        # POST: Start new practice
+        count = validate_count(request.form.get('count', 10))
+        generator = get_generator()
+
+        # Call the generator method
+        method = getattr(generator, generator_method)
+        if requires_level:
+            questions = method(level, count)
+        else:
+            questions = method(count)
+
+        # Check if questions were generated
+        if not questions or len(questions) == 0:
+            session['level'] = level
+            return render_template('error.html',
+                                 error_message=f"No {practice_type.replace('_', ' ')} exercises available for {level}. Please try a different level.",
+                                 back_link=url_for(menu_type, level=level))
+
+        # Store in session
+        session['practice_type'] = practice_type
+        session['questions'] = questions
+        session['current_question'] = 0
+        session['correct_count'] = 0
+        session['answers'] = []
+        session['start_time'] = time.time()
+        session['level'] = level
+
+        return redirect(url_for('practice_question'))
+
+    return route_handler
+
+
 def get_menu_for_practice_type(practice_type: str) -> str:
     """Get the appropriate menu route for a given practice type."""
     verb_types = ['verb_conjugation', 'irregular_passato', 'auxiliary_choice',
@@ -817,104 +871,35 @@ def practice_summary():
 @app.route('/verb-conjugation', methods=['GET', 'POST'])
 def verb_conjugation():
     """General verb conjugation practice."""
-    level = validate_level(request.args.get('level') or request.form.get('level') or session.get('level', 'A2'))
-
-    if request.method == 'GET':
-        session['level'] = level
-        return render_template('verb_conjugation_setup.html', level=level)
-
-    # POST: Start new practice
-    count = validate_count(request.form.get('count', 10))
-
-    # Generate questions using fresh generator
-    generator = get_generator()
-    questions = generator.generate_verb_conjugation_drill(level, count)
-
-    # Check if questions were generated
-    if not questions or len(questions) == 0:
-        session['level'] = level
-        return render_template('error.html',
-                             error_message=f"No verb conjugation exercises available for {level}. Please try a different level.",
-                             back_link=url_for('verbs_menu', level=level))
-
-    # Store in session
-    session['practice_type'] = 'verb_conjugation'
-    session['questions'] = questions
-    session['current_question'] = 0
-    session['correct_count'] = 0
-    session['answers'] = []
-    session['start_time'] = time.time()
-    session['level'] = level  # Store level for navigation
-
-    return redirect(url_for('practice_question'))
+    return create_practice_route(
+        practice_type='verb_conjugation',
+        generator_method='generate_verb_conjugation_drill',
+        setup_template='verb_conjugation_setup.html',
+        menu_type='verbs_menu',
+        requires_level=True
+    )()
 
 
 @app.route('/irregular-passato', methods=['GET', 'POST'])
 def irregular_passato():
     """Irregular passato prossimo practice."""
-    level = validate_level(request.args.get('level') or request.form.get('level') or session.get('level', 'A2'))
-
-    if request.method == 'GET':
-        # Show setup form
-        session['level'] = level
-        return render_template('irregular_passato_setup.html', level=level)
-
-    # POST: Start new practice
-    count = validate_count(request.form.get('count', 10))
-
-    # Generate questions using fresh generator
-    generator = get_generator()
-    questions = generator.generate_irregular_passato_prossimo(count)
-
-    # Check if questions were generated
-    if not questions or len(questions) == 0:
-        session['level'] = level
-        return render_template('error.html',
-                             error_message=f"No irregular passato prossimo exercises available for {level}. Please try a different level.",
-                             back_link=url_for('verbs_menu', level=level))
-
-    # Store in session
-    session['practice_type'] = 'irregular_passato'
-    session['questions'] = questions
-    session['current_question'] = 0
-    session['correct_count'] = 0
-    session['answers'] = []
-    session['start_time'] = time.time()
-    session['level'] = level  # Store level for navigation
-
-    return redirect(url_for('practice_question'))
+    return create_practice_route(
+        practice_type='irregular_passato',
+        generator_method='generate_irregular_passato_prossimo',
+        setup_template='irregular_passato_setup.html',
+        menu_type='verbs_menu'
+    )()
 
 
 @app.route('/regular-passato', methods=['GET', 'POST'])
 def regular_passato():
     """Regular passato prossimo practice."""
-    level = validate_level(request.args.get('level') or request.form.get('level') or session.get('level', 'A2'))
-
-    if request.method == 'GET':
-        session['level'] = level
-        return render_template('regular_passato_setup.html', level=level)
-
-    # POST: Start new practice
-    count = validate_count(request.form.get('count', 10))
-    generator = get_generator()
-    questions = generator.generate_regular_passato_prossimo(count)
-
-    # Check if questions were generated
-    if not questions or len(questions) == 0:
-        session['level'] = level
-        return render_template('error.html',
-                             error_message=f"No regular passato prossimo exercises available for {level}. Please try a different level.",
-                             back_link=url_for('verbs_menu', level=level))
-
-    session['practice_type'] = 'regular_passato'
-    session['questions'] = questions
-    session['current_question'] = 0
-    session['correct_count'] = 0
-    session['answers'] = []
-    session['start_time'] = time.time()
-    session['level'] = level  # Store level for navigation
-
-    return redirect(url_for('practice_question'))
+    return create_practice_route(
+        practice_type='regular_passato',
+        generator_method='generate_regular_passato_prossimo',
+        setup_template='regular_passato_setup.html',
+        menu_type='verbs_menu'
+    )()
 
 
 @app.route('/imperfect-tense', methods=['GET', 'POST'])
