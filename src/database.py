@@ -204,15 +204,23 @@ class ItalianDatabase:
         """Get performance statistics for the last N days."""
         cursor = self.conn.cursor()
         cursor.execute("""
-            SELECT 
+            SELECT
                 COUNT(*) as total_sessions,
-                SUM(total_questions) as total_questions,
-                SUM(correct_answers) as correct_answers,
-                AVG(CAST(correct_answers AS FLOAT) / total_questions * 100) as avg_accuracy
+                COALESCE(SUM(total_questions), 0) as total_questions,
+                COALESCE(SUM(correct_answers), 0) as correct_answers,
+                COALESCE(AVG(CAST(correct_answers AS FLOAT) / total_questions * 100), 0.0) as avg_accuracy
             FROM practice_sessions
             WHERE date(session_date) >= date('now', '-' || ? || ' days')
         """, (days,))
-        return dict(cursor.fetchone())
+        result = cursor.fetchone()
+        if result is None:
+            return {
+                'total_sessions': 0,
+                'total_questions': 0,
+                'correct_answers': 0,
+                'avg_accuracy': 0.0
+            }
+        return dict(result)
     
     def close(self):
         """Close the database connection."""

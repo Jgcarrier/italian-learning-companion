@@ -882,9 +882,9 @@ class PracticeGenerator:
         subjects = ["io", "tu", "lui/lei", "noi", "voi", "loro"]
 
         # Regular past participles
-        def get_participle(infinitive, aux):
+        def get_participle(infinitive):
             if infinitive == "andare":
-                return "andato/a"
+                return "andato"  # Base form, will be modified for agreement
             if infinitive.endswith("are"):
                 return infinitive[:-3] + "ato"
             elif infinitive.endswith("ere"):
@@ -894,6 +894,23 @@ class PracticeGenerator:
             elif infinitive.endswith("ire"):
                 return infinitive[:-3] + "ito"
             return infinitive
+
+        # Add agreement for essere verbs
+        def apply_agreement(participle, aux, subject):
+            if aux == "avere":
+                return participle  # No agreement with avere
+            # Agreement with essere - modify participle ending
+            if subject == "io" or subject == "tu":
+                return participle + "/a"  # Could be either gender
+            elif subject == "lui/lei":
+                return participle + "/a"  # Could be either gender
+            elif subject == "noi":
+                return participle[:-1] + "i/e"  # plural
+            elif subject == "voi":
+                return participle[:-1] + "i/e"  # plural
+            elif subject == "loro":
+                return participle[:-1] + "i/e"  # plural
+            return participle
 
         # Conjugate auxiliary
         def conjugate_aux(aux, subject):
@@ -911,7 +928,8 @@ class PracticeGenerator:
         for _ in range(count):
             verb, meaning, aux = random.choice(regular_verbs)
             subject = random.choice(subjects)
-            participle = get_participle(verb, aux)
+            participle = get_participle(verb)
+            participle = apply_agreement(participle, aux, subject)
 
             auxiliary_conjugated = conjugate_aux(aux, subject)
             answer = f"{auxiliary_conjugated} {participle}"
