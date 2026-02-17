@@ -129,8 +129,16 @@ class ItalianDatabase:
             )
         """)
         
+        # Create indexes for better query performance
+        cursor.execute("CREATE INDEX IF NOT EXISTS idx_vocabulary_level ON vocabulary(level)")
+        cursor.execute("CREATE INDEX IF NOT EXISTS idx_verb_conjugations_level ON verb_conjugations(level)")
+        cursor.execute("CREATE INDEX IF NOT EXISTS idx_verb_conjugations_tense ON verb_conjugations(tense)")
+        cursor.execute("CREATE INDEX IF NOT EXISTS idx_verb_conjugations_infinitive ON verb_conjugations(infinitive)")
+        cursor.execute("CREATE INDEX IF NOT EXISTS idx_topics_level ON topics(level)")
+        cursor.execute("CREATE INDEX IF NOT EXISTS idx_practice_sessions_date ON practice_sessions(session_date)")
+
         self.conn.commit()
-        print("✓ Database tables created successfully")
+        print("✓ Database tables and indexes created successfully")
     
     def add_topic(self, name: str, category: str, level: str, 
                   description: str = "", lesson_ref: str = "", 

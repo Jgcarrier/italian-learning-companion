@@ -5,7 +5,7 @@ Italian Learning Companion - Flask Web Application
 import sys
 import os
 from pathlib import Path
-from flask import Flask, render_template, request, session, redirect, url_for, jsonify
+from flask import Flask, render_template, request, session, redirect, url_for, jsonify, g
 import time
 from datetime import datetime
 
@@ -33,13 +33,23 @@ else:
 
 
 def get_db():
-    """Get a database connection for the current request."""
-    return ItalianDatabase(DB_PATH)
+    """Get a database connection for the current request, reusing if available."""
+    if 'db' not in g:
+        g.db = ItalianDatabase(DB_PATH)
+    return g.db
 
 
 def get_generator():
-    """Get a practice generator with a fresh database connection."""
+    """Get a practice generator with the current request's database connection."""
     return PracticeGenerator(get_db())
+
+
+@app.teardown_appcontext
+def close_db(error):
+    """Close the database connection at the end of the request."""
+    db = g.pop('db', None)
+    if db is not None:
+        db.close()
 
 
 # Constants for validation
