@@ -1152,6 +1152,78 @@ def subjunctive_present():
     return redirect(url_for('practice_question'))
 
 
+@app.route('/subjunctive-past', methods=['GET', 'POST'])
+def subjunctive_past():
+    """Subjunctive past (congiuntivo passato) practice (B1 level)."""
+    level = request.args.get('level') or request.form.get('level') or session.get('level', 'B1')
+
+    if request.method == 'GET':
+        session['level'] = level
+        return render_template('subjunctive_past_setup.html', level=level)
+
+    count = int(request.form.get('count', 10))
+    generator = get_generator()
+    questions = generator.generate_subjunctive_past(count)
+
+    session['practice_type'] = 'subjunctive_past'
+    session['questions'] = questions
+    session['current_question'] = 0
+    session['correct_count'] = 0
+    session['answers'] = []
+    session['start_time'] = time.time()
+    session['level'] = level
+
+    return redirect(url_for('practice_question'))
+
+
+@app.route('/subjunctive-imperfect', methods=['GET', 'POST'])
+def subjunctive_imperfect():
+    """Subjunctive imperfect (congiuntivo imperfetto) practice (B1 level)."""
+    level = request.args.get('level') or request.form.get('level') or session.get('level', 'B1')
+
+    if request.method == 'GET':
+        session['level'] = level
+        return render_template('subjunctive_imperfect_setup.html', level=level)
+
+    count = int(request.form.get('count', 10))
+    generator = get_generator()
+    questions = generator.generate_subjunctive_imperfect(count)
+
+    session['practice_type'] = 'subjunctive_imperfect'
+    session['questions'] = questions
+    session['current_question'] = 0
+    session['correct_count'] = 0
+    session['answers'] = []
+    session['start_time'] = time.time()
+    session['level'] = level
+
+    return redirect(url_for('practice_question'))
+
+
+@app.route('/subjunctive-past-perfect', methods=['GET', 'POST'])
+def subjunctive_past_perfect():
+    """Subjunctive past perfect (congiuntivo trapassato) practice (B1 level)."""
+    level = request.args.get('level') or request.form.get('level') or session.get('level', 'B1')
+
+    if request.method == 'GET':
+        session['level'] = level
+        return render_template('subjunctive_past_perfect_setup.html', level=level)
+
+    count = int(request.form.get('count', 10))
+    generator = get_generator()
+    questions = generator.generate_subjunctive_past_perfect(count)
+
+    session['practice_type'] = 'subjunctive_past_perfect'
+    session['questions'] = questions
+    session['current_question'] = 0
+    session['correct_count'] = 0
+    session['answers'] = []
+    session['start_time'] = time.time()
+    session['level'] = level
+
+    return redirect(url_for('practice_question'))
+
+
 @app.route('/present-tense', methods=['GET', 'POST'])
 def present_tense():
     """Present tense conjugation practice (A1 level)."""

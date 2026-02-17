@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block title %}Subjunctive Past Perfect Setup{% endblock %}
+
+{% block content %}
+<div class="text-center mb-30">
+    <h2>⏳ Congiuntivo Trapassato (Subjunctive Past Perfect)</h2>
+    <p>Hypothetical past situations and reported past thoughts</p>
+</div>
+
+<form method="POST" action="{{ url_for('subjunctive_past_perfect') }}">
+    <input type="hidden" name="level" value="{{ level or 'B1' }}">
+    <div class="form-group">
+        <label for="count">Number of Questions:</label>
+        <input type="number" name="count" id="count" value="10" min="5" max="20">
+    </div>
+
+    <div class="button-group">
+        <button type="submit" class="btn btn-primary btn-large">Start Practice ({{ level or 'B1' }})</button>
+        <a href="{{ url_for('verbs_menu', level=level or 'B1') }}" class="btn btn-secondary">Back</a>
+    </div>
+</form>
+
+<div style="margin-top: 30px; padding: 20px; background: var(--light-gray); border-radius: 8px;">
+    <h3 style="font-size: 1.1rem; margin-bottom: 10px;">💡 Structure:</h3>
+    <p style="color: #666; margin-bottom: 15px;">
+        <strong>avere/essere (subjunctive imperfect) + past participle</strong>
+    </p>
+
+    <div style="margin-bottom: 15px;">
+        <h4 style="font-size: 1rem; color: #333; margin-bottom: 8px;">With AVERE:</h4>
+        <ul style="margin-left: 20px; color: #666;">
+            <li><strong>avessi mangiato</strong> = had eaten</li>
+            <li><strong>avessero visto</strong> = had seen</li>
+        </ul>
+    </div>
+
+    <div style="margin-bottom: 15px;">
+        <h4 style="font-size: 1rem; color: #333; margin-bottom: 8px;">With ESSERE:</h4>
+        <ul style="margin-left: 20px; color: #666;">
+            <li><strong>fossi andato/a</strong> = had gone</li>
+            <li><strong>fossero partiti/e</strong> = had left</li>
+        </ul>
+    </div>
+
+    <p style="color: #666; margin-top: 15px; font-style: italic;">
+        <strong>Examples:</strong> Se avessi saputo (If I had known) | Pensavo che fossero partiti (I thought they had left)
+    </p>
+</div>
+{% endblock %}

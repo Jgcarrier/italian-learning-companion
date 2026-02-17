@@ -2607,6 +2607,314 @@ class PracticeGenerator:
 
         return questions
 
+    def generate_subjunctive_past(self, count: int = 10) -> List[Dict]:
+        """
+        Generate subjunctive past (congiuntivo passato) practice for B1 level.
+        Structure: avere/essere (present subjunctive) + past participle
+        Used after same triggers as present subjunctive, but for past actions.
+        """
+
+        examples = [
+            {
+                "italian": "Penso che lui _____ già partito.",
+                "english": "I think that he has already left.",
+                "answer": "sia",
+                "full": "sia partito",
+                "explanation": "Subjunctive past: essere (present subjunctive) + past participle. 'Sia partito' = has left. Partire uses essere."
+            },
+            {
+                "italian": "Credo che loro _____ mangiato troppo.",
+                "english": "I believe that they have eaten too much.",
+                "answer": "abbiano",
+                "full": "abbiano mangiato",
+                "explanation": "Subjunctive past: avere (present subjunctive) + past participle. 'Abbiano mangiato' = have eaten."
+            },
+            {
+                "italian": "Spero che tu _____ capito la lezione.",
+                "english": "I hope that you understood the lesson.",
+                "answer": "abbia",
+                "full": "abbia capito",
+                "explanation": "Subjunctive past: 'abbia capito' = understood/have understood. Used after 'spero che'."
+            },
+            {
+                "italian": "Dubito che voi _____ finito il lavoro.",
+                "english": "I doubt that you have finished the work.",
+                "answer": "abbiate",
+                "full": "abbiate finito",
+                "explanation": "Subjunctive past: 'abbiate finito' = have finished (voi form)."
+            },
+            {
+                "italian": "È possibile che lei _____ uscita.",
+                "english": "It's possible that she went out.",
+                "answer": "sia",
+                "full": "sia uscita",
+                "explanation": "Subjunctive past: 'sia uscita' = went out/has gone out. Uscire uses essere."
+            },
+            {
+                "italian": "Non credo che noi _____ visto quel film.",
+                "english": "I don't think that we saw that film.",
+                "answer": "abbiamo",
+                "full": "abbiamo visto",
+                "explanation": "Subjunctive past: 'abbiamo visto' = saw/have seen (noi form)."
+            },
+            {
+                "italian": "Spero che Maria _____ arrivata bene.",
+                "english": "I hope that Maria arrived safely.",
+                "answer": "sia",
+                "full": "sia arrivata",
+                "explanation": "Subjunctive past: 'sia arrivata' = arrived/has arrived (feminine)."
+            },
+            {
+                "italian": "Temo che loro non _____ venuti.",
+                "english": "I fear that they didn't come.",
+                "answer": "siano",
+                "full": "siano venuti",
+                "explanation": "Subjunctive past negative: 'non siano venuti' = didn't come. Venire uses essere."
+            },
+            {
+                "italian": "Penso che _____ stato un errore.",
+                "english": "I think that it was a mistake.",
+                "answer": "sia",
+                "full": "sia stato",
+                "explanation": "Subjunctive past of essere: 'sia stato' = was/has been."
+            },
+            {
+                "italian": "È strano che tu non _____ ricevuto la lettera.",
+                "english": "It's strange that you didn't receive the letter.",
+                "answer": "abbia",
+                "full": "abbia ricevuto",
+                "explanation": "Subjunctive past: 'non abbia ricevuto' = didn't receive."
+            }
+        ]
+
+        selected = random.sample(examples, min(count, len(examples)))
+        questions = []
+
+        for item in selected:
+            forms = ["sia", "abbia", "siano", "abbiano", "abbiamo", "abbiate", "siamo", "siate"]
+
+            choices = [item["answer"]]
+            wrong_choices = [f for f in forms if f != item["answer"]]
+            choices.extend(random.sample(wrong_choices, min(3, len(wrong_choices))))
+            random.shuffle(choices)
+
+            questions.append({
+                "question": item["italian"],
+                "answer": item["answer"],
+                "type": "multiple_choice",
+                "choices": choices,
+                "hint": f"{item['english']} | Full: {item['full']}",
+                "explanation": item["explanation"]
+            })
+
+        return questions
+
+    def generate_subjunctive_imperfect(self, count: int = 10) -> List[Dict]:
+        """
+        Generate subjunctive imperfect (congiuntivo imperfetto) for B1 level.
+        Used in hypothetical or contrary-to-fact situations.
+        Endings: -ssi, -ssi, -sse, -ssimo, -ste, -ssero
+        """
+
+        examples = [
+            {
+                "italian": "Se io _____ ricco, comprerei una casa.",
+                "english": "If I were rich, I would buy a house.",
+                "answer": "fossi",
+                "infinitive": "essere",
+                "explanation": "Subjunctive imperfect in 'if' clauses: 'se fossi' = if I were. Essere → fossi."
+            },
+            {
+                "italian": "Vorrei che tu _____ più gentile.",
+                "english": "I would like you to be nicer.",
+                "answer": "fossi",
+                "infinitive": "essere",
+                "explanation": "After 'vorrei che' (I would like that), use subjunctive imperfect: 'fossi' = were (tu)."
+            },
+            {
+                "italian": "Se loro _____ tempo, verrebbero con noi.",
+                "english": "If they had time, they would come with us.",
+                "answer": "avessero",
+                "infinitive": "avere",
+                "explanation": "Subjunctive imperfect: 'se avessero' = if they had. Avere → avessero."
+            },
+            {
+                "italian": "Credevo che lei _____ italiana.",
+                "english": "I thought that she was Italian.",
+                "answer": "fosse",
+                "infinitive": "essere",
+                "explanation": "Subjunctive imperfect after past tense: 'fosse' = was/were (lei). Essere → fosse."
+            },
+            {
+                "italian": "Se noi _____ più soldi, viaggeremmo di più.",
+                "english": "If we had more money, we would travel more.",
+                "answer": "avessimo",
+                "infinitive": "avere",
+                "explanation": "Subjunctive imperfect: 'se avessimo' = if we had. Avere → avessimo."
+            },
+            {
+                "italian": "Vorrei che voi _____ più spesso.",
+                "english": "I would like you to come more often.",
+                "answer": "veniste",
+                "infinitive": "venire",
+                "explanation": "Subjunctive imperfect: 'veniste' = came/would come (voi). Venire → veniste."
+            },
+            {
+                "italian": "Se tu _____ italiano, capiresti tutto.",
+                "english": "If you spoke Italian, you would understand everything.",
+                "answer": "parlassi",
+                "infinitive": "parlare",
+                "explanation": "Subjunctive imperfect: 'se parlassi' = if you spoke. Parlare → parlassi."
+            },
+            {
+                "italian": "Pensavo che loro _____ in vacanza.",
+                "english": "I thought that they were on vacation.",
+                "answer": "fossero",
+                "infinitive": "essere",
+                "explanation": "Subjunctive imperfect: 'fossero' = were (loro). After pensavo che."
+            },
+            {
+                "italian": "Se lei _____ la verità, sarebbe meglio.",
+                "english": "If she told the truth, it would be better.",
+                "answer": "dicesse",
+                "infinitive": "dire",
+                "explanation": "Subjunctive imperfect: 'se dicesse' = if she told. Dire → dicesse."
+            },
+            {
+                "italian": "Speravo che voi _____ venire alla festa.",
+                "english": "I hoped that you could come to the party.",
+                "answer": "poteste",
+                "infinitive": "potere",
+                "explanation": "Subjunctive imperfect: 'poteste' = could (voi). Potere → poteste."
+            }
+        ]
+
+        selected = random.sample(examples, min(count, len(examples)))
+        questions = []
+
+        for item in selected:
+            forms = ["fossi", "fosse", "fossero", "fossimo", "avessi", "avesse", "avessero",
+                    "avessimo", "parlassi", "parlasse", "veniste", "dicesse", "poteste"]
+
+            choices = [item["answer"]]
+            wrong_choices = [f for f in forms if f != item["answer"]]
+            choices.extend(random.sample(wrong_choices, min(3, len(wrong_choices))))
+            random.shuffle(choices)
+
+            questions.append({
+                "question": item["italian"],
+                "answer": item["answer"],
+                "type": "multiple_choice",
+                "choices": choices,
+                "hint": item["english"],
+                "explanation": item["explanation"]
+            })
+
+        return questions
+
+    def generate_subjunctive_past_perfect(self, count: int = 10) -> List[Dict]:
+        """
+        Generate subjunctive past perfect (congiuntivo trapassato) for B1 level.
+        Structure: avere/essere (subjunctive imperfect) + past participle
+        Used for hypothetical past situations or reported thoughts about past.
+        """
+
+        examples = [
+            {
+                "italian": "Se io _____ saputo, sarei venuto.",
+                "english": "If I had known, I would have come.",
+                "answer": "avessi",
+                "full": "avessi saputo",
+                "explanation": "Subjunctive past perfect in 'if' clauses: avere/essere (imperfect subjunctive) + participle. 'Avessi saputo' = had known."
+            },
+            {
+                "italian": "Pensavo che loro _____ già partiti.",
+                "english": "I thought that they had already left.",
+                "answer": "fossero",
+                "full": "fossero partiti",
+                "explanation": "Subjunctive past perfect: 'fossero partiti' = had left. After pensavo che (past tense)."
+            },
+            {
+                "italian": "Se tu _____ studiato, avresti passato l'esame.",
+                "english": "If you had studied, you would have passed the exam.",
+                "answer": "avessi",
+                "full": "avessi studiato",
+                "explanation": "Subjunctive past perfect: 'se avessi studiato' = if you had studied."
+            },
+            {
+                "italian": "Credevo che lei _____ già arrivata.",
+                "english": "I believed that she had already arrived.",
+                "answer": "fosse",
+                "full": "fosse arrivata",
+                "explanation": "Subjunctive past perfect: 'fosse arrivata' = had arrived (feminine)."
+            },
+            {
+                "italian": "Se noi _____ andati, ci saremmo divertiti.",
+                "english": "If we had gone, we would have had fun.",
+                "answer": "fossimo",
+                "full": "fossimo andati",
+                "explanation": "Subjunctive past perfect: 'se fossimo andati' = if we had gone."
+            },
+            {
+                "italian": "Speravo che voi _____ finito il lavoro.",
+                "english": "I hoped that you had finished the work.",
+                "answer": "aveste",
+                "full": "aveste finito",
+                "explanation": "Subjunctive past perfect: 'aveste finito' = had finished (voi)."
+            },
+            {
+                "italian": "Se lui _____ venuto, sarebbe stato bello.",
+                "english": "If he had come, it would have been nice.",
+                "answer": "fosse",
+                "full": "fosse venuto",
+                "explanation": "Subjunctive past perfect: 'se fosse venuto' = if he had come."
+            },
+            {
+                "italian": "Pensavo che tu _____ capito tutto.",
+                "english": "I thought that you had understood everything.",
+                "answer": "avessi",
+                "full": "avessi capito",
+                "explanation": "Subjunctive past perfect: 'avessi capito' = had understood."
+            },
+            {
+                "italian": "Se loro _____ stati qui, li avreste visti.",
+                "english": "If they had been here, you would have seen them.",
+                "answer": "fossero",
+                "full": "fossero stati",
+                "explanation": "Subjunctive past perfect: 'se fossero stati' = if they had been."
+            },
+            {
+                "italian": "Dubitavo che lei _____ mangiato.",
+                "english": "I doubted that she had eaten.",
+                "answer": "avesse",
+                "full": "avesse mangiato",
+                "explanation": "Subjunctive past perfect: 'avesse mangiato' = had eaten (lei)."
+            }
+        ]
+
+        selected = random.sample(examples, min(count, len(examples)))
+        questions = []
+
+        for item in selected:
+            forms = ["avessi", "avesse", "avessero", "avessimo", "aveste",
+                    "fossi", "fosse", "fossero", "fossimo", "foste"]
+
+            choices = [item["answer"]]
+            wrong_choices = [f for f in forms if f != item["answer"]]
+            choices.extend(random.sample(wrong_choices, min(3, len(wrong_choices))))
+            random.shuffle(choices)
+
+            questions.append({
+                "question": item["italian"],
+                "answer": item["answer"],
+                "type": "multiple_choice",
+                "choices": choices,
+                "hint": f"{item['english']} | Full: {item['full']}",
+                "explanation": item["explanation"]
+            })
+
+        return questions
+
 
 if __name__ == "__main__":
     # Test the practice generator

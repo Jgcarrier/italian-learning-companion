@@ -104,6 +104,24 @@
         <h3>Past Perfect</h3>
         <p>Trapassato Prossimo</p>
     </a>
+
+    <a href="{{ url_for('subjunctive_past') }}?level={{ level }}" class="menu-item">
+        <div class="menu-icon">💭</div>
+        <h3>Subjunctive Past</h3>
+        <p>abbia fatto, sia andato</p>
+    </a>
+
+    <a href="{{ url_for('subjunctive_imperfect') }}?level={{ level }}" class="menu-item">
+        <div class="menu-icon">🌙</div>
+        <h3>Subjunctive Imperfect</h3>
+        <p>fossi, avessi, parlassi</p>
+    </a>
+
+    <a href="{{ url_for('subjunctive_past_perfect') }}?level={{ level }}" class="menu-item">
+        <div class="menu-icon">⏳</div>
+        <h3>Subjunctive Past Perfect</h3>
+        <p>avessi fatto, fossi andato</p>
+    </a>
     {% endif %}
 </div>
 {% endblock %}
