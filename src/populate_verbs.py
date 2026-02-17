@@ -257,14 +257,40 @@ def get_presente(infinitive, verb_type):
         return {"io": "bevo", "tu": "bevi", "lui_lei": "beve", "noi": "beviamo", "voi": "bevete", "loro": "bevono"}
     elif verb_type == "regular_are":
         stem = infinitive[:-3]
-        return {
-            "io": stem + "o",
-            "tu": stem + "i",
-            "lui_lei": stem + "a",
-            "noi": stem + "iamo",
-            "voi": stem + "ate",
-            "loro": stem + "ano"
-        }
+
+        # Handle verbs ending in -iare (mangiare, studiare, etc.)
+        # Drop the final i from stem before adding endings that start with i
+        if infinitive.endswith("iare"):
+            base = stem[:-1]  # Remove the i: "mangi" → "mang"
+            return {
+                "io": base + "io",         # mangio
+                "tu": base + "i",          # mangi (not mangii)
+                "lui_lei": base + "ia",    # mangia
+                "noi": base + "iamo",      # mangiamo
+                "voi": base + "iate",      # mangiate
+                "loro": base + "iano"      # mangiano
+            }
+        # Handle verbs ending in -care/-gare (cercare, pagare, etc.)
+        # Add h before i/e to preserve hard sound
+        elif infinitive.endswith("care") or infinitive.endswith("gare"):
+            return {
+                "io": stem + "o",
+                "tu": stem + "hi",          # cerchi, paghi
+                "lui_lei": stem + "a",
+                "noi": stem + "hiamo",      # cerchiamo, paghiamo
+                "voi": stem + "ate",
+                "loro": stem + "ano"
+            }
+        # Regular -are verbs
+        else:
+            return {
+                "io": stem + "o",
+                "tu": stem + "i",
+                "lui_lei": stem + "a",
+                "noi": stem + "iamo",
+                "voi": stem + "ate",
+                "loro": stem + "ano"
+            }
     elif verb_type == "regular_ere":
         stem = infinitive[:-3]
         return {
@@ -380,14 +406,27 @@ def get_futuro(infinitive, verb_type):
         return {"io": "starò", "tu": "starai", "lui_lei": "starà", "noi": "staremo", "voi": "starete", "loro": "staranno"}
     elif verb_type == "regular_are":
         stem = infinitive[:-3]
-        return {
-            "io": stem + "erò",
-            "tu": stem + "erai",
-            "lui_lei": stem + "erà",
-            "noi": stem + "eremo",
-            "voi": stem + "erete",
-            "loro": stem + "eranno"
-        }
+
+        # Handle verbs ending in -care/-gare - add h before e
+        if infinitive.endswith("care") or infinitive.endswith("gare"):
+            return {
+                "io": stem + "herò",         # cercherò, pagherò
+                "tu": stem + "herai",
+                "lui_lei": stem + "herà",
+                "noi": stem + "heremo",
+                "voi": stem + "herete",
+                "loro": stem + "heranno"
+            }
+        # -iare verbs and regular -are verbs
+        else:
+            return {
+                "io": stem + "erò",
+                "tu": stem + "erai",
+                "lui_lei": stem + "erà",
+                "noi": stem + "eremo",
+                "voi": stem + "erete",
+                "loro": stem + "eranno"
+            }
     elif verb_type in ["regular_ere", "regular_ire"]:
         stem = infinitive[:-1]  # Remove just the 'e' or 'e'
         return {
@@ -464,14 +503,27 @@ def get_condizionale(infinitive, verb_type):
         return {"io": "andrei", "tu": "andresti", "lui_lei": "andrebbe", "noi": "andremmo", "voi": "andreste", "loro": "andrebbero"}
     elif verb_type == "regular_are":
         stem = infinitive[:-3]
-        return {
-            "io": stem + "erei",
-            "tu": stem + "eresti",
-            "lui_lei": stem + "erebbe",
-            "noi": stem + "eremmo",
-            "voi": stem + "ereste",
-            "loro": stem + "erebbero"
-        }
+
+        # Handle verbs ending in -care/-gare - add h before e
+        if infinitive.endswith("care") or infinitive.endswith("gare"):
+            return {
+                "io": stem + "herei",        # cercherei, pagherei
+                "tu": stem + "heresti",
+                "lui_lei": stem + "herebbe",
+                "noi": stem + "heremmo",
+                "voi": stem + "hereste",
+                "loro": stem + "erebbero"
+            }
+        # -iare verbs and regular -are verbs
+        else:
+            return {
+                "io": stem + "erei",
+                "tu": stem + "eresti",
+                "lui_lei": stem + "erebbe",
+                "noi": stem + "eremmo",
+                "voi": stem + "ereste",
+                "loro": stem + "erebbero"
+            }
     elif verb_type in ["regular_ere", "regular_ire"]:
         stem = infinitive[:-1]
         return {
@@ -532,14 +584,38 @@ def get_congiuntivo_presente(infinitive, verb_type):
         return {"io": "beva", "tu": "beva", "lui_lei": "beva", "noi": "beviamo", "voi": "beviate", "loro": "bevano"}
     elif verb_type == "regular_are":
         stem = infinitive[:-3]
-        return {
-            "io": stem + "i",
-            "tu": stem + "i",
-            "lui_lei": stem + "i",
-            "noi": stem + "iamo",
-            "voi": stem + "iate",
-            "loro": stem + "ino"
-        }
+
+        # Handle verbs ending in -iare - drop the i before adding i endings
+        if infinitive.endswith("iare"):
+            base = stem[:-1]  # Remove the i: "mangi" → "mang"
+            return {
+                "io": base + "i",           # mangi (not mangii)
+                "tu": base + "i",
+                "lui_lei": base + "i",
+                "noi": base + "iamo",
+                "voi": base + "iate",
+                "loro": base + "ino"
+            }
+        # Handle verbs ending in -care/-gare - add h before i
+        elif infinitive.endswith("care") or infinitive.endswith("gare"):
+            return {
+                "io": stem + "hi",           # cerchi, paghi
+                "tu": stem + "hi",
+                "lui_lei": stem + "hi",
+                "noi": stem + "hiamo",
+                "voi": stem + "hiate",
+                "loro": stem + "hino"
+            }
+        # Regular -are verbs
+        else:
+            return {
+                "io": stem + "i",
+                "tu": stem + "i",
+                "lui_lei": stem + "i",
+                "noi": stem + "iamo",
+                "voi": stem + "iate",
+                "loro": stem + "ino"
+            }
     elif verb_type == "regular_ere":
         stem = infinitive[:-3]
         return {
