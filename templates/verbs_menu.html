@@ -63,12 +63,18 @@
 
     <a href="{{ url_for('reflexive_verbs') }}?level={{ level }}" class="menu-item">
         <div class="menu-icon">🪞</div>
-        <h3>Reflexive Verbs</h3>
-        <p>Practice reflexives</p>
+        <h3>Reflexive Verbs (Present)</h3>
+        <p>svegliarsi, alzarsi, chiamarsi...</p>
     </a>
     {% endif %}
 
     {% if level in ['A2'] %}
+    <a href="{{ url_for('reflexive_passato_prossimo') }}?level={{ level }}" class="menu-item">
+        <div class="menu-icon">🪞</div>
+        <h3>Reflexive Verbs (Passato)</h3>
+        <p>mi sono alzato, ti sei svegliato...</p>
+    </a>
+
     <a href="{{ url_for('imperfect_tense') }}?level={{ level }}" class="menu-item">
         <div class="menu-icon">🕰️</div>
         <h3>Imperfetto</h3>

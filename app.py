@@ -512,6 +512,86 @@ def check_answer(user_answer: str, correct_answer: str, question_type: str = Non
                   user_with_digits in all_acceptable_normalized or
                   user_with_words in all_acceptable_normalized)
 
+    # Synonym / near-match check for vocabulary (single words or short phrases)
+    # Catches cases like "small" vs "little", "bike" vs "bicycle", etc.
+    if not is_correct:
+        vocab_synonyms = {
+            # Size / degree
+            'small': ['little', 'tiny', 'petite'],
+            'little': ['small', 'tiny'],
+            'big': ['large', 'great'],
+            'large': ['big', 'great'],
+            # Bike
+            'bike': ['bicycle', 'bici'],
+            'bicycle': ['bike', 'bici'],
+            'bici': ['bicycle', 'bike', 'bicicletta'],
+            'bicicletta': ['bike', 'bicycle', 'bici'],
+            # Common verb synonyms
+            'to go': ['to leave', 'to walk'],
+            'to look': ['to watch', 'to see'],
+            'to see': ['to look', 'to watch'],
+            'to wish': ['to want', 'to desire'],
+            'to want': ['to wish', 'to desire'],
+            'to speak': ['to talk', 'to say'],
+            'to talk': ['to speak', 'to chat'],
+            'to listen': ['to hear'],
+            'to hear': ['to listen'],
+            'to get': ['to obtain', 'to receive', 'to take'],
+            'to take': ['to get', 'to grab'],
+            'to like': ['to enjoy', 'to love'],
+            'to enjoy': ['to like', 'to love'],
+            'to begin': ['to start'],
+            'to start': ['to begin'],
+            'to finish': ['to end', 'to complete'],
+            'to end': ['to finish', 'to complete'],
+            'to live': ['to reside'],
+            'to work': ['to labour', 'to labor'],
+            'to wait': ['to wait for'],
+            'to wait for': ['to wait'],
+            'to know': ['to understand', 'to recognise', 'to recognize'],
+            'to understand': ['to know', 'to comprehend'],
+            'to help': ['to assist', 'to aid'],
+            'to try': ['to attempt'],
+            'to walk': ['to go on foot', 'to stroll'],
+            # Adjective synonyms
+            'beautiful': ['pretty', 'lovely', 'gorgeous'],
+            'pretty': ['beautiful', 'lovely'],
+            'lovely': ['beautiful', 'pretty'],
+            'happy': ['glad', 'joyful', 'pleased'],
+            'glad': ['happy', 'pleased'],
+            'sad': ['unhappy', 'upset'],
+            'tired': ['exhausted', 'sleepy', 'weary'],
+            'angry': ['upset', 'annoyed', 'cross'],
+            'correct': ['right'],
+            'right': ['correct'],
+            'wrong': ['incorrect'],
+            'incorrect': ['wrong'],
+            'fast': ['quick', 'rapid'],
+            'quick': ['fast', 'rapid'],
+            'slow': ['sluggish'],
+            # Noun synonyms
+            'mum': ['mom', 'mother', 'mamma'],
+            'mom': ['mum', 'mother', 'mamma'],
+            'mother': ['mum', 'mom', 'mamma'],
+            'dad': ['father', 'papa', 'papà'],
+            'father': ['dad', 'papa', 'papà'],
+            'flat': ['apartment'],
+            'apartment': ['flat'],
+            'shop': ['store', 'negozio'],
+            'store': ['shop'],
+            'film': ['movie', 'cinema'],
+            'movie': ['film', 'cinema'],
+            'friend': ['mate', 'pal'],
+        }
+
+        user_strip = user_normalized.lstrip('to ') if user_normalized.startswith('to ') else user_normalized
+        for acc in all_acceptable:
+            acc_strip = acc.lstrip('to ') if acc.startswith('to ') else acc
+            syns = vocab_synonyms.get(acc, []) + vocab_synonyms.get(f'to {acc_strip}', [])
+            if user_normalized in syns or user_strip in [s.lstrip('to ') for s in syns]:
+                is_correct = True
+                break
+
     # For display, use the first option if multiple
     display_answer = correct_answer.split('/')[0] if '/' in correct_answer else correct_answer
 
@@ -1092,6 +1172,17 @@ def reflexive_verbs():
         practice_type='reflexive_verbs',
         generator_method='generate_reflexive_verbs',
         setup_template='reflexive_verbs_setup.html',
+        menu_type='verbs_menu'
+    )()
+
+
+@app.route('/reflexive-passato-prossimo', methods=['GET', 'POST'])
+def reflexive_passato_prossimo():
+    """Reflexive verbs in passato prossimo practice (A2)."""
+    return create_practice_route(
+        practice_type='reflexive_passato_prossimo',
+        generator_method='generate_reflexive_passato_prossimo',
+        setup_template='reflexive_passato_prossimo_setup.html',
         menu_type='verbs_menu'
     )()
 

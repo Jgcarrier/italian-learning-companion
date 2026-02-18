@@ -304,16 +304,39 @@ class PracticeGenerator:
         else:
             templates = templates_a1  # fallback
 
+        # Rule explanations keyed by blank_type
+        blank_type_rules = {
+            "verb":            "Present tense: choose the correct conjugation for the subject (io/tu/lui/noi/voi/loro).",
+            "pronoun":         "Subject pronouns: io, tu, lui/lei, noi, voi, loro — match the person performing the action.",
+            "question_word":   "Italian question words: Qual (which/what), Come (how), Dove (where), Quando (when), Perché (why), Quanto (how much).",
+            "article":         "Definite articles: il/lo/la/l' (singular), i/gli/le (plural). Choice depends on noun gender and starting letter.",
+            "partitive":       "Partitive article (some): del/dello/della/dell'/dei/degli/delle — used for unspecified quantities.",
+            "passato":         "Passato prossimo: auxiliary (avere/essere) + past participle. Movement/state verbs use essere; most others use avere.",
+            "auxiliary":       "Auxiliary choice: avere with transitive verbs; essere with movement, state change, and reflexive verbs.",
+            "imperfect":       "Imperfetto: used for habitual past actions, descriptions, and ongoing past states. Endings: -avo/-evi/-eva/-avamo/-avate/-avano (-are verbs).",
+            "future":          "Futuro semplice: used for future actions. Regular -are/-ere verbs → stem + -erò/-erai/-erà/-eremo/-erete/-eranno.",
+            "subjunctive":     "Congiuntivo presente: used after verbs of opinion, doubt, emotion (penso che, voglio che, è importante che).",
+            "subjunctive_imp": "Congiuntivo imperfetto: used in hypothetical clauses (se + imperfect subjunctive) and with volere che in past contexts.",
+            "subjunctive_past":"Congiuntivo passato: used after verbs of opinion/belief when the subordinate action is completed (credo che sia partita).",
+            "subjunctive_plup":"Congiuntivo trapassato: past perfect subjunctive, used in 'if' clauses referring to past unreal conditions.",
+            "conditional":     "Condizionale presente: used for polite requests and hypothetical outcomes (vorrei, farei, potrei). Often paired with 'se + imperfetto'.",
+            "gerund":          "Gerundio: formed by dropping -are/-ere/-ire and adding -ando/-endo. Used with stare + gerundio for ongoing actions.",
+            "passive":         "Forma passiva: essere (conjugated) + past participle. The participle agrees with the subject in gender and number.",
+            "past_perfect_subj": "Congiuntivo trapassato: avere/essere (congiuntivo imperfetto) + participio passato — used in unreal past conditions.",
+        }
+
         # Select random templates
         selected = random.sample(templates, min(count, len(templates)))
         questions = []
 
         for template, answer, english, blank_type in selected:
+            explanation = blank_type_rules.get(blank_type, "")
             questions.append({
                 "question": f"Fill in the blank: {template}\n(English: {english})",
                 "answer": answer,
                 "type": "fill_in_blank",
-                "blank_type": blank_type
+                "blank_type": blank_type,
+                "explanation": explanation,
             })
 
         return questions
@@ -374,9 +397,20 @@ class PracticeGenerator:
                 "io": "io", "tu": "tu", "lui_lei": "lui/lei",
                 "noi": "noi", "voi": "voi", "loro": "loro"
             }
+            tense_display = {
+                "presente": "Present Tense (Presente)",
+                "passato_prossimo": "Passato Prossimo",
+                "imperfetto": "Imperfect Tense (Imperfetto)",
+                "futuro_semplice": "Future Tense (Futuro Semplice)",
+                "condizionale_presente": "Conditional (Condizionale Presente)",
+                "congiuntivo_presente": "Subjunctive (Congiuntivo Presente)",
+                "imperativo": "Imperative (Imperativo)",
+            }
+            tense_label = tense_display.get(tense, tense.replace("_", " ").title())
+            irregular_flag = " ⚠️ irregular verb" if verb_type == "irregular" else ""
 
             all_questions.append({
-                "question": f"Conjugate '{infinitive}' ({english}) for {person_display[person]}",
+                "question": f"Conjugate '{infinitive}' ({english}){irregular_flag} in the {tense_label} for {person_display[person]}",
                 "choices": all_choices,
                 "answer": correct_answer,
                 "type": "multiple_choice"
@@ -705,18 +739,67 @@ class PracticeGenerator:
             ("accadere", "to happen", "essere", "Impersonal verb"),
         ]
         
+        # Richer explanations keyed by category
+        reason_explanations = {
+            "Transitive verb": (
+                "Use AVERE with transitive verbs — verbs that take a direct object "
+                "(something you do TO something). E.g. 'ho mangiato la pizza', 'ho letto un libro'."
+            ),
+            "No movement": (
+                "Use AVERE with verbs that describe states or activities without physical movement. "
+                "E.g. 'ho dormito bene', 'ho lavorato tutto il giorno'."
+            ),
+            "Mental state": (
+                "Use AVERE with mental/cognitive verbs — they act on an idea or feeling, not a place. "
+                "E.g. 'ho saputo la notizia', 'ho pensato a te'."
+            ),
+            "Modal verb": (
+                "Modal verbs (potere, volere, dovere) usually take AVERE, unless the following "
+                "infinitive would use essere — in which case essere is used. "
+                "E.g. 'ho potuto parlare', but 'sono potuto andare'."
+            ),
+            "Movement verb": (
+                "Use ESSERE with verbs of movement or directed travel — going, coming, leaving, arriving. "
+                "The past participle agrees with the subject in gender and number: "
+                "'sono andato' (m.) / 'sono andata' (f.). "
+                "Memory tip: ESSERE = travel verbs."
+            ),
+            "State verb": (
+                "Use ESSERE with verbs expressing a state of being or remaining in place. "
+                "E.g. 'sono stato a Roma', 'sono rimasto a casa'. "
+                "The participle agrees with the subject."
+            ),
+            "Change of state": (
+                "Use ESSERE with verbs describing a transformation or change. "
+                "E.g. 'sono nato nel 1990', 'è morto ieri', 'è diventato famoso'. "
+                "The participle agrees with the subject."
+            ),
+            "Essere itself": (
+                "ESSERE uses itself as its own auxiliary: 'sono stato/stata' (I was / I have been). "
+                "The past participle agrees with the subject in gender and number."
+            ),
+            "Impersonal verb": (
+                "Impersonal verbs (succedere, accadere, piacere) use ESSERE. "
+                "E.g. 'è successo qualcosa', 'è accaduto ieri'."
+            ),
+        }
+
         questions = []
         selected = random.sample(verb_auxiliaries, min(count, len(verb_auxiliaries)))
-        
+
         for infinitive, english, correct_aux, reason in selected:
+            explanation = reason_explanations.get(
+                reason,
+                f"'{infinitive}' uses {correct_aux} as its auxiliary in passato prossimo ({reason})."
+            )
             questions.append({
                 "question": f"Which auxiliary for '{infinitive}' ({english}) in passato prossimo?",
                 "choices": ["avere", "essere"],
                 "answer": correct_aux,
-                "reason": reason,
+                "explanation": explanation,
                 "type": "auxiliary_choice"
             })
-        
+
         return questions
     
     def generate_futuro_semplice(self, count: int = 10) -> List[Dict]:
@@ -1123,6 +1206,110 @@ class PracticeGenerator:
         
         return questions
     
+    def generate_reflexive_passato_prossimo(self, count: int = 10) -> List[Dict]:
+        """Practice reflexive verb conjugations in the passato prossimo (A2 level).
+
+        Reflexive verbs always use ESSERE as auxiliary.
+        The past participle agrees with the subject in gender and number.
+        Pattern: pronome + essere (coniugato) + participio passato
+        E.g. io mi sono alzato/alzata, tu ti sei svegliato/svegliata
+        """
+        # (infinitive, english, past_participle, [m_sing, f_sing, m_pl, f_pl])
+        reflexive_verbs = [
+            ("alzarsi",    "to get up",       "alzat",    ["alzato",    "alzata",    "alzati",    "alzate"]),
+            ("svegliarsi", "to wake up",      "svegliato",["svegliato", "svegliata", "svegliati", "svegliate"]),
+            ("lavarsi",    "to wash oneself", "lavat",    ["lavato",    "lavata",    "lavati",    "lavate"]),
+            ("vestirsi",   "to get dressed",  "vestit",   ["vestito",   "vestita",   "vestiti",   "vestite"]),
+            ("chiamarsi",  "to be called",    "chiamat",  ["chiamato",  "chiamata",  "chiamati",  "chiamate"]),
+            ("sentirsi",   "to feel",         "sentit",   ["sentito",   "sentita",   "sentiti",   "sentite"]),
+            ("divertirsi", "to have fun",     "divertit", ["divertito", "divertita", "divertiti", "divertite"]),
+            ("riposarsi",  "to rest",         "riposat",  ["riposato",  "riposata",  "riposati",  "riposate"]),
+            ("prepararsi", "to get ready",    "preparat", ["preparato", "preparata", "preparati", "preparate"]),
+            ("fermarsi",   "to stop",         "fermat",   ["fermato",   "fermata",   "fermati",   "fermate"]),
+            ("sposarsi",   "to get married",  "sposat",   ["sposato",   "sposata",   "sposati",   "sposate"]),
+            ("annoiarsi",  "to get bored",    "annoiat",  ["annoiato",  "annoiata",  "annoiati",  "annoiate"]),
+            ("sedersi",    "to sit down",     "sedut",    ["seduto",    "seduta",    "seduti",    "sedute"]),
+            ("addormentarsi", "to fall asleep", "addormentat", ["addormentato", "addormentata", "addormentati", "addormentate"]),
+            ("innamorarsi","to fall in love", "innamorat",["innamorato","innamorata","innamorati","innamoate"]),
+        ]
+
+        # pronoun + essere form for each person
+        pronoun_essere = {
+            "io":      ("mi", "mi sono"),
+            "tu":      ("ti", "ti sei"),
+            "lui":     ("si", "si è"),
+            "lei":     ("si", "si è"),
+            "noi_m":   ("ci", "ci siamo"),
+            "noi_f":   ("ci", "ci siamo"),
+            "voi_m":   ("vi", "vi siete"),
+            "voi_f":   ("vi", "vi siete"),
+            "loro_m":  ("si", "si sono"),
+            "loro_f":  ("si", "si sono"),
+        }
+
+        person_display = {
+            "io": "io", "tu": "tu", "lui": "lui", "lei": "lei",
+            "noi_m": "noi (masc.)", "noi_f": "noi (fem.)",
+            "voi_m": "voi (masc.)", "voi_f": "voi (fem.)",
+            "loro_m": "loro (masc.)", "loro_f": "loro (fem.)",
+        }
+
+        # Map person key → participle index [m_sing, f_sing, m_pl, f_pl]
+        participle_index = {
+            "io": None,  # shown as two options
+            "tu": None,
+            "lui": 0, "lei": 1,
+            "noi_m": 2, "noi_f": 3,
+            "voi_m": 2, "voi_f": 3,
+            "loro_m": 2, "loro_f": 3,
+        }
+
+        # For io/tu we accept both m and f — show both in answer, accept either
+        persons = list(pronoun_essere.keys())
+
+        questions = []
+        for _ in range(count):
+            infinitive, english, _, participles = random.choice(reflexive_verbs)
+            person = random.choice(persons)
+            pronoun, essere_form = pronoun_essere[person]
+            idx = participle_index[person]
+
+            if idx is None:
+                # io/tu — accept either gender; show masculine as primary
+                correct_form = f"{essere_form} {participles[0]}"
+                alt_form = f"{essere_form} {participles[1]}"
+                explanation = (
+                    f"Reflexive verbs always use ESSERE in passato prossimo. "
+                    f"The pronome reflexivo goes before essere: '{pronoun}'. "
+                    f"For {person_display[person]} the participle agrees with the speaker's gender: "
+                    f"'{essere_form} {participles[0]}' (masc.) or '{essere_form} {participles[1]}' (fem.)."
+                )
+                question_text = (
+                    f"Conjugate reflexive '{infinitive}' ({english}) "
+                    f"in Passato Prossimo for {person_display[person]} — type the masculine form"
+                )
+            else:
+                correct_form = f"{essere_form} {participles[idx]}"
+                explanation = (
+                    f"Reflexive verbs always use ESSERE in passato prossimo. "
+                    f"Pattern: {pronoun} + {essere_form.split()[-1]} (essere) + {participles[idx]} (participle). "
+                    f"The participle agrees with the subject: '{participles[idx]}'."
+                )
+                question_text = (
+                    f"Conjugate reflexive '{infinitive}' ({english}) "
+                    f"in Passato Prossimo for {person_display[person]}"
+                )
+
+            questions.append({
+                "question": question_text,
+                "answer": correct_form,
+                "type": "text_input",
+                "hint": f"Pattern: {pronoun} + essere + participle (agrees with subject)",
+                "explanation": explanation,
+            })
+
+        return questions
+
     def generate_time_prepositions(self, count: int = 10) -> List[Dict]:
         """Practice time prepositions: per, da, a, fa."""
         
@@ -2126,59 +2313,33 @@ class PracticeGenerator:
             irregular_flag = " ⚠️ irregular verb" if verb_type == "irregular" else ""
             question_text = f"Conjugate '{infinitive}' ({english}){irregular_flag} in the Present Tense (Presente) for {person_display[person]}"
 
-            # Determine if verb is regular or irregular
-            regularity = "irregular" if verb_type == "irregular" else "regular"
-
             # Create explanation based on verb type
             if verb_type == "irregular":
-                explanation = f"'{infinitive}' is an irregular verb. The present tense conjugation for {person_display[person]} is '{correct_form}'."
+                explanation = f"'{infinitive}' is an irregular verb — its present tense forms must be memorised. The {person_display[person]} form is '{correct_form}'."
             elif verb_type == "regular_are":
-                explanation = f"'{infinitive}' is a regular -are verb. For {person_display[person]}, remove -are and add the appropriate ending: {correct_form}."
+                stem = infinitive[:-3]
+                are_endings = {"io": "-o", "tu": "-i", "lui_lei": "-a", "noi": "-iamo", "voi": "-ate", "loro": "-ano"}
+                explanation = f"Regular -ARE verb: remove -are → stem '{stem}', then add '{are_endings[person]}' for {person_display[person]} → {correct_form}."
             elif verb_type == "regular_ere":
-                explanation = f"'{infinitive}' is a regular -ere verb. For {person_display[person]}, remove -ere and add the appropriate ending: {correct_form}."
+                stem = infinitive[:-3]
+                ere_endings = {"io": "-o", "tu": "-i", "lui_lei": "-e", "noi": "-iamo", "voi": "-ete", "loro": "-ono"}
+                explanation = f"Regular -ERE verb: remove -ere → stem '{stem}', then add '{ere_endings[person]}' for {person_display[person]} → {correct_form}."
             elif verb_type == "regular_ire":
-                explanation = f"'{infinitive}' is a regular -ire verb. For {person_display[person]}, remove -ire and add the appropriate ending: {correct_form}."
+                stem = infinitive[:-3]
+                ire_endings = {"io": "-o", "tu": "-i", "lui_lei": "-e", "noi": "-iamo", "voi": "-ite", "loro": "-ono"}
+                explanation = f"Regular -IRE verb: remove -ire → stem '{stem}', then add '{ire_endings[person]}' for {person_display[person]} → {correct_form}."
             elif verb_type == "regular_isc":
-                explanation = f"'{infinitive}' is a -ire verb that takes -isc- in some forms. For {person_display[person]}, the conjugation is: {correct_form}."
+                stem = infinitive[:-3]
+                isc_endings = {"io": "-isco", "tu": "-isci", "lui_lei": "-isce", "noi": "-iamo", "voi": "-ite", "loro": "-iscono"}
+                explanation = f"This -IRE verb uses the -isc- pattern: stem '{stem}', add '{isc_endings[person]}' for {person_display[person]} → {correct_form}."
             else:
                 explanation = f"The present tense conjugation of '{infinitive}' for {person_display[person]} is '{correct_form}'."
-
-            # Get other conjugations of the same verb for multiple choice options
-            cursor.execute("""
-                SELECT conjugated_form
-                FROM verb_conjugations
-                WHERE infinitive = ? AND tense = 'presente' AND person != ?
-                ORDER BY RANDOM()
-                LIMIT 3
-            """, (infinitive, person))
-
-            other_forms = [row[0] for row in cursor.fetchall()]
-
-            # Build choices
-            choices = [correct_form] + other_forms
-            random.shuffle(choices)
-
-            # Ensure we have at least 4 choices
-            if len(choices) < 4:
-                # Add some other verb conjugations
-                cursor.execute("""
-                    SELECT conjugated_form
-                    FROM verb_conjugations
-                    WHERE infinitive != ? AND tense = 'presente' AND person = ?
-                    ORDER BY RANDOM()
-                    LIMIT ?
-                """, (infinitive, person, 4 - len(choices)))
-
-                extra_forms = [row[0] for row in cursor.fetchall()]
-                choices.extend(extra_forms)
-                random.shuffle(choices)
 
             questions.append({
                 "question": question_text,
                 "answer": correct_form,
-                "type": "multiple_choice",
-                "choices": choices[:4],
-                "hint": f"{english} - {person_display[person]} ({regularity} verb)",
+                "type": "text_input",
+                "hint": f"{english} — {person_display[person]}",
                 "explanation": explanation
             })
 
@@ -4769,14 +4930,11 @@ class PracticeGenerator:
             random.shuffle(choices)
 
             questions.append({
-                "question": (
-                    f"Choose the correct {article_type} for '{noun}':\n"
-                    f"(English: {english_sentence})"
-                ),
+                "question": f"Choose the correct {article_type} for '{noun}'",
                 "answer": article,
                 "type": "multiple_choice",
                 "choices": choices,
-                "hint": f"The noun is '{noun}' — {english_sentence}",
+                "hint": f"English: {english_sentence}",
                 "explanation": f"Rule: {rule}. The correct article is '{article} {noun}'."
             })
 
@@ -4824,24 +4982,6 @@ class PracticeGenerator:
                 continue
             correct_form = result[0]
 
-            # Distractors: other persons of the same verb
-            cursor.execute("""
-                SELECT conjugated_form FROM verb_conjugations
-                WHERE infinitive = ? AND tense = 'presente' AND person != ?
-                ORDER BY RANDOM() LIMIT 3
-            """, (infinitive, person))
-            distractors = [row[0] for row in cursor.fetchall()]
-
-            choices = [correct_form] + distractors
-            if len(choices) < 4:
-                cursor.execute("""
-                    SELECT conjugated_form FROM verb_conjugations
-                    WHERE infinitive != ? AND tense = 'presente' AND verb_type = 'regular_are'
-                    AND person = ? ORDER BY RANDOM() LIMIT ?
-                """, (infinitive, person, 4 - len(choices)))
-                choices += [row[0] for row in cursor.fetchall()]
-            random.shuffle(choices)
-
             stem = infinitive[:-3]  # remove -are
             questions.append({
                 "question": (
@@ -4849,8 +4989,7 @@ class PracticeGenerator:
                     f"in the Present Tense (Presente) for {person_display[person]}"
                 ),
                 "answer": correct_form,
-                "type": "multiple_choice",
-                "choices": choices[:4],
+                "type": "text_input",
                 "hint": f"Stem: {stem} + ending {are_endings[person]}",
                 "explanation": (
                     f"Regular -ARE verb: remove -are → stem '{stem}', "
@@ -4901,23 +5040,6 @@ class PracticeGenerator:
                 continue
             correct_form = result[0]
 
-            cursor.execute("""
-                SELECT conjugated_form FROM verb_conjugations
-                WHERE infinitive = ? AND tense = 'presente' AND person != ?
-                ORDER BY RANDOM() LIMIT 3
-            """, (infinitive, person))
-            distractors = [row[0] for row in cursor.fetchall()]
-
-            choices = [correct_form] + distractors
-            if len(choices) < 4:
-                cursor.execute("""
-                    SELECT conjugated_form FROM verb_conjugations
-                    WHERE infinitive != ? AND tense = 'presente' AND verb_type = 'regular_ere'
-                    AND person = ? ORDER BY RANDOM() LIMIT ?
-                """, (infinitive, person, 4 - len(choices)))
-                choices += [row[0] for row in cursor.fetchall()]
-            random.shuffle(choices)
-
             stem = infinitive[:-3]  # remove -ere
             questions.append({
                 "question": (
@@ -4925,8 +5047,7 @@ class PracticeGenerator:
                     f"in the Present Tense (Presente) for {person_display[person]}"
                 ),
                 "answer": correct_form,
-                "type": "multiple_choice",
-                "choices": choices[:4],
+                "type": "text_input",
                 "hint": f"Stem: {stem} + ending {ere_endings[person]}",
                 "explanation": (
                     f"Regular -ERE verb: remove -ere → stem '{stem}', "
@@ -4982,24 +5103,6 @@ class PracticeGenerator:
                 continue
             correct_form = result[0]
 
-            cursor.execute("""
-                SELECT conjugated_form FROM verb_conjugations
-                WHERE infinitive = ? AND tense = 'presente' AND person != ?
-                ORDER BY RANDOM() LIMIT 3
-            """, (infinitive, person))
-            distractors = [row[0] for row in cursor.fetchall()]
-
-            choices = [correct_form] + distractors
-            if len(choices) < 4:
-                cursor.execute("""
-                    SELECT conjugated_form FROM verb_conjugations
-                    WHERE infinitive != ? AND tense = 'presente'
-                    AND verb_type IN ('regular_ire', 'regular_isc')
-                    AND person = ? ORDER BY RANDOM() LIMIT ?
-                """, (infinitive, person, 4 - len(choices)))
-                choices += [row[0] for row in cursor.fetchall()]
-            random.shuffle(choices)
-
             stem = infinitive[:-3]  # remove -ire
             endings_ref = isc_endings if verb_type == "regular_isc" else ire_endings
             pattern_note = " (uses -isc- pattern)" if verb_type == "regular_isc" else ""
@@ -5009,8 +5112,7 @@ class PracticeGenerator:
                     f"in the Present Tense (Presente) for {person_display[person]}"
                 ),
                 "answer": correct_form,
-                "type": "multiple_choice",
-                "choices": choices[:4],
+                "type": "text_input",
                 "hint": f"Stem: {stem} + ending {endings_ref[person]}{pattern_note}",
                 "explanation": (
                     f"Regular -IRE verb{pattern_note}: remove -ire → stem '{stem}', "
