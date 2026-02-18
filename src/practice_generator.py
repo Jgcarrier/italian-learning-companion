@@ -30,6 +30,18 @@ class PracticeGenerator:
                  'congiuntivo_presente', 'congiuntivo_imperfetto'],
     }
 
+    # Known irregular Italian verbs — used to flag questions across all activity types
+    IRREGULAR_VERBS = {
+        'essere', 'avere', 'fare', 'andare', 'venire', 'dare', 'stare', 'dire',
+        'potere', 'volere', 'dovere', 'sapere', 'bere', 'uscire', 'tenere',
+        'rimanere', 'cadere', 'vedere', 'vivere', 'tradurre', 'porre', 'scegliere',
+        'cogliere', 'togliere', 'spegnere', 'dipingere', 'scrivere', 'leggere',
+        'rompere', 'chiedere', 'rispondere', 'chiudere', 'perdere', 'mettere',
+        'prendere', 'accendere', 'piangere', 'correre', 'vincere', 'decidere',
+        'nascere', 'morire', 'salire', 'apparire', 'comporre', 'proporre',
+        'supporre', 'produrre', 'ridurre', 'introdurre', 'costruire',
+    }
+
     # Bug-0089: human-readable tense names for questions
     TENSE_DISPLAY = {
         'presente':              'Present Tense (Presente)',
@@ -102,8 +114,9 @@ class PracticeGenerator:
                 else:
                     full_answer = conjugated
 
+                irregular_flag = " ⚠️ irregular verb" if verb_type == "irregular" else ""
                 question_text = (
-                    f"Conjugate '{infinitive}' ({english}) "
+                    f"Conjugate '{infinitive}' ({english}){irregular_flag} "
                     f"in the {tense_label} for {person_display[person]}"
                 )
 
@@ -983,8 +996,9 @@ class PracticeGenerator:
                 "noi": "noi", "voi": "voi", "loro": "loro"
             }
             
+            irregular_flag = " ⚠️ irregular verb" if verb_type == "irregular" else ""
             questions.append({
-                "question": f"Futuro semplice: '{infinitive}' ({english}) for {person_display[person]}",
+                "question": f"Conjugate '{infinitive}' ({english}){irregular_flag} in the Future Tense (Futuro Semplice) for {person_display[person]}",
                 "answer": conjugations[person],
                 "type": "futuro_semplice",
                 "infinitive": infinitive,
@@ -1492,6 +1506,7 @@ class PracticeGenerator:
             ("bere", "to drink"),
         ]
 
+        irregular_infinitives = {v[0] for v in irregular_verbs}
         all_verbs = regular_verbs + irregular_verbs
         subjects = ["io", "tu", "lui/lei", "noi", "voi", "loro"]
 
@@ -1540,8 +1555,9 @@ class PracticeGenerator:
             subject = random.choice(subjects)
             answer = conjugate_imperfect(verb, subject)
 
+            irregular_flag = " ⚠️ irregular verb" if verb in irregular_infinitives else ""
             questions.append({
-                "question": f"Conjugate '{verb}' ({meaning}) in imperfetto for '{subject}'",
+                "question": f"Conjugate '{verb}' ({meaning}){irregular_flag} in the Imperfect Tense (Imperfetto) for '{subject}'",
                 "answer": answer,
                 "type": "text_input",
                 "hint": "Imperfect tense describes past habits and ongoing actions"
@@ -1923,8 +1939,9 @@ class PracticeGenerator:
             choices.extend(random.sample(remaining, min(3, len(remaining))))
             random.shuffle(choices)
 
+            irregular_flag = " ⚠️ irregular verb" if "(irregular)" in explanation else ""
             questions.append({
-                "question": sentence,
+                "question": sentence + irregular_flag,
                 "answer": correct,
                 "type": "multiple_choice",
                 "choices": choices,
@@ -2039,8 +2056,9 @@ class PracticeGenerator:
             choices.extend(random.sample(remaining, min(3, len(remaining))))
             random.shuffle(choices)
 
+            irregular_flag = " ⚠️ irregular verb" if "irregular" in explanation.lower() else ""
             questions.append({
-                "question": sentence,
+                "question": sentence + irregular_flag,
                 "answer": correct,
                 "type": "multiple_choice",
                 "choices": choices,
@@ -2105,7 +2123,8 @@ class PracticeGenerator:
             }
 
             # Create question
-            question_text = f"Conjugate '{infinitive}' ({english}) in the present tense for '{person_display[person]}'"
+            irregular_flag = " ⚠️ irregular verb" if verb_type == "irregular" else ""
+            question_text = f"Conjugate '{infinitive}' ({english}){irregular_flag} in the Present Tense (Presente) for {person_display[person]}"
 
             # Determine if verb is regular or irregular
             regularity = "irregular" if verb_type == "irregular" else "regular"
@@ -2409,8 +2428,11 @@ class PracticeGenerator:
             choices = [correct_answer] + wrong_answers
             random.shuffle(choices)
 
+            is_irreg = (item.get("infinitive", "") in self.IRREGULAR_VERBS
+                        or "irregular" in item["explanation"].lower())
+            irreg_flag = " ⚠️ irregular verb" if is_irreg else ""
             questions.append({
-                "question": item["italian"],
+                "question": item["italian"] + irreg_flag,
                 "answer": correct_answer,
                 "type": "multiple_choice",
                 "choices": choices,
@@ -2582,8 +2604,11 @@ class PracticeGenerator:
             choices.extend(random.sample(wrong_choices, min(3, len(wrong_choices))))
             random.shuffle(choices)
 
+            is_irreg = (item.get("infinitive", "") in self.IRREGULAR_VERBS
+                        or "irregular" in item["explanation"].lower())
+            irreg_flag = " ⚠️ irregular verb" if is_irreg else ""
             questions.append({
-                "question": item["italian"],
+                "question": item["italian"] + irreg_flag,
                 "answer": item["answer"],
                 "type": "multiple_choice",
                 "choices": choices,
@@ -2879,8 +2904,11 @@ class PracticeGenerator:
             choices.extend(random.sample(wrong_choices, min(3, len(wrong_choices))))
             random.shuffle(choices)
 
+            is_irreg = (item.get("infinitive", "") in self.IRREGULAR_VERBS
+                        or "irregular" in item["explanation"].lower())
+            irreg_flag = " ⚠️ irregular verb" if is_irreg else ""
             questions.append({
-                "question": item["italian"],
+                "question": item["italian"] + irreg_flag,
                 "answer": item["answer"],
                 "type": "multiple_choice",
                 "choices": choices,
@@ -2993,8 +3021,11 @@ class PracticeGenerator:
             choices.extend(random.sample(wrong_choices, min(3, len(wrong_choices))))
             random.shuffle(choices)
 
+            is_irreg = (item.get("infinitive", "") in self.IRREGULAR_VERBS
+                        or "irregular" in item["explanation"].lower())
+            irreg_flag = " ⚠️ irregular verb" if is_irreg else ""
             questions.append({
-                "question": item["italian"],
+                "question": item["italian"] + irreg_flag,
                 "answer": item["answer"],
                 "type": "multiple_choice",
                 "choices": choices,
@@ -3474,6 +3505,7 @@ class PracticeGenerator:
 
         return questions
 
+
     def generate_subjunctive_past(self, count: int = 10) -> List[Dict]:
         """
         Generate subjunctive past (congiuntivo passato) practice for B1 level.
@@ -3565,8 +3597,11 @@ class PracticeGenerator:
             choices.extend(random.sample(wrong_choices, min(3, len(wrong_choices))))
             random.shuffle(choices)
 
+            is_irreg = (item.get("infinitive", "") in self.IRREGULAR_VERBS
+                        or "irregular" in item["explanation"].lower())
+            irreg_flag = " ⚠️ irregular verb" if is_irreg else ""
             questions.append({
-                "question": item["italian"],
+                "question": item["italian"] + irreg_flag,
                 "answer": item["answer"],
                 "type": "multiple_choice",
                 "choices": choices,
@@ -3668,8 +3703,11 @@ class PracticeGenerator:
             choices.extend(random.sample(wrong_choices, min(3, len(wrong_choices))))
             random.shuffle(choices)
 
+            is_irreg = (item.get("infinitive", "") in self.IRREGULAR_VERBS
+                        or "irregular" in item["explanation"].lower())
+            irreg_flag = " ⚠️ irregular verb" if is_irreg else ""
             questions.append({
-                "question": item["italian"],
+                "question": item["italian"] + irreg_flag,
                 "answer": item["answer"],
                 "type": "multiple_choice",
                 "choices": choices,
@@ -3771,8 +3809,11 @@ class PracticeGenerator:
             choices.extend(random.sample(wrong_choices, min(3, len(wrong_choices))))
             random.shuffle(choices)
 
+            is_irreg = (item.get("infinitive", "") in self.IRREGULAR_VERBS
+                        or "irregular" in item["explanation"].lower())
+            irreg_flag = " ⚠️ irregular verb" if is_irreg else ""
             questions.append({
-                "question": item["italian"],
+                "question": item["italian"] + irreg_flag,
                 "answer": item["answer"],
                 "type": "multiple_choice",
                 "choices": choices,
@@ -3876,8 +3917,11 @@ class PracticeGenerator:
             choices.extend(random.sample(wrong_choices, min(3, len(wrong_choices))))
             random.shuffle(choices)
 
+            is_irreg = (item.get("infinitive", "") in self.IRREGULAR_VERBS
+                        or "irregular" in item["explanation"].lower())
+            irreg_flag = " ⚠️ irregular verb" if is_irreg else ""
             questions.append({
-                "question": item["italian"],
+                "question": item["italian"] + irreg_flag,
                 "answer": item["answer"],
                 "type": "multiple_choice",
                 "choices": choices,
@@ -3967,8 +4011,11 @@ class PracticeGenerator:
             choices.extend(random.sample(wrong_choices, min(3, len(wrong_choices))))
             random.shuffle(choices)
 
+            is_irreg = (item.get("infinitive", "") in self.IRREGULAR_VERBS
+                        or "irregular" in item["explanation"].lower())
+            irreg_flag = " ⚠️ irregular verb" if is_irreg else ""
             questions.append({
-                "question": item["italian"],
+                "question": item["italian"] + irreg_flag,
                 "answer": item["answer"],
                 "type": "multiple_choice",
                 "choices": choices,
@@ -4055,8 +4102,11 @@ class PracticeGenerator:
             choices = [item["answer"], "ci", "ne", "lo", "la"]
             random.shuffle(choices)
 
+            is_irreg = (item.get("infinitive", "") in self.IRREGULAR_VERBS
+                        or "irregular" in item["explanation"].lower())
+            irreg_flag = " ⚠️ irregular verb" if is_irreg else ""
             questions.append({
-                "question": item["italian"],
+                "question": item["italian"] + irreg_flag,
                 "answer": item["answer"],
                 "type": "multiple_choice",
                 "choices": choices,
@@ -4158,8 +4208,11 @@ class PracticeGenerator:
             choices.extend(random.sample(wrong_choices, min(3, len(wrong_choices))))
             random.shuffle(choices)
 
+            is_irreg = (item.get("infinitive", "") in self.IRREGULAR_VERBS
+                        or "irregular" in item["explanation"].lower())
+            irreg_flag = " ⚠️ irregular verb" if is_irreg else ""
             questions.append({
-                "question": item["italian"],
+                "question": item["italian"] + irreg_flag,
                 "answer": item["answer"],
                 "type": "multiple_choice",
                 "choices": choices,
@@ -4283,8 +4336,11 @@ class PracticeGenerator:
             choices.extend(random.sample(wrong_choices, min(3, len(wrong_choices))))
             random.shuffle(choices)
 
+            is_irreg = (item.get("infinitive", "") in self.IRREGULAR_VERBS
+                        or "irregular" in item["explanation"].lower())
+            irreg_flag = " ⚠️ irregular verb" if is_irreg else ""
             questions.append({
-                "question": item["italian"],
+                "question": item["italian"] + irreg_flag,
                 "answer": item["answer"],
                 "type": "multiple_choice",
                 "choices": choices,
