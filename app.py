@@ -31,46 +31,31 @@ app.secret_key = os.environ.get('SECRET_KEY', 'italian-learning-companion-secret
 @app.template_filter('parse_conjugate_question')
 def parse_conjugate_question(question_text: str) -> dict:
     """
-    Parses a conjugation question string into structured components for clean display.
-    E.g. "Conjugate 'potere' (to be able) in the Future Tense (Futuro Semplice) for voi"
-    Returns dict with keys: main, english, tense, person, is_conjugate
+    For conjugation questions, strips the English meaning from the question string
+    so it can be rendered as a chip below the answer input instead.
+    E.g. "Conjugate 'venire' (to come) in passato prossimo for noi"
+      -> main: "Conjugate 'venire' in passato prossimo for noi"
+      -> english: "to come"
+    Non-conjugation questions are returned unchanged.
     """
     import re
-    result = {'main': question_text, 'english': '', 'tense': '', 'person': '', 'is_conjugate': False}
+    result = {'main': question_text, 'english': '', 'is_conjugate': False}
 
-    # Must start with Conjugate to qualify
+    # Only applies to Conjugate questions
     if not re.match(r"Conjugate(?:\s+reflexive)?:", question_text, re.IGNORECASE) and \
        not question_text.startswith("Conjugate '"):
         return result
 
     result['is_conjugate'] = True
 
-    # Extract English meaning: first (...) group after the verb name
-    eng_match = re.search(r"'\w[\w\s]*'\s*\(([^)]+)\)", question_text)
+    # Extract and remove the English meaning: (to ...) immediately after the verb name
+    eng_match = re.search(r"('\w[\w\s]*')\s*\(([^)]+)\)", question_text)
     if eng_match:
-        result['english'] = eng_match.group(1)
-        question_text = question_text[:eng_match.start(1)-1].rstrip('(') + question_text[eng_match.end(1)+1:]
+        result['english'] = eng_match.group(2)
+        # Rebuild: keep the verb name, drop the (english) part
+        question_text = question_text[:eng_match.end(1)] + question_text[eng_match.end():]
 
-    # Extract tense: "in the X Tense (Y)" or "in passato prossimo"
-    tense_match = re.search(r'\bin the \w+ Tense \(([^)]+)\)', question_text)
-    if tense_match:
-        result['tense'] = tense_match.group(1)
-        question_text = question_text.replace(tense_match.group(0), '').strip()
-    else:
-        prossimo_match = re.search(r'\bin (passato prossimo)\b', question_text, re.IGNORECASE)
-        if prossimo_match:
-            result['tense'] = 'Passato Prossimo'
-            question_text = question_text.replace(prossimo_match.group(0), '').strip()
-
-    # Extract person: "for X" at end of string
-    person_match = re.search(r"\bfor ['\"]?(\w[\w\s]*)['\"']?\s*$", question_text)
-    if person_match:
-        result['person'] = person_match.group(1).strip("'\"")
-        question_text = question_text[:person_match.start()].strip()
-
-    # Clean up any trailing punctuation/whitespace
-    result['main'] = re.sub(r'\s+', ' ', question_text).strip().rstrip(',').rstrip()
-
+    result['main'] = re.sub(r'\s+', ' ', question_text).strip()
     return result
 
 # Configure logging
