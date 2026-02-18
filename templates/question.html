@@ -12,16 +12,20 @@
         <div class="progress-fill" style="width: {{ (question_num / total_questions * 100) }}%"></div>
     </div>
 
+    {# Strip the irregular flag from the raw question text first #}
     {% if ' ⚠️ irregular verb' in question.question %}
-        {% set question_text = question.question.replace(' ⚠️ irregular verb', '') %}
+        {% set raw_question = question.question.replace(' ⚠️ irregular verb', '') %}
         {% set is_irregular = true %}
     {% else %}
-        {% set question_text = question.question %}
+        {% set raw_question = question.question %}
         {% set is_irregular = false %}
     {% endif %}
 
+    {# Parse conjugation questions into structured components #}
+    {% set parsed = raw_question | parse_conjugate_question %}
+
     <div class="question-text">
-        {{ question_text }}
+        {{ parsed.main }}
     </div>
 
     <form method="POST" action="{{ url_for('submit_answer') }}">
@@ -46,7 +50,31 @@
                    required>
         {% endif %}
 
-        {% if is_irregular %}
+        {# Hint chips: English meaning, tense, person, irregular warning #}
+        {% if parsed.is_conjugate and (parsed.english or parsed.tense or parsed.person) or is_irregular %}
+        <div style="display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0 18px 0;">
+            {% if parsed.english %}
+            <span style="background: #eaf4fb; color: #2471a3; border: 1px solid #aed6f1; border-radius: 20px; padding: 4px 12px; font-size: 0.82rem;">
+                🇬🇧 {{ parsed.english }}
+            </span>
+            {% endif %}
+            {% if parsed.tense %}
+            <span style="background: #eafaf1; color: #1e8449; border: 1px solid #a9dfbf; border-radius: 20px; padding: 4px 12px; font-size: 0.82rem;">
+                📚 {{ parsed.tense }}
+            </span>
+            {% endif %}
+            {% if parsed.person %}
+            <span style="background: #fdf2f8; color: #7d3c98; border: 1px solid #d7bde2; border-radius: 20px; padding: 4px 12px; font-size: 0.82rem;">
+                👤 {{ parsed.person }}
+            </span>
+            {% endif %}
+            {% if is_irregular %}
+            <span style="background: #fef9e7; color: #b7770d; border: 1px solid #f9e79f; border-radius: 20px; padding: 4px 12px; font-size: 0.82rem;">
+                ⚠️ irregular verb
+            </span>
+            {% endif %}
+        </div>
+        {% elif is_irregular %}
         <p style="color: #e67e22; font-size: 0.82rem; margin: 4px 0 16px 0; font-style: italic;">
             ⚠️ This is an irregular verb — its forms don't follow the regular pattern.
         </p>
