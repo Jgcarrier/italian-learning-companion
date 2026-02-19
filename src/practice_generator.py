@@ -298,17 +298,22 @@ class PracticeGenerator:
         ]
 
         # A2 - Passato prossimo, imperfetto, simple future
+        # 5-tuple: (template, answer, english, blank_type, tense_label)
+        # Gender is embedded in the template for essere verb questions (Bug-0120/0121)
         templates_a2 = [
-            ("Ieri ____ al cinema.", "sono andato/a", "Yesterday I went to the cinema", "passato"),
-            ("Loro ____ già mangiato.", "hanno", "They have already eaten", "auxiliary"),
-            ("Da bambino ____ in Italia.", "abitavo", "As a child I lived in Italy", "imperfect"),
-            ("Domani ____ a Roma.", "andrò", "Tomorrow I will go to Rome", "future"),
-            ("____ visto quel film?", "Hai", "Have you seen that film?", "auxiliary"),
-            ("Non ____ mai stato a Parigi.", "sono", "I've never been to Paris", "auxiliary"),
-            ("Quando ero piccolo ____ sempre felice.", "ero", "When I was little I was always happy", "imperfect"),
-            ("L'anno prossimo ____ italiano.", "studierò", "Next year I will study Italian", "future"),
-            ("____ miei amici ieri sera.", "Ho visto", "I saw my friends last night", "passato"),
-            ("Mentre ____, è arrivata Maria.", "studiavo", "While I was studying, Maria arrived", "imperfect"),
+            ("Ieri ____ al cinema. [io, maschile]", "sono andato", "Yesterday I went to the cinema (male speaker)", "passato", "Passato Prossimo"),
+            ("Ieri ____ al cinema. [io, femminile]", "sono andata", "Yesterday I went to the cinema (female speaker)", "passato", "Passato Prossimo"),
+            ("Loro ____ già mangiato.", "hanno", "They have already eaten", "auxiliary", "Passato Prossimo"),
+            ("Da bambino ____ in Italia.", "abitavo", "As a child I lived in Italy", "imperfect", "Imperfetto"),
+            ("Domani ____ a Roma.", "andrò", "Tomorrow I will go to Rome", "future", "Futuro Semplice"),
+            ("____ visto quel film? [tu]", "Hai", "Have you seen that film?", "auxiliary", "Passato Prossimo"),
+            ("Non ____ mai stato a Parigi. [io]", "sono", "I've never been to Paris", "auxiliary", "Passato Prossimo"),
+            ("Quando ero piccolo ____ sempre felice.", "ero", "When I was little I was always happy", "imperfect", "Imperfetto"),
+            ("L'anno prossimo ____ italiano.", "studierò", "Next year I will study Italian", "future", "Futuro Semplice"),
+            ("____ i miei amici ieri sera. [io]", "Ho visto", "I saw my friends last night", "passato", "Passato Prossimo"),
+            ("Mentre ____, è arrivata Maria. [io]", "studiavo", "While I was studying, Maria arrived", "imperfect", "Imperfetto"),
+            ("Maria ____ a casa ieri. [femminile]", "è tornata", "Maria came back home yesterday", "passato", "Passato Prossimo"),
+            ("I ragazzi ____ tardi. [maschile plurale]", "sono arrivati", "The boys arrived late", "passato", "Passato Prossimo"),
         ]
 
         # B1 - Subjunctive, conditional, progressive forms
@@ -376,10 +381,19 @@ class PracticeGenerator:
         selected = random.sample(templates, min(count, len(templates)))
         questions = []
 
-        for template, answer, english, blank_type in selected:
+        for entry in selected:
+            # A2 templates are 5-tuples (template, answer, english, blank_type, tense_label)
+            # All other levels use 4-tuples (template, answer, english, blank_type)
+            if len(entry) == 5:
+                template, answer, english, blank_type, tense_label = entry
+                tense_suffix = f" [{tense_label}]"
+            else:
+                template, answer, english, blank_type = entry
+                tense_suffix = ""
+
             explanation = blank_type_rules.get(blank_type, "")
             questions.append({
-                "question": f"Fill in the blank: {template}\n(English: {english})",
+                "question": f"Fill in the blank{tense_suffix}: {template}\n(English: {english})",
                 "answer": answer,
                 "type": "fill_in_blank",
                 "blank_type": blank_type,
@@ -392,16 +406,18 @@ class PracticeGenerator:
         """Generate multiple choice questions scaled by CEFR level."""
         all_questions = []
 
-        # 1. VERB CONJUGATIONS (from database - automatically level-appropriate)
+        # 1. VERB CONJUGATIONS (from database - restricted to level-appropriate tenses, Bug-0122)
         cursor = self.db.conn.cursor()
         query_level = self._get_verb_level(level)
-        cursor.execute("""
+        allowed_tenses = self.LEVEL_TENSES.get(level, self.LEVEL_TENSES['B2'])
+        tense_placeholders = ','.join('?' * len(allowed_tenses))
+        cursor.execute(f"""
             SELECT DISTINCT infinitive, english, verb_type, tense
             FROM verb_conjugations
-            WHERE level = ?
+            WHERE level = ? AND tense IN ({tense_placeholders})
             ORDER BY RANDOM()
             LIMIT 3
-        """, (query_level,))
+        """, [query_level] + allowed_tenses)
 
         verbs = cursor.fetchall()
 
@@ -456,11 +472,13 @@ class PracticeGenerator:
             tense_label = tense_display.get(tense, tense.replace("_", " ").title())
             irregular_flag = " ⚠️ irregular verb" if verb_type == "irregular" else ""
 
+            irreg_note = " It is irregular and must be memorised." if verb_type == "irregular" else " It follows regular conjugation patterns."
             all_questions.append({
                 "question": f"Conjugate '{infinitive}' ({english}){irregular_flag} in the {tense_label} for {person_display[person]}",
                 "choices": all_choices,
                 "answer": correct_answer,
-                "type": "multiple_choice"
+                "type": "multiple_choice",
+                "explanation": f"'{infinitive}' means '{english}'.{irreg_note} The {tense_label} form for {person_display[person]} is '{correct_answer}'."
             })
 
         # 2-7. LEVEL-SPECIFIC GRAMMAR QUESTIONS
@@ -519,7 +537,7 @@ class PracticeGenerator:
         """Generate A2-level multiple choice questions."""
         questions = []
 
-        # Irregular passato prossimo
+        # Irregular passato prossimo (Bug-0123: added explanations)
         irregular_verbs = [
             ("fare", "fatto"), ("dire", "detto"), ("leggere", "letto"),
             ("vedere", "visto"), ("scrivere", "scritto"), ("prendere", "preso"),
@@ -538,39 +556,51 @@ class PracticeGenerator:
                 "question": f"Past participle of '{infinitive}'?",
                 "choices": all_choices,
                 "answer": correct_pp,
-                "type": "multiple_choice"
+                "type": "multiple_choice",
+                "explanation": f"'{infinitive}' has an irregular past participle: {correct_pp}. Irregular participles must be memorised — they don't follow the regular -ato/-uto/-ito pattern."
             })
 
-        # Avere vs essere
+        # Avere vs essere (Bug-0123: added explanations)
         auxiliary_choices = [
-            ("andare", "essere"), ("mangiare", "avere"), ("arrivare", "essere"),
-            ("parlare", "avere"), ("uscire", "essere"), ("dormire", "avere"),
+            ("andare", "essere", "Movement verb — andare uses essere. Past participle agrees with subject gender/number."),
+            ("mangiare", "avere", "Transitive verb (takes a direct object) — mangiare uses avere. Participle stays masculine singular."),
+            ("arrivare", "essere", "Movement/arrival verb — arrivare uses essere. Past participle agrees with subject."),
+            ("parlare", "avere", "Transitive verb — parlare uses avere. Participle stays masculine singular."),
+            ("uscire", "essere", "Movement verb — uscire uses essere. Past participle agrees with subject gender/number."),
+            ("dormire", "avere", "Intransitive non-movement verb — dormire uses avere. Participle stays masculine singular."),
         ]
-        for infinitive, correct_aux in random.sample(auxiliary_choices, 2):
+        for infinitive, correct_aux, tip in random.sample(auxiliary_choices, 2):
             questions.append({
                 "question": f"Auxiliary for '{infinitive}' in passato prossimo?",
                 "choices": ["avere", "essere"],
                 "answer": correct_aux,
-                "type": "multiple_choice"
+                "type": "multiple_choice",
+                "explanation": tip
             })
 
-        # Articulated prepositions
+        # Articulated prepositions (Bug-0123: added explanations)
         prep_choices = [
-            ("Vado ___ cinema", ["al", "del", "nel", "dal"], "al"),
-            ("Vengo ___ stazione", ["dalla", "alla", "nella", "sulla"], "dalla"),
-            ("Sono ___ parco", ["nel", "al", "del", "sul"], "nel"),
+            ("Vado ___ cinema", ["al", "del", "nel", "dal"], "al",
+             "al = a + il. Use 'a' for direction/destination with il. a+il→al, a+la→alla, a+l'→all', a+i→ai, a+gli→agli, a+le→alle."),
+            ("Vengo ___ stazione", ["dalla", "alla", "nella", "sulla"], "dalla",
+             "dalla = da + la. Use 'da' for origin/coming from with la. da+il→dal, da+la→dalla, da+l'→dall', da+i→dai, da+gli→dagli, da+le→dalle."),
+            ("Sono ___ parco", ["nel", "al", "del", "sul"], "nel",
+             "nel = in + il. Use 'in' for location inside with il. in+il→nel, in+la→nella, in+l'→nell', in+i→nei, in+gli→negli, in+le→nelle."),
         ]
-        for question, choices, answer in random.sample(prep_choices, min(2, len(prep_choices))):
-            questions.append({"question": question, "choices": choices, "answer": answer, "type": "multiple_choice"})
+        for question, choices, answer, tip in random.sample(prep_choices, min(2, len(prep_choices))):
+            questions.append({"question": question, "choices": choices, "answer": answer, "type": "multiple_choice", "explanation": tip})
 
-        # Reflexive pronouns
+        # Reflexive pronouns (Bug-0123: added explanations)
         reflexive_choices = [
-            ("Io ___ alzo", ["mi", "ti", "si", "ci"], "mi"),
-            ("Tu ___ chiami?", ["ti", "mi", "si", "vi"], "ti"),
-            ("Noi ___ divertiamo", ["ci", "vi", "si", "mi"], "ci"),
+            ("Io ___ alzo", ["mi", "ti", "si", "ci"], "mi",
+             "Reflexive pronouns: io→mi, tu→ti, lui/lei→si, noi→ci, voi→vi, loro→si. They go before the conjugated verb."),
+            ("Tu ___ chiami?", ["ti", "mi", "si", "vi"], "ti",
+             "Reflexive pronouns: io→mi, tu→ti, lui/lei→si, noi→ci, voi→vi, loro→si. They go before the conjugated verb."),
+            ("Noi ___ divertiamo", ["ci", "vi", "si", "mi"], "ci",
+             "Reflexive pronouns: io→mi, tu→ti, lui/lei→si, noi→ci, voi→vi, loro→si. They go before the conjugated verb."),
         ]
-        for question, choices, answer in random.sample(reflexive_choices, min(2, len(reflexive_choices))):
-            questions.append({"question": question, "choices": choices, "answer": answer, "type": "multiple_choice"})
+        for question, choices, answer, tip in random.sample(reflexive_choices, min(2, len(reflexive_choices))):
+            questions.append({"question": question, "choices": choices, "answer": answer, "type": "multiple_choice", "explanation": tip})
 
         return questions
 
