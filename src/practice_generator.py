@@ -2456,7 +2456,19 @@ class PracticeGenerator:
             elif verb_type == "regular_isc":
                 stem = infinitive[:-3]
                 isc_endings = {"io": "-isco", "tu": "-isci", "lui_lei": "-isce", "noi": "-iamo", "voi": "-ite", "loro": "-iscono"}
-                explanation = f"This -IRE verb uses the -isc- pattern: stem '{stem}', add '{isc_endings[person]}' for {person_display[person]} → {correct_form}."
+                if person in ("noi", "voi"):
+                    explanation = (
+                        f"'{infinitive}' is an -isc- verb (like capire, finire, preferire). "
+                        f"The -isc- infix only appears in io/tu/lui/loro — noi and voi use regular -IRE endings. "
+                        f"Stem '{stem}' + '{isc_endings[person]}' → {correct_form}."
+                    )
+                else:
+                    explanation = (
+                        f"'{infinitive}' is an -isc- verb (like capire, finire, preferire). "
+                        f"Insert -isc- between the stem and the ending for io/tu/lui/loro. "
+                        f"Stem '{stem}' + '{isc_endings[person]}' → {correct_form}. "
+                        f"(Noi/voi are regular: {stem}iamo / {stem}ite — no -isc-.)"
+                    )
             else:
                 explanation = f"The present tense conjugation of '{infinitive}' for {person_display[person]} is '{correct_form}'."
 
@@ -5227,7 +5239,33 @@ class PracticeGenerator:
 
             stem = infinitive[:-3]  # remove -ire
             endings_ref = isc_endings if verb_type == "regular_isc" else ire_endings
-            pattern_note = " (uses -isc- pattern)" if verb_type == "regular_isc" else ""
+            if verb_type == "regular_isc":
+                pattern_note = " (uses -isc- pattern)"
+                if person in ("noi", "voi"):
+                    explanation = (
+                        f"'{infinitive}' is an -isc- verb (like capire, finire, preferire). "
+                        f"Noi and voi are regular — no -isc- infix. "
+                        f"Stem '{stem}' + '{endings_ref[person]}' → {correct_form}. "
+                        f"(The -isc- only appears in io/tu/lui/loro.)"
+                    )
+                else:
+                    explanation = (
+                        f"'{infinitive}' is an -isc- verb (like capire, finire, preferire). "
+                        f"Insert -isc- between the stem and the ending for io/tu/lui/loro. "
+                        f"Stem '{stem}' + '{endings_ref[person]}' → {correct_form}. "
+                        f"(Noi/voi are regular: {stem}iamo / {stem}ite — no -isc-.)"
+                    )
+            else:
+                pattern_note = ""
+                explanation = (
+                    f"Regular -IRE verb: remove -ire → stem '{stem}', "
+                    f"add '{endings_ref[person]}' for {person_display[person]} → {correct_form}. "
+                    f"Endings: -o, -i, -e, -iamo, -ite, -ono."
+                )
+            if verb_type == "regular_isc" and person in ("noi", "voi"):
+                hint_note = " (-isc- only in io/tu/lui/loro)"
+            else:
+                hint_note = pattern_note
             questions.append({
                 "question": (
                     f"Conjugate the -IRE verb '{infinitive}' ({english}) "
@@ -5235,11 +5273,8 @@ class PracticeGenerator:
                 ),
                 "answer": correct_form,
                 "type": "text_input",
-                "hint": f"Stem: {stem} + ending {endings_ref[person]}{pattern_note}",
-                "explanation": (
-                    f"Regular -IRE verb{pattern_note}: remove -ire → stem '{stem}', "
-                    f"add '{endings_ref[person]}' for {person_display[person]} → {correct_form}"
-                )
+                "hint": f"Stem: {stem} + ending {endings_ref[person]}{hint_note}",
+                "explanation": explanation
             })
 
         return questions
