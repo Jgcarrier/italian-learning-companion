@@ -479,8 +479,10 @@ def check_answer(user_answer: str, correct_answer: str, question_type: str = Non
                 return True, correct_answer
 
     # Standard matching for other types
-    # Split correct answer by "/" to get all acceptable answers
-    acceptable_answers = [remove_accents(ans.strip().lower()) for ans in correct_answer.split('/')]
+    # Split correct answer by "/" or ", " to get all acceptable answers
+    # e.g. "under/below" or "under, below" should both accept just "under"
+    raw_answers = re.split(r'/|,\s*', correct_answer)
+    acceptable_answers = [remove_accents(ans.strip().lower()) for ans in raw_answers]
 
     # For each acceptable answer, also check variants
     all_acceptable = []
@@ -592,8 +594,8 @@ def check_answer(user_answer: str, correct_answer: str, question_type: str = Non
                 is_correct = True
                 break
 
-    # For display, use the first option if multiple
-    display_answer = correct_answer.split('/')[0] if '/' in correct_answer else correct_answer
+    # For display, use the first option if multiple (handles both "/" and ", " separators)
+    display_answer = re.split(r'/|,\s*', correct_answer)[0].strip() if ('/' in correct_answer or ',' in correct_answer) else correct_answer
 
     return is_correct, display_answer
 

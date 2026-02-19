@@ -54,7 +54,9 @@
         <h3>Irregular Passato</h3>
         <p>Irregular past participles</p>
     </a>
+    {% endif %}
 
+    {% if level == 'A1' %}
     <a href="{{ url_for('auxiliary_choice') }}?level={{ level }}" class="menu-item">
         <div class="menu-icon">🔄</div>
         <h3>Avere vs Essere</h3>

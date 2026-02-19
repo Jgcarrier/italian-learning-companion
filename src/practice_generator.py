@@ -44,13 +44,13 @@ class PracticeGenerator:
 
     # Bug-0089: human-readable tense names for questions
     TENSE_DISPLAY = {
-        'presente':              'Present Tense (Presente)',
-        'passato_prossimo':      'Past Tense (Passato Prossimo)',
-        'imperfetto':            'Imperfect (Imperfetto)',
-        'futuro':                'Future (Futuro Semplice)',
-        'condizionale':          'Conditional (Condizionale)',
-        'congiuntivo_presente':  'Subjunctive Present (Congiuntivo Presente)',
-        'congiuntivo_imperfetto':'Subjunctive Imperfect (Congiuntivo Imperfetto)',
+        'presente':              'Presente',
+        'passato_prossimo':      'Passato Prossimo',
+        'imperfetto':            'Imperfetto',
+        'futuro':                'Futuro Semplice',
+        'condizionale':          'Condizionale',
+        'congiuntivo_presente':  'Congiuntivo Presente',
+        'congiuntivo_imperfetto':'Congiuntivo Imperfetto',
     }
 
     def generate_verb_conjugation_drill(self, level: str = "A1", count: int = 10) -> List[Dict]:
@@ -75,6 +75,16 @@ class PracticeGenerator:
         verbs = cursor.fetchall()
         questions = []
 
+        # Participle gender suffixes for essere verbs in passato prossimo
+        participle_endings = {
+            "io":      [("io (masc.)", "o"),  ("io (fem.)",  "a")],
+            "tu":      [("tu (masc.)", "o"),  ("tu (fem.)",  "a")],
+            "lui_lei": [("lui",        "o"),  ("lei",        "a")],
+            "noi":     [("noi (masc.)","i"),  ("noi (fem.)", "e")],
+            "voi":     [("voi (masc.)","i"),  ("voi (fem.)", "e")],
+            "loro":    [("loro (masc.)","i"), ("loro (fem.)","e")],
+        }
+
         for verb in verbs:
             infinitive, english, verb_type, tense = verb
 
@@ -90,36 +100,73 @@ class PracticeGenerator:
             """, (infinitive, tense, person))
 
             result = cursor.fetchone()
-            if result:
-                conjugated, auxiliary = result
+            if not result:
+                continue
 
-                person_display = {
-                    "io": "io", "tu": "tu", "lui_lei": "lui/lei",
-                    "noi": "noi", "voi": "voi", "loro": "loro"
+            conjugated, auxiliary = result
+
+            person_display = {
+                "io": "io", "tu": "tu", "lui_lei": "lui/lei",
+                "noi": "noi", "voi": "voi", "loro": "loro"
+            }
+
+            tense_label = self.TENSE_DISPLAY.get(tense, tense.replace('_', ' ').title())
+            irregular_flag = " ⚠️ irregular verb" if verb_type == "irregular" else ""
+
+            if tense == "passato_prossimo" and auxiliary:
+                aux_forms_avere = {
+                    "io": "ho", "tu": "hai", "lui_lei": "ha",
+                    "noi": "abbiamo", "voi": "avete", "loro": "hanno"
                 }
-
-                # Bug-0089: always include the tense name in the question
-                tense_label = self.TENSE_DISPLAY.get(tense, tense.replace('_', ' ').title())
-
-                if tense == "passato_prossimo" and auxiliary:
-                    aux_forms = {
-                        "io": "ho" if auxiliary == "avere" else "sono",
-                        "tu": "hai" if auxiliary == "avere" else "sei",
-                        "lui_lei": "ha" if auxiliary == "avere" else "è",
-                        "noi": "abbiamo" if auxiliary == "avere" else "siamo",
-                        "voi": "avete" if auxiliary == "avere" else "siete",
-                        "loro": "hanno" if auxiliary == "avere" else "sono"
-                    }
-                    full_answer = f"{aux_forms[person]} {conjugated}"
+                aux_forms_essere = {
+                    "io": "sono", "tu": "sei", "lui_lei": "è",
+                    "noi": "siamo", "voi": "siete", "loro": "sono"
+                }
+                if auxiliary == "avere":
+                    # avere verbs: participle invariant
+                    full_answer = f"{aux_forms_avere[person]} {conjugated}"
+                    q_person = person_display[person]
+                    question_text = (
+                        f"Conjugate '{infinitive}' ({english}){irregular_flag} "
+                        f"in the {tense_label} for {q_person}"
+                    )
+                    questions.append({
+                        "question": question_text,
+                        "answer": full_answer,
+                        "infinitive": infinitive,
+                        "person": person,
+                        "tense": tense,
+                        "type": "verb_conjugation",
+                        "hint": f"{tense_label} | {english}"
+                    })
                 else:
-                    full_answer = conjugated
-
-                irregular_flag = " ⚠️ irregular verb" if verb_type == "irregular" else ""
+                    # essere verbs: participle must agree with gender — ask for a specific gender
+                    gender_variants = participle_endings[person]
+                    gender_label, suffix = random.choice(gender_variants)
+                    # Build the gendered participle from the base form stored in DB
+                    # DB stores masculine singular — strip it and reapply correct suffix
+                    base = conjugated.rstrip('oiae')
+                    gendered_participle = base + suffix
+                    full_answer = f"{aux_forms_essere[person]} {gendered_participle}"
+                    question_text = (
+                        f"Conjugate '{infinitive}' ({english}){irregular_flag} "
+                        f"in the {tense_label} for {gender_label}"
+                    )
+                    questions.append({
+                        "question": question_text,
+                        "answer": full_answer,
+                        "infinitive": infinitive,
+                        "person": person,
+                        "tense": tense,
+                        "type": "verb_conjugation",
+                        "hint": f"{tense_label} | {english} | essere verb — participle agrees with subject"
+                    })
+            else:
+                full_answer = conjugated
                 question_text = (
                     f"Conjugate '{infinitive}' ({english}){irregular_flag} "
                     f"in the {tense_label} for {person_display[person]}"
                 )
-
                 questions.append({
                     "question": question_text,
                     "answer": full_answer,
@@ -398,12 +445,12 @@ class PracticeGenerator:
                 "noi": "noi", "voi": "voi", "loro": "loro"
             }
             tense_display = {
-                "presente": "Present Tense (Presente)",
+                "presente": "Presente",
                 "passato_prossimo": "Passato Prossimo",
-                "imperfetto": "Imperfect Tense (Imperfetto)",
-                "futuro_semplice": "Future Tense (Futuro Semplice)",
-                "condizionale_presente": "Conditional (Condizionale Presente)",
-                "congiuntivo_presente": "Subjunctive (Congiuntivo Presente)",
+                "imperfetto": "Imperfetto",
+                "futuro_semplice": "Futuro Semplice",
+                "condizionale_presente": "Condizionale Presente",
+                "congiuntivo_presente": "Congiuntivo Presente",
                 "imperativo": "Imperative (Imperativo)",
             }
             tense_label = tense_display.get(tense, tense.replace("_", " ").title())
@@ -1081,7 +1128,7 @@ class PracticeGenerator:
             
             irregular_flag = " ⚠️ irregular verb" if verb_type == "irregular" else ""
             questions.append({
-                "question": f"Conjugate '{infinitive}' ({english}){irregular_flag} in the Future Tense (Futuro Semplice) for {person_display[person]}",
+                "question": f"Conjugate '{infinitive}' ({english}){irregular_flag} in the Futuro Semplice for {person_display[person]}",
                 "answer": conjugations[person],
                 "type": "futuro_semplice",
                 "infinitive": infinitive,
@@ -1744,7 +1791,7 @@ class PracticeGenerator:
 
             irregular_flag = " ⚠️ irregular verb" if verb in irregular_infinitives else ""
             questions.append({
-                "question": f"Conjugate '{verb}' ({meaning}){irregular_flag} in the Imperfect Tense (Imperfetto) for '{subject}'",
+                "question": f"Conjugate '{verb}' ({meaning}){irregular_flag} in the Imperfetto for '{subject}'",
                 "answer": answer,
                 "type": "text_input",
                 "hint": "Imperfect tense describes past habits and ongoing actions"
@@ -2311,7 +2358,7 @@ class PracticeGenerator:
 
             # Create question
             irregular_flag = " ⚠️ irregular verb" if verb_type == "irregular" else ""
-            question_text = f"Conjugate '{infinitive}' ({english}){irregular_flag} in the Present Tense (Presente) for {person_display[person]}"
+            question_text = f"Conjugate '{infinitive}' ({english}){irregular_flag} in the Presente for {person_display[person]}"
 
             # Create explanation based on verb type
             if verb_type == "irregular":
@@ -2765,11 +2812,8 @@ class PracticeGenerator:
             choices.extend(random.sample(wrong_choices, min(3, len(wrong_choices))))
             random.shuffle(choices)
 
-            is_irreg = (item.get("infinitive", "") in self.IRREGULAR_VERBS
-                        or "irregular" in item["explanation"].lower())
-            irreg_flag = " ⚠️ irregular verb" if is_irreg else ""
             questions.append({
-                "question": item["italian"] + irreg_flag,
+                "question": f"Which pronominal verb is used here?\n{item['italian']}",
                 "answer": item["answer"],
                 "type": "multiple_choice",
                 "choices": choices,
@@ -4986,7 +5030,7 @@ class PracticeGenerator:
             questions.append({
                 "question": (
                     f"Conjugate the -ARE verb '{infinitive}' ({english}) "
-                    f"in the Present Tense (Presente) for {person_display[person]}"
+                    f"in the Presente for {person_display[person]}"
                 ),
                 "answer": correct_form,
                 "type": "text_input",
@@ -5044,7 +5088,7 @@ class PracticeGenerator:
             questions.append({
                 "question": (
                     f"Conjugate the -ERE verb '{infinitive}' ({english}) "
-                    f"in the Present Tense (Presente) for {person_display[person]}"
+                    f"in the Presente for {person_display[person]}"
                 ),
                 "answer": correct_form,
                 "type": "text_input",
@@ -5109,7 +5153,7 @@ class PracticeGenerator:
             questions.append({
                 "question": (
                     f"Conjugate the -IRE verb '{infinitive}' ({english}) "
-                    f"in the Present Tense (Presente) for {person_display[person]}"
+                    f"in the Presente for {person_display[person]}"
                 ),
                 "answer": correct_form,
                 "type": "text_input",
