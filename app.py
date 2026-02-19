@@ -478,6 +478,14 @@ def check_answer(user_answer: str, correct_answer: str, question_type: str = Non
             if reverse_similarity >= 0.6:
                 return True, correct_answer
 
+    # For negation transform questions: strip punctuation before comparing (Bug-0118)
+    # Users shouldn't fail just because they omitted a period or exclamation mark
+    if question_type == 'negation':
+        import string as _string
+        strip_punct = lambda t: t.translate(str.maketrans('', '', _string.punctuation))
+        if strip_punct(user_normalized) == strip_punct(correct_normalized):
+            return True, correct_answer
+
     # Standard matching for other types
     # Split correct answer by "/" or ", " to get all acceptable answers
     # e.g. "under/below" or "under, below" should both accept just "under"

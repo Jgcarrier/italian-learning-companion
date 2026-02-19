@@ -1169,9 +1169,10 @@ class PracticeGenerator:
         
         for sentence, answer, prep_combo, english in selected:
             questions.append({
-                "question": f"Fill in: {sentence}\n(English: {english})\n(Hint: {prep_combo})",
+                "question": f"Fill in: {sentence}\n(English: {english})",
                 "answer": answer,
                 "type": "articulated_prep",
+                "hint": f"🔗 {prep_combo}",
                 "full_sentence": sentence.replace("___", answer)
             })
         
@@ -1403,11 +1404,21 @@ class PracticeGenerator:
         questions = []
         selected = random.sample(templates, min(count, len(templates)))
         
+        # Rich explanations for each preposition (Bug-0117)
+        preposition_rules = {
+            "per":  "per — used for a completed duration of time (it had a clear start and end). E.g. 'Ho studiato per tre anni' = I studied for three years (and then stopped).",
+            "da":   "da — used for an action that started in the past and is still continuing now. E.g. 'Studio italiano da due anni' = I've been studying Italian for two years (and still am). Often paired with the present tense in Italian, unlike English.",
+            "a":    "a — used for a specific point in time (age, time of day with mezzanotte/mezzogiorno). For clock numbers, 'a' combines with the article: a + le → alle (e.g. alle otto = at eight).",
+            "alle": "alle — the contracted form of a + le, used for clock times with numbers. E.g. 'Il film comincia alle otto' = The film starts at eight. Use 'a' (not 'alle') with mezzanotte and mezzogiorno.",
+            "fa":   "fa — placed after the time expression to mean 'ago'. E.g. 'tre giorni fa' = three days ago. Note: fa comes after the time phrase, unlike English 'ago'.",
+        }
+
         for sentence, answer, explanation, english in selected:
+            rich_explanation = preposition_rules.get(answer, explanation)
             questions.append({
                 "question": f"Fill in the time preposition: {sentence}\n(English: {english})",
                 "answer": answer,
-                "explanation": explanation,
+                "explanation": rich_explanation,
                 "type": "time_preposition",
                 "full_sentence": sentence.replace("___", answer)
             })
@@ -2156,30 +2167,13 @@ class PracticeGenerator:
 
         questions = []
         for sentence, correct, explanation, english in selected:
-            # Generate choices based on similar imperative forms
-            if "tu" in sentence:
-                all_choices = ["Apri", "Parla", "Chiudi", "Vieni", "Va'", "Leggi", "Di'", "Abbi", "Sii", "Fa'"]
-            elif "Lei" in sentence:
-                all_choices = ["Entri", "Aspetti", "Scusi", "Venga", "Parli", "Prenda"]
-            elif "noi" in sentence:
-                all_choices = ["Andiamo", "Mangiamo", "Partiamo", "Prendiamo"]
-            else:  # voi
-                all_choices = ["State", "Parlate", "Fate", "Venite", "Siate"]
-
-            # Always include the correct answer
-            choices = [correct]
-            # Add 3 more random choices
-            remaining = [c for c in all_choices if c != correct]
-            choices.extend(random.sample(remaining, min(3, len(remaining))))
-            random.shuffle(choices)
-
+            # Bug-0119: use text_input so users must produce the form themselves
             irregular_flag = " ⚠️ irregular verb" if "(irregular)" in explanation else ""
             questions.append({
                 "question": sentence + irregular_flag,
                 "answer": correct,
-                "type": "multiple_choice",
-                "choices": choices,
-                "hint": english,
+                "type": "text_input",
+                "hint": f"🇬🇧 {english}",
                 "explanation": explanation
             })
 

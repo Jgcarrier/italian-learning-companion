@@ -50,8 +50,8 @@
                    required>
         {% endif %}
 
-        {# Hint chips: English meaning and irregular warning only #}
-        {% if parsed.english or is_irregular %}
+        {# Hint chips: English meaning, irregular warning, and activity-specific hints #}
+        {% if parsed.english or is_irregular or question.hint %}
         <div style="display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0 18px 0;">
             {% if parsed.english %}
             <span style="background: #eaf4fb; color: #2471a3; border: 1px solid #aed6f1; border-radius: 20px; padding: 4px 12px; font-size: 0.82rem;">
@@ -61,6 +61,11 @@
             {% if is_irregular %}
             <span style="background: #fef9e7; color: #b7770d; border: 1px solid #f9e79f; border-radius: 20px; padding: 4px 12px; font-size: 0.82rem;">
                 ⚠️ irregular verb
+            </span>
+            {% endif %}
+            {% if question.hint %}
+            <span style="background: #eafaf1; color: #1e8449; border: 1px solid #a9dfbf; border-radius: 20px; padding: 4px 12px; font-size: 0.82rem;">
+                {{ question.hint }}
             </span>
             {% endif %}
         </div>
