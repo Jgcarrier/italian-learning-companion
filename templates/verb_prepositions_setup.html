@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %}Verb Prepositions Setup{% endblock %}
+
+{% block content %}
+<div class="text-center mb-30">
+    <h2>🔗 Verbs with Prepositions</h2>
+    <p>Verbi con preposizione — fill in the fixed preposition</p>
+</div>
+
+<form method="POST">
+    <input type="hidden" name="level" value="{{ level or 'A1' }}">
+    <div class="form-group">
+        <label for="count">Number of Questions:</label>
+        <input type="number" name="count" id="count" value="10" min="5" max="20">
+    </div>
+
+    <div class="button-group">
+        <button type="submit" class="btn btn-primary btn-large">Start Practice</button>
+        <a href="{{ url_for('grammar_menu', level=level or 'A1') }}" class="btn btn-secondary">Back</a>
+    </div>
+</form>
+
+<div style="margin-top: 30px; padding: 20px; background: var(--light-gray); border-radius: 8px;">
+    <h3 style="font-size: 1.1rem; margin-bottom: 12px;">💡 Key Verbs & Their Prepositions:</h3>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 6px 20px; color: #555; font-size: 0.92rem;">
+        <div><strong>+ a</strong></div>
+        <div><strong>+ di</strong></div>
+        <div>cominciare <em>a</em> fare</div>
+        <div>finire <em>di</em> fare</div>
+        <div>continuare <em>a</em> fare</div>
+        <div>cercare <em>di</em> fare</div>
+        <div>imparare <em>a</em> fare</div>
+        <div>smettere <em>di</em> fare</div>
+        <div>iniziare <em>a</em> fare</div>
+        <div>ricordarsi <em>di</em> qlco</div>
+        <div>riuscire <em>a</em> fare</div>
+        <div>avere bisogno <em>di</em> qlco</div>
+        <div>pensare <em>a</em> qlcn</div>
+        <div>parlare <em>di</em> qlco</div>
+        <div>giocare <em>a</em> calcio</div>
+        <div>avere voglia <em>di</em> qlco</div>
+    </div>
+    <p style="color: #666; margin-top: 15px; font-style: italic;">You'll see the full explanation after each answer!</p>
+</div>
+{% endblock %}

@@ -152,6 +152,7 @@ PRACTICE_ROUTES = {
     'noun_gender_number': ('noun_gender_number', ['level']),
     'articulated_prepositions': ('articulated_prepositions', ['level']),
     'time_prepositions': ('time_prepositions', ['level']),
+    'verb_prepositions': ('verb_prepositions', ['level']),
     'negations': ('negations', ['level']),
     'fill_in_blank': ('fill_in_blank', ['level']),
     'multiple_choice': ('multiple_choice', ['level']),
@@ -1510,6 +1511,17 @@ def time_prepositions():
         practice_type='time_prepositions',
         generator_method='generate_time_prepositions',
         setup_template='time_prepositions_setup.html',
+        menu_type='grammar_menu'
+    )()
+
+
+@app.route('/verb-prepositions', methods=['GET', 'POST'])
+def verb_prepositions():
+    """Verbs with fixed prepositions practice (verbi con preposizione)."""
+    return create_practice_route(
+        practice_type='verb_prepositions',
+        generator_method='generate_verb_prepositions',
+        setup_template='verb_prepositions_setup.html',
         menu_type='grammar_menu'
     )()
 

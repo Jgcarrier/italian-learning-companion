@@ -36,6 +36,12 @@
         <h3>Noun Gender & Number</h3>
         <p>Identify masculine/feminine, singular/plural</p>
     </a>
+
+    <a href="{{ url_for('verb_prepositions') }}?level={{ level }}" class="menu-item">
+        <div class="menu-icon">🔗</div>
+        <h3>Verbs with Prepositions</h3>
+        <p>cominciare a, finire di, pensare a...</p>
+    </a>
     {% endif %}
 
     {% if level in ['A2', 'B1', 'B2', 'GCSE'] %}

@@ -1454,7 +1454,61 @@ class PracticeGenerator:
             })
         
         return questions
-    
+
+    def generate_verb_prepositions(self, count: int = 10) -> List[Dict]:
+        """Practice verbs with fixed prepositions (verbi con preposizione) — A1/A2 level."""
+
+        # Each entry: (verb, english, preposition, example_sentence, completed_sentence, explanation)
+        templates = [
+            # A preposition
+            ("cominciare a",    "to start",         "a",   "Hai cominciato ___ studiare?",        "Hai cominciato a studiare?",         "cominciare + a + infinitive → to start doing something. E.g. Ho cominciato a lavorare = I started working."),
+            ("continuare a",    "to continue",      "a",   "Perché continui ___ guardarmi?",       "Perché continui a guardarmi?",        "continuare + a + infinitive → to keep/continue doing something. E.g. Continua a piovere = It keeps raining."),
+            ("imparare a",      "to learn",         "a",   "Voglio imparare ___ sciare.",           "Voglio imparare a sciare.",           "imparare + a + infinitive → to learn to do something. E.g. Sto imparando a cucinare = I'm learning to cook."),
+            ("iniziare a",      "to begin",         "a",   "Ho iniziato ___ leggere un libro.",    "Ho iniziato a leggere un libro.",     "iniziare + a + infinitive → to begin doing something. Very similar to 'cominciare a'. E.g. Ha iniziato a parlare = He started talking."),
+            ("aiutare a",       "to help",          "a",   "Mi aiuti ___ capire?",                 "Mi aiuti a capire?",                  "aiutare + a + infinitive → to help (someone) do something. E.g. Mi aiuta a portare la borsa = He helps me carry the bag."),
+            ("provare a",       "to try",           "a",   "Provo ___ parlare italiano.",          "Provo a parlare italiano.",           "provare + a + infinitive → to try to do something. E.g. Prova a calmarti = Try to calm down."),
+            ("riuscire a",      "to manage/succeed","a",   "Non riesco ___ dormire.",              "Non riesco a dormire.",               "riuscire + a + infinitive → to manage/succeed in doing something. E.g. Sei riuscito a finire? = Did you manage to finish?"),
+            ("abituarsi a",     "to get used to",   "a",   "Mi sto abituando ___ vivere qui.",     "Mi sto abituando a vivere qui.",      "abituarsi + a + infinitive/noun → to get used to. E.g. Mi sono abituato al freddo = I got used to the cold."),
+            ("pensare a",       "to think about",   "a",   "Penso sempre ___ Maria.",              "Penso sempre a Maria.",               "pensare + a + noun → to think about something/someone. E.g. Penso a te = I'm thinking about you. (Note: pensare + di = to think of/about doing.)"),
+            ("giocare a",       "to play (sport/game)","a","Gioco ___ calcio ogni sabato.",        "Gioco a calcio ogni sabato.",         "giocare + a + sport/game → to play a sport or game. E.g. Giochi a tennis? = Do you play tennis?"),
+            ("credere a",       "to believe in",    "a",   "Credi ___ Babbo Natale?",              "Credi a Babbo Natale?",               "credere + a + noun → to believe in something. E.g. Non credo a quello che dice = I don't believe what he says."),
+
+            # DI preposition
+            ("finire di",       "to finish",        "di",  "A che ora finisci ___ lavorare?",     "A che ora finisci di lavorare?",      "finire + di + infinitive → to finish doing something. E.g. Ho finito di mangiare = I've finished eating."),
+            ("cercare di",      "to try",           "di",  "Cerca ___ ascoltarmi!",               "Cerca di ascoltarmi!",                "cercare + di + infinitive → to try to do something. E.g. Cerca di arrivare in orario = Try to arrive on time."),
+            ("ricordarsi di",   "to remember",      "di",  "Ti ricordi ___ me?",                  "Ti ricordi di me?",                   "ricordarsi + di + noun/infinitive → to remember something. E.g. Ricordati di comprare il latte = Remember to buy milk."),
+            ("smettere di",     "to stop (doing)",  "di",  "Ha smesso ___ fumare.",               "Ha smesso di fumare.",                "smettere + di + infinitive → to stop doing something. E.g. Smettila di urlare! = Stop shouting!"),
+            ("dimenticarsi di", "to forget",        "di",  "Mi sono dimenticato ___ chiamarti.",  "Mi sono dimenticato di chiamarti.",   "dimenticarsi + di + infinitive → to forget to do something. E.g. Non dimenticarti di spegnere la luce = Don't forget to turn off the light."),
+            ("avere bisogno di","to need",          "di",  "Ho bisogno ___ aiuto.",               "Ho bisogno di aiuto.",                "avere bisogno + di + noun/infinitive → to need. E.g. Abbiamo bisogno di dormire = We need to sleep."),
+            ("essere contento di","to be happy about","di","Sono contento ___ vederti.",          "Sono contento di vederti.",           "essere contento/felice + di + infinitive → to be happy about doing something. E.g. Sono felice di essere qui = I'm happy to be here."),
+            ("parlare di",      "to talk about",    "di",  "Parliamo ___ vacanze.",               "Parliamo di vacanze.",                "parlare + di + noun → to talk about something. E.g. Di cosa parli? = What are you talking about?"),
+            ("avere voglia di", "to feel like",     "di",  "Ho voglia ___ un gelato.",            "Ho voglia di un gelato.",             "avere voglia + di + noun/infinitive → to feel like/want. E.g. Ho voglia di uscire = I feel like going out."),
+
+            # IN preposition
+            ("iscriversi a/in", "to enrol/sign up", "a",   "Mio figlio si è iscritto ___'università.", "Mio figlio si è iscritto all'università.", "iscriversi + a/in + institution → to enrol in. E.g. Si è iscritto a un corso = He signed up for a course."),
+
+            # SU preposition  (fare affidamento su, contare su)
+            ("contare su",      "to count on",      "su",  "Posso contare ___ di te.",            "Posso contare su di te.",             "contare + su + noun → to count/rely on someone. E.g. Conto su di voi = I'm counting on you all."),
+
+            # CON preposition
+            ("laurearsi in",    "to graduate in",   "in",  "Leo si è laureato ___ matematica.",   "Leo si è laureato in matematica.",    "laurearsi + in + subject → to graduate in a subject. E.g. Si è laureata in medicina = She graduated in medicine."),
+        ]
+
+        questions = []
+        selected = random.sample(templates, min(count, len(templates)))
+
+        for verb, english, preposition, sentence, full_sentence, explanation in selected:
+            questions.append({
+                "question": f"Fill in the preposition:\n{sentence}\n(English: {english} — {verb})",
+                "answer": preposition,
+                "type": "verb_preposition",
+                "hint": f"🔗 verb: {verb}",
+                "explanation": explanation,
+                "full_sentence": full_sentence,
+            })
+
+        return questions
+
     def generate_negation_practice(self, count: int = 10) -> List[Dict]:
         """Practice Italian negations: non...mai, non...più, non...niente/nulla, non...nessuno, etc."""
         
