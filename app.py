@@ -593,13 +593,94 @@ def check_answer(user_answer: str, correct_answer: str, question_type: str = Non
             'film': ['movie', 'cinema'],
             'movie': ['film', 'cinema'],
             'friend': ['mate', 'pal'],
+            # Holiday / vacation
+            'holiday': ['vacation', 'holidays'],
+            'vacation': ['holiday', 'holidays'],
+            'holidays': ['holiday', 'vacation'],
+            # Autumn / fall
+            'autumn': ['fall'],
+            'fall': ['autumn'],
+            # Lift / elevator
+            'lift': ['elevator'],
+            'elevator': ['lift'],
+            # Jumper / sweater
+            'jumper': ['sweater', 'pullover'],
+            'sweater': ['jumper', 'pullover'],
+            # Trousers / pants
+            'trousers': ['pants'],
+            'pants': ['trousers'],
+            # Chemist / pharmacy
+            'chemist': ['pharmacy', 'pharmacist'],
+            'pharmacy': ['chemist', 'drugstore'],
+            # Theatre / theater
+            'theatre': ['theater'],
+            'theater': ['theatre'],
+            # Colour / color
+            'colour': ['color'],
+            'color': ['colour'],
+            # Neighbour / neighbor
+            'neighbour': ['neighbor'],
+            'neighbor': ['neighbour'],
+            # Travelling / traveling
+            'travelling': ['traveling'],
+            'traveling': ['travelling'],
+            # Rubbish / garbage / trash
+            'rubbish': ['garbage', 'trash'],
+            'garbage': ['rubbish', 'trash'],
+            'trash': ['rubbish', 'garbage'],
+            # Mobile phone / cell phone
+            'mobile phone': ['cell phone', 'cellphone', 'mobile'],
+            'cell phone': ['mobile phone', 'mobile'],
+            'mobile': ['mobile phone', 'cell phone'],
+            # Football / soccer
+            'football': ['soccer'],
+            'soccer': ['football'],
+            # Post office / mail
+            'post office': ['mail office'],
+            # Town hall / city hall
+            'town hall': ['city hall'],
+            'city hall': ['town hall'],
+            # Healthcare noun synonyms
+            'illness': ['sickness', 'disease'],
+            'sickness': ['illness', 'disease'],
+            'disease': ['illness', 'sickness'],
+            'stomach ache': ['stomachache', 'stomach pain'],
+            'stomachache': ['stomach ache', 'stomach pain'],
+            'headache': ['head ache'],
+            'toothache': ['tooth ache'],
+            # Clever / intelligent / smart
+            'clever': ['intelligent', 'smart', 'bright'],
+            'intelligent': ['clever', 'smart', 'bright'],
+            'smart': ['clever', 'intelligent'],
+            # Hardworking / diligent / studious
+            'hardworking': ['diligent', 'studious', 'hard-working'],
+            'diligent': ['hardworking', 'studious'],
+            # Brave / courageous
+            'brave': ['courageous', 'bold'],
+            'courageous': ['brave', 'bold'],
+            # Kind / nice / gentle
+            'kind': ['nice', 'gentle', 'caring'],
+            'gentle': ['kind', 'nice'],
+            # Selfish / self-centred
+            'selfish': ['self-centred', 'self-centered'],
+            # Shy / timid
+            'shy': ['timid', 'bashful'],
+            'timid': ['shy', 'bashful'],
         }
 
         user_strip = user_normalized.lstrip('to ') if user_normalized.startswith('to ') else user_normalized
+        user_no_the = user_normalized[4:] if user_normalized.startswith('the ') else user_normalized
         for acc in all_acceptable:
             acc_strip = acc.lstrip('to ') if acc.startswith('to ') else acc
-            syns = vocab_synonyms.get(acc, []) + vocab_synonyms.get(f'to {acc_strip}', [])
-            if user_normalized in syns or user_strip in [s.lstrip('to ') for s in syns]:
+            acc_no_the = acc[4:] if acc.startswith('the ') else acc
+            syns = (vocab_synonyms.get(acc, []) +
+                    vocab_synonyms.get(acc_no_the, []) +
+                    vocab_synonyms.get(f'to {acc_strip}', []))
+            # Build a flat set of synonym bare forms for comparison
+            syns_no_the = [s[4:] if s.startswith('the ') else s for s in syns]
+            if (user_normalized in syns or
+                    user_strip in [s.lstrip('to ') for s in syns] or
+                    user_no_the in syns_no_the):
                 is_correct = True
                 break
 
