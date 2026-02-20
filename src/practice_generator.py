@@ -301,16 +301,16 @@ GCSE_VOCABULARY = [
     ("l'esame", "exam", "noun", "masculine", "school"),
     ("il voto", "grade / mark", "noun", "masculine", "school"),
     ("la materia", "school subject", "noun", "feminine", "school"),
-    ("italiano", "Italian", "noun", "masculine", "school"),
-    ("inglese", "English", "noun", "masculine", "school"),
-    ("matematica", "mathematics", "noun", "feminine", "school"),
-    ("storia", "history", "noun", "feminine", "school"),
-    ("geografia", "geography", "noun", "feminine", "school"),
-    ("scienze", "science", "noun", "feminine", "school"),
-    ("informatica", "IT / computer science", "noun", "feminine", "school"),
-    ("educazione fisica", "PE / physical education", "noun", "feminine", "school"),
-    ("arte", "art", "noun", "feminine", "school"),
-    ("musica", "music", "noun", "feminine", "school"),
+    ("italiano", "Italian", "noun", None, "school"),
+    ("inglese", "English", "noun", None, "school"),
+    ("matematica", "mathematics", "noun", None, "school"),
+    ("storia", "history", "noun", None, "school"),
+    ("geografia", "geography", "noun", None, "school"),
+    ("scienze", "science", "noun", None, "school"),
+    ("informatica", "IT / computer science", "noun", None, "school"),
+    ("educazione fisica", "PE / physical education", "noun", None, "school"),
+    ("arte", "art", "noun", None, "school"),
+    ("musica", "music", "noun", None, "school"),
     ("l'insegnante", "teacher", "noun", "masculine", "school"),
     ("il professore", "teacher / professor (male)", "noun", "masculine", "school"),
     ("la professoressa", "teacher / professor (female)", "noun", "feminine", "school"),
@@ -796,8 +796,14 @@ class PracticeGenerator:
                     art = self._get_italian_article(italian, gender, definite=True)
                     question_text = f"Translate: {art} {italian}"
                     answer = f"the {english}"
+                elif has_article:
+                    # Article already embedded in Italian string (GCSE items) — answer includes 'the'
+                    # Don't add 'the' to proper nouns (countries, named places — English starts uppercase)
+                    question_text = f"Translate: {italian}"
+                    is_proper = english and english[0].isupper()
+                    answer = english if (english.startswith("the ") or is_proper) else f"the {english}"
                 else:
-                    # Article already embedded in Italian string (GCSE items), or phrase/adverb
+                    # Phrase, adverb, verb — no article
                     question_text = f"Translate: {italian}"
                     answer = english
             else:  # en_to_it
