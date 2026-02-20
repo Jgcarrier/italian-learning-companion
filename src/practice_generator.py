@@ -5078,45 +5078,80 @@ class PracticeGenerator:
         """Drill regular -ARE verbs in the present tense only (A1 level).
 
         Endings: -o, -i, -a, -iamo, -ate, -ano
-        Examples: parlare, mangiare, studiare, abitare, lavorare
         """
-        cursor = self.db.conn.cursor()
-
-        cursor.execute("""
-            SELECT DISTINCT infinitive, english
-            FROM verb_conjugations
-            WHERE tense = 'presente' AND verb_type = 'regular_are'
-        """)
-        verbs = cursor.fetchall()
-        if not verbs:
-            return []
+        # Hardcoded verb list — no DB dependency (Bug fix: expanded from ~5 to 40 verbs)
+        are_verbs = [
+            ("parlare",     "to speak"),
+            ("mangiare",    "to eat"),
+            ("studiare",    "to study"),
+            ("lavorare",    "to work"),
+            ("abitare",     "to live"),
+            ("chiamare",    "to call"),
+            ("comprare",    "to buy"),
+            ("ascoltare",   "to listen"),
+            ("guardare",    "to watch"),
+            ("arrivare",    "to arrive"),
+            ("tornare",     "to return"),
+            ("visitare",    "to visit"),
+            ("incontrare",  "to meet"),
+            ("viaggiare",   "to travel"),
+            ("pensare",     "to think"),
+            ("sperare",     "to hope"),
+            ("cercare",     "to look for"),
+            ("pagare",      "to pay"),
+            ("giocare",     "to play"),
+            ("portare",     "to bring/carry"),
+            ("lasciare",    "to leave/let"),
+            ("aspettare",   "to wait"),
+            ("trovare",     "to find"),
+            ("camminare",   "to walk"),
+            ("cantare",     "to sing"),
+            ("ballare",     "to dance"),
+            ("cucinare",    "to cook"),
+            ("guidare",     "to drive"),
+            ("nuotare",     "to swim"),
+            ("aiutare",     "to help"),
+            ("invitare",    "to invite"),
+            ("spiegare",    "to explain"),
+            ("preparare",   "to prepare"),
+            ("ricordare",   "to remember"),
+            ("dimenticare", "to forget"),
+            ("mostrare",    "to show"),
+            ("segnare",     "to mark/score"),
+            ("entrare",     "to enter"),
+            ("usare",       "to use"),
+            ("imparare",    "to learn"),
+        ]
 
         persons = ["io", "tu", "lui_lei", "noi", "voi", "loro"]
         person_display = {
             "io": "io", "tu": "tu", "lui_lei": "lui/lei",
             "noi": "noi", "voi": "voi", "loro": "loro"
         }
-        # Present-tense -ARE endings for reference
         are_endings = {
             "io": "-o", "tu": "-i", "lui_lei": "-a",
             "noi": "-iamo", "voi": "-ate", "loro": "-ano"
         }
 
+        def conjugate_are(infinitive, person):
+            stem = infinitive[:-3]
+            if infinitive.endswith("iare"):
+                base = stem[:-1]
+                forms = {"io": base+"io", "tu": base+"i", "lui_lei": base+"ia",
+                         "noi": base+"iamo", "voi": base+"iate", "loro": base+"iano"}
+            elif infinitive.endswith("care") or infinitive.endswith("gare"):
+                forms = {"io": stem+"o", "tu": stem+"hi", "lui_lei": stem+"a",
+                         "noi": stem+"hiamo", "voi": stem+"ate", "loro": stem+"ano"}
+            else:
+                forms = {"io": stem+"o", "tu": stem+"i", "lui_lei": stem+"a",
+                         "noi": stem+"iamo", "voi": stem+"ate", "loro": stem+"ano"}
+            return forms[person], stem
+
         questions = []
         for _ in range(count):
-            infinitive, english = random.choice(verbs)
+            infinitive, english = random.choice(are_verbs)
             person = random.choice(persons)
-
-            cursor.execute("""
-                SELECT conjugated_form FROM verb_conjugations
-                WHERE infinitive = ? AND tense = 'presente' AND person = ?
-            """, (infinitive, person))
-            result = cursor.fetchone()
-            if not result:
-                continue
-            correct_form = result[0]
-
-            stem = infinitive[:-3]  # remove -are
+            correct_form, stem = conjugate_are(infinitive, person)
             questions.append({
                 "question": (
                     f"Conjugate the -ARE verb '{infinitive}' ({english}) "
@@ -5127,28 +5162,51 @@ class PracticeGenerator:
                 "hint": f"Stem: {stem} + ending {are_endings[person]}",
                 "explanation": (
                     f"Regular -ARE verb: remove -are → stem '{stem}', "
-                    f"add '{are_endings[person]}' for {person_display[person]} → {correct_form}"
+                    f"add '{are_endings[person]}' for {person_display[person]} → {correct_form}. "
+                    f"Full pattern: {stem}o / {stem}i / {stem}a / {stem}iamo / {stem}ate / {stem}ano."
                 )
             })
 
         return questions
 
     def generate_ere_verb_present(self, count: int = 10) -> List[Dict]:
-        """Drill regular -ERE verbs in the present tense only (A2 level).
+        """Drill regular -ERE verbs in the present tense only (A1/A2 level).
 
         Endings: -o, -i, -e, -iamo, -ete, -ono
-        Examples: scrivere, leggere, prendere, credere, vendere
         """
-        cursor = self.db.conn.cursor()
-
-        cursor.execute("""
-            SELECT DISTINCT infinitive, english
-            FROM verb_conjugations
-            WHERE tense = 'presente' AND verb_type = 'regular_ere'
-        """)
-        verbs = cursor.fetchall()
-        if not verbs:
-            return []
+        # Hardcoded verb list — no DB dependency (Bug fix: expanded from ~5 to 30 verbs)
+        ere_verbs = [
+            ("vendere",     "to sell"),
+            ("credere",     "to believe"),
+            ("ricevere",    "to receive"),
+            ("battere",     "to beat/knock"),
+            ("cadere",      "to fall"),      # slightly irregular future but regular present
+            ("chiedere",    "to ask"),       # irregular participle but present is regular
+            ("chiudere",    "to close"),
+            ("decidere",    "to decide"),
+            ("dipendere",   "to depend"),
+            ("dividere",    "to divide"),
+            ("godere",      "to enjoy"),
+            ("nascondere",  "to hide"),
+            ("offendere",   "to offend"),
+            ("perdere",     "to lose"),
+            ("permettere",  "to allow"),
+            ("promettere",  "to promise"),
+            ("rispondere",  "to answer"),
+            ("spendere",    "to spend"),
+            ("temere",      "to fear"),
+            ("tendere",     "to tend"),
+            ("vivere",      "to live"),
+            ("correre",     "to run"),
+            ("crescere",    "to grow"),
+            ("ridere",      "to laugh"),
+            ("piangere",    "to cry"),
+            ("vincere",     "to win"),
+            ("conoscere",   "to know (a person)"),
+            ("mettere",     "to put"),
+            ("prendere",    "to take"),
+            ("scrivere",    "to write"),
+        ]
 
         persons = ["io", "tu", "lui_lei", "noi", "voi", "loro"]
         person_display = {
@@ -5162,19 +5220,11 @@ class PracticeGenerator:
 
         questions = []
         for _ in range(count):
-            infinitive, english = random.choice(verbs)
+            infinitive, english = random.choice(ere_verbs)
             person = random.choice(persons)
-
-            cursor.execute("""
-                SELECT conjugated_form FROM verb_conjugations
-                WHERE infinitive = ? AND tense = 'presente' AND person = ?
-            """, (infinitive, person))
-            result = cursor.fetchone()
-            if not result:
-                continue
-            correct_form = result[0]
-
-            stem = infinitive[:-3]  # remove -ere
+            stem = infinitive[:-3]
+            sfx = ere_endings[person].lstrip("-")
+            correct_form = stem + sfx
             questions.append({
                 "question": (
                     f"Conjugate the -ERE verb '{infinitive}' ({english}) "
@@ -5185,29 +5235,56 @@ class PracticeGenerator:
                 "hint": f"Stem: {stem} + ending {ere_endings[person]}",
                 "explanation": (
                     f"Regular -ERE verb: remove -ere → stem '{stem}', "
-                    f"add '{ere_endings[person]}' for {person_display[person]} → {correct_form}"
+                    f"add '{ere_endings[person]}' for {person_display[person]} → {correct_form}. "
+                    f"Full pattern: {stem}o / {stem}i / {stem}e / {stem}iamo / {stem}ete / {stem}ono."
                 )
             })
 
         return questions
 
     def generate_ire_verb_present(self, count: int = 10) -> List[Dict]:
-        """Drill regular -IRE verbs in the present tense only (A2 level).
+        """Drill regular -IRE verbs in the present tense only (A1/A2 level).
 
         Two patterns:
           Standard: -o, -i, -e, -iamo, -ite, -ono  (e.g. dormire, partire)
           -isc- pattern: -isco, -isci, -isce, -iamo, -ite, -iscono  (e.g. finire, capire)
         """
-        cursor = self.db.conn.cursor()
-
-        cursor.execute("""
-            SELECT DISTINCT infinitive, english, verb_type
-            FROM verb_conjugations
-            WHERE tense = 'presente' AND verb_type IN ('regular_ire', 'regular_isc')
-        """)
-        verbs = cursor.fetchall()
-        if not verbs:
-            return []
+        # Hardcoded verb list — no DB dependency (Bug fix: expanded from ~5 to 30 verbs)
+        # Tuple: (infinitive, english, is_isc)
+        ire_verbs = [
+            # Standard -IRE verbs
+            ("dormire",     "to sleep",         False),
+            ("partire",     "to leave",         False),
+            ("sentire",     "to hear/feel",     False),
+            ("aprire",      "to open",          False),
+            ("seguire",     "to follow",        False),
+            ("servire",     "to serve",         False),
+            ("coprire",     "to cover",         False),
+            ("fuggire",     "to flee",          False),
+            ("offrire",     "to offer",         False),
+            ("bollire",     "to boil",          False),
+            ("cucire",      "to sew",           False),
+            ("mentire",     "to lie",           False),
+            ("nutrire",     "to nourish",       False),
+            ("salire",      "to go up",         False),
+            ("vestire",     "to dress",         False),
+            # -isc- verbs
+            ("capire",      "to understand",    True),
+            ("finire",      "to finish",        True),
+            ("preferire",   "to prefer",        True),
+            ("pulire",      "to clean",         True),
+            ("spedire",     "to send",          True),
+            ("costruire",   "to build",         True),
+            ("contribuire", "to contribute",    True),
+            ("guarire",     "to heal/recover",  True),
+            ("obbedire",    "to obey",          True),
+            ("punire",      "to punish",        True),
+            ("restituire",  "to return/give back", True),
+            ("stabilire",   "to establish",     True),
+            ("suggerire",   "to suggest",       True),
+            ("unire",       "to unite",         True),
+            ("agire",       "to act",           True),
+        ]
 
         persons = ["io", "tu", "lui_lei", "noi", "voi", "loro"]
         person_display = {
@@ -5223,25 +5300,30 @@ class PracticeGenerator:
             "noi": "-iamo", "voi": "-ite", "loro": "-iscono"
         }
 
+        def conjugate_ire(infinitive, is_isc, person):
+            stem = infinitive[:-3]
+            if is_isc:
+                forms = {
+                    "io": stem+"isco", "tu": stem+"isci", "lui_lei": stem+"isce",
+                    "noi": stem+"iamo", "voi": stem+"ite", "loro": stem+"iscono"
+                }
+            else:
+                forms = {
+                    "io": stem+"o", "tu": stem+"i", "lui_lei": stem+"e",
+                    "noi": stem+"iamo", "voi": stem+"ite", "loro": stem+"ono"
+                }
+            return forms[person], stem
+
         questions = []
         for _ in range(count):
-            infinitive, english, verb_type = random.choice(verbs)
+            infinitive, english, is_isc = random.choice(ire_verbs)
             person = random.choice(persons)
+            correct_form, stem = conjugate_ire(infinitive, is_isc, person)
+            endings_ref = isc_endings if is_isc else ire_endings
 
-            cursor.execute("""
-                SELECT conjugated_form FROM verb_conjugations
-                WHERE infinitive = ? AND tense = 'presente' AND person = ?
-            """, (infinitive, person))
-            result = cursor.fetchone()
-            if not result:
-                continue
-            correct_form = result[0]
-
-            stem = infinitive[:-3]  # remove -ire
-            endings_ref = isc_endings if verb_type == "regular_isc" else ire_endings
-            if verb_type == "regular_isc":
-                pattern_note = " (uses -isc- pattern)"
+            if is_isc:
                 if person in ("noi", "voi"):
+                    hint_note = " (-isc- only in io/tu/lui/loro)"
                     explanation = (
                         f"'{infinitive}' is an -isc- verb (like capire, finire, preferire). "
                         f"Noi and voi are regular — no -isc- infix. "
@@ -5249,6 +5331,7 @@ class PracticeGenerator:
                         f"(The -isc- only appears in io/tu/lui/loro.)"
                     )
                 else:
+                    hint_note = " (uses -isc- pattern)"
                     explanation = (
                         f"'{infinitive}' is an -isc- verb (like capire, finire, preferire). "
                         f"Insert -isc- between the stem and the ending for io/tu/lui/loro. "
@@ -5256,16 +5339,13 @@ class PracticeGenerator:
                         f"(Noi/voi are regular: {stem}iamo / {stem}ite — no -isc-.)"
                     )
             else:
-                pattern_note = ""
+                hint_note = ""
                 explanation = (
                     f"Regular -IRE verb: remove -ire → stem '{stem}', "
                     f"add '{endings_ref[person]}' for {person_display[person]} → {correct_form}. "
-                    f"Endings: -o, -i, -e, -iamo, -ite, -ono."
+                    f"Full pattern: {stem}o / {stem}i / {stem}e / {stem}iamo / {stem}ite / {stem}ono."
                 )
-            if verb_type == "regular_isc" and person in ("noi", "voi"):
-                hint_note = " (-isc- only in io/tu/lui/loro)"
-            else:
-                hint_note = pattern_note
+
             questions.append({
                 "question": (
                     f"Conjugate the -IRE verb '{infinitive}' ({english}) "
