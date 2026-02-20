@@ -954,14 +954,14 @@ def vocabulary_quiz():
     """Vocabulary quiz practice."""
     # Get level from query params (from menu) or form (from setup)
     level = request.args.get('level') or request.form.get('level', 'A2')
-    direction = request.args.get('direction')
 
-    if request.method == 'GET' and not direction:
-        # Show setup form
-        return render_template('vocabulary_quiz_setup.html', level=level)
+    if request.method == 'GET':
+        # Always show setup form; pre-select direction if passed in URL
+        direction_hint = request.args.get('direction', 'it_to_en')
+        return render_template('vocabulary_quiz_setup.html', level=level, direction_hint=direction_hint)
 
-    # Get direction and count
-    direction = direction or request.form.get('direction', 'it_to_en')
+    # POST: get direction and count from form
+    direction = request.form.get('direction', 'it_to_en')
     count = validate_count(request.form.get('count', 10))
 
     # Generate questions using fresh generator
