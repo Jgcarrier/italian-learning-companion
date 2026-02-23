@@ -2614,7 +2614,7 @@ class PracticeGenerator:
             ("Racconti la storia a me. ___ racconti la storia.", "Mi", "Indirect object pronoun - to me", "You tell the story to me. You tell ME the story."),
             ("Spiego la lezione agli studenti. ___ spiego la lezione.", "Gli", "Indirect object pronoun - to them", "I explain the lesson to the students. I explain the lesson TO THEM."),
             ("Chiedo un favore a te. ___ chiedo un favore.", "Ti", "Indirect object pronoun - to you", "I ask you a favor. I ask YOU a favor."),
-            ("Offro un caffè a noi. ___ offre un caffè.", "Ci", "Indirect object pronoun - to us", "He/she offers us a coffee. He/she offers US a coffee."),
+            ("Marco offre un caffè a noi. ___ offre un caffè.", "Ci", "Indirect object pronoun - to us", "Marco offers a coffee to us. Marco offers US a coffee."),
 
             # Mixed practice
             ("Vedo Maria e Marco. ___ vedo domani.", "Li", "Direct pronoun - them (mixed gender uses masc. plural)", "I see Maria and Marco. I see THEM tomorrow."),
