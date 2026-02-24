@@ -377,8 +377,11 @@ def check_answer(user_answer: str, correct_answer: str, question_type: str = Non
     """
     import re
 
-    user_normalized = remove_accents(user_answer.strip().lower())
-    correct_normalized = remove_accents(correct_answer.strip().lower())
+    # Normalise apostrophe spacing: "l' isola" → "l'isola"
+    def _norm(s):
+        return re.sub(r"'\s+", "'", remove_accents(s.strip().lower()))
+    user_normalized = _norm(user_answer)
+    correct_normalized = _norm(correct_answer)
 
     # Number word to digit mapping
     number_words = {

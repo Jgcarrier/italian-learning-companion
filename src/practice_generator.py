@@ -790,11 +790,15 @@ class PracticeGenerator:
             has_article = any(italian.startswith(p) for p in _ART_PREFIXES)
             is_noun = word_type == 'noun' and gender and not has_article
 
+            # Join article + noun: no space when article ends with apostrophe (l'isola not l' isola)
+            def _join(article, noun):
+                return f"{article}{noun}" if article.endswith("'") else f"{article} {noun}"
+
             if direction == "it_to_en":
                 if is_noun:
                     # Italian question includes definite article; English answer includes 'the'
                     art = self._get_italian_article(italian, gender, definite=True)
-                    question_text = f"Translate: {art} {italian}"
+                    question_text = f"Translate: {_join(art, italian)}"
                     answer = f"the {english}"
                 elif has_article:
                     # Article already embedded in Italian string (GCSE items) — answer includes 'the'
@@ -811,7 +815,7 @@ class PracticeGenerator:
                     # English question includes 'the'; Italian answer includes definite article
                     question_text = f"Translate: the {english}"
                     art = self._get_italian_article(italian, gender, definite=True)
-                    answer = f"{art} {italian}"
+                    answer = _join(art, italian)
                 elif has_article:
                     # Italian already has article; strip leading 'the ' from english if present
                     en_prompt = english[4:] if english.startswith("the ") else english
