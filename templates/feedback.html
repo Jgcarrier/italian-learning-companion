@@ -59,7 +59,14 @@
     {% if etymology %}
         <div style="margin-top: 20px; padding: 15px; background: #f3e8ff; border-left: 4px solid #9333ea; border-radius: 4px;">
             <p style="margin: 0; color: #333; font-size: 0.95rem;">
-                <strong>📚 Etymology:</strong> {{ etymology }}
+                {% if etymology.label == 'Fact' %}
+                    <strong>💡 Fact:</strong>
+                {% elif etymology.label == 'English etymology' %}
+                    <strong>🔤 English etymology:</strong>
+                {% else %}
+                    <strong>📚 Etymology:</strong>
+                {% endif %}
+                {{ etymology.text }}
             </p>
         </div>
     {% endif %}
