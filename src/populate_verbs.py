@@ -366,6 +366,20 @@ def get_past_participle(infinitive, verb_type):
         "nascere": "nato",
         "offrire": "offerto",
         "rompere": "rotto",
+        "porre": "posto",
+        "cogliere": "colto",
+        "raccogliere": "raccolto",
+        "sciogliere": "sciolto",
+        "togliere": "tolto",
+        "esprimere": "espresso",
+        "comporre": "composto",
+        "trarre": "tratto",
+        "cuocere": "cotto",
+        "dipingere": "dipinto",
+        "condurre": "condotto",
+        "muovere": "mosso",
+        "apparire": "apparso",
+        "accorgersi": "accorto",
     }
 
     if infinitive in irregular_participles:
@@ -382,6 +396,9 @@ def get_past_participle(infinitive, verb_type):
 
 def get_auxiliary(infinitive):
     """Determine if verb uses avere or essere."""
+    # Reflexive verbs always take essere
+    if infinitive.endswith("si"):
+        return "essere"
     essere_verbs = {
         "essere", "andare", "venire", "arrivare", "partire", "uscire",
         "tornare", "rimanere", "salire", "nascere", "morire", "stare",
@@ -430,24 +447,28 @@ def get_futuro(infinitive, verb_type):
                 "loro": stem + "eranno"
             }
     elif verb_type in ["regular_ere", "regular_ire"]:
-        stem = infinitive[:-1]  # Remove just the 'e' or 'e'
+        # stem already ends in 'r' (e.g. "prend-er", "cap-ir")
+        # so endings must NOT add another 'r'
+        stem = infinitive[:-1]  # Remove just the final 'e'
         return {
-            "io": stem + "rò",
-            "tu": stem + "rai",
-            "lui_lei": stem + "rà",
-            "noi": stem + "remo",
-            "voi": stem + "rete",
-            "loro": stem + "ranno"
+            "io": stem + "ò",
+            "tu": stem + "ai",
+            "lui_lei": stem + "à",
+            "noi": stem + "emo",
+            "voi": stem + "ete",
+            "loro": stem + "anno"
         }
     else:
+        # Irregular -ere/-ire verbs (e.g. raccogliere, esprimere, cogliere)
+        # stem already ends in 'r', so no extra 'r' needed
         stem = infinitive[:-1]
         return {
-            "io": stem + "rò",
-            "tu": stem + "rai",
-            "lui_lei": stem + "rà",
-            "noi": stem + "remo",
-            "voi": stem + "rete",
-            "loro": stem + "ranno"
+            "io": stem + "ò",
+            "tu": stem + "ai",
+            "lui_lei": stem + "à",
+            "noi": stem + "emo",
+            "voi": stem + "ete",
+            "loro": stem + "anno"
         }
 
 
@@ -532,24 +553,26 @@ def get_condizionale(infinitive, verb_type):
                 "loro": stem + "erebbero"
             }
     elif verb_type in ["regular_ere", "regular_ire"]:
+        # stem already ends in 'r' (e.g. "prend-er", "cap-ir")
         stem = infinitive[:-1]
         return {
-            "io": stem + "rei",
-            "tu": stem + "resti",
-            "lui_lei": stem + "rebbe",
-            "noi": stem + "remmo",
-            "voi": stem + "reste",
-            "loro": stem + "rebbero"
+            "io": stem + "ei",
+            "tu": stem + "esti",
+            "lui_lei": stem + "ebbe",
+            "noi": stem + "emmo",
+            "voi": stem + "este",
+            "loro": stem + "ebbero"
         }
     else:
+        # Irregular -ere/-ire verbs (e.g. raccogliere, esprimere, cogliere)
         stem = infinitive[:-1]
         return {
-            "io": stem + "rei",
-            "tu": stem + "resti",
-            "lui_lei": stem + "rebbe",
-            "noi": stem + "remmo",
-            "voi": stem + "reste",
-            "loro": stem + "rebbero"
+            "io": stem + "ei",
+            "tu": stem + "esti",
+            "lui_lei": stem + "ebbe",
+            "noi": stem + "emmo",
+            "voi": stem + "este",
+            "loro": stem + "ebbero"
         }
 
 

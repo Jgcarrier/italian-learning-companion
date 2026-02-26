@@ -934,6 +934,14 @@ def check_answer(user_answer: str, correct_answer: str, question_type: str = Non
                 is_correct = True
                 break
 
+    # Bug-0125: Accept if user wrote a longer answer that contains all words of
+    # the correct answer (e.g. "the beach and the sea" for "the beach")
+    if not is_correct:
+        correct_words_set = set(correct_normalized.split())
+        user_words_set = set(user_normalized.split())
+        if correct_words_set and correct_words_set.issubset(user_words_set) and len(user_words_set) > len(correct_words_set):
+            is_correct = True
+
     # For display, use the first option if multiple (handles both "/" and ", " separators)
     display_answer = re.split(r'/|,\s*', correct_answer)[0].strip() if ('/' in correct_answer or ',' in correct_answer) else correct_answer
 
