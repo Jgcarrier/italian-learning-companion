@@ -300,64 +300,311 @@ def remove_accents(text: str) -> str:
 
 
 def get_etymology_fact(word: str) -> str:
-    """Get an interesting etymology fact for Italian vocabulary words."""
+    """Get an etymology fact or Italian fun fact for any word."""
     etymology_facts = {
-        # Days of the week
-        'lunedì': 'Named after Luna (the Moon) - "Moon\'s day"',
-        'martedì': 'Named after Mars (god of war) - "Mars\' day"',
-        'mercoledì': 'Named after Mercury (god of commerce) - "Mercury\'s day"',
-        'giovedì': 'Named after Jupiter/Jove (king of gods) - "Jupiter\'s day"',
-        'venerdì': 'Named after Venus (goddess of love) - "Venus\' day"',
-        'sabato': 'From Hebrew "Shabbat" (day of rest)',
-        'domenica': 'From Latin "dies dominica" (the Lord\'s day)',
+        # ── Days of the week ──────────────────────────────────────────────────
+        'lunedì':    'Named after Luna (the Moon) — "Moon\'s day". Same logic as English Monday.',
+        'martedì':   'Named after Mars, god of war — "Mars\' day". Like English Tuesday (Tiw\'s day).',
+        'mercoledì': 'Named after Mercury, god of commerce — "Mercury\'s day". Like English Wednesday.',
+        'giovedì':   'Named after Jupiter/Jove, king of the gods — "Jupiter\'s day". Like Thursday.',
+        'venerdì':   'Named after Venus, goddess of love — "Venus\' day". Like English Friday.',
+        'sabato':    'From Hebrew "Shabbat" (day of rest) — one of the few Hebrew borrowings in Italian.',
+        'domenica':  'From Latin "dies dominica" (the Lord\'s day) — a Christian renaming of the old sun-day.',
 
-        # Common words
-        'caffè': 'From Turkish "kahve", originally from Arabic "qahwah"',
-        'pasta': 'From Greek "pasta" meaning "barley porridge"',
-        'pizza': 'Possibly from Greek "pitta" (flatbread) or Latin "pinsa" (to pound)',
-        'ciao': 'From Venetian "s-ciào" meaning "I am your slave" (polite greeting)',
-        'piano': 'Means "soft" or "slow", also related to "pianoforte" (soft-loud)',
-        'solo': 'From Latin "solus" meaning "alone" - used worldwide in music',
-        'soprano': 'From Italian "sopra" (above) - the highest singing voice',
-        'maestro': 'From Latin "magister" (master/teacher)',
-        'libretto': 'Diminutive of "libro" (book) - literally "little book"',
-        'tempo': 'From Latin "tempus" (time) - used globally in music',
-        'allegro': 'Means "cheerful/lively" in Italian, used in music for fast tempo',
+        # ── Months ────────────────────────────────────────────────────────────
+        'gennaio':   'From Latin "Ianuarius" — named after Janus, the two-faced god of beginnings.',
+        'febbraio':  'From Latin "februum" (purification) — Romans held purification rites this month.',
+        'marzo':     'Named after Mars, god of war — the original first month of the Roman calendar.',
+        'aprile':    'Possibly from Latin "aperire" (to open) — spring opens the earth.',
+        'maggio':    'From Latin "Maius" — named after Maia, goddess of growth.',
+        'giugno':    'From Latin "Iunius" — named after Juno, queen of the gods.',
+        'luglio':    'From Latin "Iulius" — named after Julius Caesar.',
+        'agosto':    'From Latin "Augustus" — named after Emperor Augustus.',
+        'settembre': 'From Latin "septem" (seven) — it was the 7th month in the original Roman calendar.',
+        'ottobre':   'From Latin "octo" (eight) — the 8th month of the old Roman calendar.',
+        'novembre':  'From Latin "novem" (nine) — the 9th month of the old Roman calendar.',
+        'dicembre':  'From Latin "decem" (ten) — the 10th month of the old Roman calendar.',
 
-        # Food and drink
-        'vino': 'From Latin "vinum", one of the oldest cultivated words',
-        'pane': 'From Latin "panis" - same root as English "pantry"',
-        'acqua': 'From Latin "aqua" - root of "aquatic", "aquarium"',
-        'formaggio': 'From Latin "formaticus" (made in a mold)',
-        'gelato': 'From Latin "gelatus" (frozen) - related to "gelid"',
-        'limone': 'From Arabic "laymūn" via Persian',
-        'zucchero': 'From Arabic "sukkar" via Sanskrit "śárkarā" (gravel/sand)',
+        # ── Seasons ───────────────────────────────────────────────────────────
+        'primavera': 'From Latin "primo vere" (first spring) — literally "the first green".',
+        'estate':    'From Latin "aestas" (summer heat) — root of "estival" (relating to summer).',
+        'autunno':   'From Latin "autumnus" — possibly Etruscan in origin, predating Roman Latin.',
+        'inverno':   'From Latin "hibernum" (winter) — same root as "hibernate".',
 
-        # Common verbs
-        'parlare': 'From Latin "parabola" (parable/speech) via Greek',
-        'mangiare': 'From Latin "manducare" (to chew)',
-        'bere': 'From Latin "bibere" (to drink) - root of "beverage"',
-        'dormire': 'From Latin "dormire" - root of "dormitory"',
-        'studiare': 'From Latin "studium" (zeal/study) - root of "student"',
+        # ── Food & drink ──────────────────────────────────────────────────────
+        'caffè':       'From Turkish "kahve", originally from Arabic "qahwah". Coffee reached Italy via Venice in the 1570s.',
+        'pasta':       'From Greek "pastē" (barley porridge). Contrary to legend, Italy had pasta before Marco Polo.',
+        'pizza':       'First documented in Gaeta in 997 AD. The word may come from Latin "pinsa" (flatbread). Margherita pizza was created in 1889 for Queen Margherita.',
+        'pane':        'From Latin "panis" — same root as English "pantry" and "companion" (com + panis = sharing bread).',
+        'vino':        'From Latin "vinum" — one of the oldest cultivated words, related to Greek "oinos". Italy produces more wine than any other country.',
+        'acqua':       'From Latin "aqua" — root of "aquatic", "aquarium", and "aqueduct". Romans built 11 aqueducts serving Rome.',
+        'latte':       'From Latin "lac/lactis" — root of "lactose" and "galaxy" (the Milky Way).',
+        'burro':       'From Latin "butyrum", itself from Greek "boutyron" (ox-cheese). Same root as English "butter".',
+        'formaggio':   'From Latin "formaticus" (made in a mould) — the French "fromage" has the same origin.',
+        'gelato':      'From Latin "gelatus" (frozen) — related to "gelid". Italian gelato has less air than ice cream, making it denser.',
+        'prosciutto':  'From Latin "perexsuctum" (thoroughly dried) — cured for months, sometimes years.',
+        'zucchero':    'From Arabic "sukkar" via Sanskrit "śárkarā" (gravel/sand, for sugar crystals).',
+        'riso':        'From Latin "oryza", itself from Greek/Persian, originally from Sanskrit "vrīhi".',
+        'pesce':       'From Latin "piscis" — same root as Pisces (the zodiac fish) and "piscina" (fish pond → pool).',
+        'carne':       'From Latin "caro/carnis" (flesh) — root of "carnivore", "carnival" (farewell to meat), and "incarnate".',
+        'uovo':        'From Latin "ovum" — root of "oval" and "ovary". Unusual plural: un uovo → le uova (changes gender in plural).',
+        'sale':        'From Latin "sal" — root of "salary" (Roman soldiers were partly paid in salt) and "salad" (salted greens).',
+        'olio':        'From Latin "oleum", from Greek "elaion" (olive oil) — root of "petroleum" (rock oil).',
+        'aglio':       'From Latin "allium" — ancient Romans ate garlic daily for strength. Same root as English "allium".',
+        'pomodoro':    'Literally "golden apple" (pomo d\'oro) — early tomatoes brought from America were yellow, not red.',
+        'limone':      'From Arabic "laymūn" via Persian "līmūn" — citrus fruits came to Europe via Arab traders.',
+        'arancia':     'From Arabic "nāranj" via Persian — the \'n\' was lost when Italian speakers thought it was the article.',
+        'ananas':      'From the Tupi word "nanas" (excellent fruit) — brought from South America by Portuguese explorers.',
+        'albicocca':   'From Arabic "al-barquq" — apricots came to Europe via Arab traders.',
+        'fragola':     'From Latin "fragrans" (fragrant) — named for its sweet smell.',
+        'uva':         'From Latin "uva" (grape/grape cluster). Italy has over 350 native grape varieties.',
+        'antipasto':   'Literally "before the meal" (anti + pasto). The tradition dates to Roman "gustatio" starters.',
+        'colazione':   'From Latin "collatio" (a bringing together) — originally a monastic light meal.',
+        'dolce':       'From Latin "dulcis" (sweet) — root of "dulcet". Also means "gentle/soft" in Italian.',
+        'birra':       'From Germanic "bier" — beer was introduced to Italy by northern European tribes.',
+        'cioccolato':  'From Aztec "xocolātl" (bitter water) — brought to Europe by Spanish conquistadors in 1528.',
 
-        # Colors
-        'rosso': 'From Latin "russus" (red) - related to "rust"',
-        'bianco': 'From Germanic "blank" (white/shining)',
-        'nero': 'From Latin "niger" (black)',
-        'verde': 'From Latin "viridis" (green) - root of "verdant"',
-        'azzurro': 'From Persian "lāžward" (lapis lazuli stone)',
+        # ── Animals ───────────────────────────────────────────────────────────
+        'gatto':    'From Late Latin "cattus" — the domestic cat was so valued in Rome that stealing one was a crime.',
+        'cane':     'From Latin "canis" — root of "canine". The word "cancel" also derives from it (latticed bars like a kennel).',
+        'cavallo':  'From Latin "caballus" (work horse) — root of "cavalry" and "chivalry".',
+        'uccello':  'From Latin "aucellus" (small bird) — root of "augur" (divination by watching birds).',
 
-        # Family
-        'madre': 'From Latin "mater" - one of the oldest human words',
-        'padre': 'From Latin "pater" - found in similar forms across Indo-European languages',
-        'fratello': 'From Latin "fraternus" (brotherly) - root of "fraternity"',
-        'sorella': 'From Latin "soror" (sister) - root of "sorority"',
+        # ── Home & places ─────────────────────────────────────────────────────
+        'casa':       'From Latin "casa" (cottage/hut) — in ancient Rome, the grand word for house was "domus" (root of "domestic").',
+        'finestra':   'From Latin "fenestra" (window) — root of "fenestrated" and "defenestration" (throwing someone out a window).',
+        'porta':      'From Latin "porta" (gate/door) — root of "portal", "porter", and "portfolio".',
+        'cucina':     'From Latin "coquina" (kitchen) — root of "cook", "cuisine", and "biscuit".',
+        'biblioteca': 'From Greek "bibliotheke" (book storage) — "biblio" means book, root of "bibliography".',
+        'chiesa':     'From Greek "ekklesia" (assembly) — root of "ecclesiastical".',
+        'piazza':     'From Latin "platea" (broad street) — root of English "place" and "plaza".',
+        'stazione':   'From Latin "statio" (a standing, a post) — root of "station", "static", "statue".',
+
+        # ── City & transport ──────────────────────────────────────────────────
+        'treno':      'From English "train" — borrowed in the 1800s when railways arrived in Italy.',
+        'aereo':      'From Greek "aer" (air) — Italy had pioneering aviators; D\'Annunzio dropped leaflets over Vienna in 1918.',
+        'autobus':    'From Latin "auto" (self) + Latin "omnibus" (for all) — literally "self-moving for everyone".',
+        'bicicletta': 'From Latin "bi" (two) + Greek "kyklos" (circle/wheel) — the modern bicycle was perfected in the 1880s.',
+        'macchina':   'From Greek "mechane" (contrivance/machine) — Italians called the car "the machine" when it arrived.',
+        'nave':       'From Latin "navis" (ship) — root of "navigate", "navy", "naval".',
+        'porto':      'From Latin "portus" (harbour) — root of "port", "transport", "import", "export".',
+        'passaporto': 'Literally "pass the port/gate" (passa + porto) — a document letting you through the harbour gate.',
+        'biglietto':  'From French "billet" (note/ticket) — diminutive of "bille" (seal on a document).',
+
+        # ── People & family ───────────────────────────────────────────────────
+        'madre':   'From Latin "mater" — one of the most ancient human words, almost identical across Indo-European languages.',
+        'padre':   'From Latin "pater" — found in Sanskrit "pitā", Greek "patēr", English "father".',
+        'fratello':'From Latin "fraternus" (brotherly) — root of "fraternity" and "fraternise".',
+        'sorella': 'From Latin "soror" (sister) — root of "sorority". Shakespeare used the Latin form in legal texts.',
+        'figlio':  'From Latin "filius" (son) — root of "filial" (relating to a son or daughter).',
+        'nonno':   'A playful reduplication of "nono" — Italian children\'s language often doubles syllables for family words.',
+        'marito':  'From Latin "maritus" (husband) — root of "marital" and "matrimony".',
+        'moglie':  'From Latin "mulier" (woman) — one of the few words where Italian diverged completely from "femina".',
+        'amico':   'From Latin "amicus" (friend) — root of "amicable", "amiable". Also root of "enemy" (in-amicus).',
+
+        # ── Body & health ─────────────────────────────────────────────────────
+        'testa':    'From Latin "testa" (pot/shell) — Romans used "caput" for head in classical Latin; "testa" was slang, like saying "noggin".',
+        'mano':     'From Latin "manus" (hand) — root of "manual", "manufacture", "manuscript", "manage".',
+        'piede':    'From Latin "pes/pedis" (foot) — root of "pedestrian", "pedal", "expedite".',
+        'occhio':   'From Latin "oculus" (eye) — root of "ocular", "binoculars", "inoculate".',
+        'naso':     'From Latin "nasus" (nose) — root of "nasal". Italian has the expression "avere il naso fino" (to have a fine nose = sharp intuition).',
+        'cuore':    'From Latin "cor/cordis" (heart) — root of "cordial", "courage", "accord", "record".',
+        'febbre':   'From Latin "febris" (fever) — root of "February" (the purification month, possibly linked to illness).',
+        'medicina': 'From Latin "medicina" — the word "doctor" comes from Latin "docere" (to teach); early doctors were teachers of medicine.',
+
+        # ── School & learning ─────────────────────────────────────────────────
+        'scuola':     'From Greek "skholē" — the original meaning was "leisure", as only those with free time could learn.',
+        'libro':      'From Latin "liber" (book, but also the inner bark of a tree, where Romans wrote) — root of "library" and "liberate".',
+        'lingua':     'From Latin "lingua" (tongue/language) — root of "bilingual", "linguistics", "linguine" (little tongues).',
+        'matematica': 'From Greek "mathēmatikē" (relating to learning) — root of "mathematics".',
+        'storia':     'From Greek "historia" (inquiry, knowledge from research) — root of "history" and "story".',
+        'arte':       'From Latin "ars/artis" — root of "art", "artisan", "artificial".',
+        'musica':     'From Greek "mousikē" — named after the Muses, the nine goddesses of creative arts.',
+        'università': 'From Latin "universitas" (the whole, a corporation) — Bologna (1088) is the world\'s oldest university.',
+        'esame':      'From Latin "examen" (the tongue of a balance) — originally meant careful weighing/testing.',
+
+        # ── Work ──────────────────────────────────────────────────────────────
+        'lavoro':    'From Latin "laborare" (to toil) — root of "labour". The Latin root also gave us "elaborate".',
+        'ufficio':   'From Latin "officium" (duty/service) — root of "official", "officer", "officious".',
+        'stipendio': 'From Latin "stipendium" (soldiers\' pay, coins + weight) — Roman soldiers were weighed their pay.',
+        'medico':    'From Latin "medicus" (healer) — root of "medical", "medicine", "remedy".',
+        'ingegnere': 'From Latin "ingenium" (cleverness/talent) — root of "engineer", "engine", "ingenious".',
+
+        # ── Nature & environment ──────────────────────────────────────────────
+        'mare':      'From Latin "mare" (sea) — root of "marine", "maritime", "submarine". Italy has 7,600 km of coastline.',
+        'montagna':  'From Latin "montanea" (mountainous region) — root of "mountain", "Montana", "Paramount".',
+        'fiume':     'From Latin "flumen" (river, flow) — root of "fluid", "fluent", "influence".',
+        'lago':      'From Latin "lacus" (lake/basin) — root of "lacuna" (a gap/missing part).',
+        'bosco':     'From Germanic "busc" (forest) — root of "bush". Italy\'s forests cover 37% of the country.',
+        'sole':      'From Latin "sol" (sun) — root of "solar", "solstice", "parasol". Same root in almost all European languages.',
+        'luna':      'From Latin "luna" (moon) — root of "lunar", "lunatic" (once thought caused by the moon).',
+        'pioggia':   'From Latin "pluvia" (rain) — root of "pluvial". Italy\'s name may come from "Vitalia" (land of cattle, needing rain).',
+        'neve':      'From Latin "nix/nivis" (snow) — root of "niveous" (snowy). The Alps receive up to 10 metres of snow per year.',
+        'vento':     'From Latin "ventus" (wind) — root of "ventilate", "vent".',
+        'ambiente':  'From Latin "ambire" (to go around) — root of "ambient", "ambience".',
+        'inquinamento': 'From Latin "inquinare" (to stain/pollute) — "in" (not) + "quinus" (pure).',
+
+        # ── Clothes ───────────────────────────────────────────────────────────
+        'vestito':  'From Latin "vestire" (to clothe) — root of "vest", "invest" (to clothe in authority), "divest".',
+        'scarpe':   'From Germanic "skarpa" (something scraped/sharp) — shoes were made by scraping leather flat.',
+        'cappello': 'From Latin "capa" (hood/cape) — root of "cap", "cape", "escape" (slip out of your cape).',
+        'giacca':   'From French "jaque" (a short coat) — possibly named after Jacques Bonhomme, a common French name.',
+
+        # ── Common verbs ──────────────────────────────────────────────────────
+        'essere':   'From two Latin verbs merged: "esse" (to be) and "sedere" (to sit). That\'s why its conjugation is so irregular!',
+        'avere':    'From Latin "habere" (to have/hold) — root of "habit" (what you hold/keep) and "inhibit".',
+        'fare':     'From Latin "facere" (to make/do) — root of "fact", "factory", "affect", "perfect", "fashion".',
+        'andare':   'Uncertain origin — possibly from Latin "ambulare" (to walk), root of "ambulance" and "amble".',
+        'venire':   'From Latin "venire" (to come) — root of "advent", "convention", "prevent", "adventure".',
+        'dare':     'From Latin "dare" (to give) — root of "data" (things given), "donation", "edition".',
+        'stare':    'From Latin "stare" (to stand) — root of "stable", "statue", "state", "station", "instant".',
+        'sapere':   'From Latin "sapere" (to taste/be wise) — root of "savour", "sapient", "Homo sapiens".',
+        'potere':   'From Latin "potere" (to be able) — root of "potent", "possible", "possess", "power".',
+        'volere':   'From Latin "velle/volere" (to wish) — root of "voluntary", "volition", "benevolent".',
+        'dovere':   'From Latin "debere" (to owe) — root of "debt", "due", "duty".',
+        'parlare':  'From Latin "parabola" (parable/speech) via Greek — the same root as "parliament" (place of speaking).',
+        'mangiare': 'From Latin "manducare" (to chew) — the French "manger" has the same origin.',
+        'bere':     'From Latin "bibere" (to drink) — root of "beverage", "imbibe".',
+        'dormire':  'From Latin "dormire" — root of "dormitory", "dormant", "dormouse".',
+        'studiare': 'From Latin "studium" (zeal/study) — root of "student", "studio", "study".',
+        'leggere':  'From Latin "legere" (to gather/read) — root of "lecture", "legend", "elect", "intelligent".',
+        'scrivere': 'From Latin "scribere" (to write) — root of "script", "describe", "prescribe", "manuscript".',
+        'vedere':   'From Latin "videre" (to see) — root of "video", "vision", "evidence", "provide".',
+        'sentire':  'From Latin "sentire" (to feel/hear) — root of "sense", "sentence", "sentiment", "consent".',
+        'capire':   'From Latin "capere" (to grasp) — root of "capture", "concept", "capable", "accept".',
+        'vivere':   'From Latin "vivere" (to live) — root of "vivid", "survive", "revive", "vital".',
+        'correre':  'From Latin "currere" (to run) — root of "current", "course", "occur", "corridor".',
+        'aprire':   'From Latin "aperire" (to open) — root of "aperture", "aperitif" (opens the appetite).',
+        'trovare':  'Possibly from Greek "tropos" (turn) via "tropare" (to compose verse) — troubadours "found" melodies.',
+        'chiamare': 'From Latin "clamare" (to shout/call) — root of "claim", "exclaim", "proclaim".',
+        'portare':  'From Latin "portare" (to carry) — root of "transport", "import", "export", "portfolio".',
+        'lasciare': 'From Latin "laxare" (to loosen) — root of "lax", "relax", "lease".',
+        'pensare':  'From Latin "pensare" (to weigh carefully) — root of "pensive", "pension", "compensate".',
+        'lavorare': 'From Latin "laborare" (to toil) — root of "labour", "elaborate", "laboratory".',
+        'comprare': 'From Latin "comparare" (to get together/procure) — related to "compare".',
+        'pagare':   'From Latin "pacare" (to appease, to satisfy a creditor) — root of "pacify", "peace".',
+        'usare':    'From Latin "usare" (to use) — root of "use", "usual", "abuse", "refuse".',
+        'uscire':   'From Latin "exire" (to go out) — root of "exit". Italian uscire is technically "ex + ire" (to go out).',
+        'partire':  'From Latin "partire" (to divide/depart) — root of "part", "department", "compartment".',
+        'arrivare': 'From Latin "arripare" (to reach the shore) — literally "to reach the riverbank" (ripa = bank).',
+        'aiutare':  'From Latin "adiutare" (to help) — root of "adjutant" (a military assistant).',
+        'giocare':  'From Latin "iocari" (to jest/play) — root of "joke" and "juggler".',
+        'vincere':  'From Latin "vincere" (to conquer) — root of "victory", "convince", "invincible".',
+        'perdere':  'From Latin "perdere" (to destroy/lose) — root of "perdition", "perdurable".',
+        'camminare':'From Latin "caminare" (to walk along a road) — related to "camino" (path), root of "Camino de Santiago".',
+        'abitare':  'From Latin "habitare" (to dwell) — root of "habitat", "inhabit", "habit".',
+        'tornare':  'From Latin "tornare" (to turn on a lathe) — root of "turn", "tournament", "return".',
+        'ricordare':'From Latin "re + cor/cordis" (heart) — to remember is literally "to bring back to the heart".',
+        'sperare':  'From Latin "sperare" (to hope) — root of "desperate" (without hope) and "prosper".',
+        'cercare':  'From Latin "circare" (to go around/search) — root of "search", "research", "circa".',
+        'guardare': 'From Germanic "wardon" (to watch/guard) — root of "guard", "regard", "reward".',
+        'ascoltare':'From Latin "auscultare" (to listen carefully) — root of "auscultation" (a doctor listening to the body).',
+
+        # ── Adjectives ────────────────────────────────────────────────────────
+        'bello':      'From Latin "bellus" (pretty/fine) — root of "belle", "embellish". Unrelated to "bellum" (war).',
+        'buono':      'From Latin "bonus" (good) — root of "bonus", "boon", "bonfire" (good fire).',
+        'grande':     'From Latin "grandis" (large/great) — root of "grand", "grandeur", "aggrandise".',
+        'piccolo':    'Uncertain origin, possibly pre-Roman. Now famous worldwide as a small flute.',
+        'nuovo':      'From Latin "novus" (new) — root of "novel", "novice", "innovation", "renovate".',
+        'vecchio':    'From Latin "vetulus" (elderly) — root of "veteran", "inveterate".',
+        'lungo':      'From Latin "longus" (long) — root of "longitude", "elongate", "lounge" (a long, relaxed room).',
+        'alto':       'From Latin "altus" (high/deep) — root of "altitude", "alto" (high voice), "exalt".',
+        'basso':      'From Latin "bassus" (low/stout) — root of "bass" (low voice/sound), "bassoon".',
+        'giovane':    'From Latin "iuvenis" (young) — root of "juvenile", "rejuvenate".',
+        'vecchio':    'From Latin "vetulus" — root of "veteran". In Italian "vecchio" is affectionate, not rude.',
+        'difficile':  'From Latin "difficilis" (not easy) — root of "difficult". Italian uses it far more than English speakers expect.',
+        'importante': 'From Latin "importare" (to bring in, to matter) — same root as "import".',
+        'simpatico':  'From Greek "sympathetikos" — in Italian it means "nice/likeable", NOT sympathetic! A classic false friend.',
+        'morbido':    'From Latin "morbidus" — in Italian means SOFT/GENTLE, not morbid. One of the most surprising false friends!',
+        'bravo':      'From Latin "barbarus" (foreign/wild) — evolved to mean "skilled" in Italian, then became a universal cheer.',
+        'furbo':      'Possibly from Latin "fur" (thief) — in Italian means "cunning/crafty", used with a hint of admiration.',
+
+        # ── Common expressions ────────────────────────────────────────────────
+        'ciao':      'From Venetian "s-ciào vostro" (I am your slave) — a humble greeting that became the world\'s most recognised Italian word.',
+        'grazie':    'From Latin "gratia" (grace/favour) — root of "gratitude", "gratuitous", "congratulate".',
+        'prego':     'From Latin "precari" (to pray/beg) — used for "you\'re welcome", "please", "go ahead". Wonderfully versatile!',
+        'benvenuto': 'Literally "well come" (bene + venuto) — same structure as English "welcome" (well + come).',
+        'allora':    'From Latin "ad illam horam" (at that hour) — now means "so/well/then". One of Italians\' favourite filler words.',
+        'magari':    'From Greek "makários" (blessed/happy) — in Italian means "maybe/if only". Used to express wistful hope.',
+        'purtroppo': 'Literally "too much" (pur + troppo) — evolved to mean "unfortunately". Shows how emphasis can flip meaning.',
+        'comunque':  'From Latin "quomodo + unque" — means "anyway/however". One of the most useful Italian connectors.',
+
+        # ── Numbers & quantities ──────────────────────────────────────────────
+        'mille':   'From Latin "mille" (thousand) — root of "mile" (mille passuum = a thousand paces), "millennium", "million".',
+        'cento':   'From Latin "centum" (hundred) — root of "century", "percent", "centimetre".',
+        'numero':  'From Latin "numerus" — root of "number", "numeral", "innumerable".',
+        'molto':   'From Latin "multum" (much) — root of "multiply", "multitude", "multiple".',
+        'poco':    'From Latin "paucus" (few/little) — root of "pauper" (few possessions).',
+        'troppo':  'Possibly from Latin "tropus" (a turn/trope) — in Italian means "too much". Operas end "è troppo tardi!" (it\'s too late!)',
+
+        # ── Technology & modern ───────────────────────────────────────────────
+        'computer':   'English loanword — Italian adopted it wholesale in the 1950s, though "calcolatore" was also used.',
+        'telefono':   'From Greek "tele" (far) + "phone" (voice) — literally "far-voice". Invented by Antonio Meucci, an Italian, in 1854.',
+        'internet':   'English compound. Italy was connected to the internet in 1986, one of the earliest European countries.',
+        'cellulare':  'From Latin "cellula" (small room) — refers to the cellular network structure of small transmission zones.',
+
+        # ── Culture & extras ──────────────────────────────────────────────────
+        'carnevale':  'From Latin "carne vale" (farewell to meat) — the feast before Lent began. Venice\'s carnival dates to the 11th century.',
+        'opera':      'From Latin "opus/operis" (work) — literally "a work". Italy invented opera around 1600 in Florence.',
+        'gondola':    'Possibly from Latin "cymba" or Greek "kondy" — Venice has had gondolas since the 11th century.',
+        'balcone':    'From Italian "balcone" — root of English "balcony". Romeo and Juliet\'s scene made it famous worldwide.',
+        'ombrello':   'From Latin "umbra" (shadow) — root of "umbrella" (little shadow) and "ombre".',
+        'banca':      'From Germanic "bank" (bench) — medieval money-changers did business on benches in the marketplace.',
+        'giornale':   'From Latin "diurnalis" (daily) — root of "journal", "journey" (a day\'s travel), "diurnal".',
+        'campagna':   'From Latin "campania" (open flat land) — root of "campaign" (military operations in open fields).',
+        'festa':      'From Latin "festum" (feast/holiday) — root of "festival", "feast", "festive".',
+        'musica':     'From Greek "mousikē" — named after the Muses. Italy gave the world musical notation, the piano, opera, and the violin.',
+        'violino':    'From Italian "viola" (stringed instrument) — Cremona, Italy, is still considered the world capital of violin-making (Stradivari was from here).',
+        'pianoforte': 'Invented by Bartolomeo Cristofori in Florence around 1700 — literally "soft-loud" (piano + forte), describing its dynamic range.',
+        'cappuccino': 'Named after the Capuchin friars — the drink\'s colour resembles their brown robes and tonsured heads.',
     }
 
-    # Remove articles and normalize
-    word_clean = word.lower().replace('il ', '').replace('la ', '').replace('i ', '').replace('le ', '').replace('gli ', '').replace('lo ', '').replace("l'", '').strip()
+    # General Italian fun facts shown when no word-specific entry is found
+    general_facts = [
+        '🇮🇹 Italian is one of the closest living languages to Latin — about 89% of Italian words come directly from Latin.',
+        '🎵 Italian is the language of music — nearly all musical terms worldwide (allegro, forte, piano, soprano) are Italian.',
+        '🍕 Italy has over 350 distinct pasta shapes, each designed for different sauces and regional traditions.',
+        '📚 The first university in the world was the University of Bologna, founded in 1088.',
+        '🏛️ Rome was founded in 753 BC — the city is over 2,700 years old.',
+        '🎨 Italian was the language of the Renaissance — da Vinci, Michelangelo, Raphael, and Botticelli all wrote in Italian.',
+        '🌍 Italian is spoken by about 85 million people worldwide, and is one of the EU\'s 24 official languages.',
+        '🗺️ Italy only became a unified country in 1861 — before that it was a patchwork of kingdoms, city-states, and duchies.',
+        '🍷 Italy produces more wine than any other country in the world — over 5 billion litres per year.',
+        '👗 Italy is home to many of the world\'s top fashion houses: Gucci, Versace, Prada, Armani, and Dolce & Gabbana.',
+        '🚗 The world\'s oldest car race, the Mille Miglia, is Italian — 1,000 miles through the Italian countryside.',
+        '🏗️ Italian has two words for "you": "tu" (informal) and "Lei" (formal) — the formal uses the 3rd person, a historical quirk.',
+        '🔤 The letters J, K, W, X, and Y do not appear in native Italian words — they only appear in foreign loanwords.',
+        '🎭 Italy invented the theatrical form of Commedia dell\'Arte in the 16th century — the origins of clowns and pantomime.',
+        '⚽ The Italian national football team is called the "Azzurri" (the Blues) — after the blue of the House of Savoy.',
+        '🌋 Italy has more active volcanoes than any other European country: Vesuvius, Etna, Stromboli, and Campi Flegrei.',
+        '🤌 Italian has a rich tradition of hand gestures — some linguists count over 250 distinct gesture meanings.',
+        '📖 Dante\'s Divine Comedy (written 1308–1320) did more to standardise Italian than any other single work.',
+        '🏆 Italy has won the FIFA World Cup four times (1934, 1938, 1982, 2006) — second only to Brazil.',
+        '🍦 Gelato has a lower fat content and less air than ice cream, making it denser and more intensely flavoured.',
+    ]
 
-    return etymology_facts.get(word_clean, None)
+    import random as _random
+
+    # Strip articles and normalise the lookup word
+    word_clean = (word.lower()
+                  .replace('il ', '').replace('la ', '').replace('i ', '')
+                  .replace('le ', '').replace('gli ', '').replace('lo ', '')
+                  .replace("l'", '').strip())
+
+    # Direct lookup first
+    fact = etymology_facts.get(word_clean)
+    if fact:
+        return fact
+
+    # Try the first word only (handles phrases like "fare il bucato")
+    first_word = word_clean.split()[0] if ' ' in word_clean else None
+    if first_word:
+        fact = etymology_facts.get(first_word)
+        if fact:
+            return fact
+
+    # Fall back to a random general Italian fact
+    return _random.choice(general_facts)
 
 
 def check_answer(user_answer: str, correct_answer: str, question_type: str = None) -> tuple[bool, str]:
@@ -1070,12 +1317,12 @@ def submit_answer():
     explanation = question.get('explanation', None) or question.get('reason', None)
     hint = question.get('hint', None)
 
-    # Add etymology fact for vocabulary questions
-    etymology = None
-    if question_type == 'vocabulary':
-        # Try to get etymology from the Italian word
-        italian_word = question.get('italian', display_answer)
-        etymology = get_etymology_fact(italian_word)
+    # Add etymology / fun fact — shown on all question types
+    # Try the Italian word in the question first, then fall back to a general fact
+    italian_word = (question.get('italian')
+                    or question.get('infinitive')
+                    or display_answer)
+    etymology = get_etymology_fact(italian_word)
 
     # Get the appropriate menu for the back button
     practice_type = session.get('practice_type', '')
