@@ -6005,27 +6005,39 @@ class PracticeGenerator:
                 aux_row = cursor.fetchone()
                 aux = aux_row[0] if aux_row else 'avere'
 
+                aux_forms_avere = {
+                    "io": "ho", "tu": "hai", "lui_lei": "ha",
+                    "noi": "abbiamo", "voi": "avete", "loro": "hanno"
+                }
+                aux_forms_essere = {
+                    "io": "sono", "tu": "sei", "lui_lei": "è",
+                    "noi": "siamo", "voi": "siete", "loro": "sono"
+                }
+
                 if aux == 'essere':
-                    for (person_label, suffix) in participle_endings.get(person, [(person, 'o')]):
-                        base = conjugated.rstrip('oaie')
-                        correct_form = f"{aux} {base}{suffix}"
-                        questions.append({
-                            "question": f"Conjugate '{infinitive}' ({english}) in {tense_label} for {person_label}{irregular_flag}",
-                            "answer": correct_form,
-                            "type": "verb_conjugation",
-                            "infinitive": infinitive,
-                            "tense": tense,
-                            "person": person,
-                            "hint": f"Uses 'essere' — participle agrees with subject"
-                        })
-                else:
+                    gender_variants = participle_endings.get(person, [(person_display[person], 'o')])
+                    person_label, suffix = random.choice(gender_variants)
+                    base = conjugated.rstrip('oaie')
+                    correct_form = f"{aux_forms_essere[person]} {base}{suffix}"
                     questions.append({
-                        "question": f"Conjugate '{infinitive}' ({english}) in {tense_label} for {person_display[person]}{irregular_flag}",
-                        "answer": f"ho {conjugated}" if person == "io" else f"{auxiliary} {conjugated}",
+                        "question": f"Conjugate '{infinitive}' ({english}) in {tense_label} for {person_label}{irregular_flag}",
+                        "answer": correct_form,
                         "type": "verb_conjugation",
                         "infinitive": infinitive,
                         "tense": tense,
                         "person": person,
+                        "hint": f"{tense_label} | {english} | essere verb — participle agrees with subject"
+                    })
+                else:
+                    correct_form = f"{aux_forms_avere[person]} {conjugated}"
+                    questions.append({
+                        "question": f"Conjugate '{infinitive}' ({english}) in {tense_label} for {person_display[person]}{irregular_flag}",
+                        "answer": correct_form,
+                        "type": "verb_conjugation",
+                        "infinitive": infinitive,
+                        "tense": tense,
+                        "person": person,
+                        "hint": f"{tense_label} | {english}"
                     })
             else:
                 questions.append({
