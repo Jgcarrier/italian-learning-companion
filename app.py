@@ -900,6 +900,13 @@ def check_answer(user_answer: str, correct_answer: str, question_type: str = Non
     user_with_words = denormalize_numbers(user_normalized)
     correct_with_words = denormalize_numbers(correct_normalized)
 
+    # For word order: strip trailing punctuation before comparing
+    # (tiles never include the final period/question mark)
+    if question_type == 'word_order':
+        user_normalized    = user_normalized.rstrip('?.!')
+        correct_normalized = correct_normalized.rstrip('?.!')
+        return user_normalized == correct_normalized, correct_answer.rstrip('?.!')
+
     # For sentence translation, use very flexible matching
     if question_type == 'sentence_translation':
         # Remove punctuation from both answers

@@ -6118,8 +6118,9 @@ class PracticeGenerator:
         selected = random.sample(pool, min(count, len(pool)))
         questions = []
         for italian, english in selected:
-            # Strip trailing punctuation from Italian for the word list, keep answer intact
-            words = italian.rstrip('?.!').split()
+            # Strip trailing punctuation so tiles and stored answer match
+            italian_clean = italian.rstrip('?.!')
+            words = italian_clean.split()
             shuffled = words[:]
             random.shuffle(shuffled)
             # Re-shuffle until order differs from original (cosmetic)
@@ -6130,7 +6131,7 @@ class PracticeGenerator:
 
             questions.append({
                 "question": f"Arrange the words to make an Italian sentence: \"{english}\"",
-                "answer": italian,
+                "answer": italian_clean,
                 "type": "word_order",
                 "words": shuffled,
                 "english": english,
