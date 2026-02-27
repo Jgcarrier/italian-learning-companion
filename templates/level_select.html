@@ -1,14 +1,93 @@
 {% extends "base.html" %}
 
-{% block title %}Choose Your Level{% endblock %}
+{% block title %}Italian Learning Companion{% endblock %}
 
 {% block content %}
-<div class="text-center mb-30">
-    <h2>Choose Your Level</h2>
-    <p>Select the level you want to practice</p>
+
+<!-- ── Quick Drill ──────────────────────────────────────────────────────── -->
+<div class="text-center" style="margin-bottom: 18px;">
+    <h2 style="margin-bottom: 6px;">⚡ Quick Drill</h2>
+    <p style="color: #666; font-size: 0.9rem;">Jump straight into 10 random questions — no setup needed</p>
 </div>
 
-<div class="menu-grid" style="max-width: 900px; margin: 0 auto;">
+<div style="display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-bottom: 32px;">
+
+    <a href="{{ url_for('quick_drill', level='A1') }}"
+       style="display:flex;flex-direction:column;align-items:center;justify-content:center;
+              background:#009246;color:white;border-radius:12px;padding:18px 24px;
+              text-decoration:none;min-width:100px;box-shadow:0 3px 8px rgba(0,146,70,0.35);
+              transition:transform 0.15s,box-shadow 0.15s;"
+       onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 6px 14px rgba(0,146,70,0.4)'"
+       onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 3px 8px rgba(0,146,70,0.35)'">
+        <span style="font-size:1.8rem">🌱</span>
+        <strong style="font-size:1.15rem;margin-top:6px;">A1</strong>
+        <small style="opacity:0.85;font-size:0.75rem;margin-top:2px;">Beginner</small>
+    </a>
+
+    <a href="{{ url_for('quick_drill', level='A2') }}"
+       style="display:flex;flex-direction:column;align-items:center;justify-content:center;
+              background:#27ae60;color:white;border-radius:12px;padding:18px 24px;
+              text-decoration:none;min-width:100px;box-shadow:0 3px 8px rgba(39,174,96,0.35);
+              transition:transform 0.15s,box-shadow 0.15s;"
+       onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 6px 14px rgba(39,174,96,0.4)'"
+       onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 3px 8px rgba(39,174,96,0.35)'">
+        <span style="font-size:1.8rem">🌿</span>
+        <strong style="font-size:1.15rem;margin-top:6px;">A2</strong>
+        <small style="opacity:0.85;font-size:0.75rem;margin-top:2px;">Elementary</small>
+    </a>
+
+    <a href="{{ url_for('quick_drill', level='B1') }}"
+       style="display:flex;flex-direction:column;align-items:center;justify-content:center;
+              background:#2980b9;color:white;border-radius:12px;padding:18px 24px;
+              text-decoration:none;min-width:100px;box-shadow:0 3px 8px rgba(41,128,185,0.35);
+              transition:transform 0.15s,box-shadow 0.15s;"
+       onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 6px 14px rgba(41,128,185,0.4)'"
+       onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 3px 8px rgba(41,128,185,0.35)'">
+        <span style="font-size:1.8rem">🌳</span>
+        <strong style="font-size:1.15rem;margin-top:6px;">B1</strong>
+        <small style="opacity:0.85;font-size:0.75rem;margin-top:2px;">Intermediate</small>
+    </a>
+
+    <a href="{{ url_for('quick_drill', level='B2') }}"
+       style="display:flex;flex-direction:column;align-items:center;justify-content:center;
+              background:#8e44ad;color:white;border-radius:12px;padding:18px 24px;
+              text-decoration:none;min-width:100px;box-shadow:0 3px 8px rgba(142,68,173,0.35);
+              transition:transform 0.15s,box-shadow 0.15s;"
+       onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 6px 14px rgba(142,68,173,0.4)'"
+       onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 3px 8px rgba(142,68,173,0.35)'">
+        <span style="font-size:1.8rem">🏔️</span>
+        <strong style="font-size:1.15rem;margin-top:6px;">B2</strong>
+        <small style="opacity:0.85;font-size:0.75rem;margin-top:2px;">Upper Int.</small>
+    </a>
+
+    <a href="{{ url_for('quick_drill', level='GCSE') }}"
+       style="display:flex;flex-direction:column;align-items:center;justify-content:center;
+              background:#c0392b;color:white;border-radius:12px;padding:18px 24px;
+              text-decoration:none;min-width:100px;box-shadow:0 3px 8px rgba(192,57,43,0.35);
+              transition:transform 0.15s,box-shadow 0.15s;"
+       onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 6px 14px rgba(192,57,43,0.4)'"
+       onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 3px 8px rgba(192,57,43,0.35)'">
+        <span style="font-size:1.8rem">🎓</span>
+        <strong style="font-size:1.15rem;margin-top:6px;">GCSE</strong>
+        <small style="opacity:0.85;font-size:0.75rem;margin-top:2px;">Exam prep</small>
+    </a>
+
+</div>
+
+<!-- ── Divider ──────────────────────────────────────────────────────────── -->
+<div style="display:flex;align-items:center;margin:0 0 28px;gap:14px;">
+    <div style="flex:1;height:1px;background:#e0e0e0;"></div>
+    <span style="color:#bbb;font-size:0.8rem;white-space:nowrap;letter-spacing:0.04em;">or choose your own drill</span>
+    <div style="flex:1;height:1px;background:#e0e0e0;"></div>
+</div>
+
+<!-- ── Custom Drills ────────────────────────────────────────────────────── -->
+<div class="text-center" style="margin-bottom: 18px;">
+    <h2 style="margin-bottom: 4px;">🎛️ Custom Drills</h2>
+    <p style="color: #666; font-size: 0.9rem;">Pick a level, then choose activity type and settings</p>
+</div>
+
+<div class="menu-grid" style="max-width: 900px; margin: 0 auto 30px;">
     <a href="{{ url_for('category_menu', level='A1') }}" class="menu-item">
         <div class="menu-icon">🌱</div>
         <h3>A1 - Beginner</h3>
@@ -48,12 +127,15 @@
         <div class="menu-icon">📊</div>
         <h3>Progress Stats</h3>
         <p>View your performance</p>
+        <small style="color: #666;">Track your learning</small>
     </a>
 
     <a href="{{ url_for('view_topics') }}" class="menu-item">
         <div class="menu-icon">📋</div>
         <h3>Topic List</h3>
         <p>Browse all topics</p>
+        <small style="color: #666;">Explore grammar concepts</small>
     </a>
 </div>
+
 {% endblock %}

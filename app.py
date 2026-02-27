@@ -1250,6 +1250,86 @@ def home():
     return render_template('level_select.html')
 
 
+@app.route('/quick-drill/<level>')
+def quick_drill(level):
+    """Start a random 10-question drill immediately — no setup needed."""
+    level = validate_level(level)
+    generator = get_generator()
+    count = 10
+
+    # Activity pools per level — each entry is (practice_type, generator_callable)
+    # lambdas use default args to capture level/count by value at definition time
+    pools = {
+        'A1': [
+            ('vocabulary_quiz', lambda l=level, c=count: generator.generate_vocabulary_quiz(l, c, 'it_to_en')),
+            ('fill_in_blank',   lambda l=level, c=count: generator.generate_fill_in_blank(l, c)),
+            ('word_order',      lambda l=level, c=count: generator.generate_word_order(l, c)),
+        ],
+        'A2': [
+            ('vocabulary_quiz', lambda l=level, c=count: generator.generate_vocabulary_quiz(l, c, 'it_to_en')),
+            ('fill_in_blank',   lambda l=level, c=count: generator.generate_fill_in_blank(l, c)),
+            ('word_order',      lambda l=level, c=count: generator.generate_word_order(l, c)),
+            ('mixed_tense',     lambda l=level, c=count: generator.generate_mixed_tense_drill(l, c)),
+        ],
+        'B1': [
+            ('vocabulary_quiz',      lambda l=level, c=count: generator.generate_vocabulary_quiz(l, c, 'it_to_en')),
+            ('fill_in_blank',        lambda l=level, c=count: generator.generate_fill_in_blank(l, c)),
+            ('word_order',           lambda l=level, c=count: generator.generate_word_order(l, c)),
+            ('mixed_tense',          lambda l=level, c=count: generator.generate_mixed_tense_drill(l, c)),
+            ('tense_discrimination', lambda l=level, c=count: generator.generate_tense_discrimination(l, c)),
+            ('error_correction',     lambda l=level, c=count: generator.generate_error_correction(l, c)),
+        ],
+        'B2': [
+            ('vocabulary_quiz',      lambda l=level, c=count: generator.generate_vocabulary_quiz(l, c, 'it_to_en')),
+            ('word_order',           lambda l=level, c=count: generator.generate_word_order(l, c)),
+            ('mixed_tense',          lambda l=level, c=count: generator.generate_mixed_tense_drill(l, c)),
+            ('tense_discrimination', lambda l=level, c=count: generator.generate_tense_discrimination(l, c)),
+            ('error_correction',     lambda l=level, c=count: generator.generate_error_correction(l, c)),
+        ],
+        'GCSE': [
+            ('vocabulary_quiz', lambda l=level, c=count: generator.generate_vocabulary_quiz(l, c, 'it_to_en')),
+            ('word_order',      lambda l=level, c=count: generator.generate_word_order(l, c)),
+            ('mixed_tense',     lambda l=level, c=count: generator.generate_mixed_tense_drill(l, c)),
+            ('error_correction',lambda l=level, c=count: generator.generate_error_correction(l, c)),
+        ],
+    }
+
+    pool = pools.get(level, pools['A2'])[:]
+    random.shuffle(pool)
+
+    # Try activities in shuffled order until one returns questions
+    questions = []
+    practice_type = 'vocabulary_quiz'
+    for pt, gen_fn in pool:
+        try:
+            qs = gen_fn()
+            if qs:
+                questions = qs
+                practice_type = pt
+                break
+        except Exception as exc:
+            app.logger.warning(f"quick_drill generator failed for {pt}/{level}: {exc}")
+
+    if not questions:
+        return render_template('error.html',
+                               error_message=f"No exercises available for {level}. Try Custom Drills instead.",
+                               back_link=url_for('home'))
+
+    session['practice_type'] = practice_type
+    session['questions']      = questions
+    session['current_question'] = 0
+    session['correct_count']  = 0
+    session['answers']        = []
+    session['start_time']     = time.time()
+    session['level']          = level
+    session['srs_mode']       = False
+    session['srs_original_count'] = len(questions)
+    session['srs_wrong_queue']    = []
+    session['srs_injected']       = False
+
+    return redirect(url_for('practice_question'))
+
+
 @app.route('/category/<level>')
 def category_menu(level):
     """Category menu for a specific level."""
