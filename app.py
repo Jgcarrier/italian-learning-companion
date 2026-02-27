@@ -180,6 +180,10 @@ PRACTICE_ROUTES = {
     'progressive_gerund': ('progressive_gerund', ['level']),
     'causative': ('causative', ['level']),
     'advanced_pronouns': ('advanced_pronouns', ['level']),
+    'mixed_tense': ('mixed_tense_drill', ['level']),
+    'word_order': ('word_order', ['level']),
+    'tense_discrimination': ('tense_discrimination', ['level']),
+    'error_correction': ('error_correction', ['level']),
 }
 
 
@@ -252,6 +256,13 @@ def create_practice_route(practice_type: str, generator_method: str, setup_templ
         session['start_time'] = time.time()
         session['level'] = level
 
+        # SRS mode — activated by checkbox on setup page
+        srs_mode = request.form.get('srs_mode') == '1'
+        session['srs_mode'] = srs_mode
+        session['srs_original_count'] = len(questions)
+        session['srs_wrong_queue'] = []
+        session['srs_injected'] = False
+
         return redirect(url_for('practice_question'))
 
     return route_handler
@@ -261,11 +272,11 @@ def get_menu_for_practice_type(practice_type: str) -> str:
     """Get the appropriate menu route for a given practice type."""
     verb_types = ['verb_conjugation', 'irregular_passato', 'auxiliary_choice',
                   'imperfect_tense', 'futuro_semplice', 'reflexive_verbs', 'regular_passato',
-                  'conditional_present']
+                  'conditional_present', 'mixed_tense', 'tense_discrimination']
     grammar_types = ['noun_gender_number', 'articulated_prepositions',
                      'time_prepositions', 'negations', 'pronouns', 'adverbs', 'imperative']
     vocabulary_types = ['vocabulary_quiz', 'sentence_translator']
-    mixed_types = ['fill_in_blank', 'multiple_choice']
+    mixed_types = ['fill_in_blank', 'multiple_choice', 'word_order', 'error_correction']
     reading_types = ['reading_comprehension']
 
     if practice_type in verb_types:
@@ -1353,9 +1364,13 @@ def vocabulary_quiz():
     session['correct_count'] = 0
     session['answers'] = []
     session['start_time'] = time.time()
-    session['level'] = level  # Store level for navigation
+    session['level'] = level
     session['direction'] = direction
-    session['level'] = level  # Store level for navigation
+    srs_mode = request.form.get('srs_mode') == '1'
+    session['srs_mode'] = srs_mode
+    session['srs_original_count'] = len(questions)
+    session['srs_wrong_queue'] = []
+    session['srs_injected'] = False
 
     return redirect(url_for('practice_question'))
 
@@ -1386,6 +1401,15 @@ def practice_question():
         practice_type = session.get('practice_type', '')
         menu_route = get_menu_for_practice_type(practice_type)
         level = session.get('level', 'A2')
+
+        # Word-order questions use a custom tile template
+        if question.get('type') == 'word_order':
+            return render_template('word_order_question.html',
+                                  question=question,
+                                  question_num=current_idx + 1,
+                                  total_questions=total_questions,
+                                  menu_route=menu_route,
+                                  level=level)
 
         return render_template('question.html',
                               question=question,
@@ -1441,6 +1465,12 @@ def submit_answer():
     })
     session['answers'] = answers
 
+    # SRS: queue wrong questions for re-attempt at end of session
+    if session.get('srs_mode') and not is_correct and not session.get('srs_injected'):
+        srs_queue = session.get('srs_wrong_queue', [])
+        srs_queue.append(dict(question))
+        session['srs_wrong_queue'] = srs_queue
+
     # Show feedback (with explanation if available)
     explanation = question.get('explanation', None) or question.get('reason', None)
     hint = question.get('hint', None)
@@ -1473,11 +1503,234 @@ def submit_answer():
 
 @app.route('/practice/next')
 def next_question():
-    """Move to next question."""
+    """Move to next question, injecting SRS re-attempts if applicable."""
     if 'questions' not in session:
         return redirect(url_for('home'))
 
-    session['current_question'] = session.get('current_question', 0) + 1
+    next_idx = session.get('current_question', 0) + 1
+
+    # SRS: once we've reached the end of the original questions, inject wrong ones
+    if (session.get('srs_mode') and
+            not session.get('srs_injected') and
+            next_idx >= session.get('srs_original_count', 999)):
+        wrong_queue = session.get('srs_wrong_queue', [])
+        if wrong_queue:
+            questions = session.get('questions', [])
+            # Add a review hint to each re-attempt question
+            for q in wrong_queue:
+                retry_q = dict(q)
+                retry_q['hint'] = f"🔁 Review: {retry_q.get('hint', 'try again!')}"
+                questions.append(retry_q)
+            session['questions'] = questions
+            session['srs_wrong_queue'] = []
+            session['srs_injected'] = True
+
+    session['current_question'] = next_idx
+    return redirect(url_for('practice_question'))
+
+
+@app.route('/practice/skip')
+def skip_question():
+    """Skip the current question — marks as incorrect, no feedback page."""
+    if 'questions' not in session:
+        return redirect(url_for('home'))
+
+    questions = session.get('questions', [])
+    current_idx = session.get('current_question', 0)
+
+    if 0 <= current_idx < len(questions):
+        question = questions[current_idx]
+        answers = session.get('answers', [])
+        answers.append({
+            'question': question['question'],
+            'user_answer': '[skipped]',
+            'correct_answer': question.get('answer', ''),
+            'is_correct': False
+        })
+        session['answers'] = answers
+
+    # Advance without showing feedback
+    next_idx = current_idx + 1
+
+    # SRS: if skipped, also add to wrong queue for review
+    if session.get('srs_mode') and not session.get('srs_injected') and 0 <= current_idx < len(questions):
+        srs_queue = session.get('srs_wrong_queue', [])
+        srs_queue.append(dict(questions[current_idx]))
+        session['srs_wrong_queue'] = srs_queue
+
+    # SRS injection check (same as next_question)
+    if (session.get('srs_mode') and
+            not session.get('srs_injected') and
+            next_idx >= session.get('srs_original_count', 999)):
+        wrong_queue = session.get('srs_wrong_queue', [])
+        if wrong_queue:
+            for q in wrong_queue:
+                retry_q = dict(q)
+                retry_q['hint'] = f"🔁 Review: {retry_q.get('hint', 'try again!')}"
+                questions.append(retry_q)
+            session['questions'] = questions
+            session['srs_wrong_queue'] = []
+            session['srs_injected'] = True
+
+    session['current_question'] = next_idx
+    return redirect(url_for('practice_question'))
+
+
+@app.route('/practice/flag', methods=['POST'])
+def flag_question():
+    """Flag the current question for later review, then advance to next."""
+    if 'questions' not in session:
+        return redirect(url_for('home'))
+
+    questions = session.get('questions', [])
+    current_idx = session.get('current_question', 0)
+
+    if 0 <= current_idx < len(questions):
+        question = questions[current_idx]
+        flagged = session.get('flagged_questions', [])
+        flagged.append({
+            'question': question['question'],
+            'answer': question.get('answer', ''),
+        })
+        session['flagged_questions'] = flagged
+
+    return redirect(url_for('next_question'))
+
+
+# ── New activities ────────────────────────────────────────────────────────────
+
+@app.route('/mixed-tense', methods=['GET', 'POST'])
+def mixed_tense_drill():
+    """Interleaved tense drill — multiple tenses shuffled together."""
+    level = validate_level(request.args.get('level') or request.form.get('level') or session.get('level', 'A2'))
+
+    if request.method == 'GET':
+        session['level'] = level
+        return render_template('mixed_tense_setup.html', level=level)
+
+    count = validate_count(request.form.get('count', 10))
+    generator = get_generator()
+    questions = generator.generate_mixed_tense_drill(level, count)
+
+    if not questions:
+        return render_template('error.html',
+                             error_message=f"No mixed tense exercises available for {level}. Please try a different level.",
+                             back_link=url_for('verbs_menu', level=level))
+
+    session['practice_type'] = 'mixed_tense'
+    session['questions'] = questions
+    session['current_question'] = 0
+    session['correct_count'] = 0
+    session['answers'] = []
+    session['start_time'] = time.time()
+    session['level'] = level
+    srs_mode = request.form.get('srs_mode') == '1'
+    session['srs_mode'] = srs_mode
+    session['srs_original_count'] = len(questions)
+    session['srs_wrong_queue'] = []
+    session['srs_injected'] = False
+
+    return redirect(url_for('practice_question'))
+
+
+@app.route('/word-order', methods=['GET', 'POST'])
+def word_order():
+    """Word-order tile activity — assemble an Italian sentence from shuffled chips."""
+    level = validate_level(request.args.get('level') or request.form.get('level') or session.get('level', 'A2'))
+
+    if request.method == 'GET':
+        session['level'] = level
+        return render_template('word_order_setup.html', level=level)
+
+    count = validate_count(request.form.get('count', 10))
+    generator = get_generator()
+    questions = generator.generate_word_order(level, count)
+
+    if not questions:
+        return render_template('error.html',
+                             error_message=f"No word-order exercises available for {level}. Please try a different level.",
+                             back_link=url_for('mixed_menu', level=level))
+
+    session['practice_type'] = 'word_order'
+    session['questions'] = questions
+    session['current_question'] = 0
+    session['correct_count'] = 0
+    session['answers'] = []
+    session['start_time'] = time.time()
+    session['level'] = level
+    session['srs_mode'] = False
+    session['srs_original_count'] = len(questions)
+    session['srs_wrong_queue'] = []
+    session['srs_injected'] = False
+
+    return redirect(url_for('practice_question'))
+
+
+@app.route('/tense-discrimination', methods=['GET', 'POST'])
+def tense_discrimination():
+    """Passato Prossimo vs Imperfetto discrimination drill."""
+    level = validate_level(request.args.get('level') or request.form.get('level') or session.get('level', 'A2'))
+
+    if request.method == 'GET':
+        session['level'] = level
+        return render_template('tense_discrimination_setup.html', level=level)
+
+    count = validate_count(request.form.get('count', 10))
+    generator = get_generator()
+    questions = generator.generate_tense_discrimination(level, count)
+
+    if not questions:
+        return render_template('error.html',
+                             error_message=f"No tense discrimination exercises available for {level}.",
+                             back_link=url_for('verbs_menu', level=level))
+
+    session['practice_type'] = 'tense_discrimination'
+    session['questions'] = questions
+    session['current_question'] = 0
+    session['correct_count'] = 0
+    session['answers'] = []
+    session['start_time'] = time.time()
+    session['level'] = level
+    srs_mode = request.form.get('srs_mode') == '1'
+    session['srs_mode'] = srs_mode
+    session['srs_original_count'] = len(questions)
+    session['srs_wrong_queue'] = []
+    session['srs_injected'] = False
+
+    return redirect(url_for('practice_question'))
+
+
+@app.route('/error-correction', methods=['GET', 'POST'])
+def error_correction():
+    """Error correction drill — identify and fix grammatical errors."""
+    level = validate_level(request.args.get('level') or request.form.get('level') or session.get('level', 'A2'))
+
+    if request.method == 'GET':
+        session['level'] = level
+        return render_template('error_correction_setup.html', level=level)
+
+    count = validate_count(request.form.get('count', 10))
+    generator = get_generator()
+    questions = generator.generate_error_correction(level, count)
+
+    if not questions:
+        return render_template('error.html',
+                             error_message=f"No error correction exercises available for {level}.",
+                             back_link=url_for('mixed_menu', level=level))
+
+    session['practice_type'] = 'error_correction'
+    session['questions'] = questions
+    session['current_question'] = 0
+    session['correct_count'] = 0
+    session['answers'] = []
+    session['start_time'] = time.time()
+    session['level'] = level
+    srs_mode = request.form.get('srs_mode') == '1'
+    session['srs_mode'] = srs_mode
+    session['srs_original_count'] = len(questions)
+    session['srs_wrong_queue'] = []
+    session['srs_injected'] = False
+
     return redirect(url_for('practice_question'))
 
 
@@ -1540,6 +1793,7 @@ def practice_summary():
     level = session.get('level', 'A2')
     practice_type = session.get('practice_type', 'vocabulary_quiz')
     direction = session.get('direction', None)  # For vocabulary quiz
+    flagged_questions = session.get('flagged_questions', [])
 
     # Build practice_again_url using PRACTICE_ROUTES mapping
     practice_again_url = url_for('category_menu', level=level)  # Default fallback
@@ -1551,21 +1805,19 @@ def practice_summary():
         practice_again_url = url_for(route_name, **params)
 
     # Clear session
-    session.pop('questions', None)
-    session.pop('current_question', None)
-    session.pop('correct_count', None)
-    session.pop('answers', None)
-    session.pop('start_time', None)
-    session.pop('practice_type', None)
-    session.pop('level', None)
-    session.pop('direction', None)
+    for key in ['questions', 'current_question', 'correct_count', 'answers',
+                'start_time', 'practice_type', 'direction',
+                'srs_mode', 'srs_original_count', 'srs_wrong_queue', 'srs_injected',
+                'flagged_questions']:
+        session.pop(key, None)
 
     return render_template('summary.html',
                           summary=summary,
                           level=level,
                           practice_type=practice_type,
                           direction=direction,
-                          practice_again_url=practice_again_url)
+                          practice_again_url=practice_again_url,
+                          flagged_questions=flagged_questions)
 
 
 @app.route('/verb-conjugation', methods=['GET', 'POST'])

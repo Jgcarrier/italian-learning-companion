@@ -1,15 +1,15 @@
 {% extends "base.html" %}
 
-{% block title %}Verb Conjugation Setup{% endblock %}
+{% block title %}Error Correction Setup{% endblock %}
 
 {% block content %}
 <div class="text-center mb-30">
-    <h2>🗣️ Verb Conjugation Practice</h2>
-    <p>Practice conjugating Italian verbs in different tenses</p>
+    <h2>✏️ Error Correction</h2>
+    <p>Spot the grammatical mistake and rewrite the sentence correctly</p>
 </div>
 
 <form method="POST">
-    <input type="hidden" name="level" value="{{ level or 'A2' }}" action="{{ url_for('verb_conjugation') }}">
+    <input type="hidden" name="level" value="{{ level or 'A2' }}">
     <div class="form-group">
         <label for="level">Level:</label>
         <select name="level" id="level">
@@ -23,7 +23,7 @@
 
     <div class="form-group">
         <label for="count">Number of Questions:</label>
-        <input type="number" name="count" id="count" value="10" min="5" max="50">
+        <input type="number" name="count" id="count" value="10" min="3" max="30">
     </div>
 
     <div class="form-group" style="background: #f0f9ff; padding: 15px; border-radius: 8px; border: 1px solid #aed6f1;">
@@ -36,17 +36,18 @@
 
     <div class="button-group">
         <button type="submit" class="btn btn-primary btn-large">Start Practice</button>
-        <a href="{{ url_for('home') }}" class="btn btn-secondary">Back</a>
+        <a href="{{ url_for('mixed_menu', level=level) }}" class="btn btn-secondary">Back</a>
     </div>
 </form>
 
 <div style="margin-top: 30px; padding: 20px; background: var(--light-gray); border-radius: 8px;">
-    <h3 style="font-size: 1.1rem; margin-bottom: 10px;">💡 What You'll Practice:</h3>
+    <h3 style="font-size: 1.1rem; margin-bottom: 10px;">💡 Common Error Types:</h3>
     <ul style="margin-left: 20px; color: #666;">
-        <li>Present tense (presente)</li>
-        <li>Past tense (passato prossimo)</li>
-        <li>Different persons (io, tu, lui/lei, noi, voi, loro)</li>
-        <li>Regular and irregular verbs</li>
+        <li>Wrong auxiliary (avere vs essere) in compound tenses</li>
+        <li>Adjective agreement (gender/number)</li>
+        <li>Wrong tense for the context (PP vs Imperfetto)</li>
+        <li>Article errors and pronoun placement</li>
+        <li>Type the <em>complete</em> corrected sentence — not just the wrong word</li>
     </ul>
 </div>
 {% endblock %}

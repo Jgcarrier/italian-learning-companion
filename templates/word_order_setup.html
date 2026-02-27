@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}Word Order Setup{% endblock %}
+
+{% block content %}
+<div class="text-center mb-30">
+    <h2>🧩 Word Order</h2>
+    <p>Tap the words in the right order to build an Italian sentence</p>
+</div>
+
+<form method="POST">
+    <input type="hidden" name="level" value="{{ level or 'A2' }}">
+    <div class="form-group">
+        <label for="level">Level:</label>
+        <select name="level" id="level">
+            <option value="A1" {% if level == 'A1' %}selected{% endif %}>A1 - Beginner</option>
+            <option value="A2" {% if level == 'A2' or not level %}selected{% endif %}>A2 - Elementary</option>
+            <option value="B1" {% if level == 'B1' %}selected{% endif %}>B1 - Intermediate</option>
+            <option value="B2" {% if level == 'B2' %}selected{% endif %}>B2 - Upper Intermediate</option>
+            <option value="GCSE" {% if level == 'GCSE' %}selected{% endif %}>GCSE</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="count">Number of Sentences:</label>
+        <input type="number" name="count" id="count" value="8" min="3" max="20">
+    </div>
+
+    <div class="button-group">
+        <button type="submit" class="btn btn-primary btn-large">Start Practice</button>
+        <a href="{{ url_for('mixed_menu', level=level) }}" class="btn btn-secondary">Back</a>
+    </div>
+</form>
+
+<div style="margin-top: 30px; padding: 20px; background: var(--light-gray); border-radius: 8px;">
+    <h3 style="font-size: 1.1rem; margin-bottom: 10px;">💡 How It Works:</h3>
+    <ul style="margin-left: 20px; color: #666;">
+        <li>You'll see an English sentence and shuffled Italian word chips</li>
+        <li>Click the chips in the right order to assemble the Italian sentence</li>
+        <li>Click a placed word to remove it back to the word bank</li>
+        <li>Builds intuition for Italian word order and sentence structure</li>
+    </ul>
+</div>
+{% endblock %}

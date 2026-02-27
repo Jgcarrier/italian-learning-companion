@@ -16,6 +16,20 @@
         <p>All tenses and persons</p>
     </a>
 
+    <a href="{{ url_for('mixed_tense_drill') }}?level={{ level }}" class="menu-item">
+        <div class="menu-icon">🔀</div>
+        <h3>Mixed Tense Drill</h3>
+        <p>Multiple tenses, shuffled</p>
+    </a>
+
+    {% if level in ['A2', 'B1', 'B2', 'GCSE'] %}
+    <a href="{{ url_for('tense_discrimination') }}?level={{ level }}" class="menu-item">
+        <div class="menu-icon">⚖️</div>
+        <h3>PP vs Imperfetto</h3>
+        <p>Choose the right past tense</p>
+    </a>
+    {% endif %}
+
     {% if level == 'A1' %}
     <a href="{{ url_for('present_tense') }}?level={{ level }}" class="menu-item">
         <div class="menu-icon">✨</div>

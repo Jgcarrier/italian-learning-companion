@@ -5918,6 +5918,426 @@ class PracticeGenerator:
         return questions
 
 
+    def generate_mixed_tense_drill(self, level: str = "A2", count: int = 10) -> List[Dict]:
+        """Interleaved tense drill — pulls questions across multiple tenses and shuffles them."""
+        cursor = self.db.conn.cursor()
+        query_level = self._get_verb_level(level)
+
+        # Tenses to include per level
+        tense_pool = {
+            'A1':   ['presente', 'passato_prossimo'],
+            'A2':   ['presente', 'passato_prossimo', 'imperfetto', 'futuro'],
+            'B1':   ['presente', 'passato_prossimo', 'imperfetto', 'futuro', 'condizionale', 'congiuntivo_presente'],
+            'B2':   ['presente', 'passato_prossimo', 'imperfetto', 'futuro', 'condizionale', 'congiuntivo_presente', 'congiuntivo_imperfetto'],
+            'GCSE': ['presente', 'passato_prossimo', 'imperfetto', 'futuro', 'condizionale'],
+        }
+        tenses = tense_pool.get(level, tense_pool['A2'])
+
+        # Fetch a larger pool across tenses then trim
+        placeholders = ','.join('?' * len(tenses))
+        cursor.execute(f"""
+            SELECT DISTINCT infinitive, english, verb_type, tense
+            FROM verb_conjugations
+            WHERE level = ? AND tense IN ({placeholders})
+            ORDER BY RANDOM()
+            LIMIT ?
+        """, [query_level] + tenses + [count * 3])
+
+        verbs = cursor.fetchall()
+        if not verbs:
+            return []
+
+        # Ensure spread across tenses — pick roughly count//len(tenses) per tense
+        from collections import defaultdict
+        by_tense = defaultdict(list)
+        for row in verbs:
+            by_tense[row[3]].append(row)
+
+        spread = []
+        per_tense = max(1, count // len(tenses))
+        for t in tenses:
+            spread.extend(random.sample(by_tense[t], min(per_tense, len(by_tense[t]))))
+        # Top up to count if needed
+        remaining = [v for v in verbs if v not in spread]
+        random.shuffle(remaining)
+        spread.extend(remaining[:max(0, count - len(spread))])
+        random.shuffle(spread)
+        verbs = spread[:count]
+
+        questions = []
+        person_display = {
+            "io": "io", "tu": "tu", "lui_lei": "lui/lei",
+            "noi": "noi", "voi": "voi", "loro": "loro"
+        }
+        participle_endings = {
+            "io":      [("io (masc.)", "o"),  ("io (fem.)",  "a")],
+            "tu":      [("tu (masc.)", "o"),  ("tu (fem.)",  "a")],
+            "lui_lei": [("lui",        "o"),  ("lei",        "a")],
+            "noi":     [("noi (masc.)","i"),  ("noi (fem.)", "e")],
+            "voi":     [("voi (masc.)","i"),  ("voi (fem.)", "e")],
+            "loro":    [("loro (masc.)","i"), ("loro (fem.)","e")],
+        }
+
+        for verb in verbs:
+            infinitive, english, verb_type, tense = verb
+            persons = ["io", "tu", "lui_lei", "noi", "voi", "loro"]
+            person = random.choice(persons)
+
+            cursor.execute("""
+                SELECT conjugated_form, auxiliary
+                FROM verb_conjugations
+                WHERE infinitive = ? AND tense = ? AND person = ?
+            """, (infinitive, tense, person))
+            result = cursor.fetchone()
+            if not result:
+                continue
+
+            conjugated, auxiliary = result
+            tense_label = self.TENSE_DISPLAY.get(tense, tense.replace('_', ' ').title())
+            irregular_flag = " ⚠️ irregular verb" if verb_type == "irregular" else ""
+
+            if tense == 'passato_prossimo':
+                cursor.execute("""
+                    SELECT auxiliary FROM verb_conjugations
+                    WHERE infinitive = ? AND tense = 'passato_prossimo' AND person = 'io'
+                    LIMIT 1
+                """, (infinitive,))
+                aux_row = cursor.fetchone()
+                aux = aux_row[0] if aux_row else 'avere'
+
+                if aux == 'essere':
+                    for (person_label, suffix) in participle_endings.get(person, [(person, 'o')]):
+                        base = conjugated.rstrip('oaie')
+                        correct_form = f"{aux} {base}{suffix}"
+                        questions.append({
+                            "question": f"Conjugate '{infinitive}' ({english}) in {tense_label} for {person_label}{irregular_flag}",
+                            "answer": correct_form,
+                            "type": "verb_conjugation",
+                            "infinitive": infinitive,
+                            "tense": tense,
+                            "person": person,
+                            "hint": f"Uses 'essere' — participle agrees with subject"
+                        })
+                else:
+                    questions.append({
+                        "question": f"Conjugate '{infinitive}' ({english}) in {tense_label} for {person_display[person]}{irregular_flag}",
+                        "answer": f"ho {conjugated}" if person == "io" else f"{auxiliary} {conjugated}",
+                        "type": "verb_conjugation",
+                        "infinitive": infinitive,
+                        "tense": tense,
+                        "person": person,
+                    })
+            else:
+                questions.append({
+                    "question": f"Conjugate '{infinitive}' ({english}) in {tense_label} for {person_display[person]}{irregular_flag}",
+                    "answer": conjugated,
+                    "type": "verb_conjugation",
+                    "infinitive": infinitive,
+                    "tense": tense,
+                    "person": person,
+                })
+
+        return questions[:count]
+
+    def generate_word_order(self, level: str = "A2", count: int = 10) -> List[Dict]:
+        """Word-order tile activity — user assembles an Italian sentence from shuffled word chips."""
+        # Curated sentence bank by level
+        sentences_by_level = {
+            'A1': [
+                ("Io mi chiamo Marco.", "My name is Marco."),
+                ("Lei è una studentessa.", "She is a student."),
+                ("Il caffè è buono.", "The coffee is good."),
+                ("Lui abita a Roma.", "He lives in Rome."),
+                ("Ho dodici anni.", "I am twelve years old."),
+                ("La mamma lavora in ufficio.", "My mother works in an office."),
+                ("Oggi fa bello.", "Today the weather is nice."),
+                ("Il cane è grande.", "The dog is big."),
+                ("Io parlo italiano.", "I speak Italian."),
+                ("Lei mangia la pizza.", "She is eating pizza."),
+                ("Il libro è rosso.", "The book is red."),
+                ("Noi siamo italiani.", "We are Italian."),
+                ("Lui ha un fratello.", "He has a brother."),
+                ("La scuola è grande.", "The school is big."),
+                ("Mi piace il gelato.", "I like ice cream."),
+            ],
+            'A2': [
+                ("Ieri sono andato al mercato.", "Yesterday I went to the market."),
+                ("La settimana scorsa ho studiato molto.", "Last week I studied a lot."),
+                ("Ogni giorno prendo il caffè al bar.", "Every day I have coffee at the bar."),
+                ("Lei ha comprato un vestito nuovo.", "She bought a new dress."),
+                ("Quando ero piccolo, abitavo in campagna.", "When I was small, I lived in the countryside."),
+                ("Stasera voglio guardare un film.", "Tonight I want to watch a film."),
+                ("Lui non ha ancora finito i compiti.", "He hasn't finished his homework yet."),
+                ("Domani partiremo per le vacanze.", "Tomorrow we will leave for the holidays."),
+                ("Mia sorella si è alzata tardi.", "My sister got up late."),
+                ("Il treno è arrivato in ritardo.", "The train arrived late."),
+                ("Abbiamo mangiato una pizza buonissima.", "We ate a delicious pizza."),
+                ("Non capisco questa parola.", "I don't understand this word."),
+                ("Ho bisogno di comprare il pane.", "I need to buy some bread."),
+                ("Siete mai stati a Firenze?", "Have you ever been to Florence?"),
+                ("La mattina faccio sempre colazione.", "In the morning I always have breakfast."),
+            ],
+            'B1': [
+                ("Sebbene sia stanco, devo continuare a lavorare.", "Although I am tired, I must keep working."),
+                ("Se avessi più tempo, studierei di più.", "If I had more time, I would study more."),
+                ("Non sapevo che lei fosse già partita.", "I didn't know she had already left."),
+                ("È importante che tu faccia pratica ogni giorno.", "It is important that you practise every day."),
+                ("Mentre preparavo la cena, lui leggeva il giornale.", "While I was making dinner, he was reading the newspaper."),
+                ("Dopo aver mangiato, siamo usciti a fare una passeggiata.", "After eating, we went out for a walk."),
+                ("Mi hanno detto che il negozio chiude presto.", "They told me that the shop closes early."),
+                ("Vorrei prenotare un tavolo per due persone.", "I would like to book a table for two people."),
+                ("Non è sicuro che venga alla festa.", "It's not certain that he will come to the party."),
+                ("Ho perso il portafoglio mentre aspettavo l'autobus.", "I lost my wallet while waiting for the bus."),
+            ],
+            'B2': [
+                ("Benché avesse studiato molto, non riuscì a superare l'esame.", "Although he had studied a lot, he could not pass the exam."),
+                ("Qualunque cosa tu faccia, sarò sempre al tuo fianco.", "Whatever you do, I will always be by your side."),
+                ("Se fossi partito prima, saresti arrivato in tempo.", "If you had left earlier, you would have arrived on time."),
+                ("Si dice che il nuovo governo introduca riforme radicali.", "It is said that the new government is introducing radical reforms."),
+                ("Per quanto mi riguarda, la questione è già risolta.", "As far as I am concerned, the matter is already settled."),
+            ],
+            'GCSE': [
+                ("Ho passato le vacanze in Italia con la mia famiglia.", "I spent the holidays in Italy with my family."),
+                ("Secondo me, è importante imparare le lingue straniere.", "In my opinion, it is important to learn foreign languages."),
+                ("Il fine settimana scorso siamo andati al cinema.", "Last weekend we went to the cinema."),
+                ("Ogni estate, vado in vacanza al mare con gli amici.", "Every summer I go on holiday to the sea with friends."),
+                ("Da grande vorrei diventare medico o ingegnere.", "When I grow up I would like to become a doctor or engineer."),
+                ("Non mi piace molto lo sport, preferisco la musica.", "I don't like sport much, I prefer music."),
+                ("Il mio piatto preferito è la pasta al pomodoro.", "My favourite dish is pasta with tomato sauce."),
+                ("Nella mia città ci sono molti negozi e ristoranti.", "In my town there are many shops and restaurants."),
+                ("Ieri sera ho guardato un film molto interessante.", "Yesterday evening I watched a very interesting film."),
+                ("In futuro spero di viaggiare per tutto il mondo.", "In the future I hope to travel all around the world."),
+            ],
+        }
+
+        pool = sentences_by_level.get(level, sentences_by_level['A2'])
+        # For unknown levels fall back to A2
+        if level in ('B1', 'B2') and level not in sentences_by_level:
+            pool = sentences_by_level['A2']
+
+        selected = random.sample(pool, min(count, len(pool)))
+        questions = []
+        for italian, english in selected:
+            # Strip trailing punctuation from Italian for the word list, keep answer intact
+            words = italian.rstrip('?.!').split()
+            shuffled = words[:]
+            random.shuffle(shuffled)
+            # Re-shuffle until order differs from original (cosmetic)
+            attempts = 0
+            while shuffled == words and attempts < 10:
+                random.shuffle(shuffled)
+                attempts += 1
+
+            questions.append({
+                "question": f"Arrange the words to make an Italian sentence: \"{english}\"",
+                "answer": italian,
+                "type": "word_order",
+                "words": shuffled,
+                "english": english,
+                "hint": "Click the words in the correct order to build the sentence.",
+            })
+
+        return questions
+
+    def generate_tense_discrimination(self, level: str = "A2", count: int = 10) -> List[Dict]:
+        """PP vs Imperfetto discrimination — multiple-choice pick the right tense form."""
+        # Each entry: (context sentence with ___ blank, pp_form, imperfetto_form, correct, explanation)
+        items = [
+            # ─── Habitual / repeated past → Imperfetto ────────────────────────
+            ("Quando ero bambino, ___ al parco ogni giorno.",
+             "sono andato", "andavo", "andavo",
+             "Habitual repeated action in the past → Imperfetto. 'Ogni giorno' signals a routine."),
+            ("Da piccola, mia nonna ___ la torta ogni domenica.",
+             "ha fatto", "faceva", "faceva",
+             "Regularly repeated action in childhood → Imperfetto."),
+            ("Ogni estate noi ___ al mare.",
+             "siamo andati", "andavamo", "andavamo",
+             "'Ogni estate' = every summer, habitual → Imperfetto."),
+            ("Quando studiavo all'università, ___ tantissimo.",
+             "ho letto", "leggevo", "leggevo",
+             "Background ongoing activity during a period → Imperfetto."),
+            ("Da ragazzo lui ___ sempre la chitarra.",
+             "ha suonato", "suonava", "suonava",
+             "Habitual action in youth → Imperfetto."),
+            ("I bambini ___ mentre io cucinavo.",
+             "hanno giocato", "giocavano", "giocavano",
+             "Background / simultaneous ongoing action → Imperfetto."),
+            ("Mia madre ___ sempre la stessa canzone.",
+             "ha cantato", "cantava", "cantava",
+             "Repeated habitual action → Imperfetto."),
+            # ─── Completed single event → Passato Prossimo ────────────────────
+            ("Ieri mattina ___ il caffè alle otto.",
+             "ho preso", "prendevo", "ho preso",
+             "Single completed event at a specific past time → Passato Prossimo. 'Ieri mattina' pins the moment."),
+            ("La settimana scorsa lui ___ la macchina.",
+             "ha venduto", "vendeva", "ha venduto",
+             "Single completed action last week → Passato Prossimo."),
+            ("Stamattina mi ___ alle sette.",
+             "mi sono alzato", "mi alzavo", "mi sono alzato",
+             "Single completed event this morning → Passato Prossimo."),
+            ("L'anno scorso lei ___ a Parigi.",
+             "è andata", "andava", "è andata",
+             "A specific completed trip last year → Passato Prossimo."),
+            ("Ieri sera noi ___ un film bellissimo.",
+             "abbiamo visto", "vedevamo", "abbiamo visto",
+             "Single completed event last night → Passato Prossimo."),
+            ("Due settimane fa lei ___ una lettera.",
+             "ha scritto", "scriveva", "ha scritto",
+             "Single completed action at a specific past time → Passato Prossimo."),
+            # ─── Interrupted action (Imperfetto) + sudden event (PP) ──────────
+            ("Mentre ___ a casa, ho trovato un portafoglio.",
+             "sono tornato", "tornavo", "tornavo",
+             "The Imperfetto describes the ongoing background action interrupted by finding the wallet."),
+            ("Stavo leggendo quando lei ___.",
+             "è arrivata", "arrivava", "è arrivata",
+             "The sudden event that interrupts the ongoing action → Passato Prossimo."),
+            ("Dormivo quando il telefono ___.",
+             "ha squillato", "squillava", "ha squillato",
+             "Single punctual interrupting event → Passato Prossimo."),
+            # ─── Mental/emotional states → Imperfetto ─────────────────────────
+            ("Da bambino ___ molto la pizza.",
+             "ho amato", "amavo", "amavo",
+             "Emotional state / ongoing feeling in the past → Imperfetto."),
+            ("Quando siamo arrivati, lei ___ stanca.",
+             "è stata", "era", "era",
+             "Ongoing state (being tired) at a past moment → Imperfetto."),
+            ("Non ___ dove si trovasse l'ufficio.",
+             "ho saputo", "sapevo", "sapevo",
+             "Mental state (not knowing) in the past → Imperfetto."),
+            # ─── Specific time indicator → PP ──────────────────────────────────
+            ("Giovedì scorso ho ___ al cinema.",
+             "sono andato", "andavo", "sono andato",
+             "'Giovedì scorso' (last Thursday) is a specific completed moment → Passato Prossimo."),
+            ("L'altro ieri lei ___ il esame.",
+             "ha superato", "superava", "ha superato",
+             "A specific day marker → Passato Prossimo."),
+        ]
+
+        random.shuffle(items)
+        selected = items[:count]
+        questions = []
+        for sentence, opt_pp, opt_imp, correct, explanation in selected:
+            choices = [opt_pp, opt_imp]
+            random.shuffle(choices)
+            questions.append({
+                "question": f"Choose the correct tense:\n\n{sentence.replace('___', '______')}",
+                "answer": correct,
+                "type": "multiple_choice",
+                "choices": choices,
+                "explanation": explanation,
+                "hint": "PP = single completed event; Imperfetto = habitual/ongoing/background",
+            })
+
+        return questions
+
+    def generate_error_correction(self, level: str = "A2", count: int = 10) -> List[Dict]:
+        """Error correction — identify and fix the grammatical error in a sentence."""
+        # Each entry: (erroneous sentence, correct sentence, explanation)
+        items_by_level = {
+            'A1': [
+                ("Io sono mangiato la pizza.", "Io ho mangiato la pizza.",
+                 "Wrong auxiliary: 'mangiare' (transitive) takes 'avere', not 'essere'."),
+                ("La casa è molto grande e bello.", "La casa è molto grande e bella.",
+                 "Agreement error: 'bello' must agree with 'casa' (feminine) → 'bella'."),
+                ("Ho dodici anni vecchio.", "Ho dodici anni.",
+                 "In Italian you say 'Ho X anni' — no adjective like 'old' is added."),
+                ("Lei parlare italiano.", "Lei parla italiano.",
+                 "Use the conjugated form 'parla', not the infinitive 'parlare'."),
+                ("Io ho fame molta.", "Io ho molta fame.",
+                 "Adjectives precede the noun: 'molta fame' not 'fame molta'."),
+                ("Il libro sono interessante.", "Il libro è interessante.",
+                 "Subject–verb agreement: 'libro' is singular → 'è', not 'sono'."),
+                ("Mi piaccio il gelato.", "Mi piace il gelato.",
+                 "'Gelato' is singular → 'piace', not 'piaccio'."),
+                ("Noi andiamo a scuola ieri.", "Noi siamo andati a scuola ieri.",
+                 "'Ieri' (yesterday) requires the past tense — Passato Prossimo."),
+            ],
+            'A2': [
+                ("Ieri ho andato al supermercato.", "Ieri sono andato al supermercato.",
+                 "'Andare' uses 'essere' in compound tenses, not 'avere'."),
+                ("Lei si ha alzata tardi stamattina.", "Lei si è alzata tardi stamattina.",
+                 "Reflexive verbs always use 'essere' as auxiliary."),
+                ("Ho comprato una borsa nuova e rosso.", "Ho comprato una borsa nuova e rossa.",
+                 "'Rosso' must agree with 'borsa' (feminine) → 'rossa'."),
+                ("Mentre mangiavo, lui ha chiamato a me.", "Mentre mangiavo, lui mi ha chiamato.",
+                 "Direct object pronoun goes before the verb: 'mi ha chiamato', not 'ha chiamato a me'."),
+                ("Il film è stato molto noiosa.", "Il film è stato molto noioso.",
+                 "'Film' is masculine → 'noioso', not 'noiosa'."),
+                ("Noi abbiamo venuti a casa tua.", "Noi siamo venuti a casa tua.",
+                 "'Venire' uses 'essere' in compound tenses."),
+                ("Loro hanno partiti presto.", "Loro sono partiti presto.",
+                 "'Partire' uses 'essere' as auxiliary in compound tenses."),
+                ("Ho visto il film ieri sera e mi è molto piaciuto.", "Ho visto il film ieri sera e mi è piaciuto molto.",
+                 "'Molto' as an adverb follows the past participle: 'è piaciuto molto'."),
+                ("Non so dove è andata.", "Non so dove sia andata.",
+                 "After 'non so dove…' use the subjunctive 'sia' in more formal Italian."),
+                ("Lui è più alto che me.", "Lui è più alto di me.",
+                 "Use 'di' (not 'che') when comparing two nouns/pronouns."),
+            ],
+            'B1': [
+                ("Sebbene lei è stanca, viene alla festa.", "Sebbene lei sia stanca, viene alla festa.",
+                 "'Sebbene' (although) triggers the subjunctive: 'sia', not 'è'."),
+                ("Penso che lui ha ragione.", "Penso che lui abbia ragione.",
+                 "'Pensare che' triggers the subjunctive: 'abbia', not 'ha'."),
+                ("Se avrei tempo, verrei.", "Se avessi tempo, verrei.",
+                 "In hypothetical 'se' clauses use the Congiuntivo Imperfetto, not Condizionale."),
+                ("È necessario che tu vieni subito.", "È necessario che tu venga subito.",
+                 "'È necessario che' triggers the subjunctive: 'venga', not 'vieni'."),
+                ("Non credo che loro vengono domani.", "Non credo che loro vengano domani.",
+                 "'Non credere che' triggers the subjunctive: 'vengano', not 'vengono'."),
+                ("Gli ho dato il libro a lui.", "Gli ho dato il libro.",
+                 "'Gli' already means 'to him' — redundant to add 'a lui'. Use one or the other."),
+                ("Dopo che ho mangiato, sono uscito.", "Dopo aver mangiato, sono uscito.",
+                 "When the subject is the same in both clauses, use 'dopo + infinito' not 'dopo che + finite verb'."),
+                ("Lui si è comprato una macchina nuovo.", "Lui si è comprato una macchina nuova.",
+                 "'Macchina' is feminine → 'nuova', not 'nuovo'."),
+            ],
+            'B2': [
+                ("Qualunque cosa direi, non mi ascolta.", "Qualunque cosa io dica, non mi ascolta.",
+                 "'Qualunque cosa' triggers the subjunctive: 'dica', not 'direi'."),
+                ("Nonostante avesse lavorato tanto, non ha ricevuto una promozione.", "Nonostante avesse lavorato tanto, non ha ricevuto una promozione.",
+                 "This sentence is already correct — good use of 'nonostante' + congiuntivo trapassato."),
+                ("A meno che non viene, la riunione si svolgerà.", "A meno che non venga, la riunione si svolgerà.",
+                 "'A meno che' triggers the subjunctive: 'venga', not 'viene'."),
+                ("Si dice che il presidente ha dato le dimissioni.", "Si dice che il presidente abbia dato le dimissioni.",
+                 "Reported speech with 'si dice che' triggers the subjunctive: 'abbia dato'."),
+            ],
+            'GCSE': [
+                ("Ieri ho andato al cinema con i miei amici.", "Ieri sono andato al cinema con i miei amici.",
+                 "'Andare' uses 'essere' as auxiliary in compound tenses."),
+                ("Mi piaccio molto la musica italiana.", "Mi piace molto la musica italiana.",
+                 "'La musica' is singular → 'piace', not 'piaccio'."),
+                ("Ho diciassette anni vecchio.", "Ho diciassette anni.",
+                 "Italian uses 'avere X anni' — no equivalent of 'old' is added."),
+                ("Lei ha comprato un giacca rossa.", "Lei ha comprato una giacca rossa.",
+                 "'Giacca' is feminine → 'una', not 'un'."),
+                ("Loro sono arrivati a casa ieri e hanno mangiato la cena.", "Loro sono arrivati a casa ieri e hanno mangiato la cena.",
+                 "This sentence is correct — both verbs correctly use PP."),
+                ("Ogni giorno io ho mangiato la colazione alle otto.", "Ogni giorno io mangio la colazione alle otto.",
+                 "'Ogni giorno' signals a present habit — use the Presente, not PP."),
+                ("Quando ero bambino, sono andato al parco ogni giorno.", "Quando ero bambino, andavo al parco ogni giorno.",
+                 "Habitual repeated past action → Imperfetto: 'andavo', not 'sono andato'."),
+                ("Il mio sport preferito è il nuoto e mi piaccio giocare a tennis.", "Il mio sport preferito è il nuoto e mi piace giocare a tennis.",
+                 "The infinitive 'giocare' is grammatically singular → 'piace', not 'piaccio'."),
+            ],
+        }
+
+        pool = items_by_level.get(level, items_by_level['A2'])
+        random.shuffle(pool)
+        selected = pool[:count]
+        questions = []
+        for wrong, correct, explanation in selected:
+            questions.append({
+                "question": f"Correct the grammatical error in this sentence:\n\n\"{wrong}\"",
+                "answer": correct,
+                "type": "error_correction",
+                "explanation": explanation,
+                "hint": "Type the corrected sentence in full.",
+            })
+
+        return questions
+
+
 if __name__ == "__main__":
     # Test the practice generator
     print("Testing Practice Generator...")

@@ -49,6 +49,18 @@
     {% endfor %}
 </div>
 
+{% if flagged_questions %}
+<div class="mb-30" style="margin-top: 20px;">
+    <h3 style="margin-bottom: 15px;">🚩 Flagged for Review</h3>
+    {% for item in flagged_questions %}
+        <div style="background: #fff8e1; border: 1px solid #f5c518; border-radius: 8px; padding: 12px 15px; margin-bottom: 10px; text-align: left;">
+            <div style="font-weight: 600; margin-bottom: 4px;">{{ item.question }}</div>
+            <div style="color: #059669; font-size: 0.9rem;">✅ Correct answer: {{ item.answer }}</div>
+        </div>
+    {% endfor %}
+</div>
+{% endif %}
+
 <div class="button-group">
     <a href="{{ practice_again_url }}" class="btn btn-primary" style="background: var(--green);">🔄 Practice Again</a>
     <a href="{{ url_for('category_menu', level=level) }}" class="btn btn-secondary">🔙 Back to {{ level }} Menu</a>

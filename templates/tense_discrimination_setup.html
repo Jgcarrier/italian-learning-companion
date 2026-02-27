@@ -1,15 +1,15 @@
 {% extends "base.html" %}
 
-{% block title %}Verb Conjugation Setup{% endblock %}
+{% block title %}Passato Prossimo vs Imperfetto Setup{% endblock %}
 
 {% block content %}
 <div class="text-center mb-30">
-    <h2>🗣️ Verb Conjugation Practice</h2>
-    <p>Practice conjugating Italian verbs in different tenses</p>
+    <h2>⚖️ PP vs Imperfetto</h2>
+    <p>Choose the correct past tense form for each context sentence</p>
 </div>
 
 <form method="POST">
-    <input type="hidden" name="level" value="{{ level or 'A2' }}" action="{{ url_for('verb_conjugation') }}">
+    <input type="hidden" name="level" value="{{ level or 'A2' }}">
     <div class="form-group">
         <label for="level">Level:</label>
         <select name="level" id="level">
@@ -23,7 +23,7 @@
 
     <div class="form-group">
         <label for="count">Number of Questions:</label>
-        <input type="number" name="count" id="count" value="10" min="5" max="50">
+        <input type="number" name="count" id="count" value="10" min="5" max="21">
     </div>
 
     <div class="form-group" style="background: #f0f9ff; padding: 15px; border-radius: 8px; border: 1px solid #aed6f1;">
@@ -36,17 +36,17 @@
 
     <div class="button-group">
         <button type="submit" class="btn btn-primary btn-large">Start Practice</button>
-        <a href="{{ url_for('home') }}" class="btn btn-secondary">Back</a>
+        <a href="{{ url_for('verbs_menu', level=level) }}" class="btn btn-secondary">Back</a>
     </div>
 </form>
 
 <div style="margin-top: 30px; padding: 20px; background: var(--light-gray); border-radius: 8px;">
-    <h3 style="font-size: 1.1rem; margin-bottom: 10px;">💡 What You'll Practice:</h3>
+    <h3 style="font-size: 1.1rem; margin-bottom: 10px;">💡 The Key Rule:</h3>
     <ul style="margin-left: 20px; color: #666;">
-        <li>Present tense (presente)</li>
-        <li>Past tense (passato prossimo)</li>
-        <li>Different persons (io, tu, lui/lei, noi, voi, loro)</li>
-        <li>Regular and irregular verbs</li>
+        <li><strong>Passato Prossimo</strong> — single completed event at a specific time</li>
+        <li><strong>Imperfetto</strong> — habitual/repeated action, ongoing state, or background description</li>
+        <li>Context clues like <em>ogni giorno, da bambino, mentre</em> signal the Imperfetto</li>
+        <li>Clues like <em>ieri, la settimana scorsa, stamattina</em> signal the Passato Prossimo</li>
     </ul>
 </div>
 {% endblock %}
